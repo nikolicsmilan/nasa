@@ -1,0 +1,43 @@
+body {
+  background: black;
+}
+
+#customshadow {
+  box-shadow: 2px 23px 30px 13px rgba(94, 25, 25, 0.75);
+  -webkit-box-shadow: 2px 23px 30px 13px rgba(94, 25, 25, 0.75);
+  -moz-box-shadow: 2px 23px 30px 13px rgba(94, 25, 25, 0.75);
+}
+
+.background-video-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  border: 30px solid red;
+}
+
+.background-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 10;
+}
+
+#customshadow2 {
+  box-shadow: 2px 23px 30px 13px rgba(17, 104, 175, 0.75);
+  -webkit-box-shadow: 120px 50px 500px 72px rgba(44, 78, 82, 0.75);
+  -moz-box-shadow: 2px 23px 30px 13px rgba(17, 104, 175, 0.75);
+}
+
+/*shadow variation*/
+/*
+  box-shadow: 2px 23px 30px 13px rgba(17, 104, 175, 0.75);
+  -webkit-box-shadow: 2px 23px 30px 13px rgba(17, 104, 175, 0.75);
+  -moz-box-shadow: 2px 23px 30px 13px rgba(17, 104, 175, 0.75);
+ 
+ */
+/*YOU MAY CHANGE THESE COLORS*/
+/*  -webkit-box-shadow: 2px 50px 500px 72px rgba(9, 199, 233, 0.75);*/
