@@ -1,13 +1,13 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./App.css";
 import "./tailwind.css";
-import Home from "./pages/Home";
-import Galery from "./pages/Galery";
-import Layout from "./pages/Layout";
-import Layout2 from "./pages/Layout2";
-import Error from "./pages/Error";
-import GaleryDetails from "./pages/GaleryDetails";
-import Sentry from "./pages/Sentry";
+import Home from "./pages/Home/Home";
+import Galery from "./pages/Galery/Galery";
+import Layout from "./layouts/Layout";
+import Layout2 from "./layouts/Layout2";
+import Error from "./pages/Error/Error";
+import GaleryDetails from "./pages/Galery/GaleryDetails";
+import Sentry from "./pages/Sentry/Sentry";
 const router = createBrowserRouter([
   {
     path: "/",
