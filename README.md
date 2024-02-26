@@ -6,6 +6,7 @@ nasa/
 │   ├── assets/             // Az alkalmazás által használt statikus erőforrások
 │   │   └── images/         // Képek mappája
 │   │   └── video         // 
+│   ├── context/   
 │   ├── components/   
 │   │   ├── Sidebar/         //mappa a Sidebar komponensnek
 │   │   │   └── Sidebar.js   // Sidebar komponens fájlja

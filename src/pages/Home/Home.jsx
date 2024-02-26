@@ -1,7 +1,10 @@
 import React from "react";
 import { menu } from "../../locales/localdata";
 import earth720 from "../../assets/video/earth_1200p.mov"
+//import { MyDataContext } from "../../context/GeneralContext";
+import useWindowSize from "../../hooks/use-windowsize";
 const Home = () => {
+  const { width, height } = useWindowSize();
   return (
     <div className=" border-0  border-red-400 w-full">
       <video
@@ -23,7 +26,7 @@ const Home = () => {
         <div className=" flex flex-col border-0 md:m-10 py-2 md:py-0 text-center lg:w-1/2 md:w-3/4 border-orange-400 ">
           <div className="border-0 border-lime-400 w-full   flex justify-end flex-wrap md:p-10 p-10">
             <h1 className="md:text-3xl text-2xl md:text-end text-sky-400 opacity-100 uppercase font-bold">
-            Asteroid impact warning system
+            Asteroid impact warning system {width} x {height}
             </h1>
             <p>It's a small step for the developer, but a huge step against the fake news.</p>
           </div>
