@@ -27,7 +27,7 @@ export const menu = [
     link:"/solarsytsem"
   },
   {
-    title: "Space Knowledge",
+    title: "Space Know",
     icon: saw,
     link:"/spaceknowledge"
   },

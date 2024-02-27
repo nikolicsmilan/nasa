@@ -2,12 +2,6 @@ body {
   background: black;
 }
 
-#customshadow {
-  box-shadow: 2px 23px 30px 13px rgba(94, 25, 25, 0.75);
-  -webkit-box-shadow: 2px 23px 30px 13px rgba(94, 25, 25, 0.75);
-  -moz-box-shadow: 2px 23px 30px 13px rgba(94, 25, 25, 0.75);
-}
-
 .background-video-container {
   position: relative;
   width: 100%;
@@ -26,33 +20,83 @@ body {
   z-index: 10;
 }
 
-#customshadow2 {
-  box-shadow: 2px 23px 30px 13px rgba(17, 104, 175, 0.75);
+/*mysytle class just 
+because of the overwrite the base class 
+ (concatenation is higher order)*/
+
+.mystyle .customshadow2 {
+  box-shadow: 0px 0px 10px 3px rgba(44, 78, 82, 0.75);
   -webkit-box-shadow: 0px 0px 10px 3px rgba(44, 78, 82, 0.75);
-  -moz-box-shadow: 2px 23px 30px 13px rgba(17, 104, 175, 0.75);
+  -moz-box-shadow: 0px 0px 10px 3px rgba(44, 78, 82, 0.75);
 }
 
-#customshadow3 {
-  box-shadow: 2px 23px 30px 13px rgba(17, 104, 175, 0.75);
-  -webkit-box-shadow: 120px 50px 100px 172px rgba(22, 32, 39, 0.75);
-  -moz-box-shadow: 2px 23px 30px 13px rgba(17, 104, 175, 0.75);
+.mystyle .customshadow3:hover {
+  box-shadow: 0px 0px 10px 3px rgba(15, 143, 143, 0.75);
+  -webkit-box-shadow: 0px 0px 50px 3px rgba(15, 143, 143, 0.75);
+  -moz-box-shadow: 0px 0px 10px 3px rgba(15, 143, 143, 0.75);
 }
-/*
+
 .color-gradient-box {
-  width: 500px;
-  height: 300px;
-  background: linear-gradient(to bottom right, hsl(0, 100%, 100%) 50%, hsl(0, 100%, 80%) 20%);
-}*/
-.color-gradient-box {
- /* width: 550px;
+  /* width: 550px;
   height: 300px;*/
- /* background: linear-gradient(to bottom right, hsl(0, 0%, 100%) 50%, hsl(0, 0%, 100%) 20%);*/
-  background: linear-gradient(to bottom right, hsla(0, 0%, 100%, 0.1) 50%, hsla(0, 0%, 100%, 0.1) 20%);
+  /* background: linear-gradient(to bottom right, hsl(0, 0%, 100%) 50%, hsl(0, 0%, 100%) 20%);*/
+  background: linear-gradient(
+    to bottom right,
+    hsla(0, 0%, 100%, 0.1) 50%,
+    hsla(0, 0%, 100%, 0.1) 20%
+  );
   backdrop-filter: blur(0px);
   box-shadow: 2px 23px 30px 13px rgba(17, 104, 175, 0.75);
   -webkit-box-shadow: 120px 50px 500px 72px rgba(44, 78, 82, 0.75);
   -moz-box-shadow: 2px 23px 30px 13px rgba(17, 104, 175, 0.75);
 }
+
+.color-gradient-box:hover {
+  background: linear-gradient(
+    to bottom right,
+    hsla(0, 0%, 100%, 0.1) 50%,
+    hsla(0, 0%, 100%, 0.1) 20%
+  );
+  backdrop-filter: blur(0px);
+  box-shadow: 2px 23px 30px 13px rgba(17, 104, 175, 0.75);
+  -webkit-box-shadow: 120px 50px 500px 72px rgba(44, 78, 82, 0.75);
+  -moz-box-shadow: 2px 23px 30px 13px rgba(17, 104, 175, 0.75);
+}
+
+
+.color-gradient-box-menu {
+  /* width: 550px;
+  height: 300px;*/
+  /* background: linear-gradient(to bottom right, hsl(0, 0%, 100%) 50%, hsl(0, 0%, 100%) 20%);*/
+  background: linear-gradient(
+    to bottom right,
+    hsla(0, 0%, 100%, 0.1) 50%,
+    hsla(0, 0%, 100%, 0.1)20%
+  );
+  backdrop-filter: blur(0px);
+  box-shadow: 0px 0px 10px 5px rgba(44, 78, 82, 0.75);
+  -webkit-box-shadow: 0px 0px 10px 5px rgba(44, 78, 82, 0.75);
+  -moz-box-shadow: 0px 0px 10px 5px rgba(44, 78, 82, 0.75);
+}
+
+.color-gradient-box-menu:hover {
+  background: linear-gradient(
+    to bottom right,
+    hsla(0, 0%, 100%, 0.1) 50%,
+    hsla(0, 0%, 100%, 0.1) 20%
+  );
+  backdrop-filter: blur(0px);
+  box-shadow: 0px 0px 10px 5px rgba(44, 78, 82, 0.75);
+  -webkit-box-shadow: 0px 0px 10px 10px rgba(44, 78, 82, 0.75);
+  -moz-box-shadow:0px 0px 10px 5px rgba(44, 78, 82, 0.75);
+}
+/*
+.sidebar {
+  position: fixed; 
+  bottom: 0; 
+  height: 100vh; 
+ 
+}*/
 
 /*shadow variation*/
 /*

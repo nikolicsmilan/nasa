@@ -26,6 +26,7 @@ nasa/
 │   │   └── firestore.js     // 
 │   │   └── fileupload.js     // 
 │   ├── utils/              // Segédfüggvények és segédosztályok
+│   │   ├── motion.js         // Autentikációs segédfüggvények
 │   │   ├── auth.js         // Autentikációs segédfüggvények
 │   │   ├── validation.js   // Validációs segédfüggvények
 │   ├── App.js             
