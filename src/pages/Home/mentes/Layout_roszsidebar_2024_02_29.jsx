@@ -4,19 +4,16 @@ import Sidebar from "../components/Sidebar/Sidebar";
 import { FaBars } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
 import { slideAnimation } from "../utils/motion";
-import { slideAnimation2 } from "../utils/motion";
 //import  MyDataContext  from "../context/GeneralContext";
 import { MyDataContext } from "../context/GeneralContext";
-import useWindowSize from "../hooks/use-windowsize";
 const Layout = () => {
   const { toggle, setToggle } = MyDataContext();
-  const { width, height } = useWindowSize();
   const handleClose = () => {
     setToggle(false);
   };
   return (
     <AnimatePresence>
-      <div className="overflow-y-auto overflow-x-hidden md:overflow-y-hidden mystyle border- border-red-400 bg-black text-sky-400 h-screen flex flex-col w-full">
+      <div className="mystyle border- border-red-400 bg-black text-sky-400 h-screen flex flex-col">
         <header className="border-0 relative z-40">
           <FaBars
             className="absolute z-40 text-2xl m-4  cursor-pointer"
@@ -26,29 +23,30 @@ const Layout = () => {
           />
         </header>
 
-        <main className="flex flex-grow border-2 border-orange-800 z-30  w-full relative">
+        <main className="flex flex-grow border-0 border-orange-800 z-30 ">
           <motion.div
             variants={slideAnimation("left")}
             initial="exit"
-            animate={toggle ? "animate" : "exit"}
+            animate={toggle ? "animate" : "exit"} 
             exit="exit"
-            className="w-80 border-0 absolute top-0 left-0 z-30 flex flex-col m-0"
+            className="w-80 border-0 relative z-30 flex flex-col m-0"
           >
-            <Sidebar onClose={handleClose} />
+            <Sidebar onClose={handleClose} /> 
           </motion.div>
-          <motion.div
-            variants={slideAnimation("right")}
-            initial="exit"
-            animate={toggle ? "animate" : "exit"}
-            exit="exit"
-            className="w-80 border-0 absolute bottom-0 right-0
-             z-30 flex flex-col m-0"
-          >
-            <Sidebar onClose={handleClose} />
-          </motion.div>
+
+        
           <div className="w-full border-2 border-sky-400 z-10">
             <Outlet />
           </div>
+          <motion.div
+            variants={slideAnimation("right")}
+            initial="exit"
+            animate={toggle ? "animate" : "exit"} 
+            exit="exit"
+            className="w-80 border-0 relative z-30 flex flex-col m-0"
+          >
+            <Sidebar onClose={handleClose} /> 
+          </motion.div>
         </main>
       </div>
     </AnimatePresence>
@@ -56,11 +54,7 @@ const Layout = () => {
 };
 
 export default Layout;
-/*
-  <div className="w-full border-2 border-sky-400 z-10">
-            <Outlet />
-          </div>
-*/
+
 /*
   {toggle && (
             <motion.div

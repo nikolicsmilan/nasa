@@ -6,7 +6,7 @@ import useWindowSize from "../../hooks/use-windowsize";
 const Home = () => {
   const { width, height } = useWindowSize();
   return (
-    <div className=" border-0  border-white w-full">
+    <div className=" border-0  border-white w-full ">
       <video
         src={earth720}
         className="background-video border-0 border-red-400"
@@ -15,28 +15,22 @@ const Home = () => {
         muted
       ></video>
 
-      <div className="flex  w-full relative text-xl z-30 border-0 border-lime-400 mt-[0px] ">
-        <div className="lg:w-1/2 md:w-1/3 border-0 hidden md:flex items-center md:justify-end ">
-          <div className="m-4 ">
-            <div className="text-red-600 hidden  lg:block">lg</div>
-            <div className="text-red-600 hidden md:block lg:hidden">md</div>
-            <div className="text-red-600 sm:block md:hidden lg:hidden"></div>
-          </div>
-        </div>
-        <div className=" flex flex-col border-0 md:m-0 py-0 md:py-0 text-center lg:w-1/2 md:w-3/4 border-orange-400 ">
-          <div className="border-0 flex justify-end">
-            <div className="border-0 border-lime-400 flex flex-col justify-end flex-wrap md:p-10 ">
-              <h1 className="p-2 border-0 text-end md:text-3xl text-2xl md:text-end text-sky-400 opacity-100 uppercase font-bold">
+      <div className="flex  w-full h-screen relative text-xl z-10 border-2 border-lime-400 mt-[0px] ">
+   
+        <div className=" flex flex-col border-0 md:m-0 py-0 md:py-0 text-center lg:w-full  border-orange-400 mt-[90px]">
+          <div className="border-2 lg:max-w-6xl mx-auto border-2 border-white flex justify-center">
+            <div className="border-0 border-lime-400 flex flex-col justify-center flex-wrap md:p-10 ">
+              <h1 className="z-10 p-2 border-0 text-center md:text-3xl text-2xl  text-sky-400 opacity-100 uppercase font-bold">
                 Asteroid impact warning system
               </h1>
-              <p className="text-end p-2">
+              <p className="text-center p-2">
                 "It's a small step for the developer, but a huge step against
-                the fake news."
+                the fake news." { width}x{height}
               </p>
             </div>
           </div>
 
-          <div className="border-0 border-white  flex justify-end flex-wrap  md:mt-[90px] ">
+          <div className="lg:max-w-6xl mx-auto border-2 border-white  flex justify-center flex-wrap  md:mt-[90px] ">
             {menu.map((item) => (
               <div  id="" className=" customshadow3 cursor-pointer rounded-2xl relative flex-col m-3  w-40  lg:w-48 md:w-40 h-14 md:h-28 border-0 border-orange-400 ">
                 <div
@@ -54,6 +48,13 @@ const Home = () => {
               </div>
             ))}
           </div>
+          <div className="lg:w-1/2 md:w-1/3 border-0 hidden md:flex items-center md:justify-end ">
+          <div className="m-4 ">
+            <div className="text-red-600 hidden  lg:block">lg</div>
+            <div className="text-red-600 hidden md:block lg:hidden">md</div>
+            <div className="text-red-600 sm:block md:hidden lg:hidden"></div>
+          </div>
+        </div>
      
         </div>
       </div>
@@ -62,7 +63,7 @@ const Home = () => {
 };
 
 export default Home;
-
+//lg:max-w-6xl mx-auto
 /*
   <div className="border-0   flex justify-end flex-wrap p-10 ">
               {menu.map((item) => (

@@ -7,16 +7,14 @@ import { slideAnimation } from "../utils/motion";
 import { slideAnimation2 } from "../utils/motion";
 //import  MyDataContext  from "../context/GeneralContext";
 import { MyDataContext } from "../context/GeneralContext";
-import useWindowSize from "../hooks/use-windowsize";
 const Layout = () => {
   const { toggle, setToggle } = MyDataContext();
-  const { width, height } = useWindowSize();
   const handleClose = () => {
     setToggle(false);
   };
   return (
     <AnimatePresence>
-      <div className="overflow-y-auto overflow-x-hidden md:overflow-y-hidden mystyle border- border-red-400 bg-black text-sky-400 h-screen flex flex-col w-full">
+      <div className="overflow-hidden mystyle border- border-red-400 bg-black text-sky-400 h-screen flex flex-col">
         <header className="border-0 relative z-40">
           <FaBars
             className="absolute z-40 text-2xl m-4  cursor-pointer"
@@ -26,13 +24,13 @@ const Layout = () => {
           />
         </header>
 
-        <main className="flex flex-grow border-2 border-orange-800 z-30  w-full relative">
+        <main className="flex flex-grow border-0 border-orange-800 z-30 ">
           <motion.div
             variants={slideAnimation("left")}
             initial="exit"
             animate={toggle ? "animate" : "exit"}
             exit="exit"
-            className="w-80 border-0 absolute top-0 left-0 z-30 flex flex-col m-0"
+            className="w-80 border-0 relative z-30 flex flex-col m-0"
           >
             <Sidebar onClose={handleClose} />
           </motion.div>
@@ -41,11 +39,11 @@ const Layout = () => {
             initial="exit"
             animate={toggle ? "animate" : "exit"}
             exit="exit"
-            className="w-80 border-0 absolute bottom-0 right-0
-             z-30 flex flex-col m-0"
+            className="w-80 border-0 relative z-30 flex flex-col m-0"
           >
             <Sidebar onClose={handleClose} />
           </motion.div>
+
           <div className="w-full border-2 border-sky-400 z-10">
             <Outlet />
           </div>
@@ -56,42 +54,28 @@ const Layout = () => {
 };
 
 export default Layout;
-/*
-  <div className="w-full border-2 border-sky-400 z-10">
-            <Outlet />
-          </div>
-*/
-/*
-  {toggle && (
-            <motion.div
-              {...slideAnimation("left")}
-              className="w-80 border-0 relative z-30 flex flex-col m-0"
-            >
-              <Sidebar />
-            </motion.div>
-          )}
 
-*/
-// z-30 relative w-full h-screen
-
-/*
-const Layout = () => {
-  return (
-    <div className="  border-2 border-red-400 bg-black text-sky-400">
-      <hedaer className="border-2 relative z-30 ">
-        <FaBars className=" absolute z-30  text-2xl" />
-      </hedaer>
-      <main className=" flex border-2 border-orange-800">
-       
-      <div className="sidebar w-12 border-2 relative z-30  flex flex-col m-0 ">
-      <Sidebar />
-    </div>
-
-    <div className="w-full border-2 border-sky-400 z-10">
-      <Outlet />
-    </div>
-  </main>
-</div>
-);
-};
-*/
+//motion.js
+export const transition = { type: "spring", duration: 0.8 };
+export const slideAnimation = (direction) => {
+    return {
+      initial: {
+        x: direction === "left" ? 900 : direction === "right" ? 100 : 100,
+        y: direction === "up" ? 100 : direction === "down" ? -100 : 0,
+        opacity: 0,
+        transition: { ...transition, delay: 0.5 },
+      },
+      animate: {
+        x: direction === "left" ? 800: direction === "right" ? 1700 : 0,
+        y: 0,
+        opacity: 1,
+        transition: { ...transition, delay: 0 },
+      },
+      exit: {
+        x: direction === "left" ? -110 : direction === "right" ? 100 : 0,
+        y: direction === "up" ? 100 : direction === "down" ? -100 : 0,
+        opacity: 0,
+        transition: { ...transition, delay: 0 },
+      },
+    };
+  };

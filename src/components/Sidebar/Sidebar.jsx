@@ -6,7 +6,7 @@ import { MyDataContext } from "../../context/GeneralContext";
 const Sidebar = () => {
   const{toggle, setToggle} = MyDataContext();
   return (
-    <div className="flex flex-col    border-0 flex-grow p-5">
+    <div className="flex flex-col    border-0 flex-grow px-5">
 
       {menu.map((item) => (
         <NavLink to={item?.link} className=" text-sky-400 font-semibold my-2">
