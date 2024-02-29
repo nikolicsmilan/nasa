@@ -16,7 +16,7 @@ const Layout = () => {
   };
   return (
     <AnimatePresence>
-      <div className="overflow-y-auto overflow-x-hidden md:overflow-y-hidden mystyle border- border-red-400 bg-black text-sky-400 h-screen flex flex-col w-full">
+      <div className="overflow-y-auto overflow-x-hidden lg:overflow-y-hidden mystyle border- border-red-400 bg-black text-sky-400 h-screen flex flex-col w-full">
         <header className="border-0 relative z-40">
           <FaBars
             className="absolute z-40 text-2xl m-4  cursor-pointer"
@@ -26,7 +26,7 @@ const Layout = () => {
           />
         </header>
 
-        <main className="flex flex-grow border-2 border-orange-800 z-30  w-full relative">
+        <main className="flex flex-grow border-0 border-orange-800 z-30  w-full relative">
           <motion.div
             variants={slideAnimation("left")}
             initial="exit"
@@ -46,7 +46,7 @@ const Layout = () => {
           >
             <Sidebar onClose={handleClose} />
           </motion.div>
-          <div className="w-full border-2 border-sky-400 z-10">
+          <div className="w-full border-0 border-sky-400 z-10 relative">
             <Outlet />
           </div>
         </main>

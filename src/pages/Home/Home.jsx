@@ -3,22 +3,24 @@ import { menu } from "../../locales/localdata";
 import earth720 from "../../assets/video/earth_1200p.mov";
 //import { MyDataContext } from "../../context/GeneralContext";
 import useWindowSize from "../../hooks/use-windowsize";
+import { MyDataContext } from "../../context/GeneralContext";
 const Home = () => {
   const { width, height } = useWindowSize();
+  const { toggle, setToggle } = MyDataContext();
   return (
-    <div className=" border-0  border-white w-full ">
+    <div className=" border-0  border-white w-full z-10 relative ">
       <video
         src={earth720}
-        className="background-video border-0 border-red-400"
+        className="background-video border-0 border-red-400 opacity-70"
         autoPlay
         loop
         muted
       ></video>
 
-      <div className="flex  w-full h-screen relative text-xl z-10 border-2 border-lime-400 mt-[0px] ">
+      <div className="flex  w-full h-screen relative text-xl z-10 border-0 border-lime-400 mt-[0px] ">
    
-        <div className=" flex flex-col border-0 md:m-0 py-0 md:py-0 text-center lg:w-full  border-orange-400 mt-[90px]">
-          <div className="border-2 lg:max-w-6xl mx-auto border-2 border-white flex justify-center">
+        <div className={` flex flex-col border-0 md:m-0 py-0 md:py-0 text-center lg:w-full  border-orange-400 mt-[90px] ${toggle ? 'opacity-10': ''}`}>
+          <div className="border-0 lg:max-w-6xl mx-auto border-white flex justify-center">
             <div className="border-0 border-lime-400 flex flex-col justify-center flex-wrap md:p-10 ">
               <h1 className="z-10 p-2 border-0 text-center md:text-3xl text-2xl  text-sky-400 opacity-100 uppercase font-bold">
                 Asteroid impact warning system
@@ -30,7 +32,7 @@ const Home = () => {
             </div>
           </div>
 
-          <div className="lg:max-w-6xl mx-auto border-2 border-white  flex justify-center flex-wrap  md:mt-[90px] ">
+          <div className="lg:max-w-6xl mx-auto border-0 border-white  flex justify-center flex-wrap  md:mt-[90px] ">
             {menu.map((item) => (
               <div  id="" className=" customshadow3 cursor-pointer rounded-2xl relative flex-col m-3  w-40  lg:w-48 md:w-40 h-14 md:h-28 border-0 border-orange-400 ">
                 <div
