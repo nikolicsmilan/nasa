@@ -9,14 +9,18 @@ const Sidebar = () => {
     <div className="flex flex-col    border-0 flex-grow px-5">
 
       {menu.map((item) => (
-        <NavLink to={item?.link} className=" text-sky-400 font-semibold my-2">
+        <NavLink to={item?.link} className={({ isActive }) =>
+        `${
+          isActive ? "mymenu" : ""
+        }   `
+      }>
           <div
             id=""
             key={item?.title}
-            className="color-gradient-box-menu flex items-center text-dark 
-       border-0 border-red-400  py-2 rounded h-14"
+            className="menuctive color-gradient-box-menu flex items-center text-dark 
+       border-0 border-red-400  my-2 rounded h-14"
           >
-            <img src={item?.icon} className="mx-2 w-12" />
+            <p className="mx-2 ">  {<item.icon />}</p>
             <p className="">{item?.title}</p>
           </div>
         </NavLink>

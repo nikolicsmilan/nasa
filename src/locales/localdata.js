@@ -1,40 +1,62 @@
 import React from "react";
-import saw from "../assets/saw.png"
-/*import {
-  FaReact,
-  FaPhp,
-  FaBootstrap,
-  FaJs,
-  FaCss3Alt,
-  FaHtml5,
-  FaHome,
-} from "react-icons/fa";*/
+import { FaProjectDiagram, FaPalette, FaVolumeUp, FaLanguage, FaDatabase } from "react-icons/fa";
+import { FaHome, FaShieldAlt, FaSpaceShuttle, FaImages, FaSignInAlt } from "react-icons/fa";
 
 export const menu = [
   {
     title: "Home",
-    icon: saw,
-    link:"/"
+    icon: FaHome ,
+    link:"/",
+    description: "Kezdőlap",
   },
   {
     title: "Sentry",
-    icon: saw,
-    link:"/sentry"
-  },
-  {
-    title: "Solar Sytsem",
-    icon: saw,
-    link:"/solarsytsem"
+    icon: FaShieldAlt,
+    link:"/sentry",
+    description: "Őrszem",
   },
   {
     title: "Space Know",
-    icon: saw,
-    link:"/spaceknowledge"
+    icon: FaSpaceShuttle,
+    link:"/spaceknowledge",
+    description: "Űrtudás",
   },
   {
-    title: "Galery",
-    icon: saw,
-    link:"/galery"
+    title: "Gallery",
+    icon: FaImages,
+    link:"/gallery",
+    description: "Galéria",
   },
-  
+  {
+    title: "Login",
+    icon: FaSignInAlt,
+    link:"/login",
+    description: "Bejelentkezés",
+  },
 ];
+
+
+
+export const settings = [
+  {
+    title: "Navigation",
+    icon: FaProjectDiagram,
+  },
+  {
+    title: "Style",
+    icon: FaPalette,
+  },
+  {
+    title: "Sound",
+    icon: FaVolumeUp,
+  },
+  {
+    title: "Language",
+    icon: FaLanguage,
+  },
+  {
+    title: "Data",
+    icon: FaDatabase,
+  },
+];
+

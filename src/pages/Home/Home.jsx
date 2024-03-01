@@ -18,30 +18,55 @@ const Home = () => {
       ></video>
 
       <div className="flex  w-full h-screen relative text-xl z-10 border-0 border-lime-400 mt-[0px] ">
-   
-        <div className={` flex flex-col border-0 md:m-0 py-0 md:py-0 text-center lg:w-full  border-orange-400 mt-[90px] ${toggle ? 'opacity-10': ''}`}>
+        <div
+          className={` flex flex-col border-0 md:m-0 py-0 md:py-0 text-center lg:w-full  border-orange-400 mt-[30px] ${
+            toggle ? "opacity-10" : ""
+          }`}
+        >
           <div className="border-0 lg:max-w-6xl mx-auto border-white flex justify-center">
             <div className="border-0 border-lime-400 flex flex-col justify-center flex-wrap md:p-10 ">
               <h1 className="z-10 p-2 border-0 text-center md:text-3xl text-2xl  text-sky-400 opacity-100 uppercase font-bold">
                 Asteroid impact warning system
               </h1>
-              <p className="text-center p-2">
+              <p className="text-center p-2 text-base">
                 "It's a small step for the developer, but a huge step against
-                the fake news." { width}x{height}
+                the fake news. {width}x{height}" Solarsystemwith routing és
+                settings próba layoutba ha nem akkor oldalanként. A kapcsolók
+                kikapcsolják a másikat. navgáció visszaállítja a settingsbe a
+                navigációt
               </p>
             </div>
           </div>
 
-          <div className="lg:max-w-6xl mx-auto border-0 border-white  flex justify-center flex-wrap  md:mt-[90px] ">
+   
+
+          <div className="lg:w-1/2 md:w-1/3 border-0 hidden md:flex items-center md:justify-end ">
+            <div className="m-4 ">
+              <div className="text-red-600 hidden  lg:block">lg</div>
+              <div className="text-red-600 hidden md:block lg:hidden">md</div>
+              <div className="text-red-600 sm:block md:hidden lg:hidden"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Home;
+
+
+/*
+
+       <div className="lg:max-w-6xl mx-auto border-0 border-white  flex justify-center flex-wrap  md:mt-[90px] ">
             {menu.map((item) => (
-              <div  id="" className=" customshadow3 cursor-pointer rounded-2xl relative flex-col m-3  w-40  lg:w-48 md:w-40 h-14 md:h-28 border-0 border-orange-400 ">
-                <div
-                
-                  className="customshadow2 rounded-2xl  w-40 md:w-40  lg:w-48 h-full text-sky-400 shadow-2xl border-0 bg-sky-400 md:opacity-10 opacity-10 mt-[0px] z-40"
-                ></div>
+              <div
+                id=""
+                className=" customshadow3 cursor-pointer rounded-2xl relative flex-col m-3  w-40  lg:w-48 md:w-40 h-14 md:h-28 border-0 border-orange-400 "
+              >
+                <div className="customshadow2 rounded-2xl  w-40 md:w-40  lg:w-48 h-full text-sky-400 shadow-2xl border-0 bg-sky-400 md:opacity-10 opacity-10 mt-[0px] z-40"></div>
 
                 <div
-                
                   className="customshadow2 rounded-2xl text-2xl opacity-100 flex h-14 md:h-28
                border-purple-400  shadow-2xl items-center justify-center border-0 bg-dark-800 z-20  mt-[-55px]  md:mt-[-110px] font-bold"
                 >
@@ -50,21 +75,17 @@ const Home = () => {
               </div>
             ))}
           </div>
-          <div className="lg:w-1/2 md:w-1/3 border-0 hidden md:flex items-center md:justify-end ">
-          <div className="m-4 ">
-            <div className="text-red-600 hidden  lg:block">lg</div>
-            <div className="text-red-600 hidden md:block lg:hidden">md</div>
-            <div className="text-red-600 sm:block md:hidden lg:hidden"></div>
-          </div>
-        </div>
-     
-        </div>
-      </div>
-    </div>
-  );
-};
+*/
 
-export default Home;
+/*
+ Or the other way around, but it doesn't matter
+                now. Kattints az Click on the word asteroid in the main
+                navigation console to find out what potentially dangerous
+                asteroids are approaching the earth, how big they are expected
+                to hit and how much damage they would cause if they hit. The
+                data is valid and comes from the NASA database in near real
+                time.
+*/
 //lg:max-w-6xl mx-auto
 /*
   <div className="border-0   flex justify-end flex-wrap p-10 ">

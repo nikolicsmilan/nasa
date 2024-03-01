@@ -8,6 +8,7 @@ export const DataContextProvider = ({ children }) => {
     height: undefined,
   });
   const [toggle, setToggle] = useState(false);
+  const [settingsOpen, setSettingsOpen] = useState(false);
 
   return (
     <DataContext.Provider
@@ -16,6 +17,8 @@ export const DataContextProvider = ({ children }) => {
         setWindowSize,
         toggle,
         setToggle,
+        settingsOpen,
+        setSettingsOpen,
       }}
     >
       {children}
