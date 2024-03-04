@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { menu } from "../../locales/localdata";
+import { homemenu } from "../../locales/localdata";
 import { FaBars } from "react-icons/fa";
 import { MyDataContext } from "../../context/GeneralContext";
 const Sidebar = () => {
@@ -8,7 +8,7 @@ const Sidebar = () => {
   return (
     <div className="flex flex-col    border-0 flex-grow px-5">
 
-      {menu.map((item) => (
+      {homemenu.map((item) => (
         <NavLink to={item?.link} className={({ isActive }) =>
         `${
           isActive ? "mymenu" : ""

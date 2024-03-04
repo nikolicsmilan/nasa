@@ -5,14 +5,17 @@ import SettingsBar from "../components/Sidebar/SettingsBar";
 import { FaBars, FaCog } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
 import { slideAnimation } from "../utils/motion";
-import { slideAnimation2 } from "../utils/motion";
-//import  MyDataContext  from "../context/GeneralContext";
 import { MyDataContext } from "../context/GeneralContext";
 import useWindowSize from "../hooks/use-windowsize";
-import { menu } from "../locales/localdata";
-import { NavLink } from "react-router-dom";
-const Layout = () => {
-  const { toggle, setToggle, settingsOpen, setSettingsOpen } = MyDataContext();
+import MainNavigationConsole from "../components/MainNavigationConsole";
+import StyleConsole from "../components/StyleConsole";
+import SoundConsole from "../components/SoundConsole";
+import LanguageConsole from "../components/LanguageConsole";
+import DataConsole from "../components/DataConsole";
+
+const LayoutHome = () => {
+  const { toggle, setToggle, settingsOpen, setSettingsOpen, settings } =
+    MyDataContext();
   const { width, height } = useWindowSize();
   const handleClose = () => {
     setToggle(false);
@@ -62,38 +65,21 @@ const Layout = () => {
             }}
             className="w-full border-0 border-sky-400 z-10 relative"
           >
-            <Outlet />
+            <Outlet  />
           </div>
+          {/*items-end  md:items-center */}
           <div
-            className={`absolute inset-0 flex items-end md:items-center justify-center ${
-              settingsOpen ? "opacity-10 md:opacity-100" : ""
+            className={`absolute inset-0 flex  items-center justify-center border-0 border-orange-400 ${
+              settingsOpen || toggle ? "opacity-30 md:opacity-100" : ""
             } `}
           >
             <div className="lg:max-w-6xl mx-auto border-0 border-white flex justify-center flex-wrap z-50">
-              {menu.map((item) => (
-                <NavLink to={item?.link} className={({ isActive }) =>
-                `${
-                  isActive ? "mynavlink" : ""
-                }   `
-              }>
-                  <div
-                    key={item.id} // Asszumáltam, hogy van egy id az item objektumban
-                    className={`shadowactive customshadow3 cursor-pointer rounded-2xl relative flex-col m-3 w-40 lg:w-48 md:w-40 h-14 md:h-28 border-0 border-orange-400`}
-                  >
-                    <div className="customshadow2 rounded-2xl w-40 md:w-40 lg:w-48 h-full text-sky-400 shadow-2xl border-0 bg-sky-400 md:opacity-10 opacity-10 mt-[0px] z-40"></div>
-
-                    <div className="customshadow2 rounded-2xl text-2xl opacity-100 flex h-14 md:h-28 border-purple-400 shadow-2xl items-center justify-center border-0 bg-dark-800 z-20 mt-[-55px] md:mt-[-110px] font-bold">
-                      <p className="mx-2 "> {<item.icon />}</p>
-                      <h2 className="text-sky-400 opacity-100">{item.title}</h2>
-                    </div>
-                  </div>
-                </NavLink>
-              ))}
+              {settings === "Navigation" && <MainNavigationConsole />}
+              {settings === "Style" && <StyleConsole />}
+              {settings === "Sound" && <SoundConsole />}
+              {settings === "Language" && <LanguageConsole />}
+              {settings === "Data" && <DataConsole />}
             </div>
-
-         
-         
-
           </div>
         </main>
       </div>
@@ -101,7 +87,7 @@ const Layout = () => {
   );
 };
 
-export default Layout;
+export default LayoutHome;
 
 /*
   <div className="absolute inset-0 flex items-center justify-center ">

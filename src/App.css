@@ -20,12 +20,9 @@ body {
   z-index: 10;
 }
 
-
 /*mysytle class just 
 because of the overwrite the base class 
  (concatenation is higher order)*/
-
-
 /*MainNavigationConsole.js custom shadow  */
 .mystyle .customshadow2 {
   box-shadow: 0px 0px 10px 3px rgba(44, 78, 82, 0.75);
@@ -35,44 +32,37 @@ because of the overwrite the base class
 
 /*MainNavigationConsole.js hover */
 .mystyle .customshadow3:hover {
-  box-shadow: 0px 0px 10px 3px rgba(15, 143, 143, 0.75);
-  -webkit-box-shadow: 0px 0px 50px 3px rgba(15, 143, 143, 0.75);
-  -moz-box-shadow: 0px 0px 10px 3px rgba(15, 143, 143, 0.75);
+  background: linear-gradient(
+    to bottom right,
+    hsla(0, 0%, 100%, 0.1) 20%,
+    hsla(0, 0%, 100%, 0.1) 20%
+  );
 }
 
 /*MainNavigationConsole.js active */
-.mynavlink .shadowactive{
-  box-shadow: 0px 0px 10px 3px rgba(15, 143, 143, 0.75);
-  -webkit-box-shadow: 0px 0px 50px 3px rgba(15, 143, 143, 0.75);
-  -moz-box-shadow: 0px 0px 10px 3px rgba(15, 143, 143, 0.75);
+.mynavlink .shadowactive {
+  background: linear-gradient(
+    to bottom right,
+    hsla(0, 76%, 26%, 0.1) 50%,
+    hsla(0, 76%, 26%, 0.1) 50%
+  );
 }
 
-/*menu active on SideBar.js */
-.mymenu .menuctive{
+/*menu active on SideBar.js  and Settingsbar.js */
+.mymenu .menuctive {
   background: linear-gradient(
     to bottom right,
     hsla(0, 76%, 26%, 0.1) 50%,
     hsla(0, 0%, 100%, 0.1) 20%
   );
-  backdrop-filter: blur(0px);
-  box-shadow: 0px 0px 10px 5px rgba(44, 78, 82, 0.75);
-  -webkit-box-shadow: 0px 0px 10px 10px rgba(44, 78, 82, 0.75);
-  -moz-box-shadow:0px 0px 10px 5px rgba(44, 78, 82, 0.75);
-  
 }
 
 /*Button on SideBar.js and Settingsbar.js */
-
-
-
 .color-gradient-box-menu {
-  /* width: 550px;
-  height: 300px;*/
-  /* background: linear-gradient(to bottom right, hsl(0, 0%, 100%) 50%, hsl(0, 0%, 100%) 20%);*/
   background: linear-gradient(
     to bottom right,
-    hsla(0, 0%, 100%, 0.1) 50%,
-    hsla(0, 0%, 100%, 0.1)20%
+    hsla(0, 76%, 26%, 0.1) 50%,
+    hsla(0, 76%, 26%, 0.1) 50%
   );
   backdrop-filter: blur(0px);
   box-shadow: 0px 0px 10px 5px rgba(44, 78, 82, 0.75);
@@ -80,6 +70,7 @@ because of the overwrite the base class
   -moz-box-shadow: 0px 0px 10px 5px rgba(44, 78, 82, 0.75);
 }
 
+/*Button hover on SideBar.js and Settingsbar.js */
 .color-gradient-box-menu:hover {
   background: linear-gradient(
     to bottom right,
@@ -89,50 +80,5 @@ because of the overwrite the base class
   backdrop-filter: blur(0px);
   box-shadow: 0px 0px 10px 5px rgba(44, 78, 82, 0.75);
   -webkit-box-shadow: 0px 0px 10px 10px rgba(44, 78, 82, 0.75);
-  -moz-box-shadow:0px 0px 10px 5px rgba(44, 78, 82, 0.75);
+  -moz-box-shadow: 0px 0px 10px 5px rgba(44, 78, 82, 0.75);
 }
-
-
-
-.color-gradient-box {
-  /* background: linear-gradient(
-     to bottom right,
-     hsla(0, 0%, 100%, 0.1) 50%,
-     hsla(0, 0%, 100%, 0.1) 20%
-   );
-   backdrop-filter: blur(0px);
-   box-shadow: 2px 23px 30px 13px rgba(17, 104, 175, 0.75);
-   -webkit-box-shadow: 120px 50px 500px 72px rgba(44, 78, 82, 0.75);
-   -moz-box-shadow: 2px 23px 30px 13px rgba(17, 104, 175, 0.75);*/
- }
- 
- /*Button hover on SideBar.js and Settingsbar.js */
- .color-gradient-box:hover {
-  /* background: linear-gradient(
-     to bottom right,
-     hsla(0, 0%, 100%, 0.1) 50%,
-     hsla(0, 0%, 100%, 0.1) 20%
-   );
-   backdrop-filter: blur(0px);
-   box-shadow: 2px 23px 30px 13px rgba(17, 104, 175, 0.75);
-   -webkit-box-shadow: 120px 50px 500px 72px rgba(44, 78, 82, 0.75);
-   -moz-box-shadow: 2px 23px 30px 13px rgba(17, 104, 175, 0.75);*/
- }
-
-/*
-.sidebar {
-  position: fixed; 
-  bottom: 0; 
-  height: 100vh; 
- 
-}*/
-
-/*shadow variation*/
-/*
-  box-shadow: 2px 23px 30px 13px rgba(17, 104, 175, 0.75);
-  -webkit-box-shadow: 2px 23px 30px 13px rgba(17, 104, 175, 0.75);
-  -moz-box-shadow: 2px 23px 30px 13px rgba(17, 104, 175, 0.75);
- 
- */
-/*YOU MAY CHANGE THESE COLORS*/
-/*  -webkit-box-shadow: 2px 50px 500px 72px rgba(9, 199, 233, 0.75);*/

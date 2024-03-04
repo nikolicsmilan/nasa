@@ -1,12 +1,16 @@
-import React from "react";
-import { menu } from "../../locales/localdata";
+import React,{useEffect} from "react";
 import earth720 from "../../assets/video/earth_1200p.mov";
 //import { MyDataContext } from "../../context/GeneralContext";
 import useWindowSize from "../../hooks/use-windowsize";
 import { MyDataContext } from "../../context/GeneralContext";
 const Home = () => {
   const { width, height } = useWindowSize();
-  const { toggle, setToggle } = MyDataContext();
+  const { toggle, setSettings } = MyDataContext();
+  useEffect(() => {
+    setSettings
+    setSettings("Navigation");
+  }, []);
+
   return (
     <div className=" border-0  border-white w-full z-10 relative ">
       <video
@@ -20,7 +24,7 @@ const Home = () => {
       <div className="flex  w-full h-screen relative text-xl z-10 border-0 border-lime-400 mt-[0px] ">
         <div
           className={` flex flex-col border-0 md:m-0 py-0 md:py-0 text-center lg:w-full  border-orange-400 mt-[30px] ${
-            toggle ? "opacity-10" : ""
+            toggle ? "opacity-10 md:opacity-100" : ""
           }`}
         >
           <div className="border-0 lg:max-w-6xl mx-auto border-white flex justify-center">
@@ -30,15 +34,10 @@ const Home = () => {
               </h1>
               <p className="text-center p-2 text-base">
                 "It's a small step for the developer, but a huge step against
-                the fake news. {width}x{height}" Solarsystemwith routing és
-                settings próba layoutba ha nem akkor oldalanként. A kapcsolók
-                kikapcsolják a másikat. navgáció visszaállítja a settingsbe a
-                navigációt
+                the fake news. {width}x{height}"
               </p>
             </div>
           </div>
-
-   
 
           <div className="lg:w-1/2 md:w-1/3 border-0 hidden md:flex items-center md:justify-end ">
             <div className="m-4 ">
@@ -54,7 +53,12 @@ const Home = () => {
 };
 
 export default Home;
-
+/*
+Solarsystemwith routing és
+                settings próba layoutba ha nem akkor oldalanként. A kapcsolók
+                kikapcsolják a másikat. navgáció visszaállítja a settingsbe a
+                navigációt
+*/
 
 /*
 

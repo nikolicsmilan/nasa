@@ -2,7 +2,7 @@ import React from "react";
 import { FaProjectDiagram, FaPalette, FaVolumeUp, FaLanguage, FaDatabase } from "react-icons/fa";
 import { FaHome, FaShieldAlt, FaSpaceShuttle, FaImages, FaSignInAlt } from "react-icons/fa";
 
-export const menu = [
+export const homemenu = [
   {
     title: "Home",
     icon: FaHome ,
@@ -10,10 +10,10 @@ export const menu = [
     description: "Kezdőlap",
   },
   {
-    title: "Sentry",
+    title: "Asteroide",
     icon: FaShieldAlt,
-    link:"/sentry",
-    description: "Őrszem",
+    link:"/asteroide",
+    description: "Asteroide",
   },
   {
     title: "Space Know",
@@ -35,9 +35,45 @@ export const menu = [
   },
 ];
 
+export const spaceKnowledgeMenu = [
+  {
+    title: "Vissza",
+    icon: FaProjectDiagram,
+    link:"/"
+  },
+  {
+    title: "SolarSystem",
+    icon: FaProjectDiagram,
+    link:"spaceknowledge/solarSystem"
+  },
+  {
+    title: "Quiz",
+    icon: FaPalette,
+    link:"spaceknowledge/quiz"
+  },
+ 
+];
 
+export const returnMenu = [
+  {
+    title: "Vissza",
+    icon: FaProjectDiagram,
+    link:"/"
+  },
+  {
+    title: "SolarSystem",
+    icon: FaProjectDiagram,
+    link:"spaceknowledge/solarSystem"
+  },
+  {
+    title: "Quiz",
+    icon: FaPalette,
+    link:"spaceknowledge/quiz"
+  },
+ 
+];
 
-export const settings = [
+export const settingshome = [
   {
     title: "Navigation",
     icon: FaProjectDiagram,
@@ -60,3 +96,6 @@ export const settings = [
   },
 ];
 
+
+
+//  { path: "spaceknowledge", element: <SpaceKnowledge /> },

@@ -9,7 +9,7 @@ export const DataContextProvider = ({ children }) => {
   });
   const [toggle, setToggle] = useState(false);
   const [settingsOpen, setSettingsOpen] = useState(false);
-
+  const [settings, setSettings] = useState("");
   return (
     <DataContext.Provider
       value={{
@@ -19,6 +19,8 @@ export const DataContextProvider = ({ children }) => {
         setToggle,
         settingsOpen,
         setSettingsOpen,
+        settings,
+        setSettings,
       }}
     >
       {children}
