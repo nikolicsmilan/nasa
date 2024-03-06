@@ -2,9 +2,12 @@ import React, { useEffect } from "react";
 import { MyDataContext } from "../../context/GeneralContext";
 import { CircularProgressbar } from "react-circular-progressbar";
 import { useOutletContext } from "react-router-dom";
+import TorinoScaleChart from "./components/TorinoScaleChart";
+import RechartsExample from "./components/RechartsExample";
+
 const Asteroide = () => {
   const { setSettings } = MyDataContext();
- 
+
   useEffect(() => {
     setSettings("");
   }, []);
@@ -25,11 +28,9 @@ const Asteroide = () => {
               </p>
             </div>
           </div>
+        <RechartsExample/>
+      
         
-          <div className="border-2 border-orange-400 ">
-            <CircularProgressbar percentage={75} />
-          </div>
-          
           <div className="lg:w-1/2 md:w-1/3 border-0 hidden md:flex items-center md:justify-end ">
             <div className="m-4 ">
               <div className="text-red-600 hidden  lg:block">lg</div>
@@ -44,3 +45,8 @@ const Asteroide = () => {
 };
 
 export default Asteroide;
+
+//    <TorinoScaleChart/>
+/* <div className="border-2 border-orange-400 ">
+            <CircularProgressbar percentage={75} />
+          </div> */
