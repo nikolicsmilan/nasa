@@ -1,4 +1,4 @@
-import React,{useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import {
   LineChart,
   Line,
@@ -29,49 +29,48 @@ const RechartsExample = () => {
     const newMaxIp = Math.max(...ip1000.map((d) => d.ip));
     setMaxIp(newMaxIp);
   }, [ip1000]);
-  const sortedData = ip1000.sort((a, b) => new Date(a.date) - new Date(b.date));
+
+  const sortedData = ip1000.sort((a, b) => {
+    // Extract the date part before the decimal point
+    const dateA = a.date.split(".")[0];
+    const dateB = b.date.split(".")[0];
+
+    // Parse the extracted dates
+    const parsedDateA = Date.parse(dateA);
+    const parsedDateB = Date.parse(dateB);
+
+    // Sort based on the parsed timestamps
+    return parsedDateA - parsedDateB;
+  });
+  /*
+  const sortedData = ip1000.sort((a, b) => {
+    // Parse the dates into milliseconds since epoch (January 1, 1970, 00:00:00 UTC)
+    const dateA = Date.parse(a.date);
+    const dateB = Date.parse(b.date);
+  
+    // Sort based on the parsed timestamps
+    return dateA - dateB;
+  });*/
+  //const sortedData = ip1000.sort((a, b) => new Date(a.date) - new Date(b.date));
   return (
     <div>
-      <LineChart width={width / 2} height={300} data={sortedData}>
+
+
+      
+<LineChart width={width / 2} height={300} data={sortedData}>
         <Line type="monotone" dataKey="ip" stroke="#2196F3" strokeWidth={3} />
 
         <CartesianGrid stroke="#ccc" />
-        <XAxis dataKey="date" sort="ascending"  />
+        <XAxis
+          dataKey="date"
+          sort="ascending"
+          tickFormatter={(value) => {
+            console.log("date value: ", value.split(".")[0]);
+            const date = new Date(value.split(".")[0]);
+            return date.getFullYear();
+          }}
+        />
         <YAxis domain={[0, maxIp]} />
-        <Tooltip />
-        <Legend />
-      </LineChart>
-
-      <LineChart width={width / 2} height={300} data={ipteszt}>
-        <Line type="monotone" dataKey="ip" stroke="#2196F3" strokeWidth={3} />
-
-        <CartesianGrid stroke="#ccc" />
-        <XAxis dataKey="date" />
-        <YAxis
-          domain={[0, 1]}
-          tickFormatter={(value) => `${(value * 10) ^ 1}`}
-        />
-        <Tooltip />
-        <Legend />
-      </LineChart>
-
-      <LineChart width={width / 2} height={300} data={data}>
-        <Line
-          type="monotone"
-          dataKey="react"
-          stroke="#2196F3"
-          strokeWidth={3}
-        />
-        <Line
-          type="monotone"
-          dataKey="angular"
-          stroke="#F44236"
-          strokeWidth={3}
-        />
-        <Line type="monotone" dataKey="vue" stroke="#FFCA29" strokeWidth={3} />
-        <CartesianGrid stroke="#ccc" />
-        <XAxis dataKey="name" />
-        <YAxis />
         <Tooltip />
         <Legend />
       </LineChart>
