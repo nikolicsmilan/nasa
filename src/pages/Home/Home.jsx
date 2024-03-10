@@ -5,7 +5,7 @@ import useWindowSize from "../../hooks/use-windowsize";
 import { MyDataContext } from "../../context/GeneralContext";
 const Home = () => {
   const { width, height } = useWindowSize();
-  const { toggle, setSettings } = MyDataContext();
+  const { toggle,settings, setSettings } = MyDataContext();
   useEffect(() => {
     setSettings
     setSettings("Navigation");
@@ -21,10 +21,10 @@ const Home = () => {
         muted
       ></video>
 
-      <div className="flex  w-full h-screen relative text-xl z-10 border-0 border-lime-400 mt-[0px] ">
+      <div className="lg:max-w-6xl mx-auto lg:px-4 flex  w-full h-screen relative text-xl z-10 border-r-2 border-l-2 border-black mt-[0px] ">
         <div
           className={` flex flex-col border-0 md:m-0 py-0 md:py-0 text-center lg:w-full  border-orange-400 mt-[30px] ${
-            toggle ? "opacity-10 md:opacity-100" : ""
+            toggle || settings ? "opacity-10 lg:opacity-100" : ""
           }`}
         >
           <div className="border-0 lg:max-w-6xl mx-auto border-white flex justify-center">
@@ -39,13 +39,6 @@ const Home = () => {
             </div>
           </div>
 
-          <div className="lg:w-1/2 md:w-1/3 border-0 hidden md:flex items-center md:justify-end ">
-            <div className="m-4 ">
-              <div className="text-red-600 hidden  lg:block">lg</div>
-              <div className="text-red-600 hidden md:block lg:hidden">md</div>
-              <div className="text-red-600 sm:block md:hidden lg:hidden"></div>
-            </div>
-          </div>
         </div>
       </div>
     </div>

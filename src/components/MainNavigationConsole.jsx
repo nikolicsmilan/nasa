@@ -22,7 +22,9 @@ const MainNavigationConsole = () => {
 
   //params: {params}
 
-  return <GlassConsole data={menu} />;
+  return <div className=" hidden lg:flex">
+     <GlassConsole data={menu} />
+  </div>;
 };
 
 export default MainNavigationConsole;

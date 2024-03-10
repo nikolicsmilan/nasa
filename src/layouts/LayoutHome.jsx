@@ -1,7 +1,9 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
 import Sidebar from "../components/Sidebar/Sidebar";
+import SidebarGlass from "../components/Sidebar/SidebarGlass";
 import SettingsBar from "../components/Sidebar/SettingsBar";
+import SettingsBarGlass from "../components/Sidebar/SettingsBarGlass";
 import { FaBars, FaCog } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
 import { slideAnimation } from "../utils/motion";
@@ -23,57 +25,75 @@ const LayoutHome = () => {
   };
   return (
     <AnimatePresence>
-      <div className="overflow-y-auto overflow-x-hidden lg:overflow-y-hidden mystyle border- border-red-400 bg-black text-sky-400 h-screen flex flex-col w-full">
-        <header className="flex  justify-between border-0 relative z-40">
+      <div
+        className="overflow-y-auto overflow-x-hidden lg:overflow-y-hidden 
+      mystyle border-0 border-red-400
+       bg-black text-sky-400 h-screen flex flex-col w-full"
+      >
+        <header className="flex  justify-end border-0 border-lime-600 absolute z-40 top-0 right-0 ">
           <FaBars
-            className="absolute z-40 text-2xl m-4  cursor-pointer"
+            className="relative z-50 text-5xl m-1 cursor-pointer
+             text-sky-200 flex lg:hidden border-0"
             onClick={() => {
               setToggle((prevToggle) => !prevToggle); // Negált érték beállítása
             }}
           />
           <FaCog
-            className="absolute top-0 right-0 z-40 text-2xl m-4  cursor-pointer"
+            className="relative top-0 right-0 z-40 text-5xl m-1  cursor-pointer text-sky-200 border-0"
             onClick={() => {
               setSettingsOpen((prevToggle) => !prevToggle); // Negált érték beállítása
             }}
           />
         </header>
 
-        <main className="flex flex-grow border-0 border-orange-800 z-30  w-full relative">
-          <motion.div
-            variants={slideAnimation("left")}
-            initial="exit"
-            animate={toggle ? "animate" : "exit"}
-            exit="exit"
-            className="w-80 border-0 absolute top-0 left-0 z-30 flex flex-col m-0"
-          >
-            <Sidebar onClose={handleClose} />
-          </motion.div>
-          <motion.div
-            variants={slideAnimation("right")}
-            initial="exit"
-            animate={settingsOpen ? "animate" : "exit"}
-            exit="exit"
-            className="w-80 border-0 absolute bottom-0 right-0
-             z-30 flex flex-col m-0"
-          >
-            <SettingsBar onClose={handleClose} />
-          </motion.div>
+        <main className=" flex  flex-grow border-0 border-sky-400 z-30  w-full relative">
+          <div className="border-0 border-purple-400 absolute top-0 h-full w-full z-50">
+            <motion.div
+              variants={slideAnimation("left")}
+              initial="exit"
+              animate={toggle ? "animate" : "exit"}
+              exit="exit"
+              className=" w-full lg:w-80 
+            border-0 border-black h-2/4  
+            relative top-20 left-0 z-50 flex lg:hidden flex-col m-0"
+            >
+              {settings === "Navigation" && (
+                <SidebarGlass onClose={handleClose} />
+              )}
+              {settings === "Style" && <StyleConsole />}
+              {settings === "Sound" && <SoundConsole />}
+              {settings === "Language" && <LanguageConsole />}
+              {settings === "Data" && <DataConsole />}
+            </motion.div>
+            <motion.div
+              variants={slideAnimation("right")}
+              initial="exit"
+              animate={settingsOpen ? "animate" : "exit"}
+              exit="exit"
+              className="lg:w-72 w-full border-8 lg:border-2
+               border-black rounded m-0   h-1/4 lg:h-96
+              lg:absolute relative  top-20 lg:right-0 lg:bottom-0
+             z-50 flex flex-col items-center"
+            >
+              <SettingsBarGlass onClose={handleClose} />
+            </motion.div>
+          </div>
+
           <div
             onClick={() => {
               handleClose();
             }}
-            className="w-full border-0 border-sky-400 z-10 relative"
+            className=" w-full border-0 border-sky-400 z-10 relative"
           >
-            <Outlet  />
+            <Outlet />
           </div>
           {/*items-end  md:items-center */}
           <div
-            className={`absolute inset-0 flex  items-center justify-center border-0 border-orange-400 ${
-              settingsOpen || toggle ? "opacity-30 md:opacity-100" : ""
+            className={`hidden absolute inset-0 md:flex items-start lg:items-center lg:justify-center border-0 border-orange-400 ${
+              settingsOpen || toggle ? "opacity-100 md:opacity-100" : ""
             } `}
           >
-            <div className="lg:max-w-6xl mx-auto border-0 border-white flex justify-center flex-wrap z-50">
+            <div className="md:max-w-6xl mx-auto border-2 border-white flex justify-center flex-wrap z-50">
               {settings === "Navigation" && <MainNavigationConsole />}
               {settings === "Style" && <StyleConsole />}
               {settings === "Sound" && <SoundConsole />}
@@ -88,6 +108,35 @@ const LayoutHome = () => {
 };
 
 export default LayoutHome;
+
+/*
+   <motion.div
+            variants={slideAnimation("left")}
+            initial="exit"
+            animate={toggle ? "animate" : "exit"}
+            exit="exit"
+            className=" w-full md:w-80 
+            border-4 h-2/4 absolute top-10 left-0 z-30 flex md:hiddenflex-col m-0"
+          >
+            {settings === "Navigation" && (
+              <SidebarGlass onClose={handleClose} />
+            )}
+            {settings === "Style" && <StyleConsole />}
+            {settings === "Sound" && <SoundConsole />}
+            {settings === "Language" && <LanguageConsole />}
+            {settings === "Data" && <DataConsole />}
+          </motion.div>
+          <motion.div
+            variants={slideAnimation("right")}
+            initial="exit"
+            animate={settingsOpen ? "animate" : "exit"}
+            exit="exit"
+            className="lg:w-80 w-full border-4 h-1/4 absolute bottom-0 right-0
+             z-30 flex flex-col items-center m-0"
+          >
+            <SettingsBarGlass onClose={handleClose} />
+          </motion.div>
+*/
 
 /*
   <div className="absolute inset-0 flex items-center justify-center ">
