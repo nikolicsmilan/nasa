@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { homemenu, spaceKnowledgeMenu,returnMenu } from "../locales/localdata";
 import { NavLink, useParams, Link, useLocation } from "react-router-dom";
-import GlassConsole from "./GlassConsole";
+import DesktopMainConsole from "./DesktopMainConsole";
 
 // Ide be kell regisztrálni hogy milyen path alatt milyen 
 //menüpontok jelenjenek meg.
@@ -22,8 +22,8 @@ const MainNavigationConsole = () => {
 
   //params: {params}
 
-  return <div className=" hidden lg:flex">
-     <GlassConsole data={menu} />
+  return <div className=" ">
+     <DesktopMainConsole data={menu} />
   </div>;
 };
 

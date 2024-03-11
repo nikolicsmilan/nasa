@@ -1,9 +1,6 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
-import Sidebar from "../components/Sidebar/Sidebar";
 import SidebarGlass from "../components/Sidebar/SidebarGlass";
-import SettingsBar from "../components/Sidebar/SettingsBar";
-import SettingsBarGlass from "../components/Sidebar/SettingsBarGlass";
 import { FaBars, FaCog } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
 import { slideAnimation } from "../utils/motion";
@@ -14,6 +11,9 @@ import StyleConsole from "../components/StyleConsole";
 import SoundConsole from "../components/SoundConsole";
 import LanguageConsole from "../components/LanguageConsole";
 import DataConsole from "../components/DataConsole";
+import SettingsBar from "../components/Sidebar/SettingsBar";
+import { settingshome } from "../locales/localdata";
+import MobileMainConsole from "../components/MobileMainConsole";
 
 const LayoutHome = () => {
   const { toggle, setToggle, settingsOpen, setSettingsOpen, settings } =
@@ -48,52 +48,31 @@ const LayoutHome = () => {
 
         <main className=" flex  flex-grow border-0 border-sky-400 z-30  w-full relative">
           <div className="border-0 border-purple-400 absolute top-0 h-full w-full z-50">
-            <motion.div
-              variants={slideAnimation("left")}
-              initial="exit"
-              animate={toggle ? "animate" : "exit"}
-              exit="exit"
-              className=" w-full lg:w-80 
-            border-0 border-black h-2/4  
-            relative top-20 left-0 z-50 flex lg:hidden flex-col m-0"
-            >
-              {settings === "Navigation" && (
-                <SidebarGlass onClose={handleClose} />
-              )}
-              {settings === "Style" && <StyleConsole />}
-              {settings === "Sound" && <SoundConsole />}
-              {settings === "Language" && <LanguageConsole />}
-              {settings === "Data" && <DataConsole />}
-            </motion.div>
-            <motion.div
-              variants={slideAnimation("right")}
-              initial="exit"
-              animate={settingsOpen ? "animate" : "exit"}
-              exit="exit"
-              className="lg:w-72 w-full border-8 lg:border-2
-               border-black rounded m-0   h-1/4 lg:h-96
-              lg:absolute relative  top-20 lg:right-0 lg:bottom-0
-             z-50 flex flex-col items-center"
-            >
-              <SettingsBarGlass onClose={handleClose} />
-            </motion.div>
+            {/*MobileMainconsole: content depend on settings  */}
+            <MobileMainConsole handleClose={handleClose} />
+            {/*MobileMainconsole end  */}
+
+            {/*Settingsbar service mobil and desktop screen */}
+            <SettingsBar menupoint={settingshome} />
+            {/*Settingsbar end */}
           </div>
 
           <div
             onClick={() => {
               handleClose();
             }}
-            className=" w-full border-0 border-sky-400 z-10 relative"
+            className=" w-full border-2 border-sky-400 z-10 relative "
           >
             <Outlet />
           </div>
-          {/*items-end  md:items-center */}
+          {/*Desktop Mainconsole: content depend on settings  */}
           <div
-            className={`hidden absolute inset-0 md:flex items-start lg:items-center lg:justify-center border-0 border-orange-400 ${
-              settingsOpen || toggle ? "opacity-100 md:opacity-100" : ""
-            } `}
+            className={`hidden absolute inset-0
+             lg:flex items-start lg:items-center lg:justify-center border-0 border-orange-400 ${
+               settingsOpen || toggle ? "opacity-100 md:opacity-100" : ""
+             } `}
           >
-            <div className="md:max-w-6xl mx-auto border-2 border-white flex justify-center flex-wrap z-50">
+            <div className="md:max-w-6xl mx-auto border-0 border-white flex justify-center flex-wrap z-50">
               {settings === "Navigation" && <MainNavigationConsole />}
               {settings === "Style" && <StyleConsole />}
               {settings === "Sound" && <SoundConsole />}
@@ -101,6 +80,7 @@ const LayoutHome = () => {
               {settings === "Data" && <DataConsole />}
             </div>
           </div>
+          {/*Desktop Mainconsole end  */}
         </main>
       </div>
     </AnimatePresence>

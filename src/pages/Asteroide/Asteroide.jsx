@@ -7,7 +7,6 @@ import RechartsExample from "./components/RechartsExample";
 import PieChartsExample from "./components/PieChartsExample";
 import PieChartsExample2 from "./components/PieChartsExample2";
 
-
 const Asteroide = () => {
   const { setSettings } = MyDataContext();
 
@@ -33,10 +32,13 @@ const Asteroide = () => {
             </div>
           </div>
           <RechartsExample />
-          <PieChartsExample2/>
-         
+          <PieChartsExample2 />
 
-          
+  
+
+
+
+  
           <div className="lg:w-1/2 md:w-1/3 border-0 hidden md:flex items-center md:justify-end ">
             <div className="m-4 ">
               <div className="text-red-600 hidden  lg:block">lg</div>
@@ -46,7 +48,6 @@ const Asteroide = () => {
           </div>
         </div>
       </div>
-   
     </div>
   );
 };

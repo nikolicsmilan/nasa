@@ -7,9 +7,9 @@ export const DataContextProvider = ({ children }) => {
     width: undefined,
     height: undefined,
   });
-  const [toggle, setToggle] = useState(false);
+  const [toggle, setToggle] = useState(true);
   const [settingsOpen, setSettingsOpen] = useState(false);
-  const [settings, setSettings] = useState("");
+  const [settings, setSettings] = useState("Navigation");
   return (
     <DataContext.Provider
       value={{
