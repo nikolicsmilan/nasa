@@ -1,6 +1,6 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
-import SidebarGlass from "../components/Sidebar/SidebarGlass";
+//import SidebarGlass from "../components/Sidebar/SidebarGlass";
 import { FaBars, FaCog } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
 import { slideAnimation } from "../utils/motion";

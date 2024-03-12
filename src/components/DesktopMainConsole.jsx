@@ -1,14 +1,14 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-const DesktopMainConsole = ({ data }) => {
+const DesktopMainConsole = ({ menupoint }) => {
   return (
     <div className="hidden lg:flex flex-wrap lg:max-w-2xl  border-0 relative">
          <div className="absolute top-0 left-0 w-8 h-8 bg-transparent border-t-2 border-l-2 border-sky-200 transform -translate-x-2 -translate-y-2"></div>
       <div className="absolute top-0 right-0 w-8 h-8 bg-transparent border-t-2 border-r-2 border-sky-200 transform translate-x-1 -translate-y-2"></div>
       <div className="absolute bottom-0 left-0 w-8 h-8 bg-transparent border-b-2 border-l-2 border-sky-200 transform -translate-x-1 translate-y-2"></div>
       <div className="absolute bottom-0 right-0 w-8 h-8 bg-transparent border-b-2 border-r-2 border-sky-200 transform translate-x-1 translate-y-2"></div>
-      {data &&
-        data.map((item) => (
+      {menupoint &&
+        menupoint.map((item) => (
           <NavLink
             key={item.title}
             to={item?.link}

@@ -2,12 +2,16 @@ import React from "react";
 import { slideAnimation } from "../utils/motion";
 import { MyDataContext } from "../context/GeneralContext";
 import { motion } from "framer-motion";
-import SidebarGlass from "./Sidebar/SidebarGlass";
+import MobileMenu from "./Sidebar/MobileMenu";
 import StyleConsole from "./StyleConsole";
 import SoundConsole from "./SoundConsole";
 import LanguageConsole from "./LanguageConsole";
 import DataConsole from "./DataConsole";
+import { homemenu } from "../locales/localdata";
+import MainNavigationConsole from "./MainNavigationConsole";
 const MobileMainConsole = ({ handleClose }) => {
+
+
   const { toggle, settings } = MyDataContext();
   return (
     <motion.div
@@ -19,7 +23,7 @@ const MobileMainConsole = ({ handleClose }) => {
             border-0 border-black h-2/4  
             relative top-20 left-0 z-50 flex lg:hidden flex-col my-2"
     >
-      {settings === "Navigation" && <SidebarGlass onClose={handleClose} />}
+      {settings === "Navigation" && <MainNavigationConsole/>}
       {settings === "Style" && <StyleConsole />}
       {settings === "Sound" && <SoundConsole />}
       {settings === "Language" && <LanguageConsole />}

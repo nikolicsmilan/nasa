@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { homemenu, spaceKnowledgeMenu,returnMenu } from "../locales/localdata";
+import { homemenu, spaceKnowledgeMenu, returnMenu } from "../locales/localdata";
 import { NavLink, useParams, Link, useLocation } from "react-router-dom";
 import DesktopMainConsole from "./DesktopMainConsole";
+import MobileMenu from "./Sidebar/MobileMenu";
 
-// Ide be kell regisztrálni hogy milyen path alatt milyen 
+// Ide be kell regisztrálni hogy milyen path alatt milyen
 //menüpontok jelenjenek meg.
 const menus = {
   "/": homemenu,
@@ -22,13 +23,21 @@ const MainNavigationConsole = () => {
 
   //params: {params}
 
-  return <div className=" ">
-     <DesktopMainConsole data={menu} />
-  </div>;
+  return (
+    <div className=" ">
+      <div className=" hidden lg:flex">
+        <DesktopMainConsole menupoint={menu} />
+      </div>
+
+      <div className="flex lg:hidden">
+        <MobileMenu menupoint={menu} />
+      </div>
+    </div>
+  );
 };
 
 export default MainNavigationConsole;
-
+//<MobileMenu onClose={handleClose} menupoint={homemenu}/>
 /*
  <>
       {location.pathname === "/" ? <GlassConsole data={homemenu} /> : ""}
@@ -40,7 +49,7 @@ export default MainNavigationConsole;
     </>
 */
 
-  /*
+/*
 ITT AZ ÉN KÖTELESÉGEM FELÍRNI MANUÁLISAN
 HA PATHNAME EZ ÉS EZ AKKOR EZ LEGYEN HA NEM AKKOR EZ ÉS EZ
 NEM PARAMSOZNI KELL ISMERED A ROUTAKON MILYEN KOMPONENSEK VANNAK

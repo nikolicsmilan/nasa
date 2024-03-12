@@ -3,12 +3,12 @@ import { NavLink } from "react-router-dom";
 import { homemenu } from "../../locales/localdata";
 import { FaBars } from "react-icons/fa";
 import { MyDataContext } from "../../context/GeneralContext";
-const SidebarGlass = () => {
+const MobileMenu = ({menupoint}) => {
   const { toggle, setToggle } = MyDataContext();
   return (
     <div className="border-0 p-5 w-full flex 
     flex-wrap justify-between overflow-y-auto  h-full lg:h-96">
-      {homemenu.map((item) => (
+      {menupoint.map((item) => (
         <NavLink
           key={item.title}
           to={item?.link}
@@ -38,7 +38,7 @@ const SidebarGlass = () => {
   );
 };
 
-export default SidebarGlass;
+export default MobileMenu;
 
 
 /*
