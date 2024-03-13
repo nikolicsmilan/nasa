@@ -33,4 +33,6 @@ dist-ssr
 /src/api/
 /src/pages/mentes
 /src/assets
+/src/assets/video
+/src/assets/images
 
