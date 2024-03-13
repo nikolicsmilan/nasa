@@ -37,7 +37,7 @@ const Home = () => {
                border-0 text-center lg:text-3xl 
                text-2xl  opacity-100 uppercase font-bold"
               >
-                Asteroid impact warning system
+                Asteroid impact warning systems
               </h1>
               
               <div className="flex justify-center items-center">
