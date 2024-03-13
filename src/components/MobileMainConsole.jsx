@@ -11,7 +11,7 @@ import MainNavigationConsole from "./MainNavigationConsole";
 const MobileMainConsole = () => {
 
 
-  const { toggle, settings,settingsOpen } = MyDataContext();
+  const { settings,settingsOpen } = MyDataContext();
   return (
     <motion.div
       variants={slideAnimation("left")}

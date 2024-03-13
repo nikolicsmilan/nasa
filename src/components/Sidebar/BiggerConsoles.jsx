@@ -27,7 +27,7 @@ const BiggerConsoles = ({menupoint}) => {
              items-center justify-center border-0 bg-dark-800 
              z-20 mt-[-110px] font-bold">
               <p className="mx-2 text-sky-400"> {<item.icon />}</p>
-              <h2 className="text-sky-400 opacity-100">{item.title}</h2>
+              <h2 className="text-red-600 opacity-100 font-bold text-3xl uppercase">{item.title}</h2>
             </div>
           </div>
         </NavLink>
@@ -38,7 +38,7 @@ const BiggerConsoles = ({menupoint}) => {
 }
 
 export default BiggerConsoles
-
+//import erarthmirror from "../../assets/video/earth_mirror.mov"
 /*
 import React from 'react'
 import { NavLink } from "react-router-dom";
