@@ -21,7 +21,7 @@ const router = createBrowserRouter([
     ],
   },
   {
-    path: "asteroide",
+    path: "/asteroide",
     element: <LayoutHome />,
     errorElement: <Error />,
     children: [

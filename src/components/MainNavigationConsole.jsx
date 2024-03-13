@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { homemenu, spaceKnowledgeMenu, returnMenu } from "../locales/localdata";
 import { NavLink, useParams, Link, useLocation } from "react-router-dom";
-import DesktopMainConsole from "./DesktopMainConsole";
-import MobileMenu from "./Sidebar/MobileMenu";
+
+import Consoles from "./Sidebar/Consoles";
 
 // Ide be kell regisztrálni hogy milyen path alatt milyen
 //menüpontok jelenjenek meg.
+//ide  az összes routat regisztrálni kell
 const menus = {
   "/": homemenu,
   "/spaceknowledge": spaceKnowledgeMenu,
@@ -25,18 +26,15 @@ const MainNavigationConsole = () => {
 
   return (
     <div className=" ">
-      <div className=" hidden lg:flex">
-        <DesktopMainConsole menupoint={menu} />
-      </div>
-
-      <div className="flex lg:hidden">
-        <MobileMenu menupoint={menu} />
-      </div>
+     
+      <Consoles menupoint={menu} />
+     
     </div>
   );
 };
 
 export default MainNavigationConsole;
+// <MobileMenu menupoint={menu} />
 //<MobileMenu onClose={handleClose} menupoint={homemenu}/>
 /*
  <>

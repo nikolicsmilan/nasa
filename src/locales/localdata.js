@@ -1,76 +1,88 @@
 import React from "react";
-import { FaProjectDiagram, FaPalette, FaVolumeUp, FaLanguage, FaDatabase } from "react-icons/fa";
-import { FaHome, FaShieldAlt, FaSpaceShuttle, FaImages, FaSignInAlt } from "react-icons/fa";
+import {
+  FaProjectDiagram,
+  FaPalette,
+  FaVolumeUp,
+  FaLanguage,
+  FaDatabase,
+  FaRocket
+} from "react-icons/fa";
+import {
+  FaHome,
+  FaShieldAlt,
+  FaSpaceShuttle,
+  FaImages,
+  FaSignInAlt,
+} from "react-icons/fa";
 
 export const homemenu = [
   {
     title: "Home",
-    icon: FaHome ,
-    link:"/",
+    icon: FaHome,
+    link: "/",
     description: "Kezdőlap",
   },
   {
     title: "Asteroide",
     icon: FaShieldAlt,
-    link:"/asteroide",
+    link: "/asteroide",
     description: "Asteroide",
   },
   {
     title: "Space Know",
     icon: FaSpaceShuttle,
-    link:"/spaceknowledge",
+    link: "/spaceknowledge",
     description: "Űrtudás",
   },
   {
     title: "Gallery",
     icon: FaImages,
-    link:"/gallery",
+    link: "/gallery",
     description: "Galéria",
   },
   {
     title: "Login",
     icon: FaSignInAlt,
-    link:"/login",
+    link: "/login",
     description: "Bejelentkezés",
   },
+ 
 ];
 
 export const spaceKnowledgeMenu = [
   {
     title: "Vissza",
     icon: FaProjectDiagram,
-    link:"/"
+    link: "/",
   },
   {
     title: "SolarSystem",
     icon: FaProjectDiagram,
-    link:"spaceknowledge/solarSystem"
+    link: "spaceknowledge/solarSystem",
   },
   {
     title: "Quiz",
     icon: FaPalette,
-    link:"spaceknowledge/quiz"
+    link: "spaceknowledge/quiz",
   },
- 
 ];
 
 export const returnMenu = [
   {
     title: "Vissza",
     icon: FaProjectDiagram,
-    link:"/"
+    link: "/",
   },
   {
     title: "SolarSystem",
     icon: FaProjectDiagram,
-    link:"spaceknowledge/solarSystem"
+    link: "spaceknowledge/solarSystem",
   },
   {
     title: "Quiz",
     icon: FaPalette,
-    link:"spaceknowledge/quiz"
+    link: "spaceknowledge/quiz",
   },
- 
 ];
 
 export const settingshome = [
@@ -96,6 +108,13 @@ export const settingshome = [
   },
 ];
 
+export const start = [
+  {
+    title: "Start",
+    icon: FaRocket,
+    link: "/asteroide",
+  },
+];
 
 export const ip1000 = [
   {
@@ -412,7 +431,7 @@ export const ip1000 = [
   },
 ];
 
-export const ipteszt =[
+export const ipteszt = [
   {
     ps: "-5.65",
     sigma_vi: "1.8337",
@@ -449,8 +468,6 @@ export const ipteszt =[
     sigma_vi: "1.1219",
     ps: "-2.98",
   },
-]
-
-
+];
 
 //  { path: "spaceknowledge", element: <SpaceKnowledge /> },

@@ -14,14 +14,18 @@ import DataConsole from "../components/DataConsole";
 import SettingsBar from "../components/Sidebar/SettingsBar";
 import { settingshome } from "../locales/localdata";
 import MobileMainConsole from "../components/MobileMainConsole";
+import DesktopConsole from "../components/DesktopConsole";
 
 const LayoutHome = () => {
   const { toggle, setToggle, settingsOpen, setSettingsOpen, settings } =
     MyDataContext();
   const { width, height } = useWindowSize();
-  const handleClose = () => {
-    setToggle(false);
+
+  const clozer = () => {
     setSettingsOpen(false);
+  };
+  const stopClozer = (event) => {
+    event.stopPropagation();
   };
   return (
     <AnimatePresence>
@@ -30,57 +34,66 @@ const LayoutHome = () => {
       mystyle border-0 border-red-400
        bg-black text-sky-400 h-screen flex flex-col w-full"
       >
-        <header className="flex  justify-end border-0 border-lime-600 absolute z-40 top-0 right-0 ">
-          <FaBars
-            className="relative z-50 text-5xl m-1 cursor-pointer
-             text-sky-200 flex lg:hidden border-0"
-            onClick={() => {
-              setToggle((prevToggle) => !prevToggle); // Negált érték beállítása
-            }}
-          />
+        <header
+          className="flex  justify-end border-0
+         border-lime-600 absolute z-40 top-0 right-0 "
+        >
+          {/*delete FaBars icon that one start two menu */}
           <FaCog
-            className="relative top-0 right-0 z-40 text-5xl m-1  cursor-pointer text-sky-200 border-0"
+            className="relative top-0 right-0 z-40 text-5xl m-1 
+             cursor-pointer text-sky-200 border-0"
             onClick={() => {
-              setSettingsOpen((prevToggle) => !prevToggle); // Negált érték beállítása
+              setSettingsOpen((prevToggle) => !prevToggle);
+              setToggle((prevToggle) => !prevToggle); // Negált érték beállítása
             }}
           />
         </header>
 
-        <main className=" flex  flex-grow border-0 border-sky-400 z-30  w-full relative">
-          <div className="border-0 border-purple-400 absolute top-0 h-full w-full z-50">
-            {/*MobileMainconsole: content depend on settings  */}
-            <MobileMainConsole handleClose={handleClose} />
-            {/*MobileMainconsole end  */}
+        <main
+          className=" flex  flex-grow border-0 border-sky-400 
+          z-30  w-full relative"
+        >
+          {/* ITT VAN AZ EGÉSZNEK A KULCSA AKKOR AKTIVÁLÓDJON HA VALAMELYIK 
+          GOMBRA KATTINTOK MENU VAGY SETTINGS HA BEZÁRÓDIK NE LEGYEN RÉSZE A DOMNAK
+          EZ AZ ÚGY NEVEZET KEZELŐ FELÜLET NEM RÉSZE A TARTALOMNAK
+          CSAK ÚGY MOND RÁERESZKEDIK HA VALAMILYEN BEÁLÍTÁST EL AKAROK VÉGEZNI
+          a HOME OLDALON SZÜKSÉG VAN EGY KÜLÖN NAVIGÁCIÓS FŐMENÜRE AMI MÁSHOL
+          VAN A KÉPERNYŐN ÉS CSAK ANNYI VAN RÁÍRVA KEZDÉS VAGY START
+          AMI EGYBŐL AZ ASZTERIDA OLDALRA VISSZI ÍGY EGYSZERŰBB 
+          IPHONOSABB MARKETINGESEBB MEGOLDÁS LESZ
+          AKI SZERETNE TÖBBET AZ TUDJA HOGY A MENÜT KELL MEGNYITANIA
+          ALAPBÓL MINDIG A SETTINGS A NAVIGÁCIÓN LESZ
+          CSAK EGY GOMB KELL AMI MEGNYITJA MINDKÉT KEZELEŐ FELELÜLETET
+          EZ PEDIG AZ ISMERT MENÜ GOMB LESZ
 
-            {/*Settingsbar service mobil and desktop screen */}
-            <SettingsBar menupoint={settingshome} />
-            {/*Settingsbar end */}
-          </div>
+          jÓ VOLNA EGY OLYAN NAVIGÁCIÓS ELEM IS MELY A TELJES FÁT 
+          MUTATJA VONALAKKAL ÖSSZEKÖTVE KVÁZI MINT EGY FOLDER STUKTÚRA
+          ÉS AZT HOL ÁLLUNK BIZONYOS PONTJÁN
+          */}
 
-          <div
-            onClick={() => {
-              handleClose();
-            }}
-            className=" w-full border-2 border-sky-400 z-10 relative "
-          >
+          <div className=" w-full border-0 border-red-400 z-50 relative ">
             <Outlet />
           </div>
-          {/*Desktop Mainconsole: content depend on settings  */}
-          <div
-            className={`hidden absolute inset-0
-             lg:flex items-start lg:items-center lg:justify-center border-0 border-orange-400 ${
-               settingsOpen || toggle ? "opacity-100 md:opacity-100" : ""
-             } `}
-          >
-            <div className="md:max-w-6xl mx-auto border-0 border-white flex justify-center flex-wrap z-50">
-              {settings === "Navigation" && <MainNavigationConsole />}
-              {settings === "Style" && <StyleConsole />}
-              {settings === "Sound" && <SoundConsole />}
-              {settings === "Language" && <LanguageConsole />}
-              {settings === "Data" && <DataConsole />}
+          {settingsOpen && (
+            <div
+              onClick={clozer}
+              className="absolute z-50  h-full w-full top-0 right-0 border-lime-300 border-0"
+            >
+              {/*MobileMainconsole: content depend on settings  */}
+              <MobileMainConsole onClick={stopClozer} />
+              {/*MobileMainconsole end  */}
+
+              {/*Settingsbar service mobil and desktop screen */}
+              <div onClick={stopClozer}>
+                <SettingsBar menupoint={settingshome} />
+              </div>
+              {/*Settingsbar end */}
+
+              {/*Desktop Mainconsole: content depend on settings  */}
+              <DesktopConsole onClick={stopClozer} />
+              {/*Desktop Mainconsole end  */}
             </div>
-          </div>
-          {/*Desktop Mainconsole end  */}
+          )}
         </main>
       </div>
     </AnimatePresence>
@@ -88,6 +101,13 @@ const LayoutHome = () => {
 };
 
 export default LayoutHome;
+/*    <FaBars
+            className="relative z-50 text-5xl m-1 cursor-pointer
+             text-sky-200 flex lg:hidden border-0"
+            onClick={() => {
+              setToggle((prevToggle) => !prevToggle); // Negált érték beállítása
+            }}
+          /> */
 
 /*
    <motion.div

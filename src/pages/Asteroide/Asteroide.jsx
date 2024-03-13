@@ -6,18 +6,30 @@ import TorinoScaleChart from "./components/TorinoScaleChart";
 import RechartsExample from "./components/RechartsExample";
 import PieChartsExample from "./components/PieChartsExample";
 import PieChartsExample2 from "./components/PieChartsExample2";
-
+import { NavLink } from "react-router-dom";
 const Asteroide = () => {
   const { setSettings } = MyDataContext();
 
   useEffect(() => {
     setSettings("");
   }, []);
+
+  const asteroidak = [
+    { name: "asteroide1", ip: 5 },
+    { name: "asteroide2", ip: 10 },
+  ];
+
+  const hoze = () => {
+    console.log("hozé")
+    
+      };
+
   return (
     <div
-      className=" border-8  border-sky-400 w-full z-10 relative "
+      className=" border-8  border-purple-400 w-full z-50 relative "
       onClick={() => {
         setSettings("");
+        hoze()
       }}
     >
       <div className="flex  w-full h-screen relative text-xl z-10 border-2 border-lime-400 mt-[0px] ">
@@ -31,14 +43,27 @@ const Asteroide = () => {
               </h1>
             </div>
           </div>
-          <RechartsExample />
-          <PieChartsExample2 />
+     
+         <button
+              className="border-2 m-5 p-5 w-32 rounded cursor-pointer text-sky-400"
+              onClick={hoze}
+            >
+              gomb
+            </button>
+          <div className="border-0 border-sky-400 lg:max-w-3xl my-10">
+            {asteroidak?.map((item) => 
+            (  <NavLink
+                key={item?.name}
+                to={item?.name}
+                className={({ isActive }) =>
+                  `${isActive ? "mynavlink" : ""}  text-sky-800 m-5 p-5 cursor-pointer border-2`
+                }
+              >
+                {item.name}
+              </NavLink>)
+            )}
+          </div>
 
-  
-
-
-
-  
           <div className="lg:w-1/2 md:w-1/3 border-0 hidden md:flex items-center md:justify-end ">
             <div className="m-4 ">
               <div className="text-red-600 hidden  lg:block">lg</div>
@@ -53,6 +78,8 @@ const Asteroide = () => {
 };
 
 export default Asteroide;
+/*    <RechartsExample />
+          <PieChartsExample2 /> */
 //#01b574
 
 //    <TorinoScaleChart/>

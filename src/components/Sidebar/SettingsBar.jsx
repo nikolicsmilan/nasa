@@ -9,8 +9,8 @@ const SettingsBar = ({ menupoint }) => {
   const { setToggle, setSettingsOpen, settingsOpen } = MyDataContext();
 
   const handleClose = () => {
-    setToggle(false);
-    setSettingsOpen(false);
+   // setToggle(false);
+   // setSettingsOpen(false);
   };
   return (
     <motion.div

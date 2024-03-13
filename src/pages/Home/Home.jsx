@@ -1,18 +1,21 @@
-import React,{useEffect} from "react";
+import React, { useEffect } from "react";
 import earth720 from "../../assets/video/earth_1200p.mov";
 //import { MyDataContext } from "../../context/GeneralContext";
 import useWindowSize from "../../hooks/use-windowsize";
 import { MyDataContext } from "../../context/GeneralContext";
+import BiggerConsoles from "../../components/Sidebar/BiggerConsoles";
+import { start } from "../../locales/localdata";
 const Home = () => {
-  const { width, height } = useWindowSize();
-  const { toggle,settings, setSettings } = MyDataContext();
+  const { toggle, settings, setSettings, settingsOpen } = MyDataContext();
   useEffect(() => {
-    setSettings
+    setSettings;
     setSettings("Navigation");
   }, []);
-
+  const hoze = () => {
+    console.log("hozé az izé");
+  };
   return (
-    <div className=" border-0  border-white w-full z-10 relative ">
+    <div className=" border-10  border-black w-full z-50 relative ">
       <video
         src={earth720}
         className="background-video border-0 border-red-400 opacity-70"
@@ -21,24 +24,47 @@ const Home = () => {
         muted
       ></video>
 
-      <div className="lg:max-w-6xl mx-auto lg:px-4 flex  w-full h-screen relative text-xl z-10 border-r-2 border-l-2 border-black mt-[0px] ">
+      <div className="lg:max-w-6xl mx-auto lg:px-4 flex  w-full h-screen relative text-xl z-50 border-r-0 border-l-0 border-black mt-[0px] ">
         <div
           className={` flex flex-col border-0 md:m-0 py-0 md:py-0 text-center lg:w-full  border-orange-400 mt-[30px] ${
-            toggle || settings ? "opacity-10 lg:opacity-100" : ""
+            settingsOpen ? "opacity-10 " : ""
           }`}
         >
           <div className="border-0 lg:max-w-6xl mx-auto border-white flex justify-center">
-            <div className="border-0 border-lime-400 flex flex-col justify-center flex-wrap md:p-10 ">
-              <h1 className="z-10 p-2 border-0 text-center md:text-3xl text-2xl  text-sky-400 opacity-100 uppercase font-bold">
+            <div
+              className="border-0  border-lime-400 flex
+             flex-col justify-center flex-wrap lg:p-10 "
+            >
+              <h1
+                className="cursor-pointer z-10 p-2
+               border-0 text-center lg:text-3xl 
+               text-2xl  opacity-100 uppercase font-bold"
+              >
                 Asteroid impact warning system
               </h1>
-              <p className="text-center p-2 text-base">
-                "It's a small step for the developer, but a huge step against
-                the fake news. {width}x{height}"
-              </p>
+              <div className="overflow-y-auto h-80 lg:h-auto p-2 ">
+                <h2 className="my-5">
+                  {" "}
+                  "It's a small step for the developer, but a huge step against
+                  the fake news."
+                </h2>
+                <p className=" text-sky-200">
+                  ( Or the other way around, but it doesn't matter now... :) )
+                </p>
+                <p className="text-sky-200">
+                  {" "}
+                  Click on <span className="text-sky-400 font-bold text-2xl">START</span> button and find out what potentially dangerous
+                  asteroids are approaching the earth, how big they are expected
+                  to hit and how much damage they would cause if they hit. The
+                  data is valid and comes from the NASA Sentry database in near
+                  real time.
+                </p>
+              </div>
             </div>
           </div>
-
+          <div className="flex border-0 h-full w-full justify-center items-start relative z-50">
+            <BiggerConsoles menupoint={start} />
+          </div>
         </div>
       </div>
     </div>
@@ -75,13 +101,7 @@ Solarsystemwith routing és
 */
 
 /*
- Or the other way around, but it doesn't matter
-                now. Kattints az Click on the word asteroid in the main
-                navigation console to find out what potentially dangerous
-                asteroids are approaching the earth, how big they are expected
-                to hit and how much damage they would cause if they hit. The
-                data is valid and comes from the NASA database in near real
-                time.
+
 */
 //lg:max-w-6xl mx-auto
 /*

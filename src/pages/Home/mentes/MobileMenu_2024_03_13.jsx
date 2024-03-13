@@ -7,7 +7,7 @@ const MobileMenu = ({menupoint}) => {
   const { toggle, setToggle } = MyDataContext();
   return (
     <div className="border-0 p-5 w-full flex 
-    flex-wrap justify-between overflow-y-auto  h-full lg:h-96">
+    flex-wrap justify-between overflow-y-auto  h-80 lg:h-96 ">
       {menupoint.map((item) => (
         <NavLink
           key={item.title}
