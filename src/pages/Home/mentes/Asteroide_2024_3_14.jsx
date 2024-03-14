@@ -20,14 +20,17 @@ const Asteroide = () => {
   ];
 
   const hoze = () => {
-    console.log("hozébbb")
+    console.log("hozé")
     
       };
 
   return (
     <div
       className=" border-8  border-purple-400 w-full z-50 relative "
-    
+      onClick={() => {
+        setSettings("");
+        hoze()
+      }}
     >
       <div className="flex  w-full h-screen relative text-xl z-10 border-2 border-lime-400 mt-[0px] ">
         <div
@@ -61,7 +64,13 @@ const Asteroide = () => {
             )}
           </div>
 
-   
+          <div className="lg:w-1/2 md:w-1/3 border-0 hidden md:flex items-center md:justify-end ">
+            <div className="m-4 ">
+              <div className="text-red-600 hidden  lg:block">lg</div>
+              <div className="text-red-600 hidden md:block lg:hidden">md</div>
+              <div className="text-red-600 sm:block md:hidden lg:hidden"></div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

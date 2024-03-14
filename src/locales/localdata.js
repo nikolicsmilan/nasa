@@ -5,7 +5,7 @@ import {
   FaVolumeUp,
   FaLanguage,
   FaDatabase,
-  FaRocket
+  FaRocket,
 } from "react-icons/fa";
 import {
   FaHome,
@@ -46,7 +46,6 @@ export const homemenu = [
     link: "/login",
     description: "Bejelentkezés",
   },
- 
 ];
 
 export const spaceKnowledgeMenu = [

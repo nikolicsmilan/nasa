@@ -60,7 +60,7 @@ const LayoutHome = () => {
           {toggle && (
             <div
               onClick={clozer}
-              className="absolute z-50  h-full w-full top-0 right-0 border-lime-300 border-2"
+              className="absolute z-50  h-full w-full top-0 right-0 border-lime-300 border-0"
             >
               {/*MobileMainconsole: content depend on settings  */}
               <MobileMainConsole onClick={stopClozer} />
