@@ -15,7 +15,7 @@ const menus = {
 const MainNavigationConsole = () => {
   const location = useLocation();
   const [menu, setMenu] = useState(returnMenu);
-  console.log("location: ", location);
+  //console.log("location: ", location);
 
   useEffect(() => {
     const path = location.pathname;

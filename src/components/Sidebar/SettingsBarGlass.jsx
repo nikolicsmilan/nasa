@@ -1,7 +1,7 @@
 import React from "react";
 import { MyDataContext } from "../../context/GeneralContext";
 
-const SettingsBarGlass = ({menupoint}) => {
+const SettingsBarGlass = ({ menupoint }) => {
   const { settings, setSettings } = MyDataContext();
   return (
     <div
@@ -10,10 +10,10 @@ const SettingsBarGlass = ({menupoint}) => {
     >
       {menupoint?.map((item) => (
         <div
+          key={item.title}
           onClick={() => {
             setSettings(item?.title);
           }}
-          key={item.id} // Asszumáltam, hogy van egy id az item objektumban
           className={`shadowactive customshadow3 
           cursor-pointer rounded relative flex-col my-1 w-40 lg:w-48 md:w-40
           h-14  border-0 border-lime-400`}
