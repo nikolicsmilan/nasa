@@ -1,17 +1,15 @@
 import { useContext, createContext, useState, useEffect } from "react";
+import clicksound from "../assets/sound/click.mp3";
 
 const AudioContext = createContext();
 
 export const AudioContextProvider = ({ children }) => {
   const [sound, setSound] = useState({});
-  const [hoze, setHoze] = useState("izé");
 
   useEffect(() => {
     const loadHangok = async () => {
       try {
-        //const click = new Audio("../../assets/sound/click.mp3");
-        const click = new Audio("/src/assets/sound/click.mp3");
-        //const hang2 = new Audio('/path/to/hang2.mp3');
+        const click = new Audio(clicksound);
 
         setSound({
           click,
@@ -33,7 +31,6 @@ export const AudioContextProvider = ({ children }) => {
     <AudioContext.Provider
       value={{
         sound,
-        hoze,
       }}
     >
       {children}

@@ -1,23 +1,26 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { MyAudioContext } from "../../context/AudioContext";
+import clickSound from "../../assets/sound/click.mp3";
 
 const Consoles = ({ menupoint }) => {
   const { sound } = MyAudioContext();
 
   const playSound = () => {
-    if (sound && sound.click) {
-      sound.click.currentTime = 0;
-      sound.click.volume = 0.2
-      sound.click.play();
+    if (sound && sound.click) {    
+    sound.click.currentTime = 0;
+    sound.click.volume = 0.2;
+    sound.click.play()
     }
   };
-
+ 
   return (
     <div
       className="border-0 p-5 w-full flex 
     flex-wrap justify-between overflow-y-auto  h-80 "
     >
+      {" "}
+    
       {menupoint &&
         menupoint?.map((item) => (
           <NavLink
