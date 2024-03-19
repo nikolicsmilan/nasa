@@ -13,6 +13,8 @@ const LayoutHome = () => {
 
   const clozer = () => {
     setSettingsOpen(false);
+
+    console.log("ez fut le")
   };
   const stopClozer = (event) => {
     event.stopPropagation();
@@ -63,7 +65,7 @@ const LayoutHome = () => {
               className="absolute z-50  h-full w-full top-0 right-0 border-lime-300 border-0"
             >
               {/*MobileMainconsole: content depend on settings  */}
-              <MobileMainConsole onClick={stopClozer} />
+              <MobileMainConsole stopClozer={stopClozer} />
               {/*MobileMainconsole end  */}
 
               {/*Settingsbar service mobil and desktop screen */}
@@ -73,7 +75,11 @@ const LayoutHome = () => {
               {/*Settingsbar end */}
 
               {/*Desktop Mainconsole: content depend on settings  */}
-              <DesktopConsole onClick={stopClozer} />
+       
+        
+              <DesktopConsole stopClozer={stopClozer} />
+           
+            
               {/*Desktop Mainconsole end  */}
             </div>
           )}

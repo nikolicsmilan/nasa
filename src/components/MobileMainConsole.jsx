@@ -8,12 +8,11 @@ import LanguageConsole from "./LanguageConsole";
 import DataConsole from "./DataConsole";
 import { homemenu } from "../locales/localdata";
 import MainNavigationConsole from "./MainNavigationConsole";
-const MobileMainConsole = () => {
-
-
-  const { settings,settingsOpen } = MyDataContext();
+const MobileMainConsole = ({ stopClozer }) => {
+  const { settings, settingsOpen } = MyDataContext();
   return (
     <motion.div
+      onClick={stopClozer}
       variants={slideAnimation("left")}
       initial="exit"
       animate={settingsOpen ? "animate" : "exit"}
@@ -22,7 +21,7 @@ const MobileMainConsole = () => {
             border-0  border-black h-2/4  
             relative top-20 left-0 z-50 flex lg:hidden flex-col my-2  "
     >
-      {settings === "Navigation" && <MainNavigationConsole/>}
+      {settings === "Navigation" && <MainNavigationConsole />}
       {settings === "Style" && <StyleConsole />}
       {settings === "Sound" && <SoundConsole />}
       {settings === "Language" && <LanguageConsole />}

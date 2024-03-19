@@ -5,7 +5,13 @@ const AudioContext = createContext();
 
 export const AudioContextProvider = ({ children }) => {
   const [sound, setSound] = useState({});
-
+  const playSoundClick = () => {
+    if (sound && sound.click) {
+      sound.click.currentTime = 0;
+      sound.click.volume = 0.2;
+      sound.click.play();
+    }
+  };
   useEffect(() => {
     const loadHangok = async () => {
       try {
@@ -30,7 +36,7 @@ export const AudioContextProvider = ({ children }) => {
   return (
     <AudioContext.Provider
       value={{
-        sound,
+        sound,playSoundClick
       }}
     >
       {children}

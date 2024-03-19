@@ -1,8 +1,10 @@
 import React from "react";
 import { MyDataContext } from "../../context/GeneralContext";
+import { MyAudioContext } from "../../context/AudioContext";
 
 const SettingsBarGlass = ({ menupoint }) => {
   const { settings, setSettings } = MyDataContext();
+  const {  playSoundClick } = MyAudioContext();
   return (
     <div
       className="p-5 lg:p-0 w-full flex lg:items-center lg:justify-center
@@ -13,6 +15,7 @@ const SettingsBarGlass = ({ menupoint }) => {
           key={item.title}
           onClick={() => {
             setSettings(item?.title);
+            playSoundClick()
           }}
           className={`shadowactive customshadow3 
           cursor-pointer rounded relative flex-col my-1 w-40 lg:w-48 md:w-40

@@ -78,7 +78,7 @@ export const slideAnimation = (direction) => {
       x: direction === "left" ? 900 : direction === "right" ? -900 : 0,
       y: direction === "up" ? 100 : direction === "down" ? -100 : 0,
       opacity: 0,
-      transition: { ...transition, delay: 0.5 },
+      transition: { ...transition, delay: 0 },
     },
     animate: {
       x: direction === "left" ? 0: direction === "right" ? 0 : 0,

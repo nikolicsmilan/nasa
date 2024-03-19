@@ -4,9 +4,11 @@ import SettingsBarGlass from "./SettingsBarGlass";
 import { motion } from "framer-motion";
 import { slideAnimation } from "../../utils/motion";
 
+
 //Settingsbar service mobil and desktop screen 
 const SettingsBar = ({ menupoint }) => {
   const { setToggle, setSettingsOpen, settingsOpen } = MyDataContext();
+
 
   const handleClose = () => {
    // setToggle(false);
