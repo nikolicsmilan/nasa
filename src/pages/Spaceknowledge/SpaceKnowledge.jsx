@@ -2,7 +2,7 @@ import React from 'react'
 
 const SpaceKnowledge = () => {
   return (
-    <div>SpaceKnowledge</div>
+    <div className='text-center m-2 text-xl'>SpaceKnowledge</div>
   )
 }
 
