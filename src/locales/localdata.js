@@ -72,16 +72,7 @@ export const returnMenu = [
     icon: FaProjectDiagram,
     link: "/",
   },
-  {
-    title: "SolarSystem",
-    icon: FaProjectDiagram,
-    link: "spaceknowledge/solarSystem",
-  },
-  {
-    title: "Quiz",
-    icon: FaPalette,
-    link: "spaceknowledge/quiz",
-  },
+ 
 ];
 
 export const settingshome = [

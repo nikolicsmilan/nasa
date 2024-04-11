@@ -2,6 +2,7 @@ import React from "react";
 import { MyDataContext } from "../../context/GeneralContext";
 import { MyAudioContext } from "../../context/AudioContext";
 
+//SETTINGSBAR LOOK
 const SettingsBarGlass = ({ menupoint }) => {
   const { settings, setSettings } = MyDataContext();
   const {  playSoundClick } = MyAudioContext();
@@ -38,15 +39,19 @@ const SettingsBarGlass = ({ menupoint }) => {
           </div>
         </div>
       ))}
-      <div className="absolute top-0 left-0 w-8 h-8 bg-transparent border-t-2 border-l-2 border-sky-200 transform -translate-x-2 -translate-y-2"></div>
-      <div className="absolute top-0 right-0 w-8 h-8 bg-transparent border-t-2 border-r-2 border-sky-200 transform translate-x-1 -translate-y-2"></div>
-      <div className="absolute bottom-0 left-0 w-8 h-8 bg-transparent border-b-2 border-l-2 border-sky-200 transform -translate-x-1 translate-y-2"></div>
-      <div className="absolute bottom-0 right-0 w-8 h-8 bg-transparent border-b-2 border-r-2 border-sky-200 transform translate-x-1 translate-y-2"></div>
+      
     </div>
   );
 };
 
 export default SettingsBarGlass;
+
+/*
+<div className="absolute top-0 left-0 w-8 h-8 bg-transparent border-t-2 border-l-2 border-sky-200 transform -translate-x-2 -translate-y-2"></div>
+      <div className="absolute top-0 right-0 w-8 h-8 bg-transparent border-t-2 border-r-2 border-sky-200 transform translate-x-1 -translate-y-2"></div>
+      <div className="absolute bottom-0 left-0 w-8 h-8 bg-transparent border-b-2 border-l-2 border-sky-200 transform -translate-x-1 translate-y-2"></div>
+      <div className="absolute bottom-0 right-0 w-8 h-8 bg-transparent border-b-2 border-r-2 border-sky-200 transform translate-x-1 translate-y-2"></div>
+*/
 /* i use */
 /*
         

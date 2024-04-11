@@ -10,6 +10,7 @@ import Consoles from "./Sidebar/Consoles";
 const menus = {
   "/": homemenu,
   "/spaceknowledge": spaceKnowledgeMenu,
+  "/asteroide":returnMenu
 };
 
 const MainNavigationConsole = () => {

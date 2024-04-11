@@ -6,6 +6,8 @@ import { slideAnimation } from "../../utils/motion";
 
 
 //Settingsbar service mobil and desktop screen 
+
+//SETTINGSBAR ANIMATION
 const SettingsBar = ({ menupoint }) => {
   const { setToggle, setSettingsOpen, settingsOpen } = MyDataContext();
 

@@ -14,7 +14,7 @@ const LayoutHome = () => {
   const clozer = () => {
     setSettingsOpen(false);
 
-    console.log("ez fut le")
+    console.log("ez fut le");
   };
   const stopClozer = (event) => {
     event.stopPropagation();
@@ -75,11 +75,9 @@ const LayoutHome = () => {
               {/*Settingsbar end */}
 
               {/*Desktop Mainconsole: content depend on settings  */}
-       
-        
+
               <DesktopConsole stopClozer={stopClozer} />
-           
-            
+
               {/*Desktop Mainconsole end  */}
             </div>
           )}
