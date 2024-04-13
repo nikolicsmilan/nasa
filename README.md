@@ -16,7 +16,7 @@
 │   │   │   ├── SoundConsole.jsx          // Possible sound settings   
 │   │   │   ├── StyleConsole.jsx          // Possible style settings     
 │   │   │   └── DataConsole.jsx           // Available basic user data         
-│   │   │   ├── views/                  // Directory for console-related views
+│   │   │   ├── views/                  // Directory for console-related views      
 │   │   │   │   ├── consoles.jsx             // Default appearance glass-like consoles
 │   │   │   │   ├── BiggerConsoles.jsx         // Consoles in a larger size
 │   │   │   │   ├── DesktopConsoleView.jsx         // Responsible for the desktop view of consoles
