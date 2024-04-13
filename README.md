@@ -1,6 +1,6 @@
 ├── public/                  // Static resources served by the application  
 ├── build/                   // Build output directory  
-│   ├── index.html           // The main HTML file of the application   
+│       ├── index.html           // The main HTML file of the application   
 ├── src/    
 │   ├── assets/              // Static resources used by the application    
 │   │   ├── images/          // Directory for images    
