@@ -1,5 +1,4 @@
 ├── public/                  // Static resources served by the application
-│   └── index.html           // The main HTML file of the application
 ├── build/                   // Build output directory
 │   ├── index.html           // The main HTML file of the application
 ├── src/
