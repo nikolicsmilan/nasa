@@ -2,8 +2,9 @@ import React, { useEffect } from "react";
 import earthdoublemirror from "../../assets/video/earth_double_mirror.mov"
 import useWindowSize from "../../hooks/use-windowsize";
 import { MyDataContext } from "../../context/GeneralContext";
-import BiggerConsoles from "../../components/Sidebar/BiggerConsoles";
+import BiggerConsoles from "../../components/consoles/views/BiggerConsoles";
 import { start } from "../../locales/localdata";
+
 const Home = () => {
   const { setSettings, settingsOpen } = MyDataContext();
   useEffect(() => {
@@ -37,11 +38,11 @@ const Home = () => {
                border-0 text-center lg:text-3xl 
                text-2xl  opacity-100 uppercase font-bold"
               >
-                Asteroid impact warning systemsek
+                Asteroid impact warning systems
               </h1>
               
               <div className="flex justify-center items-center">
-              <h2 className="my-5 text-sky-200">
+              <h2 className="my-5 text-sky-200 text-xl font-bold">
                   {" "}
                   "It's a small step for the developer, but a huge step against
                   the fake news."

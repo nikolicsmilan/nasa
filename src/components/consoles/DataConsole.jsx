@@ -1,6 +1,6 @@
 import React from 'react'
-import useWindowSize from '../hooks/use-windowsize'
-import { MyDataContext } from '../context/GeneralContext';
+import useWindowSize from '../../hooks/use-windowsize'
+import { MyDataContext } from '../../context/GeneralContext';
 const DataConsole = () => {
   const { width, height } = useWindowSize();
   const { toggle, settings, setSettings, settingsOpen } = MyDataContext();

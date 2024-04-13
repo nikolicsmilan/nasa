@@ -3,18 +3,16 @@ import { Outlet } from "react-router-dom";
 import { FaCog } from "react-icons/fa";
 import { AnimatePresence } from "framer-motion";
 import { MyDataContext } from "../context/GeneralContext";
-import SettingsBar from "../components/Sidebar/SettingsBar";
+import SettingsBarAnimation from "../components/Sidebar/SettingsBarAnimation";
 import { settingshome } from "../locales/localdata";
-import MobileMainConsole from "../components/MobileMainConsole";
-import DesktopConsole from "../components/DesktopConsole";
+import MobileConsoleView from "../components/consoles/views/MobileConsoleView";
+import DesktopConsoleView from "../components/consoles/views/DesktopConsoleView";
 
 const LayoutHome = () => {
   const { setToggle, settingsOpen, setSettingsOpen, toggle } = MyDataContext();
 
   const clozer = () => {
     setSettingsOpen(false);
-
-    console.log("ez fut le");
   };
   const stopClozer = (event) => {
     event.stopPropagation();
@@ -65,18 +63,18 @@ const LayoutHome = () => {
               className="absolute z-50  h-full w-full top-0 right-0 border-lime-300 border-0"
             >
               {/*MobileMainconsole: content depend on settings  */}
-              <MobileMainConsole stopClozer={stopClozer} />
+              <MobileConsoleView stopClozer={stopClozer} />
               {/*MobileMainconsole end  */}
 
               {/*Settingsbar service mobil and desktop screen */}
               <div onClick={stopClozer}>
-                <SettingsBar menupoint={settingshome} />
+                <SettingsBarAnimation menupoint={settingshome} />
               </div>
               {/*Settingsbar end */}
 
               {/*Desktop Mainconsole: content depend on settings  */}
 
-              <DesktopConsole stopClozer={stopClozer} />
+              <DesktopConsoleView stopClozer={stopClozer} />
 
               {/*Desktop Mainconsole end  */}
             </div>

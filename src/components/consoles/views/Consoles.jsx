@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { MyAudioContext } from "../../context/AudioContext";
+import { MyAudioContext } from "../../../context/AudioContext";
 //import clickSound from "../../assets/sound/click.mp3";
 
 const Consoles = ({ menupoint }) => {

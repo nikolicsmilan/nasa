@@ -1,14 +1,13 @@
 import React from "react";
-import { slideAnimation } from "../utils/motion";
-import { MyDataContext } from "../context/GeneralContext";
+import { slideAnimation } from "../../../utils/motion";
+import { MyDataContext } from "../../../context/GeneralContext";
 import { motion } from "framer-motion";
-import StyleConsole from "./StyleConsole";
-import SoundConsole from "./SoundConsole";
-import LanguageConsole from "./LanguageConsole";
-import DataConsole from "./DataConsole";
-import { homemenu } from "../locales/localdata";
-import MainNavigationConsole from "./MainNavigationConsole";
-const MobileMainConsole = ({ stopClozer }) => {
+import StyleConsole from "../StyleConsole";
+import SoundConsole from "../SoundConsole";
+import LanguageConsole from "../LanguageConsole";
+import DataConsole from "../DataConsole";
+import NavigationConsole from "../NavigationConsole";
+const MobileConsoleView = ({ stopClozer }) => {
   const { settings, settingsOpen } = MyDataContext();
   return (
     <motion.div
@@ -21,7 +20,7 @@ const MobileMainConsole = ({ stopClozer }) => {
             border-0  border-black h-2/4  
             relative top-20 left-0 z-50 flex lg:hidden flex-col my-2  "
     >
-      {settings === "Navigation" && <MainNavigationConsole />}
+      {settings === "Navigation" && <NavigationConsole />}
       {settings === "Style" && <StyleConsole />}
       {settings === "Sound" && <SoundConsole />}
       {settings === "Language" && <LanguageConsole />}
@@ -34,4 +33,4 @@ const MobileMainConsole = ({ stopClozer }) => {
   );
 };
 
-export default MobileMainConsole;
+export default MobileConsoleView;

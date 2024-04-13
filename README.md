@@ -6,27 +6,46 @@ nasa/
 │   ├── assets/             // Az alkalmazás által használt statikus erőforrások
 │   │   └── images/         // Képek mappája
 │   │   └── video         // 
+│   │   └── sound         // 
 │   ├── context/   
 │   ├── components/   
-│   │   ├── Sidebar/         //mappa a Sidebar komponensnek
-│   │   │   └── Sidebar.js   // Sidebar komponens fájlja
+│   │   ├── consoles/                  // Konzol komponensek mappája
+│   │   │   └── NavigationConsole.jsx    //Az oldalon elérhető aktuális navigáció
+│   │   │   └── LanguageConsole.jsx      //Leheteséges nyelvi beállítások   
+│   │   │   └── SoundConsole.jsx         //Leheteséges nyelvi beállítások   
+│   │   │   └── StyleConsole.jsx         //Leheteséges stílus beállítások     
+│   │   │   └── DataConsole.jsx          //Elérhető alapadatok a felhasználóról         
+│   │   │   ├── views/                 // Konzolhoz kapcsolódó nézetek mappája
+│   │   │   │   └── consoles.jsx            // alapmegjelenés üvegszerű konzolok
+│   │   │   │   └── BiggerConoles.jsx            //konzol nagyobb méretben
+│   │   │   │   └── DesktopConsoleView.jsx            // consolok desktop nézetéért felel
+│   │   │   │   └── MobilConsoleView.jsx            // consolok mobile nézetéért felel
+│   │   ├── Sidebar/                   // Sidebar komponens mappája
+│   │   │   ├── SettingsBarAnimation.jsx // SettingsBar animációja
+│   │   │   └── SettingsBar.jsx         // Maga a SettingsBar
 |   |── hooks/      // 
+│   │   └── use-windowsize.js// Dinamikus információk a képernyő méretéről
 │   ├── layouts/            // Az alkalmazás elrendezési komponensei
-│   │   └── Layout1.js// Az alapértelmezett elrendezés komponense
-|   |   └── Layout2.js// A sentry (dashboard) elrendezés komponense
+│   │   └── LayoutHome.jsx// Az alapértelmezett elrendezés 
+|   |   └── LayoutDashBoard.jsx// A sentry (dashboard) elrendezés komponense
+│   ├── locales/   
+│   │   └── localdata.js// statikus adatok menühöz, tesztelésre és egyéb
 │   ├── pages/              // Az egyes oldalak komponensei
 │   │   ├── Home/           // A főoldal komponense és annak alkomponensei
-│   │   │   ├── Home.js
+│   │   │   ├── Home.jsx
 │   │   │   └── components/ // A főoldal komponens alkomponensei
-│   │   ├── Sentry/          // A "Sentry" oldal komponense és annak alkomponensei
-│   │   │   ├── Sentry.js
-│   │   │   └── components/ //
+│   │   ├── Asteroide/          // 
+│   │   │   ├── Asteroide.jsx
+│   │   │   └── components //
+│   │   ├── AsteroideDetail /      
+│   │   │   ├── AsteroideDetail.jsx
+│   │   │   └── components //  
 │   ├── firebase/           // 
 │   │   ├── auth.js          // 
 │   │   └── firestore.js     // 
 │   │   └── fileupload.js     // 
 │   ├── utils/              // Segédfüggvények és segédosztályok
-│   │   ├── motion.js         // Autentikációs segédfüggvények
+│   │   ├── motion.js         // Animációs segédfüggvények
 │   │   ├── auth.js         // Autentikációs segédfüggvények
 │   │   ├── validation.js   // Validációs segédfüggvények
 │   ├── App.js             

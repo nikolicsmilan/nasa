@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { homemenu, spaceKnowledgeMenu, returnMenu } from "../locales/localdata";
-import { NavLink, useParams, Link, useLocation } from "react-router-dom";
+import { homemenu, spaceKnowledgeMenu, returnMenu } from "../../locales/localdata";
+import { useLocation } from "react-router-dom";
 
-import Consoles from "./Sidebar/Consoles";
+import Consoles from "./views/Consoles";
 
 // Ide be kell regisztrálni hogy milyen path alatt milyen
 //menüpontok jelenjenek meg.
@@ -13,7 +13,7 @@ const menus = {
   "/asteroide":returnMenu
 };
 
-const MainNavigationConsole = () => {
+const NavigationConsole = () => {
   const location = useLocation();
   const [menu, setMenu] = useState(returnMenu);
   //console.log("location: ", location);
@@ -34,7 +34,7 @@ const MainNavigationConsole = () => {
   );
 };
 
-export default MainNavigationConsole;
+export default NavigationConsole;
 // <MobileMenu menupoint={menu} />
 //<MobileMenu onClose={handleClose} menupoint={homemenu}/>
 /*
