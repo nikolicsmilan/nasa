@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import axios from 'axios';
 
 function ApiComponent2() {
-  console.log("eeeeeeeeeezzzzzzzz lefut??????????????????")
   const [responseData, setResponseData] = useState(null);
   const apiUrl = 'https://ssd-api.jpl.nasa.gov/sentry.api';
 
