@@ -1,15 +1,15 @@
 ├── public/                  // Static resources served by the application  
-├── build/                   // Build output directory
-│   ├── index.html           // The main HTML file of the application
-├── src/
-│   ├── assets/              // Static resources used by the application
-│   │   ├── images/          // Directory for images
-│   │   ├── video            // Directory for videos
-│   │   └── sound            // Directory for sound files
-│   ├── context/  
-│   │   ├── AudioContext.jsx        // Context for audio-related functionalities
-│   │   └── GeneralContext.jsx     // General context for shared data
-│   ├── components/   
+├── build/                   // Build output directory  
+│   ├── index.html           // The main HTML file of the application   
+├── src/    
+│   ├── assets/              // Static resources used by the application    
+│   │   ├── images/          // Directory for images    
+│   │   ├── video            // Directory for videos    
+│   │   └── sound            // Directory for sound files   
+│   ├── context/      
+│   │   ├── AudioContext.jsx        // Context for audio-related functionalities    
+│   │   └── GeneralContext.jsx     // General context for shared data   
+│   ├── components/    
 │   │   ├── consoles/               // Directory for console components
 │   │   │   ├── NavigationConsole.jsx     // Current navigation available on the page
 │   │   │   ├── LanguageConsole.jsx       // Possible language settings   
