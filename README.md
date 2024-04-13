@@ -7,8 +7,8 @@
 │   │   └── video           // Directory for videos
 │   │   └── sound           // Directory for sound files
 │   ├── context/  
-│   │   └── AudioContext.jsx         // 
-│   │   └── GeneralContext.jsx      //
+│   │   └── AudioContext.jsx         // Context for audio-related functionalities
+│   │   └── GeneralContext.jsx      // General context for shared data
 │   ├── components/   
 │   │   ├── consoles/                  // Directory for console components
 │   │   │   └── NavigationConsole.jsx    // Current navigation available on the page
@@ -24,8 +24,8 @@
 │   │   ├── Sidebar/                   // Directory for Sidebar components
 │   │   │   ├── SettingsBarAnimation.jsx // SettingsBar animation
 │   │   │   └── SettingsBar.jsx         // The SettingsBar itself
-│   ├── hooks/      // Directory for hooks
-│   │   └── use-windowsize.js// Dynamic information about the screen size
+│   ├── hooks/      // Directory for custom hooks
+│   │   └── use-windowsize.js// Hook for getting dynamic information about the screen size
 │   ├── layouts/            // Components for application layouts
 │   │   └── LayoutHome.jsx// Default layout 
 │   │   └── LayoutDashBoard.jsx// Layout component for the dashboard
@@ -76,5 +76,5 @@
 ├── postcss.config.js         // PostCSS configuration
 ├── vite.config.js         // Vite configuration
 └── README.md                // Project README file
-               
+  
 
