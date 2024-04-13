@@ -11,7 +11,7 @@
 │   │   └── GeneralContext.jsx     // General context for shared data   
 │   ├── components/    
 │   │   ├── consoles/               // Directory for console components     
-│   │   ├── NavigationConsole.jsx     // Current navigation available on the page
+│   │   │   ├── NavigationConsole.jsx       // urrent navigation available on the page     
 │   │   │   ├── LanguageConsole.jsx       // Possible language settings   
 │   │   │   ├── SoundConsole.jsx          // Possible sound settings   
 │   │   │   ├── StyleConsole.jsx          // Possible style settings     
