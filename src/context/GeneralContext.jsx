@@ -10,6 +10,13 @@ export const DataContextProvider = ({ children }) => {
   const [toggle, setToggle] = useState(true);
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [settings, setSettings] = useState("Navigation");
+  const [users, setUsers] = useState({});
+
+
+  // KELLENE EGY OLYAN HOOK AMI AUTOMATIKUSAN LEFUT
+  // HA A USERS MEGVÁLTOZIK ÉS BEÁLÍT PARAMÉTEREKET AMIK AZTÁN
+  // MEGJELENEK A KÜLÖNBÖZŐ KOMPONESEKBEN
+  //STYLE >> bg-sky-400
   return (
     <DataContext.Provider
       value={{
@@ -21,6 +28,8 @@ export const DataContextProvider = ({ children }) => {
         setSettingsOpen,
         settings,
         setSettings,
+        users,
+        setUsers,
       }}
     >
       {children}

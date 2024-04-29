@@ -7,6 +7,7 @@ import RechartsExample from "./components/RechartsExample";
 import PieChartsExample from "./components/PieChartsExample";
 import PieChartsExample2 from "./components/PieChartsExample2";
 import { NavLink } from "react-router-dom";
+
 const Asteroide = () => {
   const { setSettings } = MyDataContext();
   /*
@@ -32,6 +33,7 @@ const Asteroide = () => {
               </h1>
             </div>
           </div>
+         
         </div>
       </div>
     </div>

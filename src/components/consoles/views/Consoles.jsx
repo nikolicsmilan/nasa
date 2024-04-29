@@ -36,10 +36,10 @@ const Consoles = ({ menupoint }) => {
                 className="customshadow2 rounded
             text-base opacity-100 flex h-14
              border-purple-400 shadow-2xl items-center 
-              border-0 bg-dark-800 z-20 mt-[-55px]  "
+              border-0 bg-dark-800 z-20 mt-[-55px]  text-sky-100"
               >
-                <p className="mx-2 text-sky-200"> {<item.icon />}</p>
-                <h2 className="text-sky-200 opacity-100">{item?.title}</h2>
+                <p className="mx-2 "> {<item.icon />}</p>
+                <h2 className=" opacity-100">{item?.title}</h2>
               </div>
             </div>
           </NavLink>
@@ -49,3 +49,5 @@ const Consoles = ({ menupoint }) => {
 };
 
 export default Consoles;
+// sky lime red >> a stílusok
+//text-sky-200
