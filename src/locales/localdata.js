@@ -106,6 +106,22 @@ export const start = [
   },
 ];
 
+export const styles = [
+  {
+    title: "Blue",
+    icon: FaPalette,
+  },
+  {
+    title: "Green",
+    icon: FaPalette,
+  },
+  {
+    title: "Red",
+    icon: FaPalette,
+  },
+];
+
+
 export const ip1000 = [
   {
     method: "IOBS",

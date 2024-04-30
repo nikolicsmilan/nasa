@@ -8,7 +8,7 @@
 │   │   └── sound            // Directory for sound files   
 │   ├── context/      
 │   │   ├── AudioContext.jsx        // Context for audio-related functionalities    
-│   │   └── GeneralContext.jsx     // General context for shared data   
+│   │   └── DataContext.jsx     // Data context for shared data   
 │   ├── components/    
 │   │   ├── consoles/               // Directory for console components     
 │   │   │   ├── NavigationConsole.jsx       // urrent navigation available on the page     

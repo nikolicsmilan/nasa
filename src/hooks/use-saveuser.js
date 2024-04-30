@@ -1,22 +1,33 @@
-import { useEffect } from "react";
-import { MyDataContext } from "../context/GeneralContext";
+import React, { useEffect, useContext } from "react";
+import { MyDataContext } from "../context/DataContext";
+
 export const useSave = () => {
   const { users, setUsers } = MyDataContext();
 
   useEffect(() => {
+
+    
     const storedData = JSON.parse(localStorage.getItem("userData"));
     if (storedData) {
       setUsers(storedData);
     }
-  }, [users]);
+  }, []); // üres dependency array, hogy csak a komponens mountolásakor fusson le ez az useEffect
 
-  //IDE KELL A LOCALSTORAGE MENTÉS LOGIKA
-  const saveUser = (key,value) => {
-    setUsers(prevObjektum => ({
-      ...prevObjektum,
-      [key]: value
-    }));
+  const saveUser = (key, value) => {
+    
+    setUsers(prevObject => {
+      const updatedUsers = {
+        ...prevObject,
+        [key]: value
+      };
+      localStorage.setItem("userData", JSON.stringify(updatedUsers)); // a változások mentése localStorage-be
+      return updatedUsers;
+    });
+    console.log("Ez lefut?")
+    console.log(users)
   };
 
-  return { saveUser };
+  return { saveUser,users };
 };
+
+

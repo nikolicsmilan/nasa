@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import earthdoublemirror from "../../assets/video/earth_double_mirror.mov"
 import useWindowSize from "../../hooks/use-windowsize";
-import { MyDataContext } from "../../context/GeneralContext";
+import { MyDataContext } from "../../context/DataContext";
 import BiggerConsoles from "../../components/consoles/views/BiggerConsoles";
 import { start } from "../../locales/localdata";
 

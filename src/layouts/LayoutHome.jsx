@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Outlet } from "react-router-dom";
 import { FaCog } from "react-icons/fa";
 import { AnimatePresence } from "framer-motion";
-import { MyDataContext } from "../context/GeneralContext";
+import { MyDataContext } from "../context/DataContext";
 import SettingsBarAnimation from "../components/Sidebar/SettingsBarAnimation";
 import { settingshome } from "../locales/localdata";
 import MobileConsoleView from "../components/consoles/views/MobileConsoleView";
@@ -66,7 +66,9 @@ const LayoutHome = () => {
               <MobileConsoleView stopClozer={stopClozer} />
               {/*MobileMainconsole end  */}
 
-              {/*Settingsbar service mobil and desktop screen */}
+              {/*Settingsbar service mobil and desktop screen 
+              settingshome inherit from localdata
+              */}
               <div onClick={stopClozer}>
                 <SettingsBarAnimation menupoint={settingshome} />
               </div>

@@ -1,6 +1,6 @@
 import React from "react";
 import { slideAnimation } from "../../../utils/motion";
-import { MyDataContext } from "../../../context/GeneralContext";
+import { MyDataContext } from "../../../context/DataContext";
 import { motion } from "framer-motion";
 import StyleConsole from "../StyleConsole";
 import SoundConsole from "../SoundConsole";
@@ -8,7 +8,7 @@ import LanguageConsole from "../LanguageConsole";
 import DataConsole from "../DataConsole";
 import NavigationConsole from "../NavigationConsole";
 const MobileConsoleView = ({ stopClozer }) => {
-  const { settings, settingsOpen } = MyDataContext();
+  const { settings, settingsOpen,users } = MyDataContext();
   return (
     <motion.div
       onClick={stopClozer}
@@ -21,7 +21,7 @@ const MobileConsoleView = ({ stopClozer }) => {
             relative top-20 left-0 z-50 flex lg:hidden flex-col my-2  "
     >
       {settings === "Navigation" && <NavigationConsole />}
-      {settings === "Style" && <StyleConsole />}
+      {settings === "Style" && <StyleConsole key={users} users={users}/>}
       {settings === "Sound" && <SoundConsole />}
       {settings === "Language" && <LanguageConsole />}
       {settings === "Data" && <DataConsole />}

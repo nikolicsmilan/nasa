@@ -1,5 +1,5 @@
 import React from "react";
-import { MyDataContext } from "../../../context/GeneralContext";
+import { MyDataContext } from "../../../context/DataContext";
 import NavigationConsole from "../NavigationConsole";
 import StyleConsole from "../StyleConsole";
 import SoundConsole from "../SoundConsole";
@@ -8,7 +8,7 @@ import DataConsole from "../DataConsole";
 import { motion } from "framer-motion";
 import { slideAnimation } from "../../../utils/motion";
 const DesktopConsoleView = ({ stopClozer }) => {
-  const { settingsOpen, settings } = MyDataContext();
+  const { settingsOpen, settings,users } = MyDataContext();
 
   return (
     <motion.div
@@ -31,7 +31,7 @@ const DesktopConsoleView = ({ stopClozer }) => {
         <div className="absolute bottom-0 right-0 w-8 h-8 bg-transparent border-b-2 border-r-2 border-sky-200 transform translate-x-1 translate-y-2"></div>
         {/* settings values equal settingshome in localdata */}
         {settings === "Navigation" && <NavigationConsole />}
-        {settings === "Style" && <StyleConsole />}
+        {settings === "Style" && <StyleConsole key={users} users={users}/>}
         {settings === "Sound" && <SoundConsole />}
         {settings === "Language" && <LanguageConsole />}
         {settings === "Data" && <DataConsole />}

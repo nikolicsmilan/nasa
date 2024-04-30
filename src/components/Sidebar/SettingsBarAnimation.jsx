@@ -1,5 +1,5 @@
 import React from "react";
-import { MyDataContext } from "../../context/GeneralContext";
+import { MyDataContext } from "../../context/DataContext";
 import SettingsBar from "./SettingsBar";
 import { motion } from "framer-motion";
 import { slideAnimation } from "../../utils/motion";

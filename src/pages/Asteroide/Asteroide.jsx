@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { MyDataContext } from "../../context/GeneralContext";
+import { MyDataContext } from "../../context/DataContext";
 import { CircularProgressbar } from "react-circular-progressbar";
 import { useOutletContext } from "react-router-dom";
 import TorinoScaleChart from "./components/TorinoScaleChart";

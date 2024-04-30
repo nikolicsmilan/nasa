@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { MyDataContext } from "../context/GeneralContext";
+import { MyDataContext } from "../context/DataContext";
 
 const useWindowSize = () => {
     const { windowSize,setWindowSize} = MyDataContext();
