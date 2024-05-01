@@ -9,7 +9,7 @@ import MobileConsoleView from "../components/consoles/views/MobileConsoleView";
 import DesktopConsoleView from "../components/consoles/views/DesktopConsoleView";
 
 const LayoutHome = () => {
-  const { setToggle, settingsOpen, setSettingsOpen, toggle } = MyDataContext();
+  const { setToggle, settingsOpen, setSettingsOpen, toggle,choosenSytle } = MyDataContext();
 
   const clozer = () => {
     setSettingsOpen(false);
@@ -30,9 +30,9 @@ const LayoutHome = () => {
   return (
     <AnimatePresence>
       <div
-        className="overflow-y-auto overflow-x-hidden lg:overflow-y-hidden 
+        className={`overflow-y-auto overflow-x-hidden lg:overflow-y-hidden 
       mystyle border-0 border-red-400
-       bg-black text-sky-400 h-screen flex flex-col w-full"
+       bg-black text-${choosenSytle}-400 h-screen flex flex-col w-full`}
       >
         <header
           className="flex  justify-end border-0
@@ -40,8 +40,8 @@ const LayoutHome = () => {
         >
           {/*delete FaBars icon that one start two menu */}
           <FaCog
-            className="relative top-0 right-0 z-40 text-5xl m-1 p-2 
-             cursor-pointer text-sky-200 border-0"
+            className={`relative top-0 right-0 z-40 text-5xl m-1 p-2 
+             cursor-pointer text-${choosenSytle ? choosenSytle:"sky"}-200 border-0`}
             onClick={() => {
               setToggle(true);
               setSettingsOpen((prevToggle) => !prevToggle);
@@ -51,7 +51,7 @@ const LayoutHome = () => {
         </header>
 
         <main
-          className=" flex  flex-grow border-0 border-sky-400 
+          className=" flex  flex-grow 
           z-30  w-full relative"
         >
           <div className=" w-full border-0 border-red-400 z-50 relative ">
@@ -88,3 +88,4 @@ const LayoutHome = () => {
 };
 
 export default LayoutHome;
+//<p className="text-white">{choosenSytle} stílus</p>

@@ -118,6 +118,9 @@ export const styles = [
   {
     title: "Red",
     icon: FaPalette,
+  },  {
+    title: "Empty",
+    icon: FaPalette,
   },
 ];
 

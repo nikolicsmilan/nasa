@@ -16,10 +16,10 @@ const SettingsBarAnimation = ({ menupoint }) => {
       initial="exit"
       animate={settingsOpen ? "animate" : "exit"}
       exit="exit"
-      className="lg:w-60 w-full border-8 lg:border-0 
-     border-black rounded m-0 h-1/4 lg:h-96
+      className="lg:w-60 w-full border-0 lg:border-0 
+     border-black rounded m-0 h-96 h-1/4 lg:h-96
     lg:absolute relative  top-20 lg:right-5 lg:bottom-0
-   z-50 flex flex-col items-center"
+   z-50 flex flex-col items-center border-white"
     >
       <SettingsBar menupoint={menupoint} />
     </motion.div>

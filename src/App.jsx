@@ -11,6 +11,7 @@ import AsteroideDetail from "./pages/AsteroideDetail/AsteroideDetail";
 import SpaceKnowledge from "./pages/Spaceknowledge/SpaceKnowledge";
 import Quiz from "./pages/Quiz/Quiz";
 import SolarSytsem from "./pages/SolarSystem/SolarSystem";
+import { useSave } from "./hooks/use-saveuser";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -41,6 +42,8 @@ const router = createBrowserRouter([
   },
 ]);
 function App() {
+//It is needed for the initilazation
+  const {saveUser} = useSave()
   return (
     <>
       <RouterProvider router={router} />

@@ -6,30 +6,31 @@ import { styles } from "../../locales/localdata";
 const StyleConsole = ({ users }) => {
   const { saveUser } = useSave();
   const { playSoundClick } = MyAudioContext();
-  console.log(users)
+  console.log(users);
 
-/*
   const chooseString = (kapot) => {
     switch (kapot) {
-      case 1:
-        return "Első string";
-      case 2:
-        return "Második string";
-      case 3:
-        return "Harmadik string";
+      case "Blue":
+        return "bg-sky-400";
+      case "Green":
+        return "bg-lime-400";
+      case "Red":
+        return "bg-red-400";
+      case "Empty":
+        return "";
       default:
-        return "Nincs ilyen string";
+        return "bg-sky-400";
     }
-  };*/
-const selectedStyle= DUMMY_STYLES.find((color)=>color.id ===users.style)
+  };
+  //const selectedStyle= DUMMY_STYLES.find((color)=>color.id ===users.style)
 
-// Miért lesz ez rosz mert itt még mindig csak helyben van
-//komnponensenként kell
-//ezt beteheteem volna a localdata paamétereként is.
+  // Miért lesz ez rosz mert itt még mindig csak helyben van
+  //komnponensenként kell
+  //ezt beteheteem volna a localdata paamétereként is.
   return (
     <div>
       <div
-        className="p-5 lg:p-0 w-full flex lg:items-center lg:justify-center
+        className="p-5 lg:p-0 w-full flex lg:items-start lg:justify-center
     flex-wrap justify-between overflow-y-auto h-48 lg:h-96"
       >
         {styles?.map((item) => (
@@ -45,9 +46,9 @@ const selectedStyle= DUMMY_STYLES.find((color)=>color.id ===users.style)
           h-14  border-0 border-lime-400`}
           >
             <div
-              className="customshadow2 rounded
+              className={`${chooseString(item?.title)} customshadow2 rounded
           w-40 md:w-40 lg:w-48 h-full text-white shadow-2xl border-0 
-           bg-sky-400 md:opacity-10 opacity-10 mt-[0px] z-40"
+           md:opacity-10 opacity-10 mt-[0px] z-40`}
             ></div>
 
             <div
@@ -62,9 +63,6 @@ const selectedStyle= DUMMY_STYLES.find((color)=>color.id ===users.style)
           </div>
         ))}
       </div>
-      A stílus: {users?.style} tt
-
-      selectedStyle: {selectedStyle}
     </div>
   );
 };
@@ -74,3 +72,6 @@ export default StyleConsole;
 /* onClick={() => {
           saveUser("style", "green");
         }} */
+/*  A stílus: {users?.style} tt
+
+      selectedStyle: {selectedStyle} */

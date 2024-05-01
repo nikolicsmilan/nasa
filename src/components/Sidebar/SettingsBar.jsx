@@ -4,12 +4,12 @@ import { MyAudioContext } from "../../context/AudioContext";
 
 //SETTINGSBAR LOOK
 const SettingsBar = ({ menupoint }) => {
-  const { settings, setSettings,users } = MyDataContext();
+  const { choosenSytle, setSettings, } = MyDataContext();
   const {  playSoundClick } = MyAudioContext();
   return (
     <div
       className="p-5 lg:p-0 w-full flex lg:items-center lg:justify-center
-    flex-wrap justify-between overflow-y-auto h-48 lg:h-96"
+    flex-wrap justify-between overflow-y-auto  lg:h-96"
     >
       {menupoint?.map((item) => (
         <div
@@ -23,9 +23,9 @@ const SettingsBar = ({ menupoint }) => {
           h-14  border-0 border-lime-400`}
         >
           <div
-            className="customshadow2 rounded
+            className={` bg-${choosenSytle}-400 customshadow2 rounded
           w-40 md:w-40 lg:w-48 h-full text-white shadow-2xl border-0 
-           bg-sky-400 md:opacity-10 opacity-10 mt-[0px] z-40"
+           md:opacity-10 opacity-10 mt-[0px] z-40`}
           ></div>
 
           <div

@@ -6,7 +6,7 @@ import BiggerConsoles from "../../components/consoles/views/BiggerConsoles";
 import { start } from "../../locales/localdata";
 
 const Home = () => {
-  const { setSettings, settingsOpen } = MyDataContext();
+  const { setSettings, settingsOpen,choosenSytle } = MyDataContext();
   useEffect(() => {
     setSettings;
     setSettings("Navigation");
@@ -34,15 +34,15 @@ const Home = () => {
              flex-col justify-center flex-wrap lg:p-10 "
             >
               <h1
-                className="text-sky-400 cursor-pointer z-10 p-2
+                className={`text-${choosenSytle ?choosenSytle:"sky"}-400 cursor-pointer z-10 p-2
                border-0 text-center lg:text-3xl 
-               text-2xl  opacity-100 uppercase font-bold"
+               text-2xl  opacity-100 uppercase font-bold`}
               >
                 Asteroid impact warning systems
               </h1>
               
               <div className="flex justify-center items-center">
-              <h2 className="my-5 text-sky-200 text-xl font-bold">
+              <h2 className={`my-5 text-${choosenSytle ?choosenSytle:"sky"}-200 text-xl font-bold`}>
                   {" "}
                   "It's a small step for the developer, but a huge step against
                   the fake news."

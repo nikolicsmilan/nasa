@@ -1,11 +1,12 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { MyAudioContext } from "../../../context/AudioContext";
+import { MyDataContext } from "../../../context/DataContext";
 //import clickSound from "../../assets/sound/click.mp3";
 
 const Consoles = ({ menupoint }) => {
   const {playSoundClick } = MyAudioContext();
-
+  const {choosenSytle } = MyDataContext();
   return (
     <div
       className="border-0 p-5 w-full flex 
@@ -27,9 +28,9 @@ const Consoles = ({ menupoint }) => {
              h-14  border-0 border-orange-400`}
             >
               <div
-                className="customshadow2 rounded
+                className={` bg-${choosenSytle}-400 customshadow2 rounded
              w-40 md:w-40 lg:w-48 h-full text-white shadow-2xl border-0 
-              bg-sky-400 md:opacity-10 opacity-10 mt-[0px] z-40"
+               md:opacity-10 opacity-10 mt-[0px] z-40`}
               ></div>
 
               <div
