@@ -45,9 +45,9 @@ function App() {
 //It is needed for the initilazation
   const {saveUser} = useSave()
   return (
-    <>
+    <div className="">
       <RouterProvider router={router} />
-    </>
+    </div>
   );
 }
 

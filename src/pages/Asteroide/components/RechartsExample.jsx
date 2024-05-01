@@ -57,7 +57,7 @@ const RechartsExample = () => {
 
 
       
-<LineChart width={width / 2} height={300} data={sortedData}>
+<LineChart width={width / 5} height={190} data={sortedData}>
         <Line type="monotone" dataKey="ip" stroke="#2196F3" strokeWidth={3} />
 
         <CartesianGrid stroke="#ccc" />

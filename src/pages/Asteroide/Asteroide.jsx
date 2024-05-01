@@ -8,8 +8,9 @@ import PieChartsExample from "./components/PieChartsExample";
 import PieChartsExample2 from "./components/PieChartsExample2";
 import { NavLink } from "react-router-dom";
 
+
 const Asteroide = () => {
-  const { setSettings } = MyDataContext();
+  const { setSettings,choosenSytle } = MyDataContext();
   /*
   useEffect(() => {
     setSettings("");
@@ -33,9 +34,33 @@ const Asteroide = () => {
               </h1>
             </div>
           </div>
-         
+
+          Diagmram
+          <div
+           // Asszumáltam, hogy van egy id az item objektumban
+            className={`shadowactive customshadow3 cursor-pointer 
+            rounded-2xl 
+            relative  flex-col m-3 w-96  h-48 
+            border-0 border-orange-400`}
+          >
+            <div className={` bg-${choosenSytle}-400 customshadow2 rounded-2xl
+           w-96 h-full shadow-2xl border-0
+                opacity-10 mt-[0px] z-40`}></div>
+
+            <div className="customshadow2 rounded-2xl text-2xl opacity-100
+             flex h-48 border-purple-400 shadow-2xl 
+             items-center justify-center border-0 bg-dark-800 
+             z-20 mt-[-190px] font-bold">
+            
+            <RechartsExample/>
+            </div>
+          </div>
+
+      
         </div>
+      
       </div>
+ 
     </div>
   );
 };
