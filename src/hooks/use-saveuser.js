@@ -2,8 +2,8 @@ import React, { useEffect, useContext } from "react";
 import { MyDataContext } from "../context/DataContext";
 
 export const useSave = () => {
-  const { users, setUsers, setChoosenStyle, choosenSytle } = MyDataContext();
-  console.log("useSave: ", users, "choosenSytle: ", choosenSytle);
+  const { users, setUsers, setChoosenStyle, choosenStyle } = MyDataContext();
+ // console.log("useSave: ", users, "choosenSytle: ", choosenSytle);
   useEffect(() => {
     const storedData = JSON.parse(localStorage.getItem("userData"));
     if (storedData) {
@@ -20,10 +20,10 @@ export const useSave = () => {
       localStorage.setItem("userData", JSON.stringify(updatedUsers)); // a változások mentése localStorage-be
       return updatedUsers;
     });
-    console.log("Ez lefut?");
-    console.log(users);
+    //console.log("Ez lefut?");
+   // console.log(users);
   };
-
+/*
   const changeStyle = (value) => {
     setChoosenStyle((prevState) => {
       switch (value) {
@@ -34,16 +34,16 @@ export const useSave = () => {
         case "Red":
           return "red";
         case "Empty":
-          return "";
+          return "purple";
         default:
-          return "sky";
+          return "gray";
       }
     });
   };
 
   useEffect(() => {
     changeStyle(users.style);
-  }, [users?.style]);
+  }, [users?.style]);*/
 
-  return { saveUser, users, changeStyle };
+  return { saveUser, users };
 };

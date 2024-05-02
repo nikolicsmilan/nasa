@@ -8,7 +8,7 @@ import DataConsole from "../DataConsole";
 import { motion } from "framer-motion";
 import { slideAnimation } from "../../../utils/motion";
 const DesktopConsoleView = ({ stopClozer }) => {
-  const { settingsOpen, settings,users,choosenSytle } = MyDataContext();
+  const { settingsOpen, settings, users, choosenStyle } = MyDataContext();
 
   return (
     <motion.div
@@ -24,14 +24,28 @@ const DesktopConsoleView = ({ stopClozer }) => {
         onClick={stopClozer}
         className="h-[300px] w-[500px] hidden lg:flex flex-wrap lg:max-w-2xl  border-0   relative z-50"
       >
-        <p className={`m-1 text-center border-0 w-full text-${choosenSytle ?choosenSytle:"sky"}-200 uppercase`}>{settings} console</p>
-        <div className={`absolute top-0 left-0 w-8 h-8 bg-transparent border-t-2 border-l-2 border-sky-200 border-${choosenSytle}-200 transform -translate-x-2 -translate-y-2`}></div>
-        <div className={`absolute top-0 right-0 w-8 h-8 bg-transparent border-t-2 border-r-2 border-${choosenSytle}-200 transform translate-x-1 -translate-y-2`}></div>
-        <div className={`absolute bottom-0 left-0 w-8 h-8 bg-transparent border-b-2 border-l-2 border-${choosenSytle}-200 transform -translate-x-1 translate-y-2`}></div>
-        <div className={`absolute bottom-0 right-0 w-8 h-8 bg-transparent border-b-2 border-r-2 border-${choosenSytle}-200 transform translate-x-1 translate-y-2`}></div>
+        <p
+          className={`m-1 text-center border-0 w-full text-${
+            choosenStyle ? choosenStyle : "sky"
+          }-200 uppercase`}
+        >
+          {settings} console - <span className="text-white">{choosenStyle}</span>
+        </p>
+        <div
+          className={`absolute top-0 left-0 w-8 h-8 bg-transparent border-t-2 border-l-2 border-sky-200 border-${choosenStyle}-200 transform -translate-x-2 -translate-y-2`}
+        ></div>
+        <div
+          className={`absolute top-0 right-0 w-8 h-8 bg-transparent border-t-2 border-r-2 border-${choosenStyle}-200 transform translate-x-1 -translate-y-2`}
+        ></div>
+        <div
+          className={`absolute bottom-0 left-0 w-8 h-8 bg-transparent border-b-2 border-l-2 border-${choosenStyle}-200 transform -translate-x-1 translate-y-2`}
+        ></div>
+        <div
+          className={`absolute bottom-0 right-0 w-8 h-8 bg-transparent border-b-2 border-r-2 border-${choosenStyle}-200 transform translate-x-1 translate-y-2`}
+        ></div>
         {/* settings values equal settingshome in localdata */}
         {settings === "Navigation" && <NavigationConsole />}
-        {settings === "Style" && <StyleConsole key={users} users={users}/>}
+        {settings === "Style" && <StyleConsole key={users} users={users} />}
         {settings === "Sound" && <SoundConsole />}
         {settings === "Language" && <LanguageConsole />}
         {settings === "Data" && <DataConsole />}

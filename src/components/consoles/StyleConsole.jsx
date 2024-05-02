@@ -1,12 +1,14 @@
 import React from "react";
 import { useSave } from "../../hooks/use-saveuser";
 import { MyAudioContext } from "../../context/AudioContext";
+import { MyDataContext } from "../../context/DataContext";
 import { styles } from "../../locales/localdata";
 //kell egy természetben is látszó színséma!!!!
 const StyleConsole = ({ users }) => {
   const { saveUser } = useSave();
   const { playSoundClick } = MyAudioContext();
-  console.log(users);
+  const { setChoosenStyle } = MyDataContext();
+ // console.log(users);
 
   const chooseString = (kapot) => {
     switch (kapot) {
@@ -22,6 +24,28 @@ const StyleConsole = ({ users }) => {
         return "bg-sky-400";
     }
   };
+
+
+  const changeStyle = (value) => {
+
+    console.log("changeStyle: ",value)
+    setChoosenStyle((prevState) => {
+      console.log("teszt prevstate: ",prevState, "value: ",value)
+      switch (value) {
+        case "Blue":
+          return "sky";
+        case "Green":
+          return "lime";
+        case "Red":
+          return "red";
+        case "Empty":
+          return "purple";
+        default:
+          return "gray";
+      }
+    });
+  };
+
   //const selectedStyle= DUMMY_STYLES.find((color)=>color.id ===users.style)
 
   // Miért lesz ez rosz mert itt még mindig csak helyben van
@@ -38,6 +62,7 @@ const StyleConsole = ({ users }) => {
             key={item.title}
             onClick={() => {
               //  setSettings(item?.title);
+              changeStyle(item?.title)
               saveUser("style", item?.title);
               playSoundClick();
             }}
@@ -47,7 +72,7 @@ const StyleConsole = ({ users }) => {
           >
             <div
               className={`${chooseString(item?.title)} customshadow2 rounded
-          w-40 md:w-40 lg:w-48 h-full text-white shadow-2xl border-0 
+          w-40 md:w-40 lg:w-48 h-full text-red-400 shadow-2xl border-0 
            md:opacity-10 opacity-10 mt-[0px] z-40`}
             ></div>
 

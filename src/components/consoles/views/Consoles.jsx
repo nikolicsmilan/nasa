@@ -6,7 +6,7 @@ import { MyDataContext } from "../../../context/DataContext";
 
 const Consoles = ({ menupoint }) => {
   const {playSoundClick } = MyAudioContext();
-  const {choosenSytle } = MyDataContext();
+  const {choosenStyle } = MyDataContext();
   return (
     <div
       className="border-0 p-5 w-full flex 
@@ -28,7 +28,7 @@ const Consoles = ({ menupoint }) => {
              h-14  border-0 border-orange-400`}
             >
               <div
-                className={` bg-${choosenSytle}-400 customshadow2 rounded
+                className={` bg-${choosenStyle}-400 customshadow2 rounded
              w-40 md:w-40 lg:w-48 h-full text-white shadow-2xl border-0 
                md:opacity-10 opacity-10 mt-[0px] z-40`}
               ></div>

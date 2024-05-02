@@ -2,7 +2,7 @@ import React from 'react'
 import { NavLink } from "react-router-dom";
 import { MyDataContext } from '../../../context/DataContext';
 const BiggerConsoles = ({menupoint}) => {
-  const {choosenSytle } = MyDataContext();
+  const {choosenStyle } = MyDataContext();
   return (
     <div className=" flex flex-wrap max-w-2xl  border-0 relative z-50">
       
@@ -20,7 +20,7 @@ const BiggerConsoles = ({menupoint}) => {
             relative flex-col m-3 w-48  h-28 
             border-0 border-orange-400`}
           >
-            <div className={` bg-${choosenSytle}-400 customshadow2 rounded-2xl
+            <div className={` bg-${choosenStyle}-400 customshadow2 rounded-2xl
            w-48 h-full shadow-2xl border-0
                 opacity-10 mt-[0px] z-40`}></div>
 

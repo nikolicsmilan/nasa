@@ -12,7 +12,7 @@ export const DataContextProvider = ({ children }) => {
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [settings, setSettings] = useState("Navigation");
   const [users, setUsers] = useState({});
-  const [choosenSytle, setChoosenStyle] = useState("sky");
+  const [choosenStyle, setChoosenStyle] = useState("sky");
 
 
 /*
@@ -37,7 +37,7 @@ export const DataContextProvider = ({ children }) => {
         setSettings,
         users,
         setUsers,
-        choosenSytle,
+        choosenStyle,
         setChoosenStyle,
       
       }}

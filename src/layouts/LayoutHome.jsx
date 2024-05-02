@@ -9,7 +9,7 @@ import MobileConsoleView from "../components/consoles/views/MobileConsoleView";
 import DesktopConsoleView from "../components/consoles/views/DesktopConsoleView";
 
 const LayoutHome = () => {
-  const { setToggle, settingsOpen, setSettingsOpen, toggle,choosenSytle } = MyDataContext();
+  const { setToggle, settingsOpen, setSettingsOpen, toggle,choosenStyle } = MyDataContext();
 
   const clozer = () => {
     setSettingsOpen(false);
@@ -32,7 +32,7 @@ const LayoutHome = () => {
       <div
         className={` overflow-y-auto overflow-x-hidden lg:overflow-y-hidden 
       mystyle border-0 border-red-400
-       bg-black text-${choosenSytle}-400 h-screen flex flex-col w-full`}
+       bg-black text-${choosenStyle}-400  h-screen flex flex-col w-full`}
       >
         <header
           className="flex  justify-end border-0
@@ -41,7 +41,7 @@ const LayoutHome = () => {
           {/*delete FaBars icon that one start two menu */}
           <FaCog
             className={`relative top-0 right-0 z-40 text-5xl m-1 p-2 
-             cursor-pointer text-${choosenSytle ? choosenSytle:"sky"}-200 border-0`}
+             cursor-pointer border-0`}
             onClick={() => {
               setToggle(true);
               setSettingsOpen((prevToggle) => !prevToggle);
@@ -89,3 +89,4 @@ const LayoutHome = () => {
 
 export default LayoutHome;
 //<p className="text-white">{choosenSytle} stílus</p>
+//<span className="text-white">{choosenStyle}</span>
