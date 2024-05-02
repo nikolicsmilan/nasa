@@ -29,10 +29,13 @@ const LayoutHome = () => {
 
   return (
     <AnimatePresence>
+      {/*BETTENI IDE EZT NAGY LEHETŐSÉGEKET NYÚJT
+      MAGÁBAN bg-${choosenStyle}-400 */}
+      {/*text-${choosenStyle}-400 */}
       <div
         className={` overflow-y-auto overflow-x-hidden lg:overflow-y-hidden 
       mystyle border-0 border-red-400
-       bg-black text-${choosenStyle}-400  h-screen flex flex-col w-full`}
+       bg-black  text-sky-400 h-screen flex flex-col w-full`}
       >
         <header
           className="flex  justify-end border-0

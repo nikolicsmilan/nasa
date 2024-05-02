@@ -2,13 +2,13 @@ import React from "react";
 import { useSave } from "../../hooks/use-saveuser";
 import { MyAudioContext } from "../../context/AudioContext";
 import { MyDataContext } from "../../context/DataContext";
-import { styles } from "../../locales/localdata";
+import { styles,styles2 } from "../../locales/localdata";
 //kell egy természetben is látszó színséma!!!!
 const StyleConsole = ({ users }) => {
   const { saveUser } = useSave();
   const { playSoundClick } = MyAudioContext();
   const { setChoosenStyle } = MyDataContext();
- // console.log(users);
+  // console.log(users);
 
   const chooseString = (kapot) => {
     switch (kapot) {
@@ -18,14 +18,13 @@ const StyleConsole = ({ users }) => {
         return "bg-lime-400";
       case "Red":
         return "bg-red-400";
-      case "Empty":
-        return "";
-      default:
-        return "bg-sky-400";
+      case "Yellow":
+        return "bg-yellow-400";
+    
     }
   };
-
-
+/*
+  
   const changeStyle = (value) => {
 
     console.log("changeStyle: ",value)
@@ -38,13 +37,13 @@ const StyleConsole = ({ users }) => {
           return "lime";
         case "Red":
           return "red";
-        case "Empty":
-          return "purple";
+        case "Yellow":
+          return "yellow";
         default:
           return "gray";
       }
     });
-  };
+  };*/
 
   //const selectedStyle= DUMMY_STYLES.find((color)=>color.id ===users.style)
 
@@ -62,9 +61,10 @@ const StyleConsole = ({ users }) => {
             key={item.title}
             onClick={() => {
               //  setSettings(item?.title);
-              changeStyle(item?.title)
+              //changeStyle(item?.title)
+              setChoosenStyle(item?.title2);
               saveUser("style", item?.title);
-              playSoundClick();
+              // playSoundClick();
             }}
             className={`shadowactive customshadow3 
           cursor-pointer rounded relative flex-col my-1 w-40 lg:w-48 md:w-40
@@ -72,7 +72,7 @@ const StyleConsole = ({ users }) => {
           >
             <div
               className={`${chooseString(item?.title)} customshadow2 rounded
-          w-40 md:w-40 lg:w-48 h-full text-red-400 shadow-2xl border-0 
+          w-40 md:w-40 lg:w-48 h-full shadow-2xl border-0 
            md:opacity-10 opacity-10 mt-[0px] z-40`}
             ></div>
 
@@ -88,6 +88,21 @@ const StyleConsole = ({ users }) => {
           </div>
         ))}
       </div>
+     
+
+{styles?.map((item, index) => (
+  <div key={index} className={`text-${item.title2}-400`}>
+    {item?.title2}
+    <span className="text-white">{item?.title2}</span>
+  </div>
+))}
+
+{styles2?.map((item, index) => (
+  <div key={index} className={`text-${item.title2}-400`}>
+    {item?.title2}
+    <span className="text-white">{item?.title2}</span>
+  </div>
+))}
     </div>
   );
 };

@@ -25,9 +25,7 @@ const DesktopConsoleView = ({ stopClozer }) => {
         className="h-[300px] w-[500px] hidden lg:flex flex-wrap lg:max-w-2xl  border-0   relative z-50"
       >
         <p
-          className={`m-1 text-center border-0 w-full text-${
-            choosenStyle ? choosenStyle : "sky"
-          }-200 uppercase`}
+          className={`m-1 text-center border-0 w-full uppercase`}
         >
           {settings} console - <span className="text-white">{choosenStyle}</span>
         </p>
@@ -45,7 +43,7 @@ const DesktopConsoleView = ({ stopClozer }) => {
         ></div>
         {/* settings values equal settingshome in localdata */}
         {settings === "Navigation" && <NavigationConsole />}
-        {settings === "Style" && <StyleConsole key={users} users={users} />}
+        {settings === "Style" && <StyleConsole  users={users} />}
         {settings === "Sound" && <SoundConsole />}
         {settings === "Language" && <LanguageConsole />}
         {settings === "Data" && <DataConsole />}

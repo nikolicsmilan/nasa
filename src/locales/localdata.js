@@ -72,7 +72,6 @@ export const returnMenu = [
     icon: FaProjectDiagram,
     link: "/",
   },
- 
 ];
 
 export const settingshome = [
@@ -109,21 +108,49 @@ export const start = [
 export const styles = [
   {
     title: "Blue",
+    title2: "sky",
     icon: FaPalette,
   },
   {
     title: "Green",
+    title2: "lime",
     icon: FaPalette,
   },
   {
     title: "Red",
+    title2: "red",
     icon: FaPalette,
-  },  {
-    title: "Empty",
+  },
+  {
+    title: "Yellow",
+    title2: "yellow",
     icon: FaPalette,
   },
 ];
 
+
+export const styles2 = [
+  {
+    title: "Blue",
+    title2: "red",
+    icon: FaPalette,
+  },
+  {
+    title: "Green",
+    title2: "lime",
+    icon: FaPalette,
+  },
+  {
+    title: "Red",
+    title2: "sky",
+    icon: FaPalette,
+  },
+  {
+    title: "Yellow",
+    title2: "yellow",
+    icon: FaPalette,
+  },
+];
 
 export const ip1000 = [
   {
