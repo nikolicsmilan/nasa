@@ -1,13 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSave } from "../../hooks/use-saveuser";
 import { MyAudioContext } from "../../context/AudioContext";
 import { MyDataContext } from "../../context/DataContext";
-import { styles,styles2 } from "../../locales/localdata";
+import { styles, styles2 } from "../../locales/localdata";
+import { theme } from "tailwindcss-themer";
 //kell egy természetben is látszó színséma!!!!
 const StyleConsole = ({ users }) => {
   const { saveUser } = useSave();
   const { playSoundClick } = MyAudioContext();
   const { setChoosenStyle } = MyDataContext();
+  const [activeTheme, setActiveTheme] = useState("city");
+
+  const handleThemeChange = (themeName) => {
+    setActiveTheme(themeName);
+  };
+
+  const primaryColor = theme(`themes.${activeTheme}.colors.primary`);
+  const secondaryColor = theme(`themes.${activeTheme}.colors.secondary`);
+  const successColor = theme(`themes.${activeTheme}.colors.success`);
   // console.log(users);
 
   const chooseString = (kapot) => {
@@ -20,10 +30,9 @@ const StyleConsole = ({ users }) => {
         return "bg-red-400";
       case "Yellow":
         return "bg-yellow-400";
-    
     }
   };
-/*
+  /*
   
   const changeStyle = (value) => {
 
@@ -88,21 +97,33 @@ const StyleConsole = ({ users }) => {
           </div>
         ))}
       </div>
-     
 
-{styles?.map((item, index) => (
-  <div key={index} className={`text-${item.title2}-400`}>
-    {item?.title2}
-    <span className="text-white">{item?.title2}</span>
-  </div>
-))}
+      {styles?.map((item, index) => (
+        <div key={index} className={`text-${item.title2}-400`}>
+          {item?.title2}
+          <span className="text-white">{item?.title2}</span>
+        </div>
+      ))}
 
-{styles2?.map((item, index) => (
-  <div key={index} className={`text-${item.title2}-400`}>
-    {item?.title2}
-    <span className="text-white">{item?.title2}</span>
-  </div>
-))}
+      {styles2?.map((item, index) => (
+        <div key={index} className={`text-${item.title2}-400`}>
+          {item?.title2}
+          <span className="text-white">{item?.title2}</span>
+        </div>
+      ))}
+
+      <div className={`bg-${primaryColor} text-${secondaryColor}`}>
+        <h1 className={`text-${successColor}`}>Welcome to my App!</h1>
+        <p>This is an example of theming with Tailwind CSS.</p>
+
+        <div>
+          <button onClick={() => handleThemeChange("city")}>City Theme</button>
+          <button onClick={() => handleThemeChange("space")}>
+            Space Theme
+          </button>
+          {/* További témák gombjai ... */}
+        </div>
+      </div>
     </div>
   );
 };

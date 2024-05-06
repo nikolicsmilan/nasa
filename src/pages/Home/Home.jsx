@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import earthdoublemirror from "../../assets/video/earth_double_mirror.mov"
+import earthdoublemirror2 from "../../assets/video/earth_double_mirror_short.mov"
 import useWindowSize from "../../hooks/use-windowsize";
 import { MyDataContext } from "../../context/DataContext";
 import BiggerConsoles from "../../components/consoles/views/BiggerConsoles";
@@ -15,7 +15,7 @@ const Home = () => {
   return (
     <div className={` border-0  border-red-400 w-full z-50 relative   ${settingsOpen ? "opacity-20 " : ""} `}>
       <video
-        src={earthdoublemirror}
+        src={earthdoublemirror2}
         className="background-video border-0 border-red-400  opacity-100"
         autoPlay
         loop
@@ -38,17 +38,18 @@ const Home = () => {
                border-0 text-center lg:text-3xl 
                text-2xl  opacity-100 uppercase font-bold`}
               >
-                <span className="text-sky-200">Asteroid impact</span>
-                 <span className="text-sky-600 block">warning </span> <span className="text-sky-200">systems</span> 
+                <span className=" text-sky-200 block">Asteroid impact</span>
+                 <span className="text-sky-600 rounded p-2">warning </span> <span className="text-sky-200 block">systems</span> 
               </h1>
               
-              <div className="flex justify-center items-center">
-              <h2 className="text-sky-300 text-xl font-bold">
-          
-                  "It's a small step for the developer, but a huge step against
-                  the fake news..."
-                </h2>
+              <div className="flex flex-col justify-center items-center">
+           
               <BiggerConsoles menupoint={start} className="   lg:hidden " />
+              <h2 className="m-1 absolute bottom-0 text-sky-200 text-xl font-bold">
+          
+          "It's a small step for the developer, but a huge step against
+          the fake news..."
+        </h2>
               </div>
               
           
