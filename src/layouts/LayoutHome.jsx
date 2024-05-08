@@ -43,7 +43,7 @@ const LayoutHome = () => {
         >
           {/*delete FaBars icon that one start two menu */}
           <FaCog
-            className={`relative top-0 right-0 z-40 text-5xl m-1 p-2 
+            className={`relative top-0 right-0 z-40 text-3xl lg:text-4xl m-1 p-2 
              cursor-pointer border-0`}
             onClick={() => {
               setToggle(true);

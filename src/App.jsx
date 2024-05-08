@@ -12,6 +12,7 @@ import SpaceKnowledge from "./pages/Spaceknowledge/SpaceKnowledge";
 import Quiz from "./pages/Quiz/Quiz";
 import SolarSytsem from "./pages/SolarSystem/SolarSystem";
 import { useSave } from "./hooks/use-saveuser";
+import { MyDataContext } from "./context/DataContext";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -44,8 +45,9 @@ const router = createBrowserRouter([
 function App() {
 //It is needed for the initilazation
   const {saveUser} = useSave()
+  const { choosenStyle } = MyDataContext();
   return (
-    <div className="">
+    <div className={`${choosenStyle}`}>
       <RouterProvider router={router} />
     </div>
   );

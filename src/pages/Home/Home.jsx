@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import earthdoublemirror2 from "../../assets/video/earth_double_mirror_short.mov"
+import earth from "../../assets/video/earth3.mov"
 import useWindowSize from "../../hooks/use-windowsize";
 import { MyDataContext } from "../../context/DataContext";
 import BiggerConsoles from "../../components/consoles/views/BiggerConsoles";
@@ -15,7 +15,7 @@ const Home = () => {
   return (
     <div className={` border-0  border-red-400 w-full z-50 relative   ${settingsOpen ? "opacity-20 " : ""} `}>
       <video
-        src={earthdoublemirror2}
+        src={earth}
         className="background-video border-0 border-red-400  opacity-100"
         autoPlay
         loop
