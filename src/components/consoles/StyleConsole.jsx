@@ -30,7 +30,7 @@ const StyleConsole = ({ users }) => {
            h-14  border-0 m-2 border-lime-400`}
          >
            <div
-             className={` bg-lime-400 customshadow2 rounded
+             className={` bg-sky-400 customshadow2 green:boxShadowgreen rounded
            w-40 md:w-40 lg:w-48 h-full text-white shadow-2xl border-0 
             md:opacity-10 opacity-10 mt-[0px] z-40 `}
            ></div>
@@ -55,10 +55,13 @@ const StyleConsole = ({ users }) => {
         </div>
       ))}
 
-
-
+<div className="shadow-boxShadowgreen shadow-slate-950">sssssssssssss
+  Ez legyen árnyékos {choosenStyle} <p className="shadow-boxShadowgreen lime:text-blue-200 space:bg-red-400 space:text-orange-400">ez eddlgyen másmilyen színű</p>
+</div>
+<div className="shadow-green"> ITT VAN VALAMI</div>
+<div className="shadow-boxShadowgreen">Tartalom</div>
 <h2 className="text-primary">Ez egy szöveg1111111111111</h2>
-      <h2 className="bg-primary text-white">Ez egy szöveg2222222222 </h2>
+      <h2 className="bg-primary space:bg-red-400 space:text-orange-400">Ez egy szöveg2222222222 </h2>
       <h2 className="text-primaryb">Ez egy szöveg</h2>
       <h2 className="bg-primaryb">Ez egy szöveg </h2>
       <h2 className="city:font-bold space:text-red-400">Ez egy szöveg </h2>

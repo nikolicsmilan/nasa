@@ -37,7 +37,7 @@ module.exports = {
           },
         },
         {
-          name: "green",
+          name: "lime",
           extend: {
             colors: {
               primary: "rgb(129, 171, 178)",
@@ -46,6 +46,9 @@ module.exports = {
               info: "rgb(191, 191, 191)",
               dark: "rgb(0, 0, 0)",
               asidebg: "rgb(129, 171, 178)",
+            },
+            boxShadow: {
+              green: '10px 0px 10px 3px rgba(144, 78, 82, 0.75)',
             },
           },
         },
