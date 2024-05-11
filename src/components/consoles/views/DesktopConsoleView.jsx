@@ -25,7 +25,7 @@ const DesktopConsoleView = ({ stopClozer }) => {
         className="h-[300px] w-[500px] hidden lg:flex flex-wrap lg:max-w-2xl  border-0   relative z-50"
       >
         <p
-          className={`m-1 text-center border-0 w-full uppercase`}
+          className={` text-primary m-1 text-center border-0 w-full uppercase`}
         >
           {settings} console - <span className="text-white">{choosenStyle}</span>
         </p>

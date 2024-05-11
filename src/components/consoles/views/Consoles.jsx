@@ -28,7 +28,7 @@ const Consoles = ({ menupoint }) => {
              h-14  border-0 border-orange-400`}
             >
               <div
-                className={` bg-${choosenStyle}-400 customshadow2 rounded
+                className={` bg-primary customshadow2 rounded
              w-40 md:w-40 lg:w-48 h-full text-white shadow-2xl border-0 
                md:opacity-10 opacity-10 mt-[0px] z-40`}
               ></div>
@@ -39,7 +39,7 @@ const Consoles = ({ menupoint }) => {
              border-purple-400 shadow-2xl items-center 
               border-0 bg-dark-800 z-20 mt-[-55px]  text-sky-100"
               >
-                <p className="mx-2 "> {<item.icon />}</p>
+                <p className="mx-2 text-primary"> {<item.icon />}</p>
                 <h2 className=" opacity-100">{item?.title}</h2>
               </div>
             </div>

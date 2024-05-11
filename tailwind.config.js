@@ -28,7 +28,8 @@ module.exports = {
           extend: {
             colors: {
               primary: "#22d3ee",
-              secondary: "rgb(237, 237, 237)",
+              200:"#bae6fd",
+              600: "#0284c7",
               success: "rgb(63, 178, 121)",
               info: "rgb(191, 191, 191)",
               dark: "rgb(0, 0, 0)",
@@ -40,8 +41,9 @@ module.exports = {
           name: "lime",
           extend: {
             colors: {
-              primary: "rgb(129, 171, 178)",
-              secondary: "rgb(237, 237, 237)",
+              primary: "#a3e635",
+              200:"#d9f99d",
+              600: "#65a30d",
               success: "rgb(63, 178, 121)",
               info: "rgb(191, 191, 191)",
               dark: "rgb(0, 0, 0)",
@@ -56,8 +58,9 @@ module.exports = {
           name: "city",
           extend: {
             colors: {
-              primary: "rgb(129, 171, 178)",
-              secondary: "rgb(237, 237, 237)",
+              primary: "#4ade80",
+              200:"#bbf7d0",
+              600: "#16a34a",
               success: "rgb(63, 178, 121)",
               info: "rgb(191, 191, 191)",
               dark: "rgb(0, 0, 0)",
@@ -69,8 +72,9 @@ module.exports = {
           name: "space",
           extend: {
             colors: {
-              primary: "rgb(40, 164, 241, 0.938)",
-              secondary: "rgb(25, 25, 25)",
+              primary: "#60a5fa",
+              200:"#bfdbfe",
+              600: "#2563eb",
               success: "rgb(237, 237, 237)",
               info: "rgb(40, 164, 241, 0.938)",
               dark: "rgb(0, 0, 0)",

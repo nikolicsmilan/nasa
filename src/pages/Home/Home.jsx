@@ -34,18 +34,18 @@ const Home = () => {
              flex-col justify-center flex-wrap lg:p-10 "
             >
               <h1
-                className={`text-${choosenSytle ? choosenSytle:"sky"}-400 cursor-pointer z-10 p-2
+                className={`text-primary cursor-pointer z-10 p-2
                border-0 text-center lg:text-3xl 
                text-2xl  opacity-100 uppercase font-bold`}
               >
-                <span className=" text-sky-200 block">Asteroid impact</span>
-                 <span className="text-sky-600 rounded p-2">warning </span> <span className="text-sky-200 block">systems</span> 
+                <span className=" text-200 block">Asteroid impact</span>
+                 <span className="text-600 rounded p-2">warning </span> <span className="text-200 block">systems</span> 
               </h1>
               
               <div className="flex flex-col justify-center items-center">
            
               <BiggerConsoles menupoint={start} className="   lg:hidden " />
-              <h2 className="m-1 absolute bottom-0 text-sky-200 text-xl font-bold">
+              <h2 className="m-1 absolute bottom-0 text-200 text-xl font-bold">
           
           "It's a small step for the developer, but a huge step against
           the fake news..."

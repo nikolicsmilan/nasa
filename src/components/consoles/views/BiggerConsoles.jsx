@@ -20,7 +20,7 @@ const BiggerConsoles = ({menupoint}) => {
             relative flex-col m-3 w-48  h-28 
             border-0 border-orange-400`}
           >
-            <div className={` bg-${choosenStyle}-400 customshadow2 rounded-2xl
+            <div className={` bg-primary customshadow2 rounded-2xl
            w-48 h-full shadow-2xl border-0
                 opacity-10 mt-[0px] z-40`}></div>
 
@@ -28,7 +28,7 @@ const BiggerConsoles = ({menupoint}) => {
              flex h-28 border-purple-400 shadow-2xl 
              items-center justify-center border-0 bg-dark-800 
              z-20 mt-[-110px] font-bold">
-              <p className={`text-sky-400 mx-2`}> {<item.icon />}</p>
+              <p className={`text-primary mx-2`}> {<item.icon />}</p>
               <h2 className="text-red-600 opacity-100 font-bold text-3xl uppercase">{item.title}</h2>
             </div>
           </div>
