@@ -5,9 +5,11 @@ export const useSave = () => {
   const { users, setUsers, setChoosenStyle, choosenStyle } = MyDataContext();
  // console.log("useSave: ", users, "choosenSytle: ", choosenSytle);
   useEffect(() => {
+
     const storedData = JSON.parse(localStorage.getItem("userData"));
     if (storedData) {
       setUsers(storedData);
+      setChoosenStyle(storedData.style)
     }
   }, []); // üres dependency array, hogy csak a komponens mountolásakor fusson le ez az useEffect
 

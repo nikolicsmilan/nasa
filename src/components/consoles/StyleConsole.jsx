@@ -22,6 +22,7 @@ const StyleConsole = ({ users }) => {
            <div
            key={item.title}
            onClick={() => {
+            saveUser("style", item?.title)
             setChoosenStyle(item?.title);
              playSoundClick()
            }}
