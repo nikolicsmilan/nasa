@@ -1,8 +1,19 @@
-import React from 'react'
-
+import React from 'react';
+import { languages } from "../../locales/localdata";
+import { useSave } from "../../hooks/use-saveuser";
+import GenericConsole from './GenericConsole';
 const LanguageConsole = () => {
+  const { saveUser } = useSave();
+  const handleClick = (item) => {
+    saveUser("sound", item?.title);
+    playSoundClick();
+  };
   return (
-    <div>LanguageConsole</div>
+    <GenericConsole
+    data={languages}
+    handleClick={handleClick}
+    placeholder="ITT VAN VALAMI"
+  />
   )
 }
 

@@ -3,7 +3,6 @@ import {
   FaProjectDiagram,
   FaPalette,
   FaVolumeUp,
-  FaLanguage,
   FaDatabase,
   FaRocket,
 } from "react-icons/fa";
@@ -13,6 +12,9 @@ import {
   FaSpaceShuttle,
   FaImages,
   FaSignInAlt,
+  FaToggleOff,
+  FaToggleOn,
+  FaLanguage,
 } from "react-icons/fa";
 
 export const homemenu = [
@@ -105,7 +107,6 @@ export const start = [
   },
 ];
 
-
 export const styles = [
   {
     title: "sky",
@@ -127,16 +128,24 @@ export const styles = [
 export const sounds = [
   {
     title: "on",
-    icon: FaPalette,
+    icon: FaToggleOn,
   },
   {
     title: "off",
-    icon: FaPalette,
+    icon: FaToggleOff,
   },
- 
-
 ];
 
+export const languages = [
+  {
+    title: "hu",
+    icon: FaLanguage,
+  },
+  {
+    title: "en",
+    icon: FaLanguage,
+  },
+];
 
 export const ip1000 = [
   {

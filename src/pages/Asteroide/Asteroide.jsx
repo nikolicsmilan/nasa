@@ -10,11 +10,8 @@ import { NavLink } from "react-router-dom";
 
 
 const Asteroide = () => {
-  const { setSettings,choosenSytle } = MyDataContext();
-  /*
-  useEffect(() => {
-    setSettings("");
-  }, []);*/
+  const { toggle,choosenSytle } = MyDataContext();
+
 
   const asteroidak = [
     { name: "asteroide1", ip: 5 },
@@ -22,7 +19,7 @@ const Asteroide = () => {
   ];
 
   return (
-    <div className=" border-0  border-purple-400 w-full z-50 relative ">
+    <div className={`border-0  border-purple-400 w-full z-10 relative ${toggle ?"opacity-20":""}`}>
       <div className="flex  w-full h-screen relative text-xl z-10 border-0 border-lime-400 mt-[0px] ">
         <div
           className={` flex flex-col border-0 md:m-0 py-0 md:py-0 text-center lg:w-full  border-orange-400 mt-[30px] `}

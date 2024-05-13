@@ -1,19 +1,23 @@
 import React, { useEffect } from "react";
-import earth from "../../assets/video/earth3.mov"
+import earth from "../../assets/video/earth3.mov";
 import useWindowSize from "../../hooks/use-windowsize";
 import { MyDataContext } from "../../context/DataContext";
 import BiggerConsoles from "../../components/consoles/views/BiggerConsoles";
 import { start } from "../../locales/localdata";
 
 const Home = () => {
-  const { setSettings, settingsOpen,choosenSytle } = MyDataContext();
+  const { setSettings, settingsOpen, choosenSytle } = MyDataContext();
   useEffect(() => {
     setSettings;
     setSettings("Navigation");
   }, []);
 
   return (
-    <div className={` border-0  border-red-400 w-full z-50 relative   ${settingsOpen ? "opacity-20 " : ""} `}>
+    <div
+      className={`border-0  border-sky-100 w-full z-50 relative   ${
+        settingsOpen ? "opacity-20 " : ""
+      } `}
+    >
       <video
         src={earth}
         className="background-video border-0 border-red-400  opacity-100"
@@ -39,37 +43,24 @@ const Home = () => {
                text-2xl  opacity-100 uppercase font-bold`}
               >
                 <span className=" text-200 block">Asteroid impact</span>
-                 <span className="text-600 rounded p-2">warning </span> <span className="text-200 block">systems</span> 
+                <span className="text-600 rounded p-2">warning </span>{" "}
+                <span className="text-200 block">systems</span>
               </h1>
-              
+
               <div className="flex flex-col justify-center items-center">
-           
-              <BiggerConsoles menupoint={start} className="   lg:hidden " />
-              <h2 className="m-1 absolute bottom-0 text-200 text-xl font-bold">
-          
-          "It's a small step for the developer, but a huge step against
-          the fake news..."
-        </h2>
+                <BiggerConsoles menupoint={start} className="   lg:hidden " />
+                <h2 className="m-1 absolute bottom-20 text-200 text-xl font-bold">
+                  "It's a small step for the developer, but a huge step against
+                  the fake news..."
+                </h2>
               </div>
-              
-          
             </div>
           </div>
         </div>
       </div>
-    
     </div>
   );
 };
 
 export default Home;
 
-/*
-    <div className="hidden overflow-y-auto h-80 lg:h-auto p-2 flex">
-                <h2 className="my-5">
-                  {" "}
-                  "It's a small step for the developer, but a huge step against
-                  the fake news."
-                </h2>
-              </div>
-*/
