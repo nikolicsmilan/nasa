@@ -11,7 +11,7 @@ export const DataContextProvider = ({ children }) => {
   const [toggle, setToggle] = useState(true);
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [settings, setSettings] = useState("Navigation");
-  const [users, setUsers] = useState({});
+  const [users, setUsers] = useState({style:"sky",sound:"on"});
   const [choosenStyle, setChoosenStyle] = useState("sky");
 
 

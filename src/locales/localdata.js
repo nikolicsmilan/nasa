@@ -124,6 +124,19 @@ export const styles = [
     icon: FaPalette,
   },
 ];
+export const sounds = [
+  {
+    title: "on",
+    icon: FaPalette,
+  },
+  {
+    title: "off",
+    icon: FaPalette,
+  },
+ 
+
+];
+
 
 export const ip1000 = [
   {

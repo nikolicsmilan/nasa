@@ -9,7 +9,7 @@ export const useSave = () => {
     const storedData = JSON.parse(localStorage.getItem("userData"));
     if (storedData) {
       setUsers(storedData);
-      setChoosenStyle(storedData.style)
+      setChoosenStyle(storedData.style || "sky")
     }
   }, []); // üres dependency array, hogy csak a komponens mountolásakor fusson le ez az useEffect
 

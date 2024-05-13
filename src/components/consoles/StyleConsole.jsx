@@ -47,25 +47,11 @@ const StyleConsole = ({ users }) => {
            </div>
          </div>
         ))}
+       
       </div>
+     
+      <div className="shadow-green"> ITT VAN VALAMI</div>
 
-      {styles?.map((item, index) => (
-        <div key={index} className={`text-${item.title2}-400`}>
-          {item?.title2}
-          <span className="text-white">{item?.title2}</span>
-        </div>
-      ))}
-
-<div className="shadow-boxShadowgreen shadow-slate-950">sssssssssssss
-  Ez legyen árnyékos {choosenStyle} <p className="shadow-boxShadowgreen lime:text-blue-200 space:bg-red-400 space:text-orange-400">ez eddlgyen másmilyen színű</p>
-</div>
-<div className="shadow-green"> ITT VAN VALAMI</div>
-<div className="shadow-boxShadowgreen">Tartalom</div>
-<h2 className="text-primary">Ez egy szöveg1111111111111</h2>
-      <h2 className="bg-primary space:bg-red-400 space:text-orange-400">Ez egy szöveg2222222222 </h2>
-      <h2 className="text-primaryb">Ez egy szöveg</h2>
-      <h2 className="bg-primaryb">Ez egy szöveg </h2>
-      <h2 className="city:font-bold space:text-red-400">Ez egy szöveg </h2>
     </div>
   );
 };
@@ -80,3 +66,17 @@ export default StyleConsole;
       selectedStyle: {selectedStyle} */
 
       //city:bg-primary space:bg-primary sky:bg-sky-400 green:bg-lime-400
+/*
+
+
+<div className="shadow-boxShadowgreen shadow-slate-950">sssssssssssss
+  Ez legyen árnyékos {choosenStyle} <p className="shadow-boxShadowgreen lime:text-blue-200 space:bg-red-400 space:text-orange-400">ez eddlgyen másmilyen színű</p>
+</div>
+<div className="shadow-green"> ITT VAN VALAMI</div>
+<div className="shadow-boxShadowgreen">Tartalom</div>
+<h2 className="text-primary">Ez egy szöveg1111111111111</h2>
+      <h2 className="bg-primary space:bg-red-400 space:text-orange-400">Ez egy szöveg2222222222 </h2>
+      <h2 className="text-primaryb">Ez egy szöveg</h2>
+      <h2 className="bg-primaryb">Ez egy szöveg </h2>
+      <h2 className="city:font-bold space:text-red-400">Ez egy szöveg </h2>
+*/

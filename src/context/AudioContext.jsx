@@ -1,12 +1,14 @@
 import { useContext, createContext, useState, useEffect } from "react";
 import clicksound from "../assets/sound/click.mp3";
-
+import  {MyDataContext} from "./DataContext"
 const AudioContext = createContext();
 
 export const AudioContextProvider = ({ children }) => {
+  const { users } = MyDataContext();
   const [sound, setSound] = useState({});
   const playSoundClick = () => {
-    if (sound && sound.click) {
+    if (sound && sound.click &&  users?.sound === "on") {
+      console.log("hangot ad")
       sound.click.currentTime = 0;
       sound.click.volume = 0.2;
       sound.click.play();
@@ -36,7 +38,9 @@ export const AudioContextProvider = ({ children }) => {
   return (
     <AudioContext.Provider
       value={{
-        sound,playSoundClick
+        sound,
+        playSoundClick,
+      
       }}
     >
       {children}
