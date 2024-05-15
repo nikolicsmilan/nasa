@@ -1,7 +1,7 @@
 import React, { useEffect, useContext } from "react";
 import { MyDataContext } from "../context/DataContext";
-
-export const useSave = () => {
+import UAParser from "ua-parser-js";
+export const useInfo = () => {
   const { users, setUsers, setChoosenStyle, choosenStyle } = MyDataContext();
 
   useEffect(() => {

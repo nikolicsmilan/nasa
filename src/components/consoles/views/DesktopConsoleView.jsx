@@ -30,16 +30,16 @@ const DesktopConsoleView = ({ stopClozer }) => {
           {settings} console - <span className="text-white">{choosenStyle}</span>
         </p>
         <div
-          className={`absolute top-0 left-0 w-8 h-8 bg-transparent border-t-2 border-l-2 border-sky-200 border-${choosenStyle}-200 transform -translate-x-2 -translate-y-2`}
+          className={`absolute top-0 left-0 w-8 h-8 bg-transparent border-t-2 border-l-2 border-600 transform -translate-x-2 -translate-y-2`}
         ></div>
         <div
-          className={`absolute top-0 right-0 w-8 h-8 bg-transparent border-t-2 border-r-2 border-${choosenStyle}-200 transform translate-x-1 -translate-y-2`}
+          className={`absolute top-0 right-0 w-8 h-8 bg-transparent border-t-2 border-r-2 border-600 transform translate-x-1 -translate-y-2`}
         ></div>
         <div
-          className={`absolute bottom-0 left-0 w-8 h-8 bg-transparent border-b-2 border-l-2 border-${choosenStyle}-200 transform -translate-x-1 translate-y-2`}
+          className={`absolute bottom-0 left-0 w-8 h-8 bg-transparent border-b-2 border-l-2 border-600 transform -translate-x-1 translate-y-2`}
         ></div>
         <div
-          className={`absolute bottom-0 right-0 w-8 h-8 bg-transparent border-b-2 border-r-2 border-${choosenStyle}-200 transform translate-x-1 translate-y-2`}
+          className={`absolute bottom-0 right-0 w-8 h-8 bg-transparent border-b-2 border-r-2 border-600 transform translate-x-1 translate-y-2`}
         ></div>
         {/* settings values equal settingshome in localdata */}
         {settings === "Navigation" && <NavigationConsole />}
@@ -47,6 +47,7 @@ const DesktopConsoleView = ({ stopClozer }) => {
         {settings === "Sound" && <SoundConsole />}
         {settings === "Language" && <LanguageConsole />}
         {settings === "Data" && <DataConsole />}
+        <div className=" w-full shadow-green text-center bottom-[-50px] relative">Sound: {users.sound} | Language: {users.language}  </div>
       </div>
     </motion.div>
   );

@@ -20,7 +20,7 @@ const GenericConsole = ({ data, handleClick, placeholder }) => {
           </div>
         ))}
       </div>
-      <div className="shadow-green">{placeholder}</div>
+    
     </div>
   );
 };
