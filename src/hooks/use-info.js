@@ -2,26 +2,20 @@ import React, { useEffect, useContext } from "react";
 import { MyDataContext } from "../context/DataContext";
 import UAParser from "ua-parser-js";
 export const useInfo = () => {
-  const { users, setUsers, setChoosenStyle, choosenStyle } = MyDataContext();
+  const { setBrowserInfo} = MyDataContext();
+
+  const teddAmitKell =()=>{
+    console.log("useInfo lefut?")
+  }
 
   useEffect(() => {
-    const storedData = JSON.parse(localStorage.getItem("userData"));
-    if (storedData) {
-      setUsers(storedData);
-      setChoosenStyle(storedData.style || "sky");
-    }
-  }, []); // üres dependency array, hogy csak a komponens mountolásakor fusson le ez az useEffect
+    // Parse the user agent string to get browser and device information
+    const parser = new UAParser();
+    const userAgent = navigator.userAgent;
+    const parsedInfo = parser.setUA(userAgent).getResult();
+    setBrowserInfo(parsedInfo);
+  }, []);
 
-  const saveUser = (key, value) => {
-    setUsers((prevObject) => {
-      const updatedUsers = {
-        ...prevObject,
-        [key]: value,
-      };
-      localStorage.setItem("userData", JSON.stringify(updatedUsers)); // a változások mentése localStorage-be
-      return updatedUsers;
-    });
-  };
 
-  return { saveUser, users };
+  return { teddAmitKell };
 };
