@@ -15,6 +15,18 @@ export const DataContextProvider = ({ children }) => {
   const [choosenStyle, setChoosenStyle] = useState("sky");
   const [browserInfo, setBrowserInfo] = useState(null);
 
+console.log("Ez a browserInfo: ",browserInfo)
+/*const {
+  browser: { name: browserName },
+ 
+} = browserInfo;*/
+/*
+const { browser: { name: browserName } = {} } = browserInfo;
+
+// Ez egy üres karakterláncot ad a browserName-nek, ha a browserInfo null vagy üres
+console.log(`Böngésző neve: ${browserName}`);*/
+//console.log("Ez a browserName: ",browserName)
+
   /*
   useEffect(()=>{
     changeStyle(users.style)

@@ -13,6 +13,7 @@ export const useInfo = () => {
     const parser = new UAParser();
     const userAgent = navigator.userAgent;
     const parsedInfo = parser.setUA(userAgent).getResult();
+    console.log("parsedinfo: ",parsedInfo );
     setBrowserInfo(parsedInfo);
   }, []);
 
