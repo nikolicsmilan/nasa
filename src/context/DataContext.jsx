@@ -1,5 +1,6 @@
 import { useContext, createContext, useState, useEffect } from "react";
 import { useSave } from "../hooks/use-saveuser";
+import UAParser from "ua-parser-js";
 
 const DataContext = createContext();
 
@@ -36,6 +37,16 @@ console.log(`Böngésző neve: ${browserName}`);*/
   // HA A USERS MEGVÁLTOZIK ÉS BEÁLÍT PARAMÉTEREKET AMIK AZTÁN
   // MEGJELENEK A KÜLÖNBÖZŐ KOMPONESEKBEN
   //STYLE >> bg-sky-400
+
+
+  useEffect(() => {
+    // Parse the user agent string to get browser and device information
+    const parser = new UAParser();
+    const userAgent = navigator.userAgent;
+    const parsedInfo = parser.setUA(userAgent).getResult();
+    console.log("parsedinfo: ",parsedInfo );
+    setBrowserInfo(parsedInfo);
+  }, []);
   return (
     <DataContext.Provider
       value={{

@@ -3,14 +3,14 @@ import useWindowSize from '../../hooks/use-windowsize'
 import { MyDataContext } from '../../context/DataContext';
 import { useInfo } from "../../hooks/use-info";
 const DataConsole = () => {
-  const {teddAmitKell} = useInfo()
+  //const {teddAmitKell} = useInfo()
   const { width, height } = useWindowSize();
   const { toggle, settings, setSettings, settingsOpen, browserInfo} = MyDataContext();
   console.log(" browserInfo: ", browserInfo,"browserInfo.name",browserInfo?.browser.name)
-  /*const {
+  const {
     browser: { name: browserName },
    
-  } = browserInfo;*/
+  } = browserInfo;
 
   return (
     <div className=" border-0 border-sky-400 flex items-center justify-center ">
@@ -32,7 +32,7 @@ const DataConsole = () => {
     
 
    Screen: {width}x{height} settings: {settings}
-   browser :
+   browser : {browserName}
   </div>
   )
 }
