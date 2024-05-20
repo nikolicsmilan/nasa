@@ -15,21 +15,23 @@ export const DataContextProvider = ({ children }) => {
   const [settings, setSettings] = useState("Navigation");
   const [users, setUsers] = useState({ style: "sky", sound: "on" });
   const [choosenStyle, setChoosenStyle] = useState("sky");
-  const {updateBrowserInfo} = useInfo()
+  const { updateBrowserInfo, updateIpAddress,updateGPS } = useInfo();
   const [browserInfo, setBrowserInfo] = useState(null);
-
-console.log("Ez a browserInfo: ",browserInfo)
-
+  const [ipAddress, setIPAddress] = useState("");
+  const [latitude, setLatitude] = useState(null);
+  const [longitude, setLongitude] = useState(null);
+  console.log("Ez a browserInfo: ", browserInfo);
 
   useEffect(() => {
     // Parse the user agent string to get browser and device information
- /*   const parser = new UAParser();
+    /*   const parser = new UAParser();
     const userAgent = navigator.userAgent;
     const parsedInfo = parser.setUA(userAgent).getResult();
     console.log("parsedinfo: ",parsedInfo );
     setBrowserInfo(parsedInfo);*/
-    updateBrowserInfo(setBrowserInfo)
-
+    updateBrowserInfo(setBrowserInfo);
+    updateIpAddress(setIPAddress);
+    updateGPS(setLatitude,setLongitude)
   }, []);
   return (
     <DataContext.Provider
@@ -48,6 +50,10 @@ console.log("Ez a browserInfo: ",browserInfo)
         setChoosenStyle,
         browserInfo,
         setBrowserInfo,
+        ipAddress,
+        setIPAddress,
+        latitude,
+        longitude,
       }}
     >
       {children}
@@ -58,7 +64,6 @@ console.log("Ez a browserInfo: ",browserInfo)
 export const MyDataContext = () => {
   return useContext(DataContext);
 };
-
 
 /*const {
   browser: { name: browserName },
@@ -71,12 +76,12 @@ const { browser: { name: browserName } = {} } = browserInfo;
 console.log(`Böngésző neve: ${browserName}`);*/
 //console.log("Ez a browserName: ",browserName)
 
-  /*
+/*
   useEffect(()=>{
     changeStyle(users.style)
   },[users?.style])*/
 
-  // KELLENE EGY OLYAN HOOK AMI AUTOMATIKUSAN LEFUT
-  // HA A USERS MEGVÁLTOZIK ÉS BEÁLÍT PARAMÉTEREKET AMIK AZTÁN
-  // MEGJELENEK A KÜLÖNBÖZŐ KOMPONESEKBEN
-  //STYLE >> bg-sky-400
+// KELLENE EGY OLYAN HOOK AMI AUTOMATIKUSAN LEFUT
+// HA A USERS MEGVÁLTOZIK ÉS BEÁLÍT PARAMÉTEREKET AMIK AZTÁN
+// MEGJELENEK A KÜLÖNBÖZŐ KOMPONESEKBEN
+//STYLE >> bg-sky-400

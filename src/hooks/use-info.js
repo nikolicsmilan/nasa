@@ -13,6 +13,38 @@ export const useInfo = () => {
     setBrowserInfo(parsedInfo);
   }
 
+  const updateIpAddress =(setIPAddress)=>{
+   const fetchIPAddress = async () => {
+      try {
+        const response = await fetch('https://api.ipify.org/?format=json');
+        const data = await response.json();
+        setIPAddress(data.ip);
+      } catch (error) {
+        console.log('Error retrieving IP address:', error);
+      }
+    };
 
-  return { updateBrowserInfo };
+    fetchIPAddress();
+  }
+
+  const updateGPS =(setLatitude,setLongitude)=>{
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          // Retrieve the latitude and longitude from the Geolocation API
+          setLatitude(position.coords.latitude);
+          setLongitude(position.coords.longitude);
+        },
+        (error) => {
+          setError(error.message);
+        }
+      );
+    } else {
+      setError("Geolocation is not supported by this browser.");
+    }
+   }
+
+
+
+  return { updateBrowserInfo,updateIpAddress,updateGPS };
 };
