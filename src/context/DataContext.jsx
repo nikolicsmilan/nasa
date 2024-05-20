@@ -1,5 +1,6 @@
 import { useContext, createContext, useState, useEffect } from "react";
 import { useSave } from "../hooks/use-saveuser";
+import { useInfo } from "../hooks/use-info";
 import UAParser from "ua-parser-js";
 
 const DataContext = createContext();
@@ -14,38 +15,21 @@ export const DataContextProvider = ({ children }) => {
   const [settings, setSettings] = useState("Navigation");
   const [users, setUsers] = useState({ style: "sky", sound: "on" });
   const [choosenStyle, setChoosenStyle] = useState("sky");
+  const {updateBrowserInfo} = useInfo()
   const [browserInfo, setBrowserInfo] = useState(null);
 
 console.log("Ez a browserInfo: ",browserInfo)
-/*const {
-  browser: { name: browserName },
- 
-} = browserInfo;*/
-/*
-const { browser: { name: browserName } = {} } = browserInfo;
-
-// Ez egy üres karakterláncot ad a browserName-nek, ha a browserInfo null vagy üres
-console.log(`Böngésző neve: ${browserName}`);*/
-//console.log("Ez a browserName: ",browserName)
-
-  /*
-  useEffect(()=>{
-    changeStyle(users.style)
-  },[users?.style])*/
-
-  // KELLENE EGY OLYAN HOOK AMI AUTOMATIKUSAN LEFUT
-  // HA A USERS MEGVÁLTOZIK ÉS BEÁLÍT PARAMÉTEREKET AMIK AZTÁN
-  // MEGJELENEK A KÜLÖNBÖZŐ KOMPONESEKBEN
-  //STYLE >> bg-sky-400
 
 
   useEffect(() => {
     // Parse the user agent string to get browser and device information
-    const parser = new UAParser();
+ /*   const parser = new UAParser();
     const userAgent = navigator.userAgent;
     const parsedInfo = parser.setUA(userAgent).getResult();
     console.log("parsedinfo: ",parsedInfo );
-    setBrowserInfo(parsedInfo);
+    setBrowserInfo(parsedInfo);*/
+    updateBrowserInfo(setBrowserInfo)
+
   }, []);
   return (
     <DataContext.Provider
@@ -74,3 +58,25 @@ console.log(`Böngésző neve: ${browserName}`);*/
 export const MyDataContext = () => {
   return useContext(DataContext);
 };
+
+
+/*const {
+  browser: { name: browserName },
+ 
+} = browserInfo;*/
+/*
+const { browser: { name: browserName } = {} } = browserInfo;
+
+// Ez egy üres karakterláncot ad a browserName-nek, ha a browserInfo null vagy üres
+console.log(`Böngésző neve: ${browserName}`);*/
+//console.log("Ez a browserName: ",browserName)
+
+  /*
+  useEffect(()=>{
+    changeStyle(users.style)
+  },[users?.style])*/
+
+  // KELLENE EGY OLYAN HOOK AMI AUTOMATIKUSAN LEFUT
+  // HA A USERS MEGVÁLTOZIK ÉS BEÁLÍT PARAMÉTEREKET AMIK AZTÁN
+  // MEGJELENEK A KÜLÖNBÖZŐ KOMPONESEKBEN
+  //STYLE >> bg-sky-400
