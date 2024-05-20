@@ -4,8 +4,17 @@ import { MyDataContext } from "../../context/DataContext";
 import { useInfo } from "../../hooks/use-info";
 const DataConsole = () => {
   const { width, height } = useWindowSize();
-  const { toggle, settings, setSettings, settingsOpen, browserInfo,ipAddress,latitude,longitude } =
-    MyDataContext();
+  const {
+    toggle,
+    settings,
+    setSettings,
+    settingsOpen,
+    users,
+    browserInfo,
+    ipAddress,
+    latitude,
+    longitude,
+  } = MyDataContext();
   console.log(
     " browserInfo: ",
     browserInfo,
@@ -27,15 +36,14 @@ const DataConsole = () => {
       <div>
         Screen: {width} x {height} px
       </div>
+      <div>Ip Address: {ipAddress || "no information"}</div>
       <div>
-      Ip Address: {ipAddress || "no information"}
+        GPS Cordinates: {latitude || "no information"}{" "}
+        {longitude || "no information"}
       </div>
-      <div>
-      GPS Cordinates: {latitude || "no information"}  {longitude || "no information"}
-      </div>
-    
-    
-    
+
+      <div>Sound: {users.sound}</div>
+      <div>Language: {users.language}</div>
     </div>
   );
 };

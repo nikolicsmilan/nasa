@@ -50,9 +50,7 @@ const DesktopConsoleView = ({ stopClozer }) => {
         {settings === "Sound" && <SoundConsole />}
         {settings === "Language" && <LanguageConsole />}
         {settings === "Data" && <DataConsole />}
-        <div className=" w-full shadow-green text-center bottom-[-50px] relative">
-          Sound: {users.sound} | Language: {users.language}{" "}
-        </div>
+      
       </div>
     </motion.div>
   );
@@ -60,3 +58,6 @@ const DesktopConsoleView = ({ stopClozer }) => {
 
 export default DesktopConsoleView;
 //h-[700px]
+/*  <div className=" w-full shadow-green text-center bottom-[-50px] relative">
+          Sound: {users.sound} | Language: {users.language}{" "}
+        </div> */
