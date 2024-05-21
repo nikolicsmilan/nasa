@@ -44,6 +44,11 @@ const DataConsole = () => {
 
       <div>Sound: {users.sound}</div>
       <div>Language: {users.language}</div>
+      <div className="m-4 ">
+      <div className="text-red-600 hidden  lg:block">lg</div>
+      <div className="text-red-600 hidden md:block lg:hidden">md</div>
+      <div className="text-red-600 block md:hidden lg:hidden">sm</div>
+    </div> 
     </div>
   );
 };

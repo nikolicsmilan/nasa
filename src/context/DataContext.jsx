@@ -13,7 +13,7 @@ export const DataContextProvider = ({ children }) => {
   const [toggle, setToggle] = useState(true);
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [settings, setSettings] = useState("Navigation");
-  const [users, setUsers] = useState({ style: "sky", sound: "on" });
+  const [users, setUsers] = useState({ style: "sky", sound: "on",language:"en" });
   const [choosenStyle, setChoosenStyle] = useState("sky");
   const { updateBrowserInfo, updateIpAddress,updateGPS } = useInfo();
   const [browserInfo, setBrowserInfo] = useState(null);
