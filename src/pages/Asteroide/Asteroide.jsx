@@ -9,7 +9,7 @@ import PieChartsExample2 from "./components/PieChartsExample2";
 import { NavLink } from "react-router-dom";
 import useWindowSize from "../../hooks/use-windowsize";
 import RechartsExample2 from "./components/RechartExample2";
-import earth from "../../assets/video/earth3.mov";
+
 const Asteroide = () => {
   const { toggle,choosenSytle } = MyDataContext();
   const { width, height } = useWindowSize();
@@ -22,7 +22,8 @@ const Asteroide = () => {
   return (
     <div className={`border-2  border-purple-400 w-full z-10 relative ${toggle ?"opacity-20":""}`}>
         <video
-        src={earth}
+       // src={earth}
+       src="https://sablonossablon.web.app/video/optimized_earth2.mp4"
         className="background-video border-0 border-red-400  opacity-30"
         autoPlay
         loop
