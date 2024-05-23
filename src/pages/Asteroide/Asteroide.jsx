@@ -9,6 +9,7 @@ import PieChartsExample2 from "./components/PieChartsExample2";
 import { NavLink } from "react-router-dom";
 import useWindowSize from "../../hooks/use-windowsize";
 import RechartsExample2 from "./components/RechartExample2";
+import IdentityCard from "./components/IdentityCard";
 
 const Asteroide = () => {
   const { toggle,choosenSytle } = MyDataContext();
@@ -20,7 +21,7 @@ const Asteroide = () => {
   ];
 
   return (
-    <div className={`border-2  border-purple-400 w-full z-10 relative ${toggle ?"opacity-20":""}`}>
+    <div className={`flex border-2  border-purple-400 w-full z-10 relative ${toggle ?"opacity-20":""}`}>
         <video
        // src={earth}
        src="https://sablonossablon.web.app/video/optimized_earth2.mp4"
@@ -90,7 +91,8 @@ const Asteroide = () => {
         </div>
       
       </div>
- 
+ <IdentityCard/>
+ <IdentityCard/>
     </div>
   );
 };
