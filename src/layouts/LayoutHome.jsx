@@ -7,6 +7,7 @@ import SettingsBarAnimation from "../components/Sidebar/SettingsBarAnimation";
 import { settingshome } from "../locales/localdata";
 import MobileConsoleView from "../components/consoles/views/MobileConsoleView";
 import DesktopConsoleView from "../components/consoles/views/DesktopConsoleView";
+import logo from "../assets/images/earthbg7.png"
 
 const LayoutHome = () => {
   const { setToggle, settingsOpen, setSettingsOpen, toggle,choosenStyle } = MyDataContext();
@@ -38,9 +39,18 @@ const LayoutHome = () => {
        bg-black  text-primary h-screen flex flex-col w-full`}
       >
         <header
-          className="flex  justify-end border-0
+          className=" w-full flex  justify-between border-0
          border-lime-600 absolute z-40 top-0 right-0 "
         >
+           <img src={logo}
+            className={`relative top-0 right-0 z-40  w-20 m-1 p-2 
+             cursor-pointer border-0`}
+            onClick={() => {
+              setToggle(true);
+              setSettingsOpen((prevToggle) => !prevToggle);
+              // setToggle((prevToggle) => !prevToggle); // Negált érték beállítása
+            }}
+          />
           {/*delete FaBars icon that one start two menu */}
           <FaCog
             className={`relative top-0 right-0 z-40 text-3xl lg:text-4xl m-1 p-2 

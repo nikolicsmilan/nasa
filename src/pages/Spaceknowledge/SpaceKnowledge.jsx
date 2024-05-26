@@ -3,11 +3,10 @@ import IdentityCard from "../Asteroide/components/IdentityCard";
 
 const SpaceKnowledge = () => {
   return (
-    <div className="text-center m-2 text-xl  h-screen">
-      <h1>SpaceKnowledge</h1>
+    <div className="text-center m-10 text-xl  h-screen ">
+<h1>Spacekonwledge</h1>
 
-      <div className="flex items-start justify-center bg-white
-       p-2 h-[2000px] w-[1000px]">
+      <div className=" ">
         <IdentityCard />
       </div>
     </div>
@@ -15,3 +14,5 @@ const SpaceKnowledge = () => {
 };
 
 export default SpaceKnowledge;
+/* top-10 flex items-start justify-center bg-white
+p-2 h-[2000px] w-[1000px]*/

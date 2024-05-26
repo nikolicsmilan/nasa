@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { homemenu, spaceKnowledgeMenu, returnMenu } from "../../locales/localdata";
+import { homemenu, spaceKnowledgeMenu, returnMenu,asteroidemenu } from "../../locales/localdata";
 import { useLocation } from "react-router-dom";
 
 import Consoles from "./views/Consoles";
@@ -10,7 +10,7 @@ import Consoles from "./views/Consoles";
 const menus = {
   "/": homemenu,
   "/spaceknowledge": spaceKnowledgeMenu,
-  "/asteroide":returnMenu
+  "/asteroide":asteroidemenu
 };
 
 const NavigationConsole = () => {

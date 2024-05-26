@@ -13,6 +13,9 @@ import Quiz from "./pages/Quiz/Quiz";
 import SolarSytsem from "./pages/SolarSystem/SolarSystem";
 import { useSave } from "./hooks/use-saveuser";
 import { MyDataContext } from "./context/DataContext";
+import SimpleDashboard from "./pages/Asteroide/components/SimpleDashBoard";
+import DoubleSidebarDashboard from "./pages/Asteroide/components/DoubleSideBarDashboard";
+import HeaderSidebarDashboard from "./pages/Asteroide/components/HeaderSideDashboard";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -28,6 +31,9 @@ const router = createBrowserRouter([
     errorElement: <Error />,
     children: [
       { index: true, element: <Asteroide /> },
+      { path: "simpledash", element: <SimpleDashboard /> },
+      { path: "doubledash", element: <DoubleSidebarDashboard /> },
+      { path: "headerdash", element: <HeaderSidebarDashboard /> },
       { path: ":detailId", element: <AsteroideDetail /> },
     ],
   },
@@ -47,7 +53,7 @@ function App() {
   const {saveUser} = useSave()
   const { choosenStyle } = MyDataContext();
   return (
-    <div className={`${choosenStyle}`}>
+    <div className={`${choosenStyle} font-robotoMono`}>
       <RouterProvider router={router} />
     </div>
   );

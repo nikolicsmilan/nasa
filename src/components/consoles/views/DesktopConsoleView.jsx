@@ -31,6 +31,9 @@ const DesktopConsoleView = ({ stopClozer }) => {
         >
           {settings} console -{" "}
           <span className="text-white">{choosenStyle}</span>
+          <span className="hidden  lg:inline"> - lg</span>
+          <span className="hidden md:inline lg:hidden"> - md</span>
+          <span className="inline md:hidden lg:hidden"> - sm</span>
         </p>
         <div
           className={`absolute top-0 left-0 w-8 h-8 bg-transparent border-t-2 border-l-2 border-600 transform -translate-x-2 -translate-y-2`}
@@ -50,7 +53,6 @@ const DesktopConsoleView = ({ stopClozer }) => {
         {settings === "Sound" && <SoundConsole />}
         {settings === "Language" && <LanguageConsole />}
         {settings === "Data" && <DataConsole />}
-      
       </div>
     </motion.div>
   );

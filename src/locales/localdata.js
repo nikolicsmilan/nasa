@@ -50,6 +50,35 @@ export const homemenu = [
   },
 ];
 
+
+export const asteroidemenu = [
+ 
+  {
+    title: "Simple",
+    icon: FaShieldAlt,
+    link: "simpledash",
+    description: "",
+  },
+  {
+    title: "Double",
+    icon: FaSpaceShuttle,
+    link: "doubledash",
+    description: "",
+  },
+  {
+    title: "Header",
+    icon: FaImages,
+    link: "headerdash",
+    description: "",
+  },
+  {
+    title: "Vissza",
+    icon: FaSignInAlt,
+    link: "/",
+    description: "",
+  },
+];
+
 export const spaceKnowledgeMenu = [
   {
     title: "Vissza",

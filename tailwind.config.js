@@ -35,6 +35,15 @@ module.exports = {
               dark: "rgb(0, 0, 0)",
               asidebg: "rgb(129, 171, 178)",
             },
+            fontFamily: {
+              robotoMono: ["Roboto Mono", "monospace"],
+            },
+            backgroundImage: {
+              // gradient from sky 950, 800, 100
+              gradient:
+                "linear-gradient(45deg, #082f49 1%, #075985 10%,  #cffafe 90% )",
+              mybackground: "url('../src/assets/images/desk.jpg')",
+            },
           },
         },
         {
@@ -48,6 +57,15 @@ module.exports = {
               info: "rgb(191, 191, 191)",
               dark: "rgb(0, 0, 0)",
               asidebg: "rgb(129, 171, 178)",
+            },
+            fontFamily: {
+              robotoMono: ["Roboto Mono", "monospace"],
+            },
+            backgroundImage: {
+               // gradient from lime 950, 800, 100
+              gradient:
+                "linear-gradient(45deg, #1a2e05 1%, #3f6212 10%, #ecfccb 90%)",
+              mybackground: "url('../src/assets/images/desk.jpg')",
             },
             boxShadow: {
               green: "10px 0px 10px 3px rgba(144, 78, 82, 0.75)",
@@ -66,6 +84,15 @@ module.exports = {
               dark: "rgb(0, 0, 0)",
               asidebg: "rgb(129, 171, 178)",
             },
+            fontFamily: {
+              robotoMono: ["Roboto Mono", "monospace"],
+            },
+            backgroundImage: {
+              // gradient from green 950, 800, 100
+              gradient:
+                "linear-gradient(45deg, #052e16 1%, #166534 10%,  #dcfce7 90% )",
+              mybackground: "url('../src/assets/images/desk.jpg')",
+            },
           },
         },
         {
@@ -81,10 +108,13 @@ module.exports = {
               asidebg: "rgb(237, 237, 237)",
             },
             fontFamily: {
-              sans: ["Futura", "ui-sans-serif", "system-ui"],
+              robotoMono: ["Roboto Mono", "monospace"],
             },
             backgroundImage: {
-              gradient: "linear-gradient(45deg, #082f49 1%, #075985 10%,  #cffafe 90% )",
+              gradient:
+              // gradient from blue 950, 800, 100
+                "linear-gradient(45deg, #172554 1%, #1e40af 10%,  #dbeafe 90% )",
+              mybackground: "url('../src/assets/images/desk.jpg')",
             },
           },
         },
@@ -92,4 +122,25 @@ module.exports = {
     }),
   ],
 };
+/*
+fontFamily: {
+  futura: ["Futura", "ui-sans-serif", "system-ui"],
+  arial: ["Arial", "ui-sans-serif", "system-ui"],
+  orbitron: ["Orbitron", "sans-serif"],
+  robotoMono: ["Roboto Mono", "monospace"],
+  exo2: ["Exo 2", "sans-serif"],
+},
+backgroundImage: {
+  gradient:
+    "linear-gradient(45deg, #082f49 1%, #075985 10%,  #cffafe 90% )",
+    mybackground: "url('../src/assets/images/desk.jpg')",
+},*/
 // gradient: "linear-gradient(130deg, #7dd3fc,  #082f49 90%)",
+
+/* fontFamily: {
+              futura: ["Futura", "ui-sans-serif", "system-ui"],
+              arial: ["Arial", "ui-sans-serif", "system-ui"],
+              orbitron: ["Orbitron", "sans-serif"],
+              robotoMono: ["Roboto Mono", "monospace"],
+              exo2: ["Exo 2", "sans-serif"],
+            }, */
