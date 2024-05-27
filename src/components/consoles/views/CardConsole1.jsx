@@ -3,7 +3,7 @@ import tocard from "../../../assets/images/tocard.JPG";
 import logo from "../../../assets/images/earthbg7.png";
 import qrcode from "../../../assets/images/qrcode.png";
 
-const CardConsole1 = ({ rotateX, rotateY, rotateZ,origin }) => {
+const CardConsole1 = ({ rotateX, rotateY, rotateZ,origin,description }) => {
   return (
    
       <div
@@ -21,8 +21,8 @@ const CardConsole1 = ({ rotateX, rotateY, rotateZ,origin }) => {
         shadow-2xl  transform  skew-x-0 skew-y-0 
           perspective-1000 m-1 h-48"
       >
-
-     
+<p className="text-dark">  {description}</p>
+   
 
       </div>
  
@@ -30,6 +30,11 @@ const CardConsole1 = ({ rotateX, rotateY, rotateZ,origin }) => {
 };
 
 export default CardConsole1;
+
+/*  <p className="text-lime-950 font-bold">
+              Palermo skála
+             Nincs veszély
+            </p> */
 /*   
         <div className="flex flex-row justify-between w-full text-start p-0">
           <div className="px-2 text-sm">

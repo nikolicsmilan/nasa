@@ -176,6 +176,39 @@ export const languages = [
   },
 ];
 
+
+export const filterconsole = [
+  {
+    title: "year",
+    icon: FaLanguage,
+  },
+  {
+    title: "Potential Impacts",
+    icon: FaLanguage,
+  },
+  {
+    title: "Velocity",
+    icon: FaLanguage,
+  },
+  {
+    title: "Diameter",
+    icon: FaLanguage,
+  },
+  {
+    title: "Magnitudo",
+    icon: FaLanguage,
+  },
+  {
+    title: "Palermo",
+    icon: FaLanguage,
+  },
+  {
+    title: "Torino",
+    icon: FaLanguage,
+  },
+];
+
+
 export const ip1000 = [
   {
     method: "IOBS",
