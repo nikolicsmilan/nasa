@@ -3,6 +3,8 @@ import CardConsole1 from "../../../components/consoles/views/CardConsole1";
 import { MyDataContext } from "../../../context/DataContext";
 import SquareminConsole from "../../../components/consoles/views/SquareminConsole";
 import FilterConsole from "../../../components/consoles/views/FilterConsole";
+import { filterconsole } from "../../../locales/localdata";
+import Super3dConsole from "../../../components/consoles/views/Super3dConsole";
 
 const DoubleSidebarDashboard = () => {
   const { toggle } = MyDataContext();
@@ -11,36 +13,63 @@ const DoubleSidebarDashboard = () => {
   const [rotateZ, setRotateZ] = useState(0);
   return (
     <div
-      className={`min-h-screen flex  border-0 border-orange-400 ${
+      className={`min-h-screen flex  border-2 border-orange-400 z-50 relative ${
         toggle ? "opacity-20" : ""
       }`}
     >
+      ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
       <video
         // src={earth}
         src="https://sablonossablon.web.app/video/optimized_earth2.mp4"
-        className="background-video border-0 border-red-400  opacity-30"
+        className="background-video border-0 border-red-400  opacity-100"
         autoPlay
         loop
         muted
       ></video>
-
-      <div className="flex w-full border-2 border-purple-400">
+      <div className="flex  w-full border-8 border-purple-400 opacity-70 relative z-50">
         {/* Bal oldali oldalsáv */}
         <aside className="w-80 bg-black text-white flex flex-col border-r-0 border-primary  justify-between my-5">
           <div
             className="h-16 flex items-center justify-center 
       border-gray-700"
           >
-            <span className="text-xl font-semibold text-primary">Information</span>
+            <span className="text-xl font-semibold text-primary">
+         
+ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+z -t nem kell változtatni Info x:-159 y:: 137 z: -180
+SUPER 3D
+FILTERCONSOLE GRAPH
+FILTERCONSOLE ITEMS
+Alapavető információk gombokkal magyarázatok wikipédiáról nasatól
+
+   Info x:{rotateX} y:: {rotateY} z: {rotateZ}
+            </span>
+          </div>
+          <div className="relative right-[550px]">
+          <Super3dConsole  nameconsole="Super 3D"
+              data={filterconsole}
+              origin="right center"
+              rotateX={rotateX}
+              rotateY={rotateY}
+              rotateZ={rotateZ}
+              description="Ide funkciók kellenek gombok szűrők  adatbázis alapján"/>
+          </div>
+        
+
+          <div className="border-red-400 border-0 relative right-[150px]">
+            <FilterConsole
+              nameconsole="FilterConsole Graph          "
+              data={filterconsole}
+              origin="left right"
+              rotateX={rotateX}
+              rotateY={rotateY}
+              rotateZ={rotateZ}
+              description="Ide funkciók kellenek gombok szűrők  adatbázis alapján"
+            />{" "}
           </div>
           <FilterConsole
-            origin="left center"
-            rotateX={rotateX}
-            rotateY={rotateY}
-            rotateZ={rotateZ}
-            description="Ide funkciók kellenek gombok szűrők  adatbázis alapján"
-          />{" "}
-          <CardConsole1
+            nameconsole="FilterConsole Items"
+            data={filterconsole}
             origin="left center"
             rotateX={rotateX}
             rotateY={rotateY}

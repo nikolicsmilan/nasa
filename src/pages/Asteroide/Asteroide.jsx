@@ -26,7 +26,8 @@ const Asteroide = () => {
 
   return (
     <div
-      className={` flex border-4  border-blue-400 w-full z-10 relative ${
+      className={`hover:bg-pink-400 flex border-0 
+       border-blue-400 w-full z-10 relative ${
         toggle ? "opacity-20" : ""
       }`}
     >

@@ -3,7 +3,7 @@ import tocard from "../../../assets/images/tocard.JPG";
 import logo from "../../../assets/images/earthbg7.png";
 import qrcode from "../../../assets/images/qrcode.png";
 
-const FilterConsole = ({
+const Super3dConsole = ({
     nameconsole,
     data,
     rotateX,
@@ -21,7 +21,7 @@ const FilterConsole = ({
           transformOrigin: origin,
         }}
         className=" relative z-10 rounded inset-0 border-b-8 
-        border-l-2 border-r-[20px]  border-t-2 border-600 bg-gradient lime:bg-gradient2 
+        border-r-2 border-l-[10px]  border-t-2 border-600 bg-gradient lime:bg-gradient2 
         text-dark flex
          flex-col items-start w-80 
          shadow-2xl transform perspective-1000 m-1 p-2 h-48 "
@@ -47,46 +47,7 @@ const FilterConsole = ({
     );
   };
   
-  export default FilterConsole;
+  export default Super3dConsole;
 
-/*
-const FilterConsole = ({
-  nameconsole,
-  data,
-  rotateX,
-  rotateY,
-  rotateZ,
-  origin,
-  description,
-}) => {
-  return (
-    <div
-      style={{
-        transform: `
-            rotateX(${rotateX}deg)
-             rotateY(${rotateY}deg)
-              rotateZ(${rotateZ}deg)`,
-        transformOrigin: origin,
-      }}
-      className=" rounded inset-0 border-b-2 border-l-2 border-t-2
-         border-600  bg-gradient lime:bg-gradient2
-        text-dark relative flex flex-col
-       items-start w-80   
-        shadow-2xl  transform  
-          perspective-1000 m-1 p-2 h-48"
-    >
-      <h3 className="bg-950 text-primary uperacase text-lg text-center w-full">
-        {nameconsole}
-      </h3>
-      <div className="flex flex-row flex-wrap text-3xl my-2 border-0 ">
-        {data.map((item) => (
-          <div className=" border-0 shadow  p-1 rounded m-2 bg-950 text-primary ">{<item.icon />}</div>
-        ))}
-      </div>
-    </div>
-  );
-};
 
-export default FilterConsole;*/
-
-//FilterConsole
+//Super3dConsole

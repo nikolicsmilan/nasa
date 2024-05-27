@@ -30,7 +30,7 @@ const router = createBrowserRouter([
     element: <LayoutHome />,
     errorElement: <Error />,
     children: [
-      { index: true, element: <Asteroide /> },
+      { index: true, element: <DoubleSidebarDashboard /> },
       { path: "simpledash", element: <SimpleDashboard /> },
       { path: "doubledash", element: <DoubleSidebarDashboard /> },
       { path: "headerdash", element: <HeaderSidebarDashboard /> },
@@ -53,7 +53,7 @@ function App() {
   const {saveUser} = useSave()
   const { choosenStyle } = MyDataContext();
   return (
-    <div className={`${choosenStyle} font-robotoMono`}>
+    <div className={`${choosenStyle} font-robotoMono `}>
       <RouterProvider router={router} />
     </div>
   );

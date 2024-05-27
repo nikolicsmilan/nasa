@@ -23,7 +23,7 @@ const Consoles = ({ menupoint }) => {
           >
             <div
               key={item?.id}
-              className={`shadowactive customshadow3
+              className={` shadowactive customshadow3
              cursor-pointer rounded relative flex-col my-1 w-40 lg:w-48 md:w-40
              h-14  border-0 border-orange-400`}
             >
@@ -34,7 +34,7 @@ const Consoles = ({ menupoint }) => {
               ></div>
 
               <div
-                className="customshadow2 rounded
+                className=" customshadow2 rounded
             text-base opacity-100 flex h-14
              border-purple-400 shadow-2xl items-center 
               border-0 bg-dark-800 z-20 mt-[-55px]  text-sky-100"

@@ -17,6 +17,9 @@ import {
   FaLanguage,
 } from "react-icons/fa";
 
+
+import { FaCalendarAlt, FaExclamationTriangle, FaTachometerAlt, FaRuler, FaStar, FaChartLine, FaFlag } from 'react-icons/fa';
+
 export const homemenu = [
   {
     title: "Home",
@@ -176,7 +179,45 @@ export const languages = [
   },
 ];
 
+export const filterconsole = [
+  {
+    title: "Year",
+    icon: FaCalendarAlt,
+    description: "Year of observation"
+  },
+  {
+    title: "Potential Impacts",
+    icon: FaExclamationTriangle,
+    description: "Potential impacts"
+  },
+  {
+    title: "Velocity",
+    icon: FaTachometerAlt,
+    description: "Object velocity"
+  },
+  {
+    title: "Diameter",
+    icon: FaRuler,
+    description: "Object diameter"
+  },
+  {
+    title: "Magnitudo",
+    icon: FaStar,
+    description: "Object magnitudo"
+  },
+  {
+    title: "Palermo",
+    icon: FaChartLine,
+    description: "Palermo scale"
+  },
+  {
+    title: "Torino",
+    icon: FaFlag,
+    description: "Torino scale"
+  },
+];
 
+/*
 export const filterconsole = [
   {
     title: "year",
@@ -184,7 +225,7 @@ export const filterconsole = [
   },
   {
     title: "Potential Impacts",
-    icon: FaLanguage,
+    icon: FaToggleOn,
   },
   {
     title: "Velocity",
@@ -206,7 +247,7 @@ export const filterconsole = [
     title: "Torino",
     icon: FaLanguage,
   },
-];
+];*/
 
 
 export const ip1000 = [
