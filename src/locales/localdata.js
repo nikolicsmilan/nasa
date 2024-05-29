@@ -16,6 +16,7 @@ import {
   FaToggleOn,
   FaLanguage,
 } from "react-icons/fa";
+import { FaSatelliteDish,FaSatellite  } from "react-icons/fa6";
 
 
 import { FaCalendarAlt, FaExclamationTriangle, FaTachometerAlt, FaRuler, FaStar, FaChartLine, FaFlag } from 'react-icons/fa';
@@ -134,7 +135,7 @@ export const settingshome = [
 export const start = [
   {
     title: "Start",
-    icon: FaRocket,
+    icon: FaSatellite,
     link: "/asteroide",
   },
 ];
