@@ -14,7 +14,7 @@ const AsideConsole = ({source}) => {
         flex flex-col border-0 border-primary  ">
           <div
             className="border-0 border-red-400 h-16 flex items-center justify-center 
-      border-gray-700 bg-gradient"
+      border-gray-700 "
           >
           LEFT CONSOLES
           </div>
@@ -22,12 +22,12 @@ const AsideConsole = ({source}) => {
           {source.map((item, index) => (
             <div key={index}  className="relative border-400 border-r-0 my-5">
           <Super3dConsole
-              nameconsole="Super 3D"
+              nameconsole={item.name}
               data={item.data}
               origin="right center"
-              rotateX={rotateX}
-              rotateY={rotateY}
-              rotateZ={rotateZ}
+              rotateX={item.position.x}
+              rotateY={item.position.y}
+              rotateZ={item.position.z}
               description="Ide funkciók kellenek gombok szűrők  adatbázis alapján"
             />
           </div>

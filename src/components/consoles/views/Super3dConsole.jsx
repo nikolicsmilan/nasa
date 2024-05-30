@@ -15,9 +15,9 @@ const Super3dConsole = ({
     <div
       style={{
         transform: `
-          rotateX(${-10}deg)
-          rotateY(${20}deg)
-          rotateZ(${0}deg)`,
+          rotateX(${rotateX}deg)
+          rotateY(${rotateY}deg)
+          rotateZ(${rotateZ}deg)`,
         transformOrigin: origin,
       }}
       className="relative z-10 rounded inset-0 border-b-2 

@@ -39,7 +39,7 @@ const LayoutHome = () => {
       <div
         className={` overflow-y-auto overflow-x-hidden lg:overflow-y-hidden 
       mystyle border-0 border-red-400
-       bg-black  text-primary h-screen flex flex-col w-full`}
+       bg-black  text-950 h-screen flex flex-col w-full`}
       >
         <header
           className=" w-full flex  justify-between border-0

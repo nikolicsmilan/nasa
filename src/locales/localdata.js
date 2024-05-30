@@ -262,7 +262,7 @@ export const graphconsole = [
   },
 ];
 
-export const leftasideconsole = [
+export const leftasideconsolesource = [
   {
     name: "filterconsole",
     icon: FaCalendarAlt,
@@ -270,8 +270,8 @@ export const leftasideconsole = [
     origin:'right center',
     data: filterconsole,
     position: {
-      x: "11",
-      y: "12",
+      x: "-10",
+      y: "20",
       z: "0",
     },
   },
@@ -282,20 +282,20 @@ export const leftasideconsole = [
     origin:'right center',
     data: graphconsole,
     position: {
-      x: "11",
-      y: "12",
+      x: "-10",
+      y: "20",
       z: "0",
     },
   },
   {
-    name: "filterconsole",
+    name: "information console",
     icon: FaCalendarAlt,
     description: "Year of observation",
     origin:'right center',
     data: filterconsole,
     position: {
-      x: "11",
-      y: "12",
+      x: "-10",
+      y: "20",
       z: "0",
     },
   },

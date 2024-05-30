@@ -35,7 +35,7 @@ const DoubleSidebarDashboard = () => {
         <LeftConsolesAside/>
       
         <MainConsole />
-      
+        <LeftConsolesAside/>
       </div>
     </div>
   );
