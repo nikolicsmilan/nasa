@@ -16,10 +16,17 @@ import {
   FaToggleOn,
   FaLanguage,
 } from "react-icons/fa";
-import { FaSatelliteDish,FaSatellite  } from "react-icons/fa6";
+import { FaSatelliteDish, FaSatellite } from "react-icons/fa6";
 
-
-import { FaCalendarAlt, FaExclamationTriangle, FaTachometerAlt, FaRuler, FaStar, FaChartLine, FaFlag } from 'react-icons/fa';
+import {
+  FaCalendarAlt,
+  FaExclamationTriangle,
+  FaTachometerAlt,
+  FaRuler,
+  FaStar,
+  FaChartLine,
+  FaFlag,
+} from "react-icons/fa";
 
 export const homemenu = [
   {
@@ -54,9 +61,7 @@ export const homemenu = [
   },
 ];
 
-
 export const asteroidemenu = [
- 
   {
     title: "Simple",
     icon: FaShieldAlt,
@@ -184,37 +189,115 @@ export const filterconsole = [
   {
     title: "Year",
     icon: FaCalendarAlt,
-    description: "Year of observation"
+    description: "Year of observation",
   },
   {
     title: "Potential Impacts",
     icon: FaExclamationTriangle,
-    description: "Potential impacts"
+    description: "Potential impacts",
   },
   {
     title: "Velocity",
     icon: FaTachometerAlt,
-    description: "Object velocity"
+    description: "Object velocity",
   },
   {
     title: "Diameter",
     icon: FaRuler,
-    description: "Object diameter"
+    description: "Object diameter",
   },
   {
     title: "Magnitudo",
     icon: FaStar,
-    description: "Object magnitudo"
+    description: "Object magnitudo",
   },
   {
     title: "Palermo",
     icon: FaChartLine,
-    description: "Palermo scale"
+    description: "Palermo scale",
   },
   {
     title: "Torino",
     icon: FaFlag,
-    description: "Torino scale"
+    description: "Torino scale",
+  },
+];
+
+
+export const graphconsole = [
+  {
+    title: "Year",
+    icon: FaRocket,
+    description: "Year of observation",
+  },
+  {
+    title: "Potential Impacts",
+    icon: FaExclamationTriangle,
+    description: "Potential impacts",
+  },
+  {
+    title: "Velocity",
+    icon: FaTachometerAlt,
+    description: "Object velocity",
+  },
+  {
+    title: "Diameter",
+    icon: FaRuler,
+    description: "Object diameter",
+  },
+  {
+    title: "Magnitudo",
+    icon: FaStar,
+    description: "Object magnitudo",
+  },
+  {
+    title: "Palermo",
+    icon: FaChartLine,
+    description: "Palermo scale",
+  },
+  {
+    title: "Torino",
+    icon: FaFlag,
+    description: "Torino scale",
+  },
+];
+
+export const leftasideconsole = [
+  {
+    name: "filterconsole",
+    icon: FaCalendarAlt,
+    description: "Year of observation",
+    origin:'right center',
+    data: filterconsole,
+    position: {
+      x: "11",
+      y: "12",
+      z: "0",
+    },
+  },
+  {
+    name: "graphconsole",
+    icon: FaCalendarAlt,
+    description: "Year of observation",
+    origin:'right center',
+    data: graphconsole,
+    position: {
+      x: "11",
+      y: "12",
+      z: "0",
+    },
+  },
+  {
+    name: "filterconsole",
+    icon: FaCalendarAlt,
+    description: "Year of observation",
+    origin:'right center',
+    data: filterconsole,
+    position: {
+      x: "11",
+      y: "12",
+      z: "0",
+    },
   },
 ];
 
@@ -249,7 +332,6 @@ export const filterconsole = [
     icon: FaLanguage,
   },
 ];*/
-
 
 export const ip1000 = [
   {

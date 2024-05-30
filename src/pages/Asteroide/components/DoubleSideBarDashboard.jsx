@@ -35,14 +35,14 @@ const DoubleSidebarDashboard = () => {
         <LeftConsolesAside/>
       
         <MainConsole />
-        <AsideConsole />
+      
       </div>
     </div>
   );
 };
 
 export default DoubleSidebarDashboard;
-
+//  <AsideConsole />
 /* <MainConsole />
 
         <AsideConsole /> */
