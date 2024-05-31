@@ -6,7 +6,7 @@ import FilterConsole from "../../../components/consoles/views/FilterConsole";
 import { filterconsole } from "../../../locales/localdata";
 import Super3dConsole from "../../../components/consoles/views/Super3dConsole";
 import AsideConsole from "./AsideConsole";
-import MainConsole from "./MainConsole";
+import MainConsoleFrame from "./MainConsoleFrame";
 import LeftConsolesAside from "./LeftConsolesAside";
 const DoubleSidebarDashboard = () => {
   const { toggle } = MyDataContext();
@@ -34,7 +34,7 @@ const DoubleSidebarDashboard = () => {
       >
         <LeftConsolesAside/>
       
-        <MainConsole />
+        <MainConsoleFrame />
         <LeftConsolesAside/>
       </div>
     </div>

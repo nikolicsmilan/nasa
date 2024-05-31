@@ -301,6 +301,47 @@ export const leftasideconsolesource = [
   },
 ];
 
+
+
+export const rightasideconsolesource = [
+  {
+    name: "filterconsole",
+    icon: FaCalendarAlt,
+    description: "Year of observation",
+    origin:'right center',
+    data: filterconsole,
+    position: {
+      x: "-10",
+      y: "20",
+      z: "0",
+    },
+  },
+  {
+    name: "graphconsole",
+    icon: FaCalendarAlt,
+    description: "Year of observation",
+    origin:'right center',
+    data: graphconsole,
+    position: {
+      x: "-10",
+      y: "20",
+      z: "0",
+    },
+  },
+  {
+    name: "information console",
+    icon: FaCalendarAlt,
+    description: "Year of observation",
+    origin:'right center',
+    data: filterconsole,
+    position: {
+      x: "-10",
+      y: "20",
+      z: "0",
+    },
+  },
+];
+
 /*
 export const filterconsole = [
   {
