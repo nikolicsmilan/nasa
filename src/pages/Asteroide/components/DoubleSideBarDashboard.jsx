@@ -3,7 +3,7 @@ import CardConsole1 from "../../../components/consoles/views/CardConsole1";
 import { MyDataContext } from "../../../context/DataContext";
 import SquareminConsole from "../../../components/consoles/views/SquareminConsole";
 import FilterConsole from "../../../components/consoles/views/FilterConsole";
-import { filterconsole } from "../../../locales/localdata";
+import { filterconsolesource } from "../../../locales/localdata";
 import Super3dConsole from "../../../components/consoles/views/Super3dConsole";
 import AsideConsole from "./AsideConsole";
 import MainConsoleFrame from "./MainConsoleFrame";

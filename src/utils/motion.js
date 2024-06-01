@@ -45,5 +45,29 @@ export const slideAnimation = (direction) => {
     };
   };
 
+  export const mainConsoleAnimation = (direction) => {
+    return {
+      initial: {
+        x: direction === "left" ? 900 : direction === "right" ? -900 : 0,
+        y: direction === "up" ? 100 : direction === "down" ? -100 : 0,
+        opacity: 0,
+        transition: { ...transition, delay: 0 },
+      },
+      animate: {
+        x: direction === "left" ? 0: direction === "right" ? 0 : 0,
+        y: 0,
+        opacity: 1,
+        transition: { ...transition, delay: 0 },
+      },
+      exit: {
+        x: direction === "left" ? -900 : direction === "right" ? 1900 : 0,
+        y: direction === "up" ? 100 : direction === "down" ? -100 : 0,
+        opacity: 0,
+        transition: { ...transition, delay: 0 },
+      },
+    };
+  };
+
+
 
 

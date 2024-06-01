@@ -185,7 +185,7 @@ export const languages = [
   },
 ];
 
-export const filterconsole = [
+export const filterconsolesource = [
   {
     title: "Year",
     icon: FaCalendarAlt,
@@ -268,7 +268,7 @@ export const leftasideconsolesource = [
     icon: FaCalendarAlt,
     description: "Year of observation",
     origin:'right center',
-    data: filterconsole,
+    data: filterconsolesource,
     position: {
       x: "-10",
       y: "20",
@@ -292,7 +292,7 @@ export const leftasideconsolesource = [
     icon: FaCalendarAlt,
     description: "Year of observation",
     origin:'right center',
-    data: filterconsole,
+    data: filterconsolesource,
     position: {
       x: "-10",
       y: "20",
@@ -309,7 +309,7 @@ export const rightasideconsolesource = [
     icon: FaCalendarAlt,
     description: "Year of observation",
     origin:'right center',
-    data: filterconsole,
+    data: filterconsolesource,
     position: {
       x: "-10",
       y: "20",
@@ -333,7 +333,7 @@ export const rightasideconsolesource = [
     icon: FaCalendarAlt,
     description: "Year of observation",
     origin:'right center',
-    data: filterconsole,
+    data: filterconsolesource,
     position: {
       x: "-10",
       y: "20",

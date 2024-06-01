@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Super3dConsole from "../../../components/consoles/views/Super3dConsole";
 import FilterConsole from "../../../components/consoles/views/FilterConsole";
-import { filterconsole } from "../../../locales/localdata";
+import { filterconsolesource } from "../../../locales/localdata";
 
 //ez csak formát ad neki ledarálja a kapot adatokat
 const AsideConsole = ({source}) => {

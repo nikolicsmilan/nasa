@@ -1,7 +1,11 @@
 import { useContext, createContext, useState, useEffect } from "react";
 import { useSave } from "../hooks/use-saveuser";
 import { useInfo } from "../hooks/use-info";
-import { leftasideconsolesource,rightasideconsolesource } from "../locales/localdata";
+import {
+  leftasideconsolesource,
+  rightasideconsolesource,
+  filterconsolesource,
+} from "../locales/localdata";
 const ConsoleContext = createContext();
 
 export const ConsoleContextProvider = ({ children }) => {
@@ -12,10 +16,7 @@ export const ConsoleContextProvider = ({ children }) => {
     rightasideconsolesource
   );
 
-  const [] = useState(
-    rightasideconsolesource
-  );
-  useEffect(() => {}, []);
+  const [actualMainConsole, setActualMainConsole] = useState("Year");
   return (
     <ConsoleContext.Provider
       value={{
@@ -23,6 +24,8 @@ export const ConsoleContextProvider = ({ children }) => {
         setLeftasideconsole,
         rightasideconsole,
         setRightasideconsole,
+        actualMainConsole,
+        setActualMainConsole,
       }}
     >
       {children}

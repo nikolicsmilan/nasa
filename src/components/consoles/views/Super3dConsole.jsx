@@ -12,7 +12,7 @@ const Super3dConsole = ({
   rotateZ,
   origin,
 }) => {
-  const { actualSettings, setActualSettings } = MyConsoleContext();
+  const {setActualMainConsole } = MyConsoleContext();
 
   return (
     <div
@@ -36,6 +36,7 @@ const Super3dConsole = ({
         {data.map((item, index) => (
           <div
             key={index}
+            onClick={()=>{setActualMainConsole(item.title)}}
             className="group relative border-0 shadow p-1 rounded m-2 bg-950 text-primary cursor-pointer"
           >
             {<item.icon />}
@@ -45,6 +46,9 @@ const Super3dConsole = ({
           </div>
         ))}
       </div>
+      <div className="text-white"> Ide kell egy vonal alá de egyenes
+      és akkor 3d hatást ér el mint a windows laptopon ezek  a kártyák akár kinyíthatóak is lehetnének
+      eluról lecsúsznának mint a telefon</div>
 
       <CircuitLines />
     </div>

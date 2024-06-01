@@ -20,7 +20,7 @@ export const DataContextProvider = ({ children }) => {
   const [ipAddress, setIPAddress] = useState("");
   const [latitude, setLatitude] = useState(null);
   const [longitude, setLongitude] = useState(null);
-  console.log("Ez a browserInfo: ", browserInfo);
+  //console.log("Ez a browserInfo: ", browserInfo);
 
   useEffect(() => {
     // Parse the user agent string to get browser and device information

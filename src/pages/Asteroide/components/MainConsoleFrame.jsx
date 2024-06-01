@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import SquareminConsole from "../../../components/consoles/views/SquareminConsole";
 import MainConsole from "../../../components/consoles/views/MainConsole";
+
 const MainConsoleFrame = () => {
   const [rotateX, setRotateX] = useState(0);
   const [rotateY, setRotateY] = useState(0);
