@@ -2,7 +2,7 @@
 
 ## Directory Structure
 
-  ├── public/ // Static resources served by the application
+├── public/ // Static resources served by the application
 ├── build/ // Build output directory
 │ ├── index.html // The main HTML file of the application
 ├── src/
@@ -85,3 +85,15 @@
 ├── vite.config.js // Vite configuration
 └── README.md // Project README file
 
+## Getting Started
+
+### Prerequisites
+
+- Node.js
+- npm or yarn
+
+### Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/nikolicsmilan/nasa.git
