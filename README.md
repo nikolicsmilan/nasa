@@ -22,9 +22,9 @@
 │   │   │   │   ├── BiggerConsoles.jsx         // Consoles in a larger size     
 │   │   │   │   ├── DesktopConsoleView.jsx         // Responsible for the desktop view of consoles      
 │   │   │   │   └── MobileConsoleView.jsx         // Responsible for the mobile view of consoles   
-│   │   │   │   └── SquareminConsole.jsx // Small square for data appearance like torino scala results
-│   │   │   │   └── Super3DConsole.jsx // On Desktop view main consoles to choose option there are 2x3. 
-│   │   │   │   └── CircuitLines.jsx //  Show lines as wire in Super3DConsole.jsx
+│   │   │   │   └── SquareminConsole.jsx 
+│   │   │   │   └── Super3DConsole.jsx 
+│   │   │   │   └── CircuitLines.jsx 
 │   │   ├── Sidebar/                  // Directory for Sidebar components       
 │   │   │   ├── SettingsBarAnimation.jsx  // SettingsBar animation      
 │   │   │   └── SettingsBar.jsx          // The SettingsBar itself      
