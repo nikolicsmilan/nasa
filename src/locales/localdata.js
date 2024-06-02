@@ -28,6 +28,8 @@ import {
   FaFlag,
 } from "react-icons/fa";
 
+
+//Navigation menu Home page
 export const homemenu = [
   {
     title: "Home",
@@ -41,45 +43,11 @@ export const homemenu = [
     link: "/asteroide",
     description: "Asteroide",
   },
-  {
-    title: "Space Know",
-    icon: FaSpaceShuttle,
-    link: "/spaceknowledge",
-    description: "Űrtudás",
-  },
-  {
-    title: "Gallery",
-    icon: FaImages,
-    link: "/gallery",
-    description: "Galéria",
-  },
-  {
-    title: "Login",
-    icon: FaSignInAlt,
-    link: "/login",
-    description: "Bejelentkezés",
-  },
+ 
 ];
-
+//Navigation menu Asteoride page
 export const asteroidemenu = [
-  {
-    title: "Simple",
-    icon: FaShieldAlt,
-    link: "simpledash",
-    description: "",
-  },
-  {
-    title: "Double",
-    icon: FaSpaceShuttle,
-    link: "doubledash",
-    description: "",
-  },
-  {
-    title: "Header",
-    icon: FaImages,
-    link: "headerdash",
-    description: "",
-  },
+
   {
     title: "Vissza",
     icon: FaSignInAlt,
@@ -88,23 +56,6 @@ export const asteroidemenu = [
   },
 ];
 
-export const spaceKnowledgeMenu = [
-  {
-    title: "Vissza",
-    icon: FaProjectDiagram,
-    link: "/",
-  },
-  {
-    title: "SolarSystem",
-    icon: FaProjectDiagram,
-    link: "spaceknowledge/solarSystem",
-  },
-  {
-    title: "Quiz",
-    icon: FaPalette,
-    link: "spaceknowledge/quiz",
-  },
-];
 
 export const returnMenu = [
   {
@@ -113,6 +64,8 @@ export const returnMenu = [
     link: "/",
   },
 ];
+
+//Settingsbar in Home Page
 
 export const settingshome = [
   {
@@ -137,6 +90,7 @@ export const settingshome = [
   },
 ];
 
+//to navigation Button in Home page
 export const start = [
   {
     title: "Start",
@@ -145,6 +99,7 @@ export const start = [
   },
 ];
 
+//style menu to every page
 export const styles = [
   {
     title: "sky",
@@ -163,6 +118,8 @@ export const styles = [
     icon: FaPalette,
   },
 ];
+
+//sounds menu to every page
 export const sounds = [
   {
     title: "on",
@@ -174,6 +131,7 @@ export const sounds = [
   },
 ];
 
+//language menu to every page
 export const languages = [
   {
     title: "hu",
@@ -184,7 +142,7 @@ export const languages = [
     icon: FaLanguage,
   },
 ];
-
+// filterconsole source
 export const filterconsolesource = [
   {
     title: "Year",

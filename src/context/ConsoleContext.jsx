@@ -16,7 +16,13 @@ export const ConsoleContextProvider = ({ children }) => {
     rightasideconsolesource
   );
 
+  
   const [actualMainConsole, setActualMainConsole] = useState("Year");
+
+  const [acitveMainConsole, setActiveMainConsole] = useState(false);
+  const [animationVariants, setAnimationVariants] = useState({});
+
+  const [info, setInfo] = useState("");
   return (
     <ConsoleContext.Provider
       value={{
@@ -26,6 +32,10 @@ export const ConsoleContextProvider = ({ children }) => {
         setRightasideconsole,
         actualMainConsole,
         setActualMainConsole,
+        info,
+        setInfo,
+        acitveMainConsole,
+        setActiveMainConsole,animationVariants, setAnimationVariants
       }}
     >
       {children}

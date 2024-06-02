@@ -1,18 +1,15 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { MyAudioContext } from "../../../context/AudioContext";
-import { MyDataContext } from "../../../context/DataContext";
 //import clickSound from "../../assets/sound/click.mp3";
 
 const Consoles = ({ menupoint }) => {
-  const {playSoundClick } = MyAudioContext();
-  const {choosenStyle } = MyDataContext();
+  const { playSoundClick } = MyAudioContext();
   return (
     <div
       className="border-0 p-5 w-full flex 
     flex-wrap justify-between overflow-y-auto  h-80 "
     >
-      {" "}
       {menupoint &&
         menupoint?.map((item) => (
           <NavLink
@@ -50,5 +47,3 @@ const Consoles = ({ menupoint }) => {
 };
 
 export default Consoles;
-// sky lime red >> a stílusok
-//text-sky-200

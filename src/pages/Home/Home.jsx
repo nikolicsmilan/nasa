@@ -1,11 +1,10 @@
 import React, { useEffect } from "react";
-import useWindowSize from "../../hooks/use-windowsize";
 import { MyDataContext } from "../../context/DataContext";
 import BiggerConsoles from "../../components/consoles/views/BiggerConsoles";
 import { start } from "../../locales/localdata";
 
 const Home = () => {
-  const { setSettings, settingsOpen, choosenSytle } = MyDataContext();
+  const { setSettings, settingsOpen } = MyDataContext();
   useEffect(() => {
     setSettings;
     setSettings("Navigation");
@@ -39,7 +38,6 @@ const Home = () => {
         </div>
       </div>
       <video
-        // src={earth}
         src="https://sablonossablon.web.app/video/optimized_earth2.mp4"
         className="background-video border-0 border-red-400  opacity-100"
         autoPlay
@@ -51,22 +49,4 @@ const Home = () => {
 };
 
 export default Home;
-/*
 
-<header className="h-full bg-gradient shadow flex items-center px-6">
-            <h1 className="text-2xl font-semibold px-2">SENTRY</h1>
-            <p className="text-sky-950"> Earth Impact Monitoring</p>
-          </header>
-*/
-
-/*
-  <h1
-                className={`text-primary cursor-pointer z-10 p-2
-               border-0 text-center lg:text-3xl 
-               text-2xl  opacity-100 uppercase font-bold`}
-              >
-                <span className=" text-200 block">Asteroid impact</span>
-                <span className="text-600 rounded p-2">warning </span>{" "}
-                <span className="text-200 block">systems</span>
-              </h1>
-*/

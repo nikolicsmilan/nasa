@@ -1,13 +1,8 @@
-import React from 'react'
+import React from "react";
 import tocard from "../../../assets/images/tocard.JPG";
 const Filters = () => {
   return (
     <div>
-
-
-        
-
-
       <div className="flex flex-wrap justify-center gap-4 mt-[500px]">
         {/* Blur */}
         <figure className="w-40 h-40 overflow-hidden relative">
@@ -162,7 +157,7 @@ const Filters = () => {
         </figure>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Filters
+export default Filters;

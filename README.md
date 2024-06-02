@@ -9,6 +9,7 @@
 │   ├── context/      
 │   │   ├── AudioContext.jsx        // Context for audio-related functionalities    
 │   │   └── DataContext.jsx     // Data context for shared data   
+│   │   └── ConsoleContext.jsx     // Console context relation to buttons of Super3DConsoles  
 │   ├── components/    
 │   │   ├── consoles/               // Directory for console components     
 │   │   │   ├── NavigationConsole.jsx       // urrent navigation available on the page     
@@ -17,10 +18,13 @@
 │   │   │   ├── StyleConsole.jsx          // Possible style settings     
 │   │   │   └── DataConsole.jsx           // Available basic user data         
 │   │   │   ├── views/                  // Directory for console-related views      
-│   │   │   │   ├── consoles.jsx             // Default appearance glass-like consoles      
+│   │   │   │   ├── Consoles.jsx             // Default appearance glass-like consoles      
 │   │   │   │   ├── BiggerConsoles.jsx         // Consoles in a larger size     
 │   │   │   │   ├── DesktopConsoleView.jsx         // Responsible for the desktop view of consoles      
-│   │   │   │   └── MobileConsoleView.jsx         // Responsible for the mobile view of consoles        
+│   │   │   │   └── MobileConsoleView.jsx         // Responsible for the mobile view of consoles   
+│   │   │   │   └── SquareminConsole.jsx // Small square for data appearance like torino scala results
+│   │   │   │   └── Super3DConsole.jsx // On Desktop view main consoles to choose option there are 2x3. 
+│   │   │   │   └── CircuitLines.jsx //  Show lines as wire in Super3DConsole.jsx
 │   │   ├── Sidebar/                  // Directory for Sidebar components       
 │   │   │   ├── SettingsBarAnimation.jsx  // SettingsBar animation      
 │   │   │   └── SettingsBar.jsx          // The SettingsBar itself      

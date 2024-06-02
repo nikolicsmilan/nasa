@@ -1,16 +1,14 @@
-import React from 'react';
-import AsideConsole from './AsideConsole';
-// Csak szét választja az adatokat jelezve melyik komponens kapja meg
-//import {leftasideconsolesource}from "../../../locales/localdata"
-import { MyConsoleContext } from '../../../context/ConsoleContext';
+import React from "react";
+import AsideConsole from "./AsideConsole";
+import { MyConsoleContext } from "../../../context/ConsoleContext";
+// It only separates the data, indicating which component receives it
 const LeftConsolesAside = () => {
-const {leftasideconsole}=MyConsoleContext()
+  const { leftasideconsole } = MyConsoleContext();
   return (
     <>
-     <AsideConsole source ={leftasideconsole}/>
-  
+      <AsideConsole source={leftasideconsole} description="LEFT CONSOLES" />
     </>
-  )
-}
+  );
+};
 
-export default LeftConsolesAside
+export default LeftConsolesAside;
