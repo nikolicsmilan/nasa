@@ -1,4 +1,8 @@
-├── public/ // Static resources served by the application
+# Project Name
+
+## Directory Structure
+
+  ├── public/ // Static resources served by the application
 ├── build/ // Build output directory
 │ ├── index.html // The main HTML file of the application
 ├── src/
@@ -79,7 +83,5 @@
 ├── firebaserc // Firebase configuration
 ├── postcss.config.js // PostCSS configuration
 ├── vite.config.js // Vite configuration
-└── README.md // Project README file 
-
-  
+└── README.md // Project README file
 
