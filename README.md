@@ -1,12 +1,11 @@
-# Project Name
+# Project Name: NASA
 
 ## Directory Structure
 
-├── public/ // Static resources served by the application \n
-├── build/ // Build output directory \n
-│ ├── index.html // The main HTML file of the application
-├── src/
-│ ├── assets/ // Static resources used by the application
+├── public/ // Static resources served by the application <br>
+│ ├── index.html // The main HTML file of the application <br>
+├── src/ <br>
+│ ├── assets/ // Static resources used by the application <br>
 │ │ ├── images/ // Directory for images
 │ │ ├── video/ // Directory for videos
 │ │ └── sound/ // Directory for sound files
