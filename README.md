@@ -2,8 +2,8 @@
 
 ## Directory Structure
 
-├── public/ // Static resources served by the application
-├── build/ // Build output directory
+├── public/ // Static resources served by the application \n
+├── build/ // Build output directory \n
 │ ├── index.html // The main HTML file of the application
 ├── src/
 │ ├── assets/ // Static resources used by the application
