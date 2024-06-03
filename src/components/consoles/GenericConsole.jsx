@@ -2,8 +2,8 @@ import React from "react";
 
 const GenericConsole = ({ data, handleClick, placeholder }) => {
   return (
-    <div className="border-0 w-full h-96">
-      <div className="p-5 lg:p-0 w-full flex lg:items-start lg:justify-center flex-wrap justify-between overflow-y-auto h-full lg:h-96">
+    <div className="border-0 p-1 w-full h-90">
+      <div className="p-5 lg:p-2 w-full flex lg:items-start  flex-wrap justify-between overflow-y-auto h-full lg:h-96">
         {data?.map((item) => (
           <div
             key={item.title}

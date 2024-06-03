@@ -28,7 +28,7 @@ const DataConsole = () => {
   } = browserInfo;
 
   return (
-    <div className=" border-0 h-full border-sky-400 flex flex-col items-start justify-start p-5 ">
+    <div className=" border-0  text-primary h-full border-sky-400 flex flex-col items-start justify-start p-5 ">
       <div className="border-0">Browser: {browserName}</div>
       <div>
         Operating System: {osName} {osVersion}
@@ -44,10 +44,10 @@ const DataConsole = () => {
 
       <div>Sound: {users.sound}</div>
       <div>Language: {users.language}</div>
-      <div className="m-4 ">
-      <div className="text-red-600 hidden  lg:block">lg</div>
-      <div className="text-red-600 hidden md:block lg:hidden">md</div>
-      <div className="text-red-600 block md:hidden lg:hidden">sm</div>
+      <div className=" ">
+      <div className="hidden  lg:block">Size: lg</div>
+      <div className="hidden md:block lg:hidden">Size: md</div>
+      <div className=" block md:hidden lg:hidden">Size: sm</div>
     </div> 
     </div>
   );

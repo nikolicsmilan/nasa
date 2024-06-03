@@ -2,11 +2,9 @@ import { useState, useEffect } from "react";
 import { MyDataContext } from "../context/DataContext";
 
 const useWindowSize = () => {
-    const { windowSize,setWindowSize} = MyDataContext();
-  
+  const { windowSize, setWindowSize } = MyDataContext();
 
   useEffect(() => {
-   
     const handleResize = () => {
       setWindowSize({
         width: window.innerWidth,

@@ -9,13 +9,14 @@ const DoubleSidebarDashboard = () => {
 
   return (
     <div
-      className={`min-h-screen flex  border-0 border-orange-400 z-50 relative ${
+      className={`min-h-screen flex  border-00 border-orange-400
+       z-50 relative ${
         toggle ? "opacity-20" : ""
       }`}
     >
       <video
         src="https://sablonossablon.web.app/video/optimized_earth2.mp4"
-        className="background-video border-0 border-red-400  opacity-70"
+        className="background-video border-0 border-red-400  opacity-40"
         autoPlay
         loop
         muted

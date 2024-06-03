@@ -33,25 +33,22 @@ const LayoutHome = () => {
 
   return (
     <AnimatePresence>
-      {/*BETTENI IDE EZT NAGY LEHETŐSÉGEKET NYÚJT
-      MAGÁBAN bg-${choosenStyle}-400 */}
-      {/*text-${choosenStyle}-400 */}
       <div
         className={` overflow-y-auto overflow-x-hidden lg:overflow-y-hidden 
       mystyle border-0 border-red-400
-       bg-black  text-950 h-screen flex flex-col w-full`}
+       bg-black  text-primary h-screen flex flex-col w-full`}
       >
         <header
           className=" w-full flex  justify-between border-0
          border-lime-600 absolute z-40 top-0 right-0 "
         >
-           <img src={logo}
+          <img
+            src={logo}
             className={`relative top-0 right-0 z-40  w-20 m-1 p-2 
              cursor-pointer border-0`}
             onClick={() => {
               setToggle(true);
               setSettingsOpen((prevToggle) => !prevToggle);
-              // setToggle((prevToggle) => !prevToggle); // Negált érték beállítása
             }}
           />
           {/*delete FaBars icon that one start two menu */}
@@ -61,7 +58,6 @@ const LayoutHome = () => {
             onClick={() => {
               setToggle(true);
               setSettingsOpen((prevToggle) => !prevToggle);
-              // setToggle((prevToggle) => !prevToggle); // Negált érték beállítása
             }}
           />{" "}
         </header>
@@ -104,5 +100,3 @@ const LayoutHome = () => {
 };
 
 export default LayoutHome;
-//<p className="text-white">{choosenSytle} stílus</p>
-//<span className="text-white">{choosenStyle}</span>
