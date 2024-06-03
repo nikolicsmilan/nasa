@@ -30,7 +30,7 @@ module.exports = {
               primary: "#22d3ee",
               200: "#bae6fd",
               600: "#0284c7",
-              950:'#082f49',
+              950: "#082f49",
               success: "rgb(63, 178, 121)",
               info: "rgb(191, 191, 191)",
               dark: "rgb(0, 0, 0)",
@@ -43,6 +43,8 @@ module.exports = {
               // gradient from sky 950, 800, 100
               gradient:
                 "linear-gradient(45deg, #082f49 1%, #075985 40%,  #cffafe 90% )",
+                gradientreverse:
+                "linear-gradient(225deg, #082f49 1%, #075985 40%,  #cffafe 90% )",
               mybackground: "url('../src/assets/images/desk.jpg')",
             },
           },
@@ -54,7 +56,7 @@ module.exports = {
               primary: "#a3e635",
               200: "#d9f99d",
               600: "#65a30d",
-              950:'#1a2e05',
+              950: "#1a2e05",
               success: "rgb(63, 178, 121)",
               info: "rgb(191, 191, 191)",
               dark: "rgb(0, 0, 0)",
@@ -64,9 +66,11 @@ module.exports = {
               robotoMono: ["Roboto Mono", "monospace"],
             },
             backgroundImage: {
-               // gradient from lime 950, 800, 100
+              // gradient from lime 950, 800, 100
               gradient:
                 "linear-gradient(45deg, #1a2e05 1%, #3f6212 40%, #ecfccb 90%)",
+                gradientreverse:
+                "linear-gradient(225deg, #1a2e05 1%, #3f6212 40%, #ecfccb 90%)",
               mybackground: "url('../src/assets/images/desk.jpg')",
             },
             boxShadow: {
@@ -81,7 +85,7 @@ module.exports = {
               primary: "#4ade80",
               200: "#bbf7d0",
               600: "#16a34a",
-              950:'#052e16',
+              950: "#052e16",
               success: "rgb(63, 178, 121)",
               info: "rgb(191, 191, 191)",
               dark: "rgb(0, 0, 0)",
@@ -94,6 +98,8 @@ module.exports = {
               // gradient from green 950, 800, 100
               gradient:
                 "linear-gradient(45deg, #052e16 1%, #166534 40%,  #dcfce7 90% )",
+                gradientreverse:
+                "linear-gradient(225deg, #052e16 1%, #166534 40%,  #dcfce7 90% )",
               mybackground: "url('../src/assets/images/desk.jpg')",
             },
           },
@@ -105,7 +111,7 @@ module.exports = {
               primary: "#60a5fa",
               200: "#bfdbfe",
               600: "#2563eb",
-              950:'#172554',
+              950: "#172554",
               success: "rgb(237, 237, 237)",
               info: "rgb(40, 164, 241, 0.938)",
               dark: "rgb(0, 0, 0)",
@@ -116,8 +122,10 @@ module.exports = {
             },
             backgroundImage: {
               gradient:
-              // gradient from blue 950, 800, 100
+                // gradient from blue 950, 800, 100
                 "linear-gradient(45deg, #172554 1%, #1e40af 40%,  #dbeafe 90% )",
+                gradientreverse:
+                "linear-gradient(225deg, #172554 1%, #1e40af 40%,  #dbeafe 90% )",
               mybackground: "url('../src/assets/images/desk.jpg')",
             },
           },

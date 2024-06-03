@@ -11,7 +11,7 @@ const MainConsole = () => {
       animate={animationVariants}
       className="relative z-10 rounded inset-0 border-b-2 
     border-r-2 border-l-[5px] border-t-2 
-    border-600 bg-gradient lime:bg-gradient2 
+    border-600 bg-gradient 
     text-dark flex flex-col items-start w-full h-full  shadow-2xl 
     transform perspective-1000  "
     >

@@ -26,11 +26,12 @@ const Super3dConsole = ({
           rotateZ(${rotateZ}deg)`,
         transformOrigin: origin,
       }}
-      className="relative z-10 rounded inset-0 border-b-2 
-      border-r-2 border-l-[5px] border-t-2 
-      border-600 bg-gradient lime:bg-gradient2 
+      className={` ${origin ==='left center' ?'bg-gradientreverse ':'bg-gradient'} 
+      relative z-10 rounded inset-0 border-b-2 
+      border-r-2 border-l-[5px] border-t-4 
+      border-600 
       text-dark flex flex-col items-start w-80 shadow-2xl 
-      transform perspective-1000 m-1 p-2 h-48"
+      transform perspective-1000 m-1 p-2 h-48`}
     >
       <h3 className="bg-950 text-primary uppercase text-lg text-center w-full">
         {nameconsole}

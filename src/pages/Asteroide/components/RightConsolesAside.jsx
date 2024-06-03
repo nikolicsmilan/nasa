@@ -6,7 +6,8 @@ const RightConsolesAside = () => {
   const { rightasideconsole } = MyConsoleContext();
   return (
     <>
-      <AsideConsole source={rightasideconsole} description="RIGHT CONSOLES" />
+      <AsideConsole source={rightasideconsole} description="RIGHT CONSOLES" 
+       origin="left center" />
     </>
   );
 };

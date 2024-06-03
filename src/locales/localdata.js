@@ -269,7 +269,7 @@ export const rightasideconsolesource = [
     origin:'right center',
     data: filterconsolesource,
     position: {
-      x: "-10",
+      x: "10",
       y: "20",
       z: "0",
     },
@@ -281,7 +281,7 @@ export const rightasideconsolesource = [
     origin:'right center',
     data: graphconsole,
     position: {
-      x: "-10",
+      x: "10",
       y: "20",
       z: "0",
     },
@@ -293,7 +293,7 @@ export const rightasideconsolesource = [
     origin:'right center',
     data: filterconsolesource,
     position: {
-      x: "-10",
+      x: "10",
       y: "20",
       z: "0",
     },

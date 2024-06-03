@@ -1,7 +1,7 @@
 import React from "react";
 import Super3dConsole from "../../../components/consoles/views/Super3dConsole";
 //ez csak formát ad neki ledarálja a kapot adatokat
-const AsideConsole = ({ source, description }) => {
+const AsideConsole = ({ source, description,origin }) => {
   return (
     <aside
       className="  h-screen text-white 
@@ -15,11 +15,11 @@ const AsideConsole = ({ source, description }) => {
       </div>
       <div className="flex flex-col justify-center h-screen">
         {source.map((item, index) => (
-          <div key={index} className="relative border-400 border-r-0 my-5">
+          <div key={index} className="relative border-400  my-2">
             <Super3dConsole
               nameconsole={item.name}
               data={item.data}
-              origin="right center"
+              origin={origin}
               rotateX={item.position.x}
               rotateY={item.position.y}
               rotateZ={item.position.z}
