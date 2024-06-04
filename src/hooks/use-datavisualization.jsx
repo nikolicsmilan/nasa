@@ -1,9 +1,11 @@
 import React from "react";
 import ReachartsExample from "../pages/Asteroide/components/RechartExample2"
-
+import { MyConsoleContext } from "../context/ConsoleContext";
 export const useDataVisualization = () => {
+  const { info } =
+  MyConsoleContext();
   const updateConsole = (actualMainConsole) => {
-    if (actualMainConsole === "Year") {
+    if (actualMainConsole === "Year" ) {
       return (
         <div>
         <ReachartsExample/>
@@ -20,3 +22,4 @@ export const useDataVisualization = () => {
 
   return { updateConsole };
 };
+/*&& info==='animáció 7' */

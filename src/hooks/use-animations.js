@@ -6,12 +6,12 @@ export const useAnimations = () => {
       //  if (actualMainConsole) {
       setTimeout(() => {
         setAnimationVariants({ x: 0, scale: 1, transition: { duration: 1 } });
-        setInfo("animáció 3");
+        setInfo("animáció 1");
       }, 0);
 
       setTimeout(() => {
         setAnimationVariants({ x: 0, scale: 0.2, transition: { duration: 1 } });
-        setInfo("animáció 4");
+        setInfo("animáció 2");
       }, 100);
 
       setTimeout(() => {
@@ -20,23 +20,23 @@ export const useAnimations = () => {
           scale: 0.2,
           transition: { duration: 1 },
         });
-        setInfo("animáció 5");
+        setInfo("animáció 3");
       }, 1500);
       setTimeout(() => {
         setAnimationVariants({ x: 1200, scale: 0, opacity: 0 });
-        setInfo("animáció 6");
+        setInfo("animáció 4");
       }, 2000);
       setTimeout(() => {
         setAnimationVariants({ x: -1200, scale: 0, opacity: 0 });
-        setInfo("animáció 7");
+        setInfo("animáció 5");
       }, 2300);
       setTimeout(() => {
         setAnimationVariants({ x: 0, scale: 0.2, transition: { duration: 1 } });
-        setInfo("animáció 8");
+        setInfo("animáció 6");
       }, 2500);
       setTimeout(() => {
         setAnimationVariants({ x: 0, scale: 1, transition: { duration: 1 } });
-        setInfo("animáció 9");
+        setInfo("animáció 7");
       }, 3500);
       //  }
     };
