@@ -25,7 +25,8 @@ const MobileConsoleView = ({ stopClozer }) => {
       {settings === "Sound" && <SoundConsole />}
       {settings === "Language" && <LanguageConsole />}
       {settings === "Data" && <DataConsole />}
-      <p className={`m-1 text-base text-center border-0 w-full  uppercase absolute bottom-0 `}>{settings} console <span className="text-white">{choosenStyle}</span> mobil</p>
+      <p className={`m-1 text-base text-center border-0 w-full 
+       uppercase absolute bottom-0 `}>{settings} console <span className="text-white">{choosenStyle}</span> mobil</p>
      
       <div className={`absolute top-0 left-0 w-8 h-8 bg-transparent border-t-2 border-l-2 border-600    transform -translate-x-0 -translate-y-0`}></div>
       <div className={`absolute top-0 right-0 w-8 h-8 bg-transparent border-t-2 border-r-2 border-600   translate-x-0 -translate-y-0`}></div>

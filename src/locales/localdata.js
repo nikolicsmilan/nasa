@@ -28,6 +28,7 @@ import {
   FaFlag,
 } from "react-icons/fa";
 
+import { MdDashboardCustomize } from "react-icons/md";
 
 //Navigation menu Home page
 export const homemenu = [
@@ -43,11 +44,9 @@ export const homemenu = [
     link: "/asteroide",
     description: "Asteroide",
   },
- 
 ];
 //Navigation menu Asteoride page
 export const asteroidemenu = [
-
   {
     title: "Vissza",
     icon: FaSignInAlt,
@@ -55,7 +54,6 @@ export const asteroidemenu = [
     description: "",
   },
 ];
-
 
 export const returnMenu = [
   {
@@ -142,6 +140,26 @@ export const languages = [
     icon: FaLanguage,
   },
 ];
+
+// filterconsole source
+export const dashboards = [
+  {
+    title: "General",
+    icon: MdDashboardCustomize,
+    description: "General main information",
+  },
+  {
+    title: "Potential Impacts",
+    icon: FaExclamationTriangle,
+    description: "Potential impacts",
+  },
+  {
+    title: "Velocity",
+    icon: FaTachometerAlt,
+    description: "Object velocity",
+  },
+];
+
 // filterconsole source
 export const filterconsolesource = [
   {
@@ -180,7 +198,6 @@ export const filterconsolesource = [
     description: "Torino scale",
   },
 ];
-
 
 export const graphconsole = [
   {
@@ -222,11 +239,11 @@ export const graphconsole = [
 
 export const leftasideconsolesource = [
   {
-    name: "filterconsole",
+    name: "dashboards",
     icon: FaCalendarAlt,
     description: "Year of observation",
-    origin:'right center',
-    data: filterconsolesource,
+    origin: "right center",
+    data: dashboards,
     position: {
       x: "-10",
       y: "20",
@@ -237,7 +254,7 @@ export const leftasideconsolesource = [
     name: "graphconsole",
     icon: FaCalendarAlt,
     description: "Year of observation",
-    origin:'right center',
+    origin: "right center",
     data: graphconsole,
     position: {
       x: "-10",
@@ -249,7 +266,7 @@ export const leftasideconsolesource = [
     name: "information console",
     icon: FaCalendarAlt,
     description: "Year of observation",
-    origin:'right center',
+    origin: "right center",
     data: filterconsolesource,
     position: {
       x: "-10",
@@ -259,14 +276,12 @@ export const leftasideconsolesource = [
   },
 ];
 
-
-
 export const rightasideconsolesource = [
   {
     name: "filterconsole",
     icon: FaCalendarAlt,
     description: "Year of observation",
-    origin:'right center',
+    origin: "right center",
     data: filterconsolesource,
     position: {
       x: "10",
@@ -275,10 +290,10 @@ export const rightasideconsolesource = [
     },
   },
   {
-    name: "graphconsole",
+    name: "operations",
     icon: FaCalendarAlt,
     description: "Year of observation",
-    origin:'right center',
+    origin: "right center",
     data: graphconsole,
     position: {
       x: "10",
@@ -287,10 +302,10 @@ export const rightasideconsolesource = [
     },
   },
   {
-    name: "information console",
+    name: "Resources",
     icon: FaCalendarAlt,
     description: "Year of observation",
-    origin:'right center',
+    origin: "right center",
     data: filterconsolesource,
     position: {
       x: "10",

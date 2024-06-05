@@ -17,7 +17,7 @@ const MainConsoleFrame = () => {
         </h1>
         <p className="text-sky-950"> Earth Impact Monitoring</p>
       </header>
-      <div className="h-screen border-0 border-green-400 p-10">
+      <div className="h-screen border-0 border-green-400 p-5">
         <MainConsole />
       </div>
     </main>

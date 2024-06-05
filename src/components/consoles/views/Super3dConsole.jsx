@@ -26,12 +26,12 @@ const Super3dConsole = ({
           rotateZ(${rotateZ}deg)`,
         transformOrigin: origin,
       }}
-      className={` ${origin ==='left center' ?'bg-gradientreverse ':'bg-gradient'} 
+      className={` ${origin ==='left center' ?'bg-gradientreverse  border-r-[5px] border-l-2':'bg-gradient  border-r-2 border-l-[5px]'} 
       relative z-10 rounded inset-0 border-b-2 
-      border-r-2 border-l-[5px] border-t-4 
+      border-t-4 
       border-600 
       text-dark flex flex-col items-start w-80 shadow-2xl 
-      transform perspective-1000 m-1 p-2 h-48`}
+      transform perspective-1000 m-0 p-0 h-48`}
     >
       <h3 className="bg-950 text-primary uppercase text-lg text-center w-full">
         {nameconsole}
@@ -50,11 +50,17 @@ const Super3dConsole = ({
           </div>
         ))}
       </div>
-      <div className="text-white hidden">
+      <div    style={{
+        transform: `
+          rotateX(${20}deg)
+          rotateY(${10}deg)
+          rotateZ(${0}deg)`,
+        transformOrigin: origin,
+      }} className="text-white hidden border bg-gradient mt-[30px] ml-[-6px] w-full min-h-2">
         {" "}
-        Ide kell egy vonal alá de egyenes és akkor 3d hatást ér el mint a
-        windows laptopon ezek a kártyák akár kinyíthatóak is lehetnének eluról
-        lecsúsznának mint a telefon
+     
+        
+       
       </div>
       <CircuitLines />
     </div>
