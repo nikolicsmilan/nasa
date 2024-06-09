@@ -1,6 +1,9 @@
 import React from "react";
 
 export const useAnimations = () => {
+
+
+  
   const mainConsoleAnimations = (setAnimationVariants, setInfo) => {
     const runAnimations = () => {
       //  if (actualMainConsole) {

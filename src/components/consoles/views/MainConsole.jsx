@@ -5,15 +5,7 @@ import { useDataVisualization } from "../../../hooks/use-datavisualization";
 
 const MainConsole = () => {
   const { actualMainConsole, animationVariants, info } = MyConsoleContext();
-  const { updateConsole } = useDataVisualization();
-  const [consoleContent, setConsoleContent] = useState(
-    updateConsole(actualMainConsole)
-  );
-  useEffect(() => {
-    if (info === "animáció 6") {
-      setConsoleContent(updateConsole(actualMainConsole));
-    }
-  }, [info, actualMainConsole, updateConsole]);
+  const { consoleContent } = useDataVisualization();
 
   return (
     <motion.div
