@@ -15,29 +15,38 @@ import {
   FaSignInAlt,
   FaToggleOff,
   FaToggleOn,
-  FaLanguage,  FaCalendarAlt,
+  FaLanguage,
+  FaCalendarAlt,
   FaExclamationTriangle,
-  FaTachometerAlt, FaChartLine,FaRuler,
+  FaTachometerAlt,
+  FaChartLine,
+  FaRuler,
   FaStar,
-  FaArrowCircleUp, FaArrowCircleDown,
-  FaFlag,FaInfoCircle 
+  FaArrowCircleUp,
+  FaArrowCircleDown,
+  FaFlag,
+  FaInfoCircle,
 } from "react-icons/fa";
-import { FaSatelliteDish, FaSatellite,FaArrowUpWideShort,FaArrowDownShortWide    } from "react-icons/fa6";
+import {
+  FaSatelliteDish,
+  FaSatellite,
+  FaArrowUpWideShort,
+  FaArrowDownShortWide,
+} from "react-icons/fa6";
 import { BsJoystick } from "react-icons/bs";
-
 
 import {
   MdDashboardCustomize,
   MdOutlineFormatListNumbered,
 } from "react-icons/md";
-import { MdBrightness6,MdPieChart  } from "react-icons/md";
-import { GiLevelEndFlag,GiHorizontalFlip  } from "react-icons/gi";
-import { TfiRulerAlt2,TfiBarChart  } from "react-icons/tfi";
+import { MdBrightness6, MdPieChart } from "react-icons/md";
+import { GiLevelEndFlag, GiHorizontalFlip } from "react-icons/gi";
+import { TfiRulerAlt2, TfiBarChart } from "react-icons/tfi";
 import { AiOutlineRadarChart } from "react-icons/ai";
-import { TbChartArcs3,TbApi   } from "react-icons/tb";
+import { TbChartArcs3, TbApi } from "react-icons/tb";
 import { IoMdFunnel } from "react-icons/io";
 import { BiScatterChart } from "react-icons/bi";
-import { SiNasa,SiFirebase  } from "react-icons/si";
+import { SiNasa, SiFirebase } from "react-icons/si";
 
 //Navigation menu Home page
 export const homemenu = [
@@ -157,68 +166,73 @@ export const dashboards = [
     icon: MdDashboardCustomize,
     description: "General main information",
     sign: "",
+    animations:"yes"
   },
   {
     title: "Magnitudo",
     icon: MdBrightness6,
     description: "Magnitudo",
     sign: "h",
+    animations:"yes"
   },
   {
     title: "Potential Impacts",
     icon: FaExclamationTriangle,
     description: "Potential impacts",
     sign: "ip",
+    animations:"yes"
   },
   {
     title: "Palermo",
     icon: MdOutlineFormatListNumbered,
     description: "Palermo scale",
     sign: "ps_max",
+    animations:"yes"
   },
   {
     title: "Velocity",
     icon: FaTachometerAlt,
     description: "Velocity",
     sign: "v_inf",
+    animations:"yes"
   },
   {
     title: "Torino",
     icon: GiLevelEndFlag,
     description: "Torino scale",
     sign: "ts_max",
+    animations:"yes"
   },
   {
     title: "Diameter",
     icon: TfiRulerAlt2,
     description: "Diameter",
     sign: "diameter",
+    animations:"yes"
   },
   {
     title: "Year",
     icon: FaCalendarAlt,
     description: "Year of observation",
+    animations:"yes"
   },
 ];
 
 // filterconsole source
 export const filterconsolesource = [
-
   {
-    title: "Potential Impacts",
+    title: "Order Increase",
     icon: FaArrowUpWideShort,
-    description: "Potential impacts",
+    description: "Order Increase",
   },
   {
-    title: "Potential Impacts",
-    icon: FaArrowDownShortWide ,
-    description: "Potential impacts",
+    title: "Order Decrease",
+    icon: FaArrowDownShortWide,
+    description: "Order Decrease",
   },
-
 ];
 
 export const operationsconsolesource = [
-
   {
     title: "Joystick",
     icon: BsJoystick,
@@ -226,27 +240,26 @@ export const operationsconsolesource = [
   },
   {
     title: "Up Consoles",
-    icon: FaArrowCircleUp ,
-    description: "Potential impacts",
+    icon: FaArrowCircleUp,
+    description: "Up Consoles",
   },
   {
     title: "Down Consoles",
-    icon: FaArrowCircleDown  ,
+    icon: FaArrowCircleDown,
     description: "Down Consoles",
   },
   {
     title: "Horizont",
-    icon: GiHorizontalFlip ,
+    icon: GiHorizontalFlip,
     description: "Horizont Cosnoles",
   },
-
 ];
 
 export const graphconsole = [
   {
     title: "Area",
     icon: FaChartArea,
-    description: "AreaChart",
+    description: "Area",
   },
   {
     title: "Bar",
@@ -283,9 +296,7 @@ export const graphconsole = [
     icon: IoMdFunnel,
     description: "FunnelChart",
   },
- 
 ];
-
 
 export const informationconsolesource = [
   {
@@ -308,14 +319,12 @@ export const informationconsolesource = [
     icon: FaInfoCircle,
     description: "Aboutme",
   },
-
 ];
 
 export const resourceconsolesource = [
-
   {
     title: "Firebase ",
-    icon: SiFirebase ,
+    icon: SiFirebase,
     description: "Firebase",
   },
   {
@@ -323,7 +332,6 @@ export const resourceconsolesource = [
     icon: TbApi,
     description: "API",
   },
-
 ];
 
 export const leftasideconsolesource = [

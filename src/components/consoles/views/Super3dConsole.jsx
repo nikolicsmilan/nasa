@@ -14,12 +14,15 @@ const Super3dConsole = ({
     MyConsoleContext();
   const { mainConsoleAnimations } = useAnimations();
 
-//Here decide what will apear on mainconsole screen
+  //Here decide what will apear on mainconsole screen
   const handleClick = (item) => {
-    setActualMainConsole(item.title);
-    mainConsoleAnimations(setAnimationVariants, setInfo);
-  };
+    setActualMainConsole(item);
 
+    //ez futatja az animációt az odalt bejön másikon kijön
+    if (item.animations === "yes") {
+      mainConsoleAnimations(setAnimationVariants, setInfo);
+    }
+  };
 
   return (
     <div

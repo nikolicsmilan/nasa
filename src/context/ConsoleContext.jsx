@@ -6,9 +6,11 @@ import {
   rightasideconsolesource,
   filterconsolesource,
 } from "../locales/localdata";
+import { nasa } from "../locales/nasaapi";
 const ConsoleContext = createContext();
 
 export const ConsoleContextProvider = ({ children }) => {
+  const [sumObject, setSumObject] = useState(nasa);
   const [leftasideconsole, setLeftasideconsole] = useState(
     leftasideconsolesource
   );
@@ -35,7 +37,8 @@ export const ConsoleContextProvider = ({ children }) => {
         info,
         setInfo,
         acitveMainConsole,
-        setActiveMainConsole,animationVariants, setAnimationVariants
+        setActiveMainConsole,animationVariants, setAnimationVariants, sumObject,
+        setSumObject,
       }}
     >
       {children}

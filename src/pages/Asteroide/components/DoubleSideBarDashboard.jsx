@@ -11,7 +11,7 @@ const DoubleSidebarDashboard = () => {
     <div
       className={`min-h-screen flex   border-orange-400
        z-50 relative ${
-        toggle ? "opacity-20" : ""
+        toggle ? "opacity-70" : ""
       }`}
     >
       <video
@@ -22,8 +22,10 @@ const DoubleSidebarDashboard = () => {
         muted
       ></video>
       <div
-        className="flex flex-row  w-full 
-       opacity-70 relative z-50"
+        className={`flex flex-row  w-full 
+        ${
+          toggle ? "opacity-10" : "opacity-70"
+        } relative z-50`}
       >
         <LeftConsolesAside />
         <MainConsoleFrame />

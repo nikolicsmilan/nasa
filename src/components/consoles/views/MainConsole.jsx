@@ -17,15 +17,16 @@ const MainConsole = () => {
     transform perspective-1000  "
     >
       <h3 className="bg-950 text-primary uppercase text-lg text-center w-full">
-        MainConsole actulal:{actualMainConsole} info: {info}
+        MainConsole actual:{actualMainConsole.title} 
       </h3>
 
-      <div className="border-0 opacity-100 
-      z-50 relative p-2 overflow-y-scroll overflow-x-scroll   h-full ">
-        {consoleContent}
+      <div className="border-2 w-full opacity-100 
+      z-50 relative p-2 overflow-y-scroll overflow-x-scroll   h-full text-white flex justify-center items-center">
+        {consoleContent} 
       </div>
     </motion.div>
   );
 };
 
 export default MainConsole;
+//info: {info}

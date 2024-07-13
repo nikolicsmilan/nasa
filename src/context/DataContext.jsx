@@ -3,9 +3,11 @@ import { useSave } from "../hooks/use-saveuser";
 import { useInfo } from "../hooks/use-info";
 import UAParser from "ua-parser-js";
 
+
 const DataContext = createContext();
 
 export const DataContextProvider = ({ children }) => {
+
   const [windowSize, setWindowSize] = useState({
     width: undefined,
     height: undefined,
@@ -13,9 +15,13 @@ export const DataContextProvider = ({ children }) => {
   const [toggle, setToggle] = useState(true);
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [settings, setSettings] = useState("Navigation");
-  const [users, setUsers] = useState({ style: "sky", sound: "on",language:"en" });
+  const [users, setUsers] = useState({
+    style: "sky",
+    sound: "on",
+    language: "en",
+  });
   const [choosenStyle, setChoosenStyle] = useState("sky");
-  const { updateBrowserInfo, updateIpAddress,updateGPS } = useInfo();
+  const { updateBrowserInfo, updateIpAddress, updateGPS } = useInfo();
   const [browserInfo, setBrowserInfo] = useState(null);
   const [ipAddress, setIPAddress] = useState("");
   const [latitude, setLatitude] = useState(null);
@@ -31,7 +37,7 @@ export const DataContextProvider = ({ children }) => {
     setBrowserInfo(parsedInfo);*/
     updateBrowserInfo(setBrowserInfo);
     updateIpAddress(setIPAddress);
-    updateGPS(setLatitude,setLongitude)
+    updateGPS(setLatitude, setLongitude);
   }, []);
   return (
     <DataContext.Provider
@@ -54,6 +60,7 @@ export const DataContextProvider = ({ children }) => {
         setIPAddress,
         latitude,
         longitude,
+       
       }}
     >
       {children}

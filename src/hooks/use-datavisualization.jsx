@@ -3,33 +3,40 @@ import ReachartsExample from "../pages/Asteroide/components/RechartExample2";
 import { MyConsoleContext } from "../context/ConsoleContext";
 import TestCharts2 from "../pages/Asteroide/components/TestCharts2";
 import GeneralDashboard from "../pages/Asteroide/dashboards/GeneralDashboard";
-
+import AreaCharts from "../components/Charts/AreaCharts";
 export const useDataVisualization = () => {
-  const { info, actualMainConsole } = MyConsoleContext();
+  const { info, actualMainConsole, sumObject } = MyConsoleContext();
 
+  //ez változtatja a tartalmat
   const updateConsole = (actualMainConsole) => {
-    if (actualMainConsole === "Year") {
+    if (actualMainConsole?.title === "Year") {
       return (
         <div className="border-0 border-red-400">
           <ReachartsExample />
         </div>
       );
-    } else if (actualMainConsole === "General") {
+    } else if (actualMainConsole?.title === "General") {
       return (
         <div className="border-0 border-lime-400">
-          < GeneralDashboard/>
+          <GeneralDashboard />
         </div>
       );
-    } else if (actualMainConsole === "Potential Impacts") {
+    } else if (actualMainConsole?.title === "Potential Impacts") {
       return (
         <div>
           <TestCharts2 />
         </div>
       );
-    } else if (actualMainConsole !== "Year") {
+    } else if (actualMainConsole?.title === "Area") {
       return (
         <div>
-          <h1>This is an empty charts</h1>
+          <AreaCharts />
+        </div>
+      );
+    } else if (actualMainConsole?.title !== "Year") {
+      return (
+        <div className="flex border-0 p-2 border-lime-400 w-full  justify-center">
+          <h1 className="">This console is under development </h1>
         </div>
       );
     }
@@ -38,9 +45,18 @@ export const useDataVisualization = () => {
   const [consoleContent, setConsoleContent] = useState(
     updateConsole(actualMainConsole)
   );
+  /*
+  useEffect(() => {
+    if (info === "animáció 6" && actualMainConsole.animations === "yes") {
+      setConsoleContent(updateConsole(actualMainConsole?.title));
+    }
+    setConsoleContent(updateConsole(actualMainConsole?.title));
+  }, [info, actualMainConsole]);*/
 
   useEffect(() => {
-    if (info === "animáció 6") {
+    if (info === "animáció 6" && actualMainConsole?.animations === "yes") {
+      setConsoleContent(updateConsole(actualMainConsole));
+    } else {
       setConsoleContent(updateConsole(actualMainConsole));
     }
   }, [info, actualMainConsole]);
