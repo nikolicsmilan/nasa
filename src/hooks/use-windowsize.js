@@ -1,8 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { MyDataContext } from "../context/DataContext";
 
 const useWindowSize = () => {
-  const { windowSize, setWindowSize } = MyDataContext();
+  const { windowSize, setWindowSize } = useContext(MyDataContext);
+  const [isLandscape, setIsLandscape] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
@@ -17,11 +18,29 @@ const useWindowSize = () => {
     window.addEventListener("resize", handleResize);
 
     return () => {
-      return window.removeEventListener("resize", handleResize);
+      window.removeEventListener("resize", handleResize);
     };
+  }, [setWindowSize]);
+
+  useEffect(() => {
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+    if (isMobile) {
+      const handleOrientationChange = () => {
+        setIsLandscape(window.innerWidth > window.innerHeight);
+      };
+
+      window.addEventListener('resize', handleOrientationChange);
+      handleOrientationChange();
+
+      return () => {
+        window.removeEventListener('resize', handleOrientationChange);
+      };
+    }
   }, []);
 
-  return windowSize;
+  return [windowSize, isLandscape];
 };
 
 export default useWindowSize;
+
