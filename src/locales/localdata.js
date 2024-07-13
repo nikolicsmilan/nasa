@@ -15,31 +15,29 @@ import {
   FaSignInAlt,
   FaToggleOff,
   FaToggleOn,
-  FaLanguage,
-} from "react-icons/fa";
-import { FaSatelliteDish, FaSatellite } from "react-icons/fa6";
-
-import {
-  FaCalendarAlt,
+  FaLanguage,  FaCalendarAlt,
   FaExclamationTriangle,
-  FaTachometerAlt,
-  FaRuler,
+  FaTachometerAlt, FaChartLine,FaRuler,
   FaStar,
-  FaChartLine,
-  FaFlag,
+  FaArrowCircleUp, FaArrowCircleDown,
+  FaFlag,FaInfoCircle 
 } from "react-icons/fa";
+import { FaSatelliteDish, FaSatellite,FaArrowUpWideShort,FaArrowDownShortWide    } from "react-icons/fa6";
+import { BsJoystick } from "react-icons/bs";
+
 
 import {
   MdDashboardCustomize,
   MdOutlineFormatListNumbered,
 } from "react-icons/md";
 import { MdBrightness6,MdPieChart  } from "react-icons/md";
-import { GiLevelEndFlag } from "react-icons/gi";
+import { GiLevelEndFlag,GiHorizontalFlip  } from "react-icons/gi";
 import { TfiRulerAlt2,TfiBarChart  } from "react-icons/tfi";
 import { AiOutlineRadarChart } from "react-icons/ai";
-import { TbChartArcs3,  } from "react-icons/tb";
+import { TbChartArcs3,TbApi   } from "react-icons/tb";
 import { IoMdFunnel } from "react-icons/io";
 import { BiScatterChart } from "react-icons/bi";
+import { SiNasa,SiFirebase  } from "react-icons/si";
 
 //Navigation menu Home page
 export const homemenu = [
@@ -196,45 +194,52 @@ export const dashboards = [
     description: "Diameter",
     sign: "diameter",
   },
-];
-
-// filterconsole source
-export const filterconsolesource = [
   {
     title: "Year",
     icon: FaCalendarAlt,
     description: "Year of observation",
   },
+];
+
+// filterconsole source
+export const filterconsolesource = [
+
   {
     title: "Potential Impacts",
-    icon: FaExclamationTriangle,
+    icon: FaArrowUpWideShort,
     description: "Potential impacts",
   },
   {
-    title: "Velocity",
-    icon: FaTachometerAlt,
-    description: "Velocity",
+    title: "Potential Impacts",
+    icon: FaArrowDownShortWide ,
+    description: "Potential impacts",
+  },
+
+];
+
+export const operationsconsolesource = [
+
+  {
+    title: "Joystick",
+    icon: BsJoystick,
+    description: "Joystick",
   },
   {
-    title: "Magnitudo",
-    icon: FaStar,
-    description: "Magnitudo",
+    title: "Up Consoles",
+    icon: FaArrowCircleUp ,
+    description: "Potential impacts",
   },
   {
-    title: "Palermo",
-    icon: FaChartLine,
-    description: "Palermo scale",
+    title: "Down Consoles",
+    icon: FaArrowCircleDown  ,
+    description: "Down Consoles",
   },
   {
-    title: "Torino",
-    icon: FaFlag,
-    description: "Torino scale",
+    title: "Horizont",
+    icon: GiHorizontalFlip ,
+    description: "Horizont Cosnoles",
   },
-  {
-    title: "Diameter",
-    icon: TfiRulerAlt2,
-    description: "Diameter",
-  },
+
 ];
 
 export const graphconsole = [
@@ -278,11 +283,47 @@ export const graphconsole = [
     icon: IoMdFunnel,
     description: "FunnelChart",
   },
+ 
+];
+
+
+export const informationconsolesource = [
   {
-    title: "Year",
-    icon: FaCalendarAlt ,
-    description: "Year of observation",
+    title: "Nasa",
+    icon: SiNasa,
+    description: "Nasa",
   },
+  {
+    title: "Sentry",
+    icon: FaSatellite,
+    description: "Sentry",
+  },
+  {
+    title: "API",
+    icon: TbApi,
+    description: "API",
+  },
+  {
+    title: "Aboutme",
+    icon: FaInfoCircle,
+    description: "Aboutme",
+  },
+
+];
+
+export const resourceconsolesource = [
+
+  {
+    title: "Firebase ",
+    icon: SiFirebase ,
+    description: "Firebase",
+  },
+  {
+    title: "API",
+    icon: TbApi,
+    description: "API",
+  },
+
 ];
 
 export const leftasideconsolesource = [
@@ -315,7 +356,7 @@ export const leftasideconsolesource = [
     icon: FaCalendarAlt,
     description: "Year of observation",
     origin: "right center",
-    data: filterconsolesource,
+    data: informationconsolesource,
     position: {
       x: "-10",
       y: "20",
@@ -342,7 +383,7 @@ export const rightasideconsolesource = [
     icon: FaCalendarAlt,
     description: "Year of observation",
     origin: "right center",
-    data: graphconsole,
+    data: operationsconsolesource,
     position: {
       x: "10",
       y: "20",
@@ -350,11 +391,11 @@ export const rightasideconsolesource = [
     },
   },
   {
-    name: "Resources",
+    name: "resources",
     icon: FaCalendarAlt,
     description: "Year of observation",
     origin: "right center",
-    data: filterconsolesource,
+    data: resourceconsolesource,
     position: {
       x: "10",
       y: "20",
