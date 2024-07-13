@@ -10,13 +10,13 @@ export const useDataVisualization = () => {
   const updateConsole = (actualMainConsole) => {
     if (actualMainConsole === "Year") {
       return (
-        <div>
+        <div className="border-0 border-red-400">
           <ReachartsExample />
         </div>
       );
     } else if (actualMainConsole === "General") {
       return (
-        <div>
+        <div className="border-0 border-lime-400">
           < GeneralDashboard/>
         </div>
       );
@@ -29,7 +29,7 @@ export const useDataVisualization = () => {
     } else if (actualMainConsole !== "Year") {
       return (
         <div>
-          <h1>Ez egy másik ami visszajön</h1>
+          <h1>This is an empty charts</h1>
         </div>
       );
     }

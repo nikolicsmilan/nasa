@@ -13,10 +13,14 @@ const Super3dConsole = ({
   const { setActualMainConsole, setAnimationVariants, setInfo } =
     MyConsoleContext();
   const { mainConsoleAnimations } = useAnimations();
+
+//Here decide what will apear on mainconsole screen
   const handleClick = (item) => {
     setActualMainConsole(item.title);
     mainConsoleAnimations(setAnimationVariants, setInfo);
   };
+
+
   return (
     <div
       style={{
@@ -26,7 +30,11 @@ const Super3dConsole = ({
           rotateZ(${rotateZ}deg)`,
         transformOrigin: origin,
       }}
-      className={` ${origin ==='left center' ?'bg-gradientreverse  border-r-[5px] border-l-2':'bg-gradient  border-r-2 border-l-[5px]'} 
+      className={` ${
+        origin === "left center"
+          ? "bg-gradientreverse  border-r-[5px] border-l-2"
+          : "bg-gradient  border-r-2 border-l-[5px]"
+      } 
       relative z-10 rounded inset-0 border-b-2 
       border-t-4 
       border-600 
@@ -50,17 +58,17 @@ const Super3dConsole = ({
           </div>
         ))}
       </div>
-      <div    style={{
-        transform: `
+      <div
+        style={{
+          transform: `
           rotateX(${20}deg)
           rotateY(${10}deg)
           rotateZ(${0}deg)`,
-        transformOrigin: origin,
-      }} className="text-white hidden border bg-gradient mt-[30px] ml-[-6px] w-full min-h-2">
+          transformOrigin: origin,
+        }}
+        className="text-white hidden border bg-gradient mt-[30px] ml-[-6px] w-full min-h-2"
+      >
         {" "}
-     
-        
-       
       </div>
       <CircuitLines />
     </div>

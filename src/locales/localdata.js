@@ -5,6 +5,7 @@ import {
   FaVolumeUp,
   FaDatabase,
   FaRocket,
+  FaChartArea,
 } from "react-icons/fa";
 import {
   FaHome,
@@ -28,7 +29,17 @@ import {
   FaFlag,
 } from "react-icons/fa";
 
-import { MdDashboardCustomize } from "react-icons/md";
+import {
+  MdDashboardCustomize,
+  MdOutlineFormatListNumbered,
+} from "react-icons/md";
+import { MdBrightness6,MdPieChart  } from "react-icons/md";
+import { GiLevelEndFlag } from "react-icons/gi";
+import { TfiRulerAlt2,TfiBarChart  } from "react-icons/tfi";
+import { AiOutlineRadarChart } from "react-icons/ai";
+import { TbChartArcs3,  } from "react-icons/tb";
+import { IoMdFunnel } from "react-icons/io";
+import { BiScatterChart } from "react-icons/bi";
 
 //Navigation menu Home page
 export const homemenu = [
@@ -147,16 +158,43 @@ export const dashboards = [
     title: "General",
     icon: MdDashboardCustomize,
     description: "General main information",
+    sign: "",
+  },
+  {
+    title: "Magnitudo",
+    icon: MdBrightness6,
+    description: "Magnitudo",
+    sign: "h",
   },
   {
     title: "Potential Impacts",
     icon: FaExclamationTriangle,
     description: "Potential impacts",
+    sign: "ip",
+  },
+  {
+    title: "Palermo",
+    icon: MdOutlineFormatListNumbered,
+    description: "Palermo scale",
+    sign: "ps_max",
   },
   {
     title: "Velocity",
     icon: FaTachometerAlt,
-    description: "Object velocity",
+    description: "Velocity",
+    sign: "v_inf",
+  },
+  {
+    title: "Torino",
+    icon: GiLevelEndFlag,
+    description: "Torino scale",
+    sign: "ts_max",
+  },
+  {
+    title: "Diameter",
+    icon: TfiRulerAlt2,
+    description: "Diameter",
+    sign: "diameter",
   },
 ];
 
@@ -175,17 +213,12 @@ export const filterconsolesource = [
   {
     title: "Velocity",
     icon: FaTachometerAlt,
-    description: "Object velocity",
-  },
-  {
-    title: "Diameter",
-    icon: FaRuler,
-    description: "Object diameter",
+    description: "Velocity",
   },
   {
     title: "Magnitudo",
     icon: FaStar,
-    description: "Object magnitudo",
+    description: "Magnitudo",
   },
   {
     title: "Palermo",
@@ -196,44 +229,59 @@ export const filterconsolesource = [
     title: "Torino",
     icon: FaFlag,
     description: "Torino scale",
+  },
+  {
+    title: "Diameter",
+    icon: TfiRulerAlt2,
+    description: "Diameter",
   },
 ];
 
 export const graphconsole = [
   {
-    title: "Year",
-    icon: FaRocket,
-    description: "Year of observation",
+    title: "Area",
+    icon: FaChartArea,
+    description: "AreaChart",
   },
   {
-    title: "Potential Impacts",
-    icon: FaExclamationTriangle,
-    description: "Potential impacts",
+    title: "Bar",
+    icon: TfiBarChart,
+    description: "BarChart",
   },
   {
-    title: "Velocity",
-    icon: FaTachometerAlt,
-    description: "Object velocity",
-  },
-  {
-    title: "Diameter",
-    icon: FaRuler,
-    description: "Object diameter",
-  },
-  {
-    title: "Magnitudo",
-    icon: FaStar,
-    description: "Object magnitudo",
-  },
-  {
-    title: "Palermo",
+    title: "Line",
     icon: FaChartLine,
-    description: "Palermo scale",
+    description: "LineChart",
   },
   {
-    title: "Torino",
-    icon: FaFlag,
-    description: "Torino scale",
+    title: "Pie",
+    icon: MdPieChart,
+    description: "PieChart",
+  },
+  {
+    title: "Radar",
+    icon: AiOutlineRadarChart,
+    description: "RadarChart",
+  },
+  {
+    title: "RadaialBar",
+    icon: TbChartArcs3,
+    description: "RadaialBarChart",
+  },
+  {
+    title: "Scatter",
+    icon: BiScatterChart,
+    description: "ScatterChart",
+  },
+  {
+    title: "Funnel",
+    icon: IoMdFunnel,
+    description: "FunnelChart",
+  },
+  {
+    title: "Year",
+    icon: FaCalendarAlt ,
+    description: "Year of observation",
   },
 ];
 
