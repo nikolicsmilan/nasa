@@ -45,18 +45,11 @@ export const useDataVisualization = () => {
   const [consoleContent, setConsoleContent] = useState(
     updateConsole(actualMainConsole)
   );
-  /*
-  useEffect(() => {
-    if (info === "animáció 6" && actualMainConsole.animations === "yes") {
-      setConsoleContent(updateConsole(actualMainConsole?.title));
-    }
-    setConsoleContent(updateConsole(actualMainConsole?.title));
-  }, [info, actualMainConsole]);*/
 
   useEffect(() => {
     if (info === "animáció 6" && actualMainConsole?.animations === "yes") {
       setConsoleContent(updateConsole(actualMainConsole));
-    } else {
+    } else if (!actualMainConsole?.animations) {
       setConsoleContent(updateConsole(actualMainConsole));
     }
   }, [info, actualMainConsole]);
