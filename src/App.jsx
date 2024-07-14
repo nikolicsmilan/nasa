@@ -1,3 +1,4 @@
+import React, { useEffect } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./App.css";
 import "./tailwind.css";
@@ -15,7 +16,7 @@ import { useSave } from "./hooks/use-saveuser";
 import { MyDataContext } from "./context/DataContext";
 
 import DoubleSidebarDashboard from "./pages/Asteroide/components/DoubleSideBarDashboard";
-
+import useDatafilter from "./hooks/use-datafilter";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -33,9 +34,15 @@ const router = createBrowserRouter([
   },
 ]);
 function App() {
+  const { filterData } = useDatafilter();
   //It is needed for the initilazation
   const { saveUser } = useSave();
   const { choosenStyle } = MyDataContext();
+  //Once run that no cause problem empty data if somebody click on graphconsole
+  //without choose from dashboards the default dashboard is Magnitudo
+  useEffect(() => {
+    filterData("h", "up", 10);
+  }, []);
   return (
     <div className={`${choosenStyle} font-robotoMono `}>
       <RouterProvider router={router} />
