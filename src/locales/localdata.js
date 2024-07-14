@@ -26,6 +26,7 @@ import {
   FaArrowCircleDown,
   FaFlag,
   FaInfoCircle,
+  FaPlus,FaMinus 
 } from "react-icons/fa";
 import {
   FaSatelliteDish,
@@ -66,7 +67,7 @@ export const homemenu = [
 //Navigation menu Asteoride page
 export const asteroidemenu = [
   {
-    title: "Vissza",
+    title: "Back",
     icon: FaSignInAlt,
     link: "/",
     description: "",
@@ -75,7 +76,7 @@ export const asteroidemenu = [
 
 export const returnMenu = [
   {
-    title: "Vissza",
+    title: "Back",
     icon: FaProjectDiagram,
     link: "/",
   },
@@ -166,55 +167,55 @@ export const dashboards = [
     icon: MdDashboardCustomize,
     description: "General main information",
     sign: "",
-    animations:"yes"
+    animations: "yes",
   },
   {
     title: "Magnitudo",
     icon: MdBrightness6,
     description: "Magnitudo",
     sign: "h",
-    animations:"yes"
+    animations: "yes",
   },
   {
     title: "Potential Impacts",
     icon: FaExclamationTriangle,
     description: "Potential impacts",
     sign: "ip",
-    animations:"yes"
+    animations: "yes",
   },
   {
     title: "Palermo",
     icon: MdOutlineFormatListNumbered,
     description: "Palermo scale",
     sign: "ps_max",
-    animations:"yes"
+    animations: "yes",
   },
   {
     title: "Velocity",
     icon: FaTachometerAlt,
     description: "Velocity",
     sign: "v_inf",
-    animations:"yes"
+    animations: "yes",
   },
   {
     title: "Torino",
     icon: GiLevelEndFlag,
     description: "Torino scale",
     sign: "ts_max",
-    animations:"yes"
+    animations: "yes",
   },
   {
     title: "Diameter",
     icon: TfiRulerAlt2,
     description: "Diameter",
     sign: "diameter",
-    animations:"yes"
+    animations: "yes",
   },
   {
     title: "Year",
     icon: FaCalendarAlt,
     description: "Year of observation",
-    animations:"yes"
+    animations: "yes",
   },
 ];
 
@@ -230,8 +231,18 @@ export const filterconsolesource = [
     icon: FaArrowDownShortWide,
     description: "Order Decrease",
   },
+  {
+    title: "Plus one Item",
+    icon: FaPlus,
+    description: "Plus one Item",
+  },
+  {
+    title: "Minus one Item",
+    icon: FaMinus,
+    description: "Minus one Item",
+  },
 ];
-
+//
 export const operationsconsolesource = [
   {
     title: "Joystick",
@@ -318,6 +329,20 @@ export const informationconsolesource = [
     title: "Aboutme",
     icon: FaInfoCircle,
     description: "Aboutme",
+  },
+  {
+    title: "Palermo",
+    icon: MdOutlineFormatListNumbered,
+    description: "Palermo scale",
+    sign: "ps_max",
+    animations: "yes",
+  },
+  {
+    title: "Torino",
+    icon: GiLevelEndFlag,
+    description: "Torino scale",
+    sign: "ts_max",
+    animations: "yes",
   },
 ];
 
