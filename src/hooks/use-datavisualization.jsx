@@ -4,6 +4,7 @@ import { MyConsoleContext } from "../context/ConsoleContext";
 import TestCharts2 from "../pages/Asteroide/components/TestCharts2";
 import GeneralDashboard from "../pages/Asteroide/dashboards/GeneralDashboard";
 import AreaCharts from "../components/Charts/AreaCharts";
+import BarCharts from "../components/Charts/BarCharts";
 export const useDataVisualization = () => {
   const { info, actualMainConsole, sumObject } = MyConsoleContext();
 
@@ -31,6 +32,12 @@ export const useDataVisualization = () => {
       return (
         <div>
           <AreaCharts />
+        </div>
+      );
+    } else if (actualMainConsole?.title === "Bar") {
+      return (
+        <div>
+          <BarCharts />
         </div>
       );
     } else if (actualMainConsole?.title !== "Year") {
