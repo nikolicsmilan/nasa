@@ -12,13 +12,13 @@ const Home = () => {
 
   return (
     <div
-      className={`border-0  border-sky-100 w-full z-40    ${
+      className={`border-0  border-red-500 w-full z-40    ${
         settingsOpen ? "opacity-20 " : ""
       } `}
     >
       <div
-        className=" flex flex-col md:flex-row border-0 border-red-400 w-full   
-  z-50  relative h-screen"
+        className={` flex flex-col md:flex-row border-0 border-red-400 w-full   
+  z-50  relative h-screen  ${settingsOpen ? "opacity-20 " : ""} `}
       >
         <div
           className="flex h-96 md:h-screen w-full md:w-1/2
@@ -28,7 +28,10 @@ const Home = () => {
         >
           <header className="h-full flex items-center justify-center px-6 ]">
             <div className="flex flex-col justify-center items-center px-2">
-              <h1 className="text-7xl font-semibold px-2 border-b-2 border-primary"> SENTRY</h1>
+              <h1 className="text-7xl font-semibold px-2 border-b-2 border-primary">
+                {" "}
+                SENTRY
+              </h1>
               <p className="border-0 h-24 m-0 p-0 mt-[-25px]">
                 {" "}
                 <SiNasa className="text-9xl px-0 text-red-500" />{" "}
