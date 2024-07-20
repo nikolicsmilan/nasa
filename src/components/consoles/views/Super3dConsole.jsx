@@ -2,6 +2,7 @@ import React from "react";
 import { MyConsoleContext } from "../../../context/ConsoleContext";
 import CircuitLines from "./CircuitLines";
 import { useAnimations } from "../../../hooks/use-animations";
+import useDatafilter from "../../../hooks/use-datafilter";
 const Super3dConsole = ({
   nameconsole,
   data,
@@ -10,15 +11,27 @@ const Super3dConsole = ({
   rotateZ,
   origin,
 }) => {
-  const { setActualMainConsole, setAnimationVariants, setInfo } =
-    MyConsoleContext();
+  const {
+    setActualMainConsole,
+    setAnimationVariants,
+    setInfo,
+    setActualtypedata,
+  } = MyConsoleContext();
   const { mainConsoleAnimations } = useAnimations();
+  const { filterData } = useDatafilter();
 
   //Here decide what will apear on mainconsole screen
   const handleClick = (item) => {
+    //Only content change
     setActualMainConsole(item);
 
-    //ez futatja az animációt az odalt bejön másikon kijön
+    if (item?.sign) {
+      console.log("item: ", item);
+      console.log("Van sign");
+      filterData(item?.sign, "up", 10);
+      setActualtypedata(item?.sign);
+    }
+    //If animations attribute ==== yes run the animations also
     if (item.animations === "yes") {
       mainConsoleAnimations(setAnimationVariants, setInfo);
     }
@@ -74,6 +87,7 @@ const Super3dConsole = ({
         {" "}
       </div>
       <CircuitLines />
+  
     </div>
   );
 };
