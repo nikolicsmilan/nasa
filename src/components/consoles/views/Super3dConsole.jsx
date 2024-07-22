@@ -16,25 +16,26 @@ const Super3dConsole = ({
     setAnimationVariants,
     setInfo,
     setActualtypedata,
+    setSatusTable
   } = MyConsoleContext();
   const { mainConsoleAnimations } = useAnimations();
   const { filterData } = useDatafilter();
 
   //Here decide what will apear on mainconsole screen
+
+  //Here is only the item pass
+  //Then the hook will decide what happens
   const handleClick = (item) => {
     //Only content change
-    setActualMainConsole(item);
 
-    if (item?.sign) {
-      console.log("item: ", item);
-      console.log("Van sign");
-      filterData(item?.sign, "up", 10);
-      setActualtypedata(item?.sign);
-    }
-    //If animations attribute ==== yes run the animations also
-    if (item.animations === "yes") {
-      mainConsoleAnimations(setAnimationVariants, setInfo);
-    }
+//we need a function here that is not direct
+ //sets the statusTable but decides what
+ //be set in the statusTabel if there is any change
+ //Must tune the localdata in the ConsoleContext
+ // statusTable state el
+ //Unnecessary states must be removed
+ //Super3dConsole.jsx component itself is in the wrong folder
+    setSatusTable(item)
   };
 
   return (
@@ -93,3 +94,21 @@ const Super3dConsole = ({
 };
 
 export default Super3dConsole;
+/*
+  const handleClick = (item) => {
+    //Only content change
+    setActualMainConsole(item);
+
+    if (item?.sign) {
+      console.log("item: ", item);
+      console.log("Van sign");
+      filterData(item?.sign, "up", 10);
+      setActualtypedata(item?.sign);
+    }
+    //If animations attribute ==== yes run the animations also
+    if (item.animations === "yes") {
+     // mainConsoleAnimations(setAnimationVariants, setInfo);
+    }
+  };
+
+*/
