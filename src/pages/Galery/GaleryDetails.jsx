@@ -9,7 +9,7 @@ const GaleryDetails = () => {
       <h1>GaleryDetails</h1>
       <p> {params.productId}</p>
 
-      <p><Link to=".." relative="path">vissza</Link></p>
+      <p><Link to=".." relative="path">Back</Link></p>
     </div>
   );
 };

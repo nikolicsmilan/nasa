@@ -22,8 +22,11 @@ const data = [
 ];
 
 const RechartsExample = () => {
-  const { width, height } = useWindowSize();
+  // const { windowSize: { width, height } } = useWindowSize();
+  //const { width, height } = useWindowSize();
   const [maxIp, setMaxIp] = useState(0);
+   const { windowSize } = useWindowSize();
+  //const { width, height } = windowSize;
 
   useEffect(() => {
     const newMaxIp = Math.max(...ip1000.map((d) => d.ip));
@@ -54,8 +57,12 @@ const RechartsExample = () => {
   //const sortedData = ip1000.sort((a, b) => new Date(a.date) - new Date(b.date));
   return (
     //úgy kell hogy -40 mobil és /5 lg nél
-    <div className="border-0 border-purple-400">
-      <LineChart width={width> 1000 ? width/5:width-40} height={190} data={sortedData}>
+    <div className="border-0 border-purple-400"></div>
+  );
+};
+
+export default RechartsExample;
+/* <LineChart width={width> 1000 ? width/5:width-40} height={190} data={sortedData}>
         <Line type="monotone" dataKey="ip" stroke="#2196F3" strokeWidth={1} />
 
         <CartesianGrid stroke="#2196F3" />
@@ -72,11 +79,4 @@ const RechartsExample = () => {
         <YAxis domain={[0, maxIp]} stroke="#2196F3" />
         <Tooltip stroke="#2196F3"  />
         <Legend stroke="#2196F3" />
-      </LineChart>
-
-
-    </div>
-  );
-};
-
-export default RechartsExample;
+      </LineChart> */

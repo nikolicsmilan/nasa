@@ -3,52 +3,70 @@ import ReachartsExample from "../pages/Asteroide/components/RechartExample2";
 import { MyConsoleContext } from "../context/ConsoleContext";
 import TestCharts2 from "../pages/Asteroide/components/TestCharts2";
 import GeneralDashboard from "../pages/Asteroide/dashboards/GeneralDashboard";
-import AreaCharts from "../components/Charts/AreaCharts";
-import BarCharts from "../components/Charts/BarCharts";
+import {
+  AreaCharts,
+  BarCharts,
+  LineChart,
+  PieChart,
+  RadarChart,
+  RadialBarChart,
+  ScatterChart,
+  FunnelChart,
+} from "../components/Charts";
+
 export const useDataVisualization = () => {
-  const { info, actualMainConsole, sumObject } = MyConsoleContext();
+ const { info, actualMainConsole, statusTable }   = MyConsoleContext();
 
   //ez változtatja a tartalmat
-  const updateConsole = (actualMainConsole) => {
-    if (actualMainConsole?.title === "Year") {
+
+  //Ezt kell egyenként először kidolgozni
+  // először komponens
+      //Kell egy Táblázat forma is
+  // aztán adat 
+         //>> 1.Ebből kettős alul felülről
+         // 2.illetve darabonként emelni 2-10
+         //3. kiegészítés ha a chart megkívánja más értékkel összenhaonlítás
+         //ezt mindig chartonként kell eldönteni
+  //aztán animáció
+  const updateConsole = () => {
+    if (statusTable.dashboard === "Magnitudo" && statusTable.graph === "Area") {
       return (
-        <div className="border-0 border-red-400">
-          <ReachartsExample />
+        <div className="border-0 border-lime-400">
+          <AreaCharts />
         </div>
       );
-    } else if (actualMainConsole?.title === "General") {
+    } else if (statusTable.dashboard === "General") {
       return (
         <div className="border-0 border-lime-400">
           <GeneralDashboard />
         </div>
       );
-    } else if (actualMainConsole?.title === "Potential Impacts") {
+    } else if (statusTable.dashboard === "Potential Impacts") {
       return (
         <div>
           <TestCharts2 />
         </div>
       );
-    } else if (actualMainConsole?.title === "Area") {
+    } else if (statusTable.dashboard === "Year") {
       return (
-        <div>
-          <AreaCharts />
+        <div className="border-0 border-red-400">
+          <ReachartsExample />
         </div>
       );
-    } else if (actualMainConsole?.title === "Bar") {
+    } else if (statusTable.dashboard === "Bar") {
       return (
         <div>
           <BarCharts />
         </div>
       );
-    } else if (actualMainConsole?.title !== "Year") {
+    } else {
       return (
-        <div className="flex border-0 p-2 border-lime-400 w-full  justify-center">
-          <h1 className="">This console is under development </h1>
+        <div className="flex border-0 p-2 border-lime-400 w-full justify-center">
+          <h1>This console is under development</h1>
         </div>
       );
     }
   };
-
   const [consoleContent, setConsoleContent] = useState(
     updateConsole(actualMainConsole)
   );

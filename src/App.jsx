@@ -7,7 +7,7 @@ import Galery from "./pages/Galery/Galery";
 import LayoutHome from "./layouts/LayoutHome";
 import LayoutDashboard from "./layouts/LayoutDashboard";
 import Error from "./pages/Error/Error";
-import Asteroide from "./pages/Asteroide/Asteroide";
+
 import AsteroideDetail from "./pages/AsteroideDetail/AsteroideDetail";
 import SpaceKnowledge from "./pages/Spaceknowledge/SpaceKnowledge";
 import Quiz from "./pages/Quiz/Quiz";
@@ -15,7 +15,7 @@ import SolarSytsem from "./pages/SolarSystem/SolarSystem";
 import { useSave } from "./hooks/use-saveuser";
 import { MyDataContext } from "./context/DataContext";
 
-import DoubleSidebarDashboard from "./pages/Asteroide/components/DoubleSideBarDashboard";
+import Asteroide from "./pages/Asteroide/Asteroide";
 import useDatafilter from "./hooks/use-datafilter";
 const router = createBrowserRouter([
   {
@@ -30,7 +30,7 @@ const router = createBrowserRouter([
     path: "/asteroide",
     element: <LayoutHome />,
     errorElement: <Error />,
-    children: [{ index: true, element: <DoubleSidebarDashboard /> }],
+    children: [{ index: true, element: <Asteroide /> }],
   },
 ]);
 function App() {
