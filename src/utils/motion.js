@@ -28,13 +28,13 @@ export const myAnimation = (direction) => {
   return {
     initial: {
       x: direction === "left" ? 100 : direction === "right" ? -100 : 0,
-      y: direction === "up" ? 100 : direction === "down" ? -100 : 0,
+      y: direction === "up" ? 100 : direction === "down" ? -10 : 0,
       opacity: 0,
       transition: { ...transition, delay: 0.5 },
     },
     animate: {
       x: direction === "left" ? 60 : direction === "right" ? -10 : 0,
-      y: direction === "up" ? 20 : direction === "down" ? -100 : 0,
+      y: direction === "up" ? 50 : direction === "down" ? -100 : 0,
       opacity: 1,
       transition: { ...transition, delay: 0 },
     },
