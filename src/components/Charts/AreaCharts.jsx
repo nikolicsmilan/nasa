@@ -46,7 +46,7 @@ const AreaCharts = () => {
       tooltip: getComputedStyleColor("ezaz"),
     });
   }, [users.style]);
-  console.log("filteredData: ", filteredData);
+ // console.log("filteredData: ", filteredData);
 
   useEffect(() => {
     if (actualMainConsole.title === "Area" && actualTypeData === "h") {

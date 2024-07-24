@@ -9,7 +9,7 @@ const Asteroide = () => {
 
   return (
     <div
-      className={`min-h-screen flex   border-orange-400
+      className={`min-h-screen flex border-0  border-orange-400
        z-50 relative ${toggle ? "opacity-70" : ""}`}
     >
       <video
@@ -20,13 +20,17 @@ const Asteroide = () => {
         muted
       ></video>
 
-      <div className="hidden lg:flex">
-        <DesktopAsteroide toggle={toggle} />
+      <div className={`hidden lg:flex border-0 border-red-400 w-full   ${
+          toggle ? "opacity-0" : "opacity-100"
+        }`}>
+      <DesktopAsteroide toggle={toggle} />
       </div>
 
-      <div className="flex  lg:hidden relative top-20">
-        <MobileAsteroide toggle={toggle} />
-      </div>
+     <div className={`flex  lg:hidden   ${
+          toggle ? "opacity-0" : "opacity-100"
+        }`}>
+   <MobileAsteroide/>
+     </div>
     </div>
   );
 };

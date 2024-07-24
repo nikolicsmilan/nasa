@@ -3,13 +3,11 @@ import MainConsole from '../../../components/consoles/views/MainConsole'
 import LeftConsolesAside from '../components/LeftConsolesAside'
 import RightConsolesAside from '../components/RightConsolesAside'
 import MainConsoleFrame from '../components/MainConsoleFrame'
-const DesktopAsteroide = ({toggle}) => {
+const DesktopAsteroide = ({}) => {
   return (
     <div
         className={`flex flex-row  w-full 
-        ${
-          toggle ? "opacity-0" : "opacity-70"
-        } relative z-50`}
+       relative z-50`}
       >
         <LeftConsolesAside />
         <MainConsoleFrame />

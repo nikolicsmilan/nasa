@@ -467,6 +467,53 @@ export const rightasideconsolesource = [
   },
 ];
 
+export const mainconsole = [
+  {
+    name: "size",
+    displayname: "Méret",
+    icon: SiNasa,
+  },
+  {
+    name: "color",
+    displayname: "Szín",
+    icon:SiNasa,
+  },
+
+  {
+    name: "rotate",
+    displayname: "Forgatás",
+    icon: SiNasa,
+  },
+];
+
+
+export const sizeconsole = [
+  {
+    name: 1.5,
+    property: "size",
+    displayname: "Option",
+    icon:SiNasa,
+  },
+  {
+    name: 1.8,
+    property: "size",
+    displayname: "Option",
+    icon:SiNasa,
+  },
+  {
+    name: 2.1,
+    property: "size",
+    displayname: "Option",
+    icon: SiNasa,
+  },
+  {
+    name: 2.5,
+    property: "size",
+    displayname: "Option",
+    icon: SiNasa,
+  },
+];
+
 /*
 export const filterconsole = [
   {

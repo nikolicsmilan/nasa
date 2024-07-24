@@ -21,24 +21,25 @@ const Home = () => {
   z-50  relative h-screen  ${settingsOpen ? "opacity-20 " : ""} `}
       >
         <div
-          className="flex h-96 md:h-screen w-full md:w-1/2
+          className="flex flex-col lg:flex h-full md:h-screen w-full md:w-1/2
             justify-center items-center  
            z-50 border-0
            border-orange-500  bg-gradient opacity-70"
         >
-          <header className="h-full flex items-center justify-center px-6 ]">
+          <header className="h-full lg:flex items-center justify-center px-6 relative top-20 lg:top-0">
             <div className="flex flex-col justify-center items-center px-2">
-              <h1 className="text-7xl font-semibold px-2 border-b-2 border-primary">
+              <h1 className="text-4xl lg:text-7xl font-semibold px-2 border-b-2 border-primary">
                 {" "}
                 SENTRY
               </h1>
               <p className="border-0 h-24 m-0 p-0 mt-[-25px]">
                 {" "}
-                <SiNasa className="text-9xl px-0 text-red-500" />{" "}
+                <SiNasa className="text-8xl lg:text-9xl px-0 text-red-500" />{" "}
               </p>
             </div>
 
-            <p className="text-sky-950 text-xl"> Earth Impact Monitoring </p>
+          <div>  <p className="lg:text-950 text-xl text-center 
+           text-primary ">Earth Impact Monitoring </p></div>
           </header>
         </div>
 
@@ -63,3 +64,10 @@ const Home = () => {
 };
 
 export default Home;
+/*
+  <div className="flex flex-col text-center">
+            <span className="bg-dark p-1 text-primary">Earth</span>{" "}
+            <span className="bg-dark p-1 my-2 text-primary">Impact</span>
+            <span className="bg-dark p-1 my-2 text-primary">Monitoring</span>
+            </div>
+*/
