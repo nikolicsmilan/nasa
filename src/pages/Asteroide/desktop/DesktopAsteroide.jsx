@@ -9,9 +9,16 @@ const DesktopAsteroide = ({}) => {
         className={`flex flex-row  w-full 
        relative z-50`}
       >
+        <div className='border-0 w-80'>
         <LeftConsolesAside />
-        <MainConsoleFrame />
-        <RightConsolesAside />
+        </div>
+<div className=' flex-1'>
+<MainConsoleFrame />
+</div>
+      <div className='w-80 border-0'>
+      <RightConsolesAside />
+      </div>
+      
       </div>
   )
 }

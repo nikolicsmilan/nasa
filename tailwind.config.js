@@ -1,5 +1,12 @@
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
+  theme: {
+    extend: {
+      screens: {
+        'xl': '1200px', // Egyedi breakpoint 1200px
+      },
+    },
+  },
   plugins: [
     require("tailwindcss-themer")({
       defaultTheme: {
@@ -40,10 +47,9 @@ module.exports = {
               robotoMono: ["Roboto Mono", "monospace"],
             },
             backgroundImage: {
-              // gradient from sky 950, 800, 100
               gradient:
                 "linear-gradient(45deg, #082f49 1%, #075985 40%,  #cffafe 90% )",
-                gradientreverse:
+              gradientreverse:
                 "linear-gradient(225deg, #082f49 1%, #075985 40%,  #cffafe 90% )",
               mybackground: "url('../src/assets/images/desk.jpg')",
             },
@@ -66,10 +72,9 @@ module.exports = {
               robotoMono: ["Roboto Mono", "monospace"],
             },
             backgroundImage: {
-              // gradient from lime 950, 800, 100
               gradient:
                 "linear-gradient(45deg, #1a2e05 1%, #3f6212 40%, #ecfccb 90%)",
-                gradientreverse:
+              gradientreverse:
                 "linear-gradient(225deg, #1a2e05 1%, #3f6212 40%, #ecfccb 90%)",
               mybackground: "url('../src/assets/images/desk.jpg')",
             },
@@ -95,10 +100,9 @@ module.exports = {
               robotoMono: ["Roboto Mono", "monospace"],
             },
             backgroundImage: {
-              // gradient from green 950, 800, 100
               gradient:
                 "linear-gradient(45deg, #052e16 1%, #166534 40%,  #dcfce7 90% )",
-                gradientreverse:
+              gradientreverse:
                 "linear-gradient(225deg, #052e16 1%, #166534 40%,  #dcfce7 90% )",
               mybackground: "url('../src/assets/images/desk.jpg')",
             },
@@ -122,9 +126,8 @@ module.exports = {
             },
             backgroundImage: {
               gradient:
-                // gradient from blue 950, 800, 100
                 "linear-gradient(45deg, #172554 1%, #1e40af 40%,  #dbeafe 90% )",
-                gradientreverse:
+              gradientreverse:
                 "linear-gradient(225deg, #172554 1%, #1e40af 40%,  #dbeafe 90% )",
               mybackground: "url('../src/assets/images/desk.jpg')",
             },
@@ -134,6 +137,7 @@ module.exports = {
     }),
   ],
 };
+
 /*
 fontFamily: {
   futura: ["Futura", "ui-sans-serif", "system-ui"],

@@ -21,7 +21,7 @@ const Asteroide = () => {
       ></video>
 
       <div
-        className={`hidden lg:flex border-0 border-red-400 w-full   ${
+        className={`hidden xl:flex border-0 border-red-400 w-full   ${
           toggle ? "opacity-0" : "opacity-100"
         }`}
       >
@@ -29,7 +29,7 @@ const Asteroide = () => {
       </div>
 
       <div
-        className={`flex  lg:hidden   ${toggle ? "opacity-0" : "opacity-100"}`}
+        className={`flex  xl:hidden   ${toggle ? "opacity-0" : "opacity-100"}`}
       >
         <MobileAsteroide />
       </div>
