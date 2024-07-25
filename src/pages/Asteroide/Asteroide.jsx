@@ -20,17 +20,19 @@ const Asteroide = () => {
         muted
       ></video>
 
-      <div className={`hidden lg:flex border-0 border-red-400 w-full   ${
+      <div
+        className={`hidden lg:flex border-0 border-red-400 w-full   ${
           toggle ? "opacity-0" : "opacity-100"
-        }`}>
-      <DesktopAsteroide toggle={toggle} />
+        }`}
+      >
+        <DesktopAsteroide toggle={toggle} />
       </div>
 
-     <div className={`flex  lg:hidden   ${
-          toggle ? "opacity-0" : "opacity-100"
-        }`}>
-   <MobileAsteroide/>
-     </div>
+      <div
+        className={`flex  lg:hidden   ${toggle ? "opacity-0" : "opacity-100"}`}
+      >
+        <MobileAsteroide />
+      </div>
     </div>
   );
 };

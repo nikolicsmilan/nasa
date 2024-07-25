@@ -7,7 +7,7 @@ const LeftConsolesAside = () => {
   return (
     <>
       <AsideConsole source={leftasideconsole} 
-      description="LEFT CONSOLES" orgin="right center" />
+      />
     </>
   );
 };

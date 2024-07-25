@@ -53,16 +53,16 @@ const Super3dConsole = ({
       }}
       className={` ${
         origin === "left center"
-          ? "bg-gradientreverse  border-r-[5px] border-l-2"
-          : "bg-gradient  border-r-2 border-l-[5px]"
+          ? "bg-gradientreverse  border-r-[0px] border-l-0"
+          : "bg-gradien  border-r-0 border-l-[0px]"
       } 
-      relative z-10 rounded inset-0 border-b-2 
-      border-t-4 
+      relative z-10 rounded inset-0 border-b-0 
+      border-t-0 
       border-600 
-      text-dark flex flex-col items-start w-80 shadow-2xl 
+      text-dark flex flex-col items-start w-80 
       transform perspective-1000 m-0 p-0 h-48`}
     >
-      <h3 className="bg-950 text-primary uppercase text-lg text-center w-full">
+      <h3 className=" text-primary uppercase text-lg text-center w-full">
         {nameconsole}
       </h3>
       <div className="flex flex-row flex-wrap text-3xl my-2 border-0 relative z-10 cursor-pointer">
@@ -70,7 +70,7 @@ const Super3dConsole = ({
           <div
             key={index}
             onClick={() => handleClick(item)}
-            className="group relative border-0 shadow p-1 rounded m-2 bg-950 text-primary cursor-pointer"
+            className="group relative border-0  p-1 rounded m-2 bg-950 text-primary cursor-pointer"
           >
             {<item.icon />}
             <div className="absolute top-0 left-10 mt-[-40px] ml-2 hidden group-hover:block bg-gray-700 text-white text-sm rounded p-1 z-50">
@@ -91,13 +91,15 @@ const Super3dConsole = ({
       >
         {" "}
       </div>
-      <CircuitLines />
+     
   
     </div>
   );
 };
 
 export default Super3dConsole;
+
+
 /*
   const handleClick = (item) => {
     //Only content change

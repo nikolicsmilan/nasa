@@ -5,10 +5,10 @@ import { MyConsoleContext } from "../../../context/ConsoleContext";
 const RightConsolesAside = () => {
   const { rightasideconsole } = MyConsoleContext();
   return (
-    <>
-      <AsideConsole source={rightasideconsole} description="RIGHT CONSOLES" 
-       origin="left center" />
-    </>
+    <div className="border-0 border-red-400 bg-sky-40">
+      <AsideConsole source={rightasideconsole} 
+    />
+    </div>
   );
 };
 
