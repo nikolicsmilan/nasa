@@ -81,3 +81,45 @@ export const useDataVisualization = () => {
 
   return { updateConsole, consoleContent };
 };
+/*
+
+  const updateConsole = () => {
+    if (statusTable.dashboard === "Magnitudo" && statusTable.graph === "Area") {
+      return (
+        <div className="border-0 border-lime-400">
+          <AreaCharts />
+        </div>
+      );
+    } else if (statusTable.dashboard === "General") {
+      return (
+        <div className="border-0 border-lime-400">
+          <GeneralDashboard />
+        </div>
+      );
+    } else if (statusTable.dashboard === "Potential Impacts") {
+      return (
+        <div>
+          <TestCharts2 />
+        </div>
+      );
+    } else if (statusTable.dashboard === "Year") {
+      return (
+        <div className="border-0 border-red-400">
+          <ReachartsExample />
+        </div>
+      );
+    } else if (statusTable.dashboard === "Bar") {
+      return (
+        <div>
+          <BarCharts />
+        </div>
+      );
+    } else {
+      return (
+        <div className="flex border-0 p-2 border-lime-400 w-full justify-center">
+          <h1>This console is under development</h1>
+        </div>
+      );
+    }
+  };
+*/

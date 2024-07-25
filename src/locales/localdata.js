@@ -164,23 +164,23 @@ export const languages = [
 // filterconsole source
 export const dashboards = [
   {
-    title: "General",
+    title: "general",
     icon: MdDashboardCustomize,
-    description: "General main information",
+    description: "General information",
     sign: "",
     animations: "yes",
     type:"dashboards",
   },
   {
-    title: "Magnitudo",
+    title: "magnitudo",
     icon: MdBrightness6,
     description: "Magnitudo",
-    sign: "h",
+    sign: "magnitudo",
     animations: "yes",
     type:"dashboards",
   },
   {
-    title: "Potential Impacts",
+    title: "potentialimpacts",
     icon: FaExclamationTriangle,
     description: "Potential impacts",
     sign: "ip",
@@ -188,7 +188,7 @@ export const dashboards = [
     type:"dashboards",
   },
   {
-    title: "Palermo",
+    title: "palermo",
     icon: MdOutlineFormatListNumbered,
     description: "Palermo scale",
     sign: "ps_max",
@@ -196,7 +196,7 @@ export const dashboards = [
     type:"dashboards",
   },
   {
-    title: "Velocity",
+    title: "velocity",
     icon: FaTachometerAlt,
     description: "Velocity",
     sign: "v_inf",
@@ -204,7 +204,7 @@ export const dashboards = [
     type:"dashboards",
   },
   {
-    title: "Torino",
+    title: "torino",
     icon: GiLevelEndFlag,
     description: "Torino scale",
     sign: "ts_max",
@@ -212,7 +212,7 @@ export const dashboards = [
     type:"dashboards",
   },
   {
-    title: "Diameter",
+    title: "diameter",
     icon: TfiRulerAlt2,
     description: "Diameter",
     sign: "diameter",
@@ -220,7 +220,7 @@ export const dashboards = [
     type:"dashboards",
   },
   {
-    title: "Year",
+    title: "year",
     icon: FaCalendarAlt,
     description: "Year of observation",
     animations: "yes",
@@ -231,25 +231,25 @@ export const dashboards = [
 // filterconsole source
 export const filterconsole = [
   {
-    title: "Order Increase",
+    title: "increase",
     icon: FaArrowUpWideShort,
     description: "Order Increase",
     type:"filterconsole",
   },
   {
-    title: "Order Decrease",
+    title: "decrease",
     icon: FaArrowDownShortWide,
     description: "Order Decrease",
     type:"filterconsole",
   },
   {
-    title: "Plus one Item",
+    title: "plusone",
     icon: FaPlus,
     description: "Plus one Item",
     type:"filterconsole",
   },
   {
-    title: "Minus one Item",
+    title: "minusone",
     icon: FaMinus,
     description: "Minus one Item",
     type:"filterconsole",
@@ -258,25 +258,25 @@ export const filterconsole = [
 //
 export const operationsconsole = [
   {
-    title: "Joystick",
+    title: "joystick",
     icon: BsJoystick,
     description: "Joystick",
     type:"operationsconsole",
   },
   {
-    title: "Up Consoles",
+    title: "upconsoles",
     icon: FaArrowCircleUp,
     description: "Up Consoles",
     type:"operationsconsole",
   },
   {
-    title: "Down Consoles",
+    title: "downconsoles",
     icon: FaArrowCircleDown,
     description: "Down Consoles",
     type:"operationsconsole",
   },
   {
-    title: "Horizont",
+    title: "horizont",
     icon: GiHorizontalFlip,
     description: "Horizont Cosnoles",
     type:"operationsconsole",
@@ -285,49 +285,49 @@ export const operationsconsole = [
 
 export const graphconsole = [
   {
-    title: "Area",
+    title: "area",
     icon: FaChartArea,
     description: "Area",
     type:"graphconsole",
   },
   {
-    title: "Bar",
+    title: "bar",
     icon: TfiBarChart,
     description: "BarChart",
     type:"graphconsole",
   },
   {
-    title: "Line",
+    title: "line",
     icon: FaChartLine,
     description: "LineChart",
     type:"graphconsole",
   },
   {
-    title: "Pie",
+    title: "pie",
     icon: MdPieChart,
     description: "PieChart",
     type:"graphconsole",
   },
   {
-    title: "Radar",
+    title: "radar",
     icon: AiOutlineRadarChart,
     description: "RadarChart",
     type:"graphconsole",
   },
   {
-    title: "RadaialBar",
+    title: "radaialBar",
     icon: TbChartArcs3,
     description: "RadaialBarChart",
     type:"graphconsole",
   },
   {
-    title: "Scatter",
+    title: "scatter",
     icon: BiScatterChart,
     description: "ScatterChart",
     type:"graphconsole",
   },
   {
-    title: "Funnel",
+    title: "funnel",
     icon: IoMdFunnel,
     description: "FunnelChart",
     type:"graphconsole",
@@ -336,31 +336,31 @@ export const graphconsole = [
 
 export const informationconsole = [
   {
-    title: "Nasa",
+    title: "nasa",
     icon: SiNasa,
     description: "Nasa",
     type:"informationconsole",
   },
   {
-    title: "Sentry",
+    title: "sentry",
     icon: FaSatellite,
     description: "Sentry",
     type:"informationconsole",
   },
   {
-    title: "API",
+    title: "api",
     icon: TbApi,
     description: "API",
     type:"informationconsole",
   },
   {
-    title: "Aboutme",
+    title: "aboutme",
     icon: FaInfoCircle,
     description: "Aboutme",
     type:"informationconsole",
   },
   {
-    title: "Palermo",
+    title: "palermo",
     icon: MdOutlineFormatListNumbered,
     description: "Palermo scale",
     sign: "ps_max",
@@ -368,7 +368,7 @@ export const informationconsole = [
     type:"informationconsole",
   },
   {
-    title: "Torino",
+    title: "torino",
     icon: GiLevelEndFlag,
     description: "Torino scale",
     sign: "ts_max",
@@ -379,12 +379,12 @@ export const informationconsole = [
 
 export const resourceconsole = [
   {
-    title: "Firebase ",
+    title: "firebase",
     icon: SiFirebase,
     description: "Firebase",
   },
   {
-    title: "API",
+    title: "api",
     icon: TbApi,
     description: "API",
   },

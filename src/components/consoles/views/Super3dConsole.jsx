@@ -16,7 +16,7 @@ const Super3dConsole = ({
     setAnimationVariants,
     setInfo,
     setActualtypedata,
-    setSatusTable
+    setStatusTable
   } = MyConsoleContext();
   const { mainConsoleAnimations } = useAnimations();
   const { filterData } = useDatafilter();
@@ -25,7 +25,7 @@ const Super3dConsole = ({
 
   //Here is only the item pass
   //Then the hook will decide what happens
-  const handleClick = (item) => {
+  const handleClick = (newValues) => {
     //Only content change
 
 //we need a function here that is not direct
@@ -35,7 +35,11 @@ const Super3dConsole = ({
  // statusTable state el
  //Unnecessary states must be removed
  //Super3dConsole.jsx component itself is in the wrong folder
-    setSatusTable(item)
+ const { icon,description, ...rest } = newValues;
+ setStatusTable((prevStatusTable) => ({
+   ...prevStatusTable,
+   ...rest,
+ }));
   };
 
   return (

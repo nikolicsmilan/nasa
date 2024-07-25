@@ -18,9 +18,7 @@ const MainConsole = () => {
     transform perspective-1000  "
     >
       <h3 className="bg-950 text-primary uppercase text-lg text-center w-full">
-        Dashboard:{statusTable.title}{" "}
-         Graph: {statusTable.graph}           filter:{" "}
-        {statusTable.filter} {" "} piece: {statusTable.piece} 
+      
       </h3>
 
       <div
@@ -28,6 +26,15 @@ const MainConsole = () => {
       z-50 relative p-2 overflow-y-scroll overflow-x-scroll   h-full text-white flex justify-center items-center"
       >
         {consoleContent}
+
+<div className="flex flex-col w-96">
+{Object.entries(statusTable).map(([key, value]) => (
+          <div key={key}>
+            <strong>{key}:</strong> {value.toString()}
+          </div>
+        ))}
+</div>
+       
       </div>
     </motion.div>
   );
@@ -35,3 +42,8 @@ const MainConsole = () => {
 
 export default MainConsole;
 //info: {info}
+/*
+  Dashboard:{statusTable.title}{" "}
+         Graph: {statusTable.graph}           filter:{" "}
+        {statusTable.filter} {" "} piece: {statusTable.piece} 
+*/

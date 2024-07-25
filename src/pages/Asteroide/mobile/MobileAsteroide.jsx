@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { mainconsole, sizeconsole } from "../../../locales/localdata";
 import { myAnimation } from "../../../utils/motion";
 import { MyDataContext } from "../../../context/DataContext";
+import { MyConsoleContext } from "../../../context/ConsoleContext";
 import BottomConsole from "../../../components/consoles/BottomConsole";
 import {
   rightasideconsolesource,
@@ -12,6 +13,7 @@ import {
 const united = [...leftasideconsolesource, ...rightasideconsolesource];
 const MobileAsteroide = () => {
   const { windowSize } = MyDataContext();
+  const { statusTable, setStatusTable } = MyConsoleContext();
   const [toggle, setToggle] = useState(false);
   const [subButtons, setSubButtons] = useState(united[0].data);
 
@@ -51,6 +53,23 @@ const MobileAsteroide = () => {
     setToggle(false);
   };
 
+  const handleClick = (newValues) => {
+    //Only content change
+
+    //we need a function here that is not direct
+    //sets the statusTable but decides what
+    //be set in the statusTabel if there is any change
+    //Must tune the localdata in the ConsoleContext
+    // statusTable state el
+    //Unnecessary states must be removed
+    //Super3dConsole.jsx component itself is in the wrong folder
+    const { icon, description, ...rest } = newValues;
+    setStatusTable((prevStatusTable) => ({
+      ...prevStatusTable,
+      ...rest,
+    }));
+  };
+
   return (
     <main className="app transition-all ease-in border-0 border-lime-400 relative z-50 w-screen">
       <AnimatePresence>
@@ -60,7 +79,7 @@ const MobileAsteroide = () => {
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
           >
-            <div className="flex  my-0 w-full border-0 border-purple-400">
+            <div className="flex justify-center items-center my-0 w-full border-0 border-purple-400">
               <div className="relative border-0 border-sky-400 h-96 w-full">
                 {toggle && (
                   <motion.div
@@ -80,8 +99,15 @@ const MobileAsteroide = () => {
                     ))}
                   </motion.div>
                 )}
+                   <div className="flex flex-col  justify-center items-center w-full border-0">
+                {Object.entries(statusTable).map(([key, value]) => (
+                  <div key={key} className="border-0 w-48">
+                    <strong>{key}:</strong> {value.toString()}
+                  </div>
+                ))}
               </div>
-              <div className="relative right-5 top-0 w-200 h-200 border-0 border-lime-400 flex items-center justify-center"></div>
+              </div>
+           
             </div>
             <div className=" flex flex-col justify-center items-center relative border-0 border-sky-400 h-10 w-96 my-0">
               {toggle && (
@@ -91,7 +117,7 @@ const MobileAsteroide = () => {
                 >
                   <BottomConsole
                     buttons={subButtons}
-                    handleSubMenuChange={handleSubMenuChange}
+                    handleClick={handleClick}
                   />
                 </motion.div>
               )}
