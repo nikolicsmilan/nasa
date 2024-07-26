@@ -16,30 +16,20 @@ const Super3dConsole = ({
     setAnimationVariants,
     setInfo,
     setActualtypedata,
-    setStatusTable
+    statusTable,
+    setStatusTable,
   } = MyConsoleContext();
   const { mainConsoleAnimations } = useAnimations();
   const { filterData } = useDatafilter();
 
-  //Here decide what will apear on mainconsole screen
-
-  //Here is only the item pass
-  //Then the hook will decide what happens
   const handleClick = (newValues) => {
-    //Only content change
-
-//we need a function here that is not direct
- //sets the statusTable but decides what
- //be set in the statusTabel if there is any change
- //Must tune the localdata in the ConsoleContext
- // statusTable state el
- //Unnecessary states must be removed
- //Super3dConsole.jsx component itself is in the wrong folder
- const { icon,description, ...rest } = newValues;
- setStatusTable((prevStatusTable) => ({
-   ...prevStatusTable,
-   ...rest,
- }));
+    const { icon, description, title,sign = "",  ...rest } = newValues;
+    setStatusTable((prevStatusTable) => ({
+      ...prevStatusTable,
+      [nameconsole]: title,
+      sign: sign,
+      ...rest,
+    }));
   };
 
   return (
@@ -51,7 +41,7 @@ const Super3dConsole = ({
           rotateZ(${rotateZ}deg)`,
         transformOrigin: origin,
       }}
-      className={` ${
+      className={`glassmorphis ${
         origin === "left center"
           ? "bg-gradientreverse  border-r-[0px] border-l-0"
           : "bg-gradien  border-r-0 border-l-[0px]"
@@ -63,18 +53,20 @@ const Super3dConsole = ({
       transform perspective-1000 m-0 p-0 h-48`}
     >
       <h3 className=" text-primary uppercase text-lg text-center w-full">
-        {nameconsole}
+        {nameconsole} 
       </h3>
-      <div className="flex flex-row flex-wrap text-3xl my-2 border-0 relative z-10 cursor-pointer">
+      <div className="flex flex-row flex-wrap text-3xl my-2 border-0 relative z-10 cursor-pointer  ">
         {data.map((item, index) => (
           <div
             key={index}
             onClick={() => handleClick(item)}
-            className="group relative border-0  p-1 rounded m-2 bg-950 text-primary cursor-pointer"
+            className={`group relative border-0  p-1 rounded m-2 bg-950 text-primary cursor-pointer ${
+              statusTable[nameconsole] === item.title ? "bg-600" : ""
+            }`}
           >
             {<item.icon />}
             <div className="absolute top-0 left-10 mt-[-40px] ml-2 hidden group-hover:block bg-gray-700 text-white text-sm rounded p-1 z-50">
-              {item.description}
+              {statusTable[nameconsole]} {item.title}
             </div>
           </div>
         ))}
@@ -91,14 +83,22 @@ const Super3dConsole = ({
       >
         {" "}
       </div>
-     
-  
     </div>
   );
 };
 
 export default Super3dConsole;
 
+/*    //Only content change
+
+//we need a function here that is not direct
+ //sets the statusTable but decides what
+ //be set in the statusTabel if there is any change
+ //Must tune the localdata in the ConsoleContext
+ // statusTable state el
+ //Unnecessary states must be removed
+ //Super3dConsole.jsx component itself is in the wrong folder */
+//  {item.description}
 
 /*
   const handleClick = (item) => {

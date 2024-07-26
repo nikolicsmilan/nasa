@@ -39,6 +39,7 @@ import { BsJoystick } from "react-icons/bs";
 import {
   MdDashboardCustomize,
   MdOutlineFormatListNumbered,
+  MdOutlineSensorOccupied 
 } from "react-icons/md";
 import { MdBrightness6, MdPieChart,MdDashboard,MdAutoGraph,MdFilterListAlt    } from "react-icons/md";
 import { GiLevelEndFlag, GiHorizontalFlip } from "react-icons/gi";
@@ -48,8 +49,8 @@ import { TbChartArcs3, TbApi } from "react-icons/tb";
 import { IoMdFunnel,IoIosInformationCircleOutline  } from "react-icons/io";
 import { BiScatterChart } from "react-icons/bi";
 import { SiNasa, SiFirebase,  } from "react-icons/si";
-import { GiReactor } from "react-icons/gi";
-
+import { GiReactor,GiEnergyArrow } from "react-icons/gi";
+import { HiMiniArrowsPointingIn,HiMiniArrowsPointingOut  } from "react-icons/hi2";
 //Navigation menu Home page
 export const homemenu = [
   {
@@ -168,16 +169,14 @@ export const dashboards = [
     icon: MdDashboardCustomize,
     description: "General information",
     sign: "",
-    animations: "yes",
-    type:"dashboards",
+    animations: "yes",   
   },
   {
     title: "magnitudo",
     icon: MdBrightness6,
     description: "Magnitudo",
     sign: "magnitudo",
-    animations: "yes",
-    type:"dashboards",
+    animations: "yes",  
   },
   {
     title: "potentialimpacts",
@@ -185,7 +184,6 @@ export const dashboards = [
     description: "Potential impacts",
     sign: "ip",
     animations: "yes",
-    type:"dashboards",
   },
   {
     title: "palermo",
@@ -193,7 +191,6 @@ export const dashboards = [
     description: "Palermo scale",
     sign: "ps_max",
     animations: "yes",
-    type:"dashboards",
   },
   {
     title: "velocity",
@@ -201,7 +198,6 @@ export const dashboards = [
     description: "Velocity",
     sign: "v_inf",
     animations: "yes",
-    type:"dashboards",
   },
   {
     title: "torino",
@@ -209,7 +205,6 @@ export const dashboards = [
     description: "Torino scale",
     sign: "ts_max",
     animations: "yes",
-    type:"dashboards",
   },
   {
     title: "diameter",
@@ -217,42 +212,44 @@ export const dashboards = [
     description: "Diameter",
     sign: "diameter",
     animations: "yes",
-    type:"dashboards",
   },
   {
-    title: "year",
+    title: "energy",
+    icon: GiEnergyArrow,
+    description: "Energy",
+    animations: "yes",
+    sign: "date",
+  },
+  {
+    title: "date",
     icon: FaCalendarAlt,
     description: "Year of observation",
     animations: "yes",
-    type:"dashboards",
+    sign: "date",
   },
 ];
-
+//GiEnergyArrow 
 // filterconsole source
 export const filterconsole = [
   {
     title: "increase",
     icon: FaArrowUpWideShort,
     description: "Order Increase",
-    type:"filterconsole",
   },
   {
     title: "decrease",
     icon: FaArrowDownShortWide,
     description: "Order Decrease",
-    type:"filterconsole",
   },
   {
     title: "plusone",
     icon: FaPlus,
     description: "Plus one Item",
-    type:"filterconsole",
   },
   {
     title: "minusone",
     icon: FaMinus,
     description: "Minus one Item",
-    type:"filterconsole",
   },
 ];
 //
@@ -261,25 +258,21 @@ export const operationsconsole = [
     title: "joystick",
     icon: BsJoystick,
     description: "Joystick",
-    type:"operationsconsole",
   },
   {
     title: "upconsoles",
     icon: FaArrowCircleUp,
     description: "Up Consoles",
-    type:"operationsconsole",
   },
   {
     title: "downconsoles",
     icon: FaArrowCircleDown,
     description: "Down Consoles",
-    type:"operationsconsole",
   },
   {
     title: "horizont",
     icon: GiHorizontalFlip,
     description: "Horizont Cosnoles",
-    type:"operationsconsole",
   },
 ];
 
@@ -288,49 +281,41 @@ export const graphconsole = [
     title: "area",
     icon: FaChartArea,
     description: "Area",
-    type:"graphconsole",
   },
   {
     title: "bar",
     icon: TfiBarChart,
     description: "BarChart",
-    type:"graphconsole",
   },
   {
     title: "line",
     icon: FaChartLine,
     description: "LineChart",
-    type:"graphconsole",
   },
   {
     title: "pie",
     icon: MdPieChart,
     description: "PieChart",
-    type:"graphconsole",
   },
   {
     title: "radar",
     icon: AiOutlineRadarChart,
     description: "RadarChart",
-    type:"graphconsole",
   },
   {
     title: "radaialBar",
     icon: TbChartArcs3,
     description: "RadaialBarChart",
-    type:"graphconsole",
   },
   {
     title: "scatter",
     icon: BiScatterChart,
     description: "ScatterChart",
-    type:"graphconsole",
   },
   {
     title: "funnel",
     icon: IoMdFunnel,
     description: "FunnelChart",
-    type:"graphconsole",
   },
 ];
 
@@ -339,25 +324,21 @@ export const informationconsole = [
     title: "nasa",
     icon: SiNasa,
     description: "Nasa",
-    type:"informationconsole",
   },
   {
     title: "sentry",
     icon: FaSatellite,
     description: "Sentry",
-    type:"informationconsole",
   },
   {
     title: "api",
     icon: TbApi,
     description: "API",
-    type:"informationconsole",
   },
   {
     title: "aboutme",
     icon: FaInfoCircle,
     description: "Aboutme",
-    type:"informationconsole",
   },
   {
     title: "palermo",
@@ -365,7 +346,6 @@ export const informationconsole = [
     description: "Palermo scale",
     sign: "ps_max",
     animations: "yes",
-    type:"informationconsole",
   },
   {
     title: "torino",
@@ -373,7 +353,6 @@ export const informationconsole = [
     description: "Torino scale",
     sign: "ts_max",
     animations: "yes",
-    type:"informationconsole",
   },
 ];
 
@@ -392,7 +371,7 @@ export const resourceconsole = [
 
 export const leftasideconsolesource= [
   {
-    name: "dashboards",
+    name: "dashboard",
     icon: MdDashboard,
     description: "Year of observation",
     origin: "right center",
@@ -443,7 +422,7 @@ export const rightasideconsolesource = [
     },
   },
   {
-    name: "operations",
+    name: "operation",
     icon: FaExpandArrowsAlt,
     description: "Year of observation",
     origin: "right center",
@@ -515,6 +494,28 @@ export const sizeconsole = [
   },
 ];
 
+export const menu =[
+  {
+    title: "showmenu",
+    icon: HiMiniArrowsPointingIn,
+    description: "Show the menu",
+  },
+  {
+    title: "dontshow",
+    icon: HiMiniArrowsPointingOut,
+    description: "Don't show the menu",
+    sign: "ps_max",
+    animations: "yes",
+  },
+  {
+    title: "sense",
+    icon: MdOutlineSensorOccupied,
+    description: "Sense the cursor movement on main console",
+    sign: "ps_max",
+    animations: "yes",
+  },
+]
+//MdOutlineSensorOccupied 
 /*
 export const filterconsole = [
   {

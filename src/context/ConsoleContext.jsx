@@ -8,25 +8,34 @@ import {
 import { nasa } from "../locales/nasaapi";
 const ConsoleContext = createContext();
 const initStatusTable = {
-  title:"general",
+
   dashboard:"general",
   graph: "area",
   information:"nasa",
   filter:"increase",
-  type: "dashboards",
-  sign: "magnitudo",
-  filter: "increase",
   operation:"joystick",
   resorces:"firebase",
+  //All
+  animations: "no",//or yes
+  // If there is a sign, filter for it
+  sign: "magnitudo",//magnitudo |ip | ps_max | v_inf | ts_max | diameter | energy | date
+  // Only filter
   piece: 10,
   sourcetype: "oneside", //twoends
-  animations: "no",
+
+};
+
+const initMenuSettings = {
+  title:"general",
+  dashboard:"general",
+
 };
 export const ConsoleContextProvider = ({ children }) => {
   const [sumObject, setSumObject] = useState(nasa);
   const [filteredData, setFilteredData] = useState(nasa);
   const [actualTypeData, setActualtypedata] = useState("h");
   const [statusTable, setStatusTable] = useState(initStatusTable);
+  const[menuSettings,setMenuSettings] = useState(initMenuSettings);
   const [leftasideconsole, setLeftasideconsole] = useState(
     leftasideconsolesource
   );
@@ -62,6 +71,7 @@ export const ConsoleContextProvider = ({ children }) => {
         setActualtypedata,
         statusTable,
         setStatusTable,
+        menuSettings,setMenuSettings
       }}
     >
       {children}
