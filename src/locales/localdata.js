@@ -3,7 +3,7 @@ import {
   FaProjectDiagram,
   FaPalette,
   FaVolumeUp,
-  FaDatabase,
+
   FaRocket,
   FaChartArea,
 } from "react-icons/fa";
@@ -26,31 +26,46 @@ import {
   FaArrowCircleDown,
   FaFlag,
   FaInfoCircle,
-  FaPlus,FaMinus,FaExpandArrowsAlt 
+  FaPlus,
+  FaMinus,
+  FaExpandArrowsAlt,
 } from "react-icons/fa";
 import {
   FaSatelliteDish,
   FaSatellite,
   FaArrowUpWideShort,
-  FaArrowDownShortWide, 
+  FaArrowDownShortWide,FaDatabase 
 } from "react-icons/fa6";
 import { BsJoystick } from "react-icons/bs";
 
 import {
   MdDashboardCustomize,
   MdOutlineFormatListNumbered,
-  MdOutlineSensorOccupied 
+  MdOutlineSensorOccupied,
 } from "react-icons/md";
-import { MdBrightness6, MdPieChart,MdDashboard,MdAutoGraph,MdFilterListAlt    } from "react-icons/md";
+import {
+  MdBrightness6,
+  MdPieChart,
+  MdDashboard,
+  MdAutoGraph,
+  MdFilterListAlt,
+  MdOutlineAutoGraph,
+} from "react-icons/md";
 import { GiLevelEndFlag, GiHorizontalFlip } from "react-icons/gi";
 import { TfiRulerAlt2, TfiBarChart } from "react-icons/tfi";
 import { AiOutlineRadarChart } from "react-icons/ai";
 import { TbChartArcs3, TbApi } from "react-icons/tb";
-import { IoMdFunnel,IoIosInformationCircleOutline  } from "react-icons/io";
+import { IoMdFunnel, IoIosInformationCircleOutline } from "react-icons/io";
 import { BiScatterChart } from "react-icons/bi";
-import { SiNasa, SiFirebase,  } from "react-icons/si";
-import { GiReactor,GiEnergyArrow } from "react-icons/gi";
-import { HiMiniArrowsPointingIn,HiMiniArrowsPointingOut  } from "react-icons/hi2";
+import { SiNasa, SiFirebase } from "react-icons/si";
+import { GiReactor, GiEnergyArrow } from "react-icons/gi";
+import {
+  HiMiniArrowsPointingIn,
+  HiMiniArrowsPointingOut,
+} from "react-icons/hi2";
+
+
+import { TbDatabaseSearch } from "react-icons/tb";
 //Navigation menu Home page
 export const homemenu = [
   {
@@ -169,14 +184,49 @@ export const dashboards = [
     icon: MdDashboardCustomize,
     description: "General information",
     sign: "",
-    animations: "yes",   
+    animations: "yes",
   },
+  {
+    title: "graph",
+    icon: MdOutlineAutoGraph,
+    description: "Graphs",
+    sign: "",
+    animations: "yes",
+  },
+];
+//MdOutlineAutoGraph 
+//GiEnergyArrow
+// filterconsole source
+export const filterconsole = [
+  {
+    title: "increase",
+    icon: FaArrowUpWideShort,
+    description: "Order Increase",
+  },
+  {
+    title: "decrease",
+    icon: FaArrowDownShortWide,
+    description: "Order Decrease",
+  },
+  {
+    title: "plusone",
+    icon: FaPlus,
+    description: "Plus one Item",
+  },
+  {
+    title: "minusone",
+    icon: FaMinus,
+    description: "Minus one Item",
+  },
+];
+//
+export const datatypeconsole = [
   {
     title: "magnitudo",
     icon: MdBrightness6,
     description: "Magnitudo",
     sign: "magnitudo",
-    animations: "yes",  
+    animations: "yes",
   },
   {
     title: "potentialimpacts",
@@ -228,53 +278,6 @@ export const dashboards = [
     sign: "date",
   },
 ];
-//GiEnergyArrow 
-// filterconsole source
-export const filterconsole = [
-  {
-    title: "increase",
-    icon: FaArrowUpWideShort,
-    description: "Order Increase",
-  },
-  {
-    title: "decrease",
-    icon: FaArrowDownShortWide,
-    description: "Order Decrease",
-  },
-  {
-    title: "plusone",
-    icon: FaPlus,
-    description: "Plus one Item",
-  },
-  {
-    title: "minusone",
-    icon: FaMinus,
-    description: "Minus one Item",
-  },
-];
-//
-export const operationsconsole = [
-  {
-    title: "joystick",
-    icon: BsJoystick,
-    description: "Joystick",
-  },
-  {
-    title: "upconsoles",
-    icon: FaArrowCircleUp,
-    description: "Up Consoles",
-  },
-  {
-    title: "downconsoles",
-    icon: FaArrowCircleDown,
-    description: "Down Consoles",
-  },
-  {
-    title: "horizont",
-    icon: GiHorizontalFlip,
-    description: "Horizont Cosnoles",
-  },
-];
 
 export const graphconsole = [
   {
@@ -303,7 +306,7 @@ export const graphconsole = [
     description: "RadarChart",
   },
   {
-    title: "radaialBar",
+    title: "radialBar",
     icon: TbChartArcs3,
     description: "RadaialBarChart",
   },
@@ -369,7 +372,7 @@ export const resourceconsole = [
   },
 ];
 
-export const leftasideconsolesource= [
+export const leftasideconsolesource = [
   {
     name: "dashboard",
     icon: MdDashboard,
@@ -395,21 +398,6 @@ export const leftasideconsolesource= [
     },
   },
   {
-    name: "information",
-    icon: IoIosInformationCircleOutline ,
-    description: "Year of observation",
-    origin: "right center",
-    data: informationconsole,
-    position: {
-      x: "-10",
-      y: "20",
-      z: "0",
-    },
-  },
-];
-
-export const rightasideconsolesource = [
-  {
     name: "filter",
     icon: MdFilterListAlt,
     description: "Year of observation",
@@ -421,18 +409,34 @@ export const rightasideconsolesource = [
       z: "0",
     },
   },
+];
+
+export const rightasideconsolesource = [
   {
-    name: "operation",
-    icon: FaExpandArrowsAlt,
-    description: "Year of observation",
+    name: "datatype",
+    icon: TbDatabaseSearch,
+    description: "Type of Data",
     origin: "right center",
-    data: operationsconsole,
+    data: datatypeconsole,
     position: {
       x: "10",
       y: "20",
       z: "0",
     },
   },
+  {
+    name: "information",
+    icon: IoIosInformationCircleOutline,
+    description: "Year of observation",
+    origin: "right center",
+    data: informationconsole,
+    position: {
+      x: "-10",
+      y: "20",
+      z: "0",
+    },
+  },
+
   {
     name: "resources",
     icon: GiReactor,
@@ -456,7 +460,7 @@ export const mainconsole = [
   {
     name: "color",
     displayname: "Szín",
-    icon:SiNasa,
+    icon: SiNasa,
   },
 
   {
@@ -466,19 +470,18 @@ export const mainconsole = [
   },
 ];
 
-
 export const sizeconsole = [
   {
     name: 1.5,
     property: "size",
     displayname: "Option",
-    icon:SiNasa,
+    icon: SiNasa,
   },
   {
     name: 1.8,
     property: "size",
     displayname: "Option",
-    icon:SiNasa,
+    icon: SiNasa,
   },
   {
     name: 2.1,
@@ -494,7 +497,7 @@ export const sizeconsole = [
   },
 ];
 
-export const menu =[
+export const menu = [
   {
     title: "showmenu",
     icon: HiMiniArrowsPointingIn,
@@ -514,8 +517,33 @@ export const menu =[
     sign: "ps_max",
     animations: "yes",
   },
-]
-//MdOutlineSensorOccupied 
+];
+
+/*
+export const operationsconsole = [
+  {
+    title: "joystick",
+    icon: BsJoystick,
+    description: "Joystick",
+  },
+  {
+    title: "upconsoles",
+    icon: FaArrowCircleUp,
+    description: "Up Consoles",
+  },
+  {
+    title: "downconsoles",
+    icon: FaArrowCircleDown,
+    description: "Down Consoles",
+  },
+  {
+    title: "horizont",
+    icon: GiHorizontalFlip,
+    description: "Horizont Cosnoles",
+  },
+];
+*/
+
 /*
 export const filterconsole = [
   {

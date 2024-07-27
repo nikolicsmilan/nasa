@@ -20,6 +20,20 @@ const CircuitLines = () => {
       <div className="absolute top-20 right-20 w-32 h-0.5 bg-primary opacity-30"></div>
       <div className="absolute bottom-10 left-1/2 w-0.5 h-16 bg-primary opacity-30"></div>
       <GiReactor className="bg-yellow-400 text-dark text-3xl p-2  rounded-full top-10 hidden right-2 opacity-50 absolute" />
+      <div
+            key={index}
+            onClick={() => handleClick(item)}
+            className={`group relative border-0 p-1 rounded m-2 ${
+              statusTable.dashboard !== "graph" && item.title === statusTable.graph
+                ? "bg-gray-400 cursor-not-allowed"
+                : "bg-950 hover:bg-600 text-primary cursor-pointer"
+            } ${
+              statusTable[nameconsole] === item.title && statusTable.dashboard === "graph"
+                ? "bg-600"
+                : ""
+            }`}
+          ></div>
+  
     </div>
   );
 };

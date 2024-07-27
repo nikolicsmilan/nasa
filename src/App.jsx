@@ -5,9 +5,9 @@ import "./tailwind.css";
 import Home from "./pages/Home/Home";
 import Galery from "./pages/Galery/Galery";
 import LayoutHome from "./layouts/LayoutHome";
-import LayoutDashboard from "./layouts/LayoutDashboard";
+import LayoutAsteoride from "./layouts/LayoutAsteoride"; 
+import LayoutDashboard from "./layouts/LayoutAsteoride";
 import Error from "./pages/Error/Error";
-
 import AsteroideDetail from "./pages/AsteroideDetail/AsteroideDetail";
 import SpaceKnowledge from "./pages/Spaceknowledge/SpaceKnowledge";
 import Quiz from "./pages/Quiz/Quiz";
@@ -28,7 +28,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/asteroide",
-    element: <LayoutHome />,
+    element: <LayoutAsteoride />,
     errorElement: <Error />,
     children: [{ index: true, element: <Asteroide /> }],
   },

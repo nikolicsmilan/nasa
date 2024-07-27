@@ -11,7 +11,7 @@ import logo from "../assets/images/earthbg7.png";
 import BiggerConsoles from "../components/consoles/views/BiggerConsoles";
 import { menu } from "../locales/localdata";
 
-const LayoutHome = () => {
+const LayoutAsteoride = () => {
   const { setToggle, settingsOpen, setSettingsOpen, toggle, choosenStyle } =
     MyDataContext();
 
@@ -51,7 +51,24 @@ const LayoutHome = () => {
               setSettingsOpen((prevToggle) => !prevToggle);
             }}
           />
-        
+          <div className="flex">
+            {menu.map((item, index) => (
+              <div
+                key={index}
+                onClick={() => handleClick(item)}
+                className="group relative z-50 border-0 hover:border-red-400 
+             p-2 rounded m-2 bg-950 text-primary cursor-pointer text-3xl hover:bg-600"
+              >
+                {<item.icon />}
+                <div
+                  className=" text-center absolute top-0 left-0 mt-[80px] ml-2 w-32
+            hidden group-hover:block bg-gray-700 text-white text-sm rounded p-1 z-50"
+                >
+                  {item.description}
+                </div>
+              </div>
+            ))}
+          </div>
           {/*delete FaBars icon that one start two menu */}
           <FaCog
             className={`relative top-0 right-0 z-40 text-4xl m-1 p-2 
@@ -100,4 +117,4 @@ const LayoutHome = () => {
   );
 };
 
-export default LayoutHome;
+export default LayoutAsteoride;

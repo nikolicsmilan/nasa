@@ -1,7 +1,13 @@
 import React from "react";
 import Super3dConsole from "../../../components/consoles/views/Super3dConsole";
 //ez csak formát ad neki ledarálja a kapot adatokat
+import { MyConsoleContext } from "../../../context/ConsoleContext";
 const AsideConsole = ({ source, description,origin }) => {
+
+  const {
+   
+    statusTable,
+  } = MyConsoleContext();
   return (
     <aside
       className="  h-screen text-primary 
@@ -23,6 +29,13 @@ const AsideConsole = ({ source, description,origin }) => {
           </div>
         ))}
       </div>
+      <div className="flex flex-col w-96 text-primary relative top-[-100px]">
+          {Object.entries(statusTable).map(([key, value]) => (
+            <div key={key}>
+              <strong>{key}:</strong> {value.toString()}
+            </div>
+          ))}
+        </div>
     </aside>
   );
 };

@@ -89,7 +89,7 @@ const AreaCharts = () => {
         </defs>
         <XAxis dataKey="name" tick={{ fill: colors.xAxis }} />
         <YAxis tick={{ fill: colors.yAxis }} />
-        <CartesianGrid strokeDasharray="3 3" />
+        <CartesianGrid strokeDasharray="1 1" />
         <Tooltip contentStyle={{ color: colors.tooltip }} />
         <Area
           type="monotone"

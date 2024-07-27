@@ -15,19 +15,79 @@ import {
 } from "../components/Charts";
 
 export const useDataVisualization = () => {
- const { info, actualMainConsole, statusTable }   = MyConsoleContext();
+  const { info, actualMainConsole, statusTable } = MyConsoleContext();
 
   //ez változtatja a tartalmat
 
   //Ezt kell egyenként először kidolgozni
   // először komponens
-      //Kell egy Táblázat forma is
-  // aztán adat 
-         //>> 1.Ebből kettős alul felülről
-         // 2.illetve darabonként emelni 2-10
-         //3. kiegészítés ha a chart megkívánja más értékkel összenhaonlítás
-         //ezt mindig chartonként kell eldönteni
+  //Kell egy Táblázat forma is
+  // aztán adat
+  //>> 1.Ebből kettős alul felülről
+  // 2.illetve darabonként emelni 2-10
+  //3. kiegészítés ha a chart megkívánja más értékkel összenhaonlítás
+  //ezt mindig chartonként kell eldönteni
   //aztán animáció
+  const updateConsole = () => {
+    if (statusTable.dashboard === "general") {
+      return (
+        <div className="border-0 border-lime-400">
+          <GeneralDashboard />
+        </div>
+      );
+    } else if (statusTable.dashboard === "graph") {
+      switch (statusTable.graph) {
+        case "area":
+          return (
+            <div className="border-0 border-lime-400">
+              <AreaCharts />
+            </div>
+          );
+        case "bar":
+          return <BarCharts />;
+        case "line":
+          return <LineChart />;
+        case "pie":
+          return <PieChart />;
+        case "radar":
+          return <RadarChart />;
+        case "radialBar":
+          return <RadialBarChart />;
+        case "scatter":
+          return <ScatterChart />;
+        case "funnel":
+          return <FunnelChart />;
+        default:
+          return (
+            <div className="flex border-0 p-2 border-lime-400 w-full justify-center">
+              <h1>This graph type is under development</h1>
+            </div>
+          );
+      }
+    } else {
+      return (
+        <div className="flex border-0 p-2 border-lime-400 w-full justify-center">
+          <h1>This console is under development</h1>
+        </div>
+      );
+    }
+  };
+  const [consoleContent, setConsoleContent] = useState(
+    updateConsole(actualMainConsole)
+  );
+
+  useEffect(() => {
+    if (info === "animáció 6" && statusTable?.animations === "yes") {
+      setConsoleContent(updateConsole(statusTable));
+    } else if (!actualMainConsole?.animations) {
+      setConsoleContent(updateConsole(statusTable));
+    }
+  }, [info, statusTable]);
+
+  return { updateConsole, consoleContent };
+};
+
+/*
   const updateConsole = () => {
     if (statusTable.dashboard === "Magnitudo" && statusTable.graph === "Area") {
       return (
@@ -67,20 +127,7 @@ export const useDataVisualization = () => {
       );
     }
   };
-  const [consoleContent, setConsoleContent] = useState(
-    updateConsole(actualMainConsole)
-  );
-
-  useEffect(() => {
-    if (info === "animáció 6" && actualMainConsole?.animations === "yes") {
-      setConsoleContent(updateConsole(actualMainConsole));
-    } else if (!actualMainConsole?.animations) {
-      setConsoleContent(updateConsole(actualMainConsole));
-    }
-  }, [info, actualMainConsole]);
-
-  return { updateConsole, consoleContent };
-};
+*/
 /*
 
   const updateConsole = () => {
