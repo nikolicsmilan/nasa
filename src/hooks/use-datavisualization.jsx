@@ -5,13 +5,16 @@ import TestCharts2 from "../pages/Asteroide/components/TestCharts2";
 import GeneralDashboard from "../pages/Asteroide/dashboards/GeneralDashboard";
 import {
   AreaCharts,
+  AreaChartComponent,
   BarCharts,
+  BarChartComponent,
   LineChart,
   PieChart,
-  RadarChart,
-  RadialBarChart,
-  ScatterChart,
-  FunnelChart,
+  PieChartComponent,
+  RadarChartComponent,
+  RadialBarChartComponent,
+  ScatterChartComponent,
+  FunnelChartComponent,
 } from "../components/Charts";
 
 export const useDataVisualization = () => {
@@ -40,23 +43,23 @@ export const useDataVisualization = () => {
         case "area":
           return (
             <div className="border-0 border-lime-400">
-              <AreaCharts />
+              <AreaChartComponent   />
             </div>
           );
         case "bar":
-          return <BarCharts />;
+          return <BarChartComponent />;
         case "line":
           return <LineChart />;
         case "pie":
-          return <PieChart />;
+          return <PieChartComponent  />;
         case "radar":
-          return <RadarChart />;
+          return <RadarChartComponent />;
         case "radialBar":
-          return <RadialBarChart />;
+          return <RadialBarChartComponent />;
         case "scatter":
-          return <ScatterChart />;
+          return <ScatterChartComponent />;
         case "funnel":
-          return <FunnelChart />;
+          return <FunnelChartComponent />;
         default:
           return (
             <div className="flex border-0 p-2 border-lime-400 w-full justify-center">

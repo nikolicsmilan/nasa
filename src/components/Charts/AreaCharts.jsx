@@ -113,15 +113,19 @@ const AreaCharts = () => {
           fill="url(#colorAmt)"
         />
       </AreaChart>
-      <p>
-        actualMainConsole {actualMainConsole.title} actualTypeData:{" "}
-        {actualTypeData}
-      </p>
+     
     </div>
   );
 };
 
 export default AreaCharts;
+
+/*
+ <p>
+        actualMainConsole {actualMainConsole.title} actualTypeData:{" "}
+        {actualTypeData}
+      </p>
+*/
 // <Table_1 data={filteredData} />
 /*
       <AreaChart
