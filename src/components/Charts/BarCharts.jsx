@@ -6,66 +6,34 @@ import {
   XAxis,
   YAxis,
   Tooltip,
-  Legend,
+  Legend
 } from "recharts";
 import useWindowSize from "../../hooks/use-windowsize";
 import { MyDataContext } from "../../context/DataContext";
 import { MyConsoleContext } from "../../context/ConsoleContext";
+
 const data = [
-  {
-    day: "05-01",
-    uv: -1,
-    pv: 10,
-  },
-  {
-    day: "05-02",
-    uv: 2,
-    pv: 15,
-  },
-  {
-    day: "05-03",
-    uv: 3,
-    pv: 12,
-  },
-  {
-    day: "05-04",
-    uv: 4,
-    pv: 12,
-  },
-  {
-    day: "05-05",
-    uv: 12,
-    pv: 16,
-  },
-  {
-    day: "05-06",
-    uv: 5,
-    pv: 16,
-  },
-  {
-    day: "05-07",
-    uv: 3,
-    pv: 12,
-  },
-  {
-    day: "05-08",
-    uv: 0,
-    pv: 8,
-  },
-  {
-    day: "05-09",
-    uv: -3,
-    pv: 5,
-  },
+  { name: "A", uv: 4000, pv: 2400, amt: 2400 },
+  { name: "B", uv: 3000, pv: 1398, amt: 2210 },
+  { name: "C", uv: 2000, pv: 9800, amt: 2290 },
+  { name: "D", uv: 2780, pv: 3908, amt: 2000 },
+  { name: "E", uv: 1890, pv: 4800, amt: 2181 },
+  { name: "F", uv: 2390, pv: 3800, amt: 2500 },
+  { name: "G", uv: 3490, pv: 4300, amt: 2100 },
 ];
 
 const BarCharts = () => {
-  const { users } = MyDataContext();
-  const { filteredData, actualMainConsole, actualTypeData } =
-    MyConsoleContext();
-  const [newData, setNewData] = useState(data);
   const { width, height } = useWindowSize();
   const [colors, setColors] = useState({ xAxis: "", yAxis: "", tooltip: "" });
+  const [newData, setNewData] = useState(data);
+  const [dataKeys, setDataKeys] = useState({
+    key1: "uv",
+    key2: "pv",
+    key3: "amt",
+  });
+
+  const { users } = MyDataContext();
+  const { filteredData, actualMainConsole, actualTypeData } = MyConsoleContext();
 
   useEffect(() => {
     const getComputedStyleColor = (elementId) => {
@@ -84,31 +52,41 @@ const BarCharts = () => {
   useEffect(() => {
     if (actualMainConsole.title === "Bar" && actualTypeData === "h") {
       const transformedData = filteredData.map((item) => ({
-        name: item.fullname, // Felhasználjuk a fullname mezőt a 'name' helyett
-        h: parseFloat(item.h), // Felhasználjuk a v_inf mezőt az 'uv' helyett
-        ip: parseFloat(item.ip), // Felhasználjuk az ip mezőt a 'pv' helyett
+        name: item.fullname,
+        h: parseFloat(item.h),
+        ip: parseFloat(item.ip),
+        diameter: parseFloat(item.diameter),
       }));
 
       setNewData(transformedData);
+      setDataKeys({ key1: "h", key2: "ip", key3: "diameter" });
     }
   }, [filteredData, actualMainConsole.title, actualTypeData]);
+
   return (
-    <div>
+    <div className="border-0 border-purple-400">
       <div id="ezaz" className="text-primary hidden">
         Sampling div tailwind for react charts for dynamic colors
       </div>
-      <BarChart height={height - 200} width={width - 800} data={newData}>
+      <BarChart
+        width={width - 800}
+        height={height - 200}
+        data={newData}
+        margin={{ top: 10, right: 30, left: 20, bottom: 5 }}
+      >
         <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="name" />
-        <YAxis />
-        <Tooltip cursor={{ fill: "transparent" }} />
+        <XAxis dataKey="name" tick={{ fill: colors.xAxis }} />
+        <YAxis tick={{ fill: colors.yAxis }} />
+        <Tooltip contentStyle={{ color: colors.tooltip }} />
         <Legend />
-        <Bar dataKey="h" fill="#8884d8" />
+        <Bar dataKey={dataKeys.key1} fill="#8884d8" />
+        <Bar dataKey={dataKeys.key2} fill="#82ca9d" />
+        <Bar dataKey={dataKeys.key3} fill="#fbbf24" />
       </BarChart>
+     
     </div>
   );
 };
 
 export default BarCharts;
-//  <Bar dataKey="ip" fill="#82ca9d" fillOpacity={1}   />
-// shape={null} activeBar={false}
+
