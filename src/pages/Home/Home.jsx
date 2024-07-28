@@ -24,7 +24,7 @@ const Home = () => {
           className="flex flex-col lg:flex h-full md:h-screen w-full md:w-1/2
             justify-center items-center  
            z-50 border-0
-           border-orange-500  bg-gradient opacity-70"
+           border-orange-500  lg:bg-gradient opacity-70"
         >
           <header className="h-full lg:flex items-center justify-center px-6 relative top-20 lg:top-0">
             <div className="flex flex-col justify-center items-center px-2">
@@ -39,7 +39,7 @@ const Home = () => {
             </div>
 
           <div>  <p className="lg:text-950 text-xl text-center 
-           text-primary ">Earth Impact Monitoring </p></div>
+           text-primary bg-black lg:bg-transparent px-1 rounded">Earth Impact Monitoring </p></div>
           </header>
         </div>
 

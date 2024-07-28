@@ -9,7 +9,7 @@ import {
   Legend,
 } from "recharts";
 import useWindowSize from "../../../hooks/use-windowsize";
-import { ip1000, ipteszt } from "../../../locales/localdata";
+//import { ip1000, ipteszt } from "../../../locales/localdata";
 
 // This is the format that recharts library want to get things
 const data = [

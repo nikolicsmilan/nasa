@@ -5,7 +5,7 @@ import {
   leftasideconsolesource,
   rightasideconsolesource,
 } from "../locales/localdata";
-import { nasa } from "../locales/nasaapi";
+import { sentry } from "../locales/nasadummy";
 const ConsoleContext = createContext();
 const initStatusTable = {
   dashboard: "graph", // | graph
@@ -20,13 +20,17 @@ const initStatusTable = {
   sign: "magnitudo", //magnitudo |ip | ps_max | v_inf | ts_max | diameter | energy | date
   // Only filter
   piece: 10,
-  sourcetype: "oneside", //twoends
+  order:"asc", //desc
+  sourcetype: "max", //min |
 };
+const initFilterTable ={
+  
+}
 
 
 export const ConsoleContextProvider = ({ children }) => {
-  const [sumObject, setSumObject] = useState(nasa);
-  const [filteredData, setFilteredData] = useState(nasa);
+  const [sumObject, setSumObject] = useState(sentry);
+  const [filteredData, setFilteredData] = useState(sentry);
   const [statusTable, setStatusTable] = useState(initStatusTable);
   const [leftasideconsole, setLeftasideconsole] = useState(
     leftasideconsolesource

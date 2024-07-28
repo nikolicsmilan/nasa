@@ -9,6 +9,7 @@ import {
   BarCharts,
   BarChartComponent,
   LineChart,
+  LineChartComponent,
   PieChart,
   PieChartComponent,
   RadarChartComponent,
@@ -49,7 +50,7 @@ export const useDataVisualization = () => {
         case "bar":
           return <BarChartComponent />;
         case "line":
-          return <LineChart />;
+          return <LineChartComponent  />;
         case "pie":
           return <PieChartComponent  />;
         case "radar":

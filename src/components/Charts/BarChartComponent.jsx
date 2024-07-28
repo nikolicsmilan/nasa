@@ -13,6 +13,7 @@ const initialData = [
   { name: "Step 3", value: 2000 },
   { name: "Step 4", value: 1500 },
   { name: "Step 5", value: 1000 },
+  { name: "Step 6", value: 1000 },
 ];
 
 const BarChartComponent = () => {

@@ -9,9 +9,11 @@ import {
   rightasideconsolesource,
   leftasideconsolesource,
 } from "../../../locales/localdata";
+import { useDataVisualization } from "../../../hooks/use-datavisualization";
 
 const united = [...leftasideconsolesource, ...rightasideconsolesource];
 const MobileAsteroide = () => {
+  const { consoleContent } = useDataVisualization();
   const { windowSize } = MyDataContext();
   const { statusTable, setStatusTable } = MyConsoleContext();
   const [toggle, setToggle] = useState(false);
@@ -69,6 +71,22 @@ const MobileAsteroide = () => {
       ...rest,
     }));
   };
+/*
+  const handleClick = (newValues) => {
+    if (
+      statusTable.dashboard !== "graph" &&
+      (nameconsole === "graph" || nameconsole === "filter" || nameconsole === "datatype")
+    ) {
+      return; // Do nothing if dashboard is not "graph" and this is the "graph", "filter", or "datatype" console
+    }
+    const { icon, description, title, sign = "", ...rest } = newValues;
+    setStatusTable((prevStatusTable) => ({
+      ...prevStatusTable,
+      [nameconsole]: title,
+      sign: sign,
+      ...rest,
+    }));
+  };*/
 
   return (
     <main className="app transition-all ease-in border-0 border-lime-400 relative z-50 w-screen">
@@ -99,15 +117,10 @@ const MobileAsteroide = () => {
                     ))}
                   </motion.div>
                 )}
-                   <div className="flex flex-col  justify-center items-center w-full border-0">
-                {Object.entries(statusTable).map(([key, value]) => (
-                  <div key={key} className="border-0 w-48">
-                    <strong>{key}:</strong> {value.toString()}
-                  </div>
-                ))}
+                <div className="flex flex-col  justify-center items-center  w-full border-2">
+                  {consoleContent}
+                </div>
               </div>
-              </div>
-           
             </div>
             <div className=" flex flex-col justify-center items-center relative border-0 border-sky-400 h-10 w-96 my-0">
               {toggle && (
@@ -130,7 +143,13 @@ const MobileAsteroide = () => {
 };
 
 export default MobileAsteroide;
-
+/*
+     {Object.entries(statusTable).map(([key, value]) => (
+                  <div key={key} className="border-0 w-48">
+                    <strong>{key}:</strong> {value.toString()}
+                  </div>
+                ))}
+*/
 /*
        <div className=" flex flex-col justify-center items-center relative border-0 border-sky-400 h-10 w-96 my-0">
             {toggle && (

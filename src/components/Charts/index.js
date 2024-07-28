@@ -3,6 +3,7 @@ export { default as AreaChartComponent  } from './AreaChartComponent';
 export { default as BarCharts } from './BarCharts';
 export { default as BarChartComponent } from './BarChartComponent';
 export { default as  LineChart} from './LineChart';
+export { default as  LineChartComponent } from './LineChartComponent';
 export { default as PieChart } from './PieChart';
 export { default as PieChartComponent  } from './PieChartComponent';
 export { default as RadarChartComponent } from './RadarChartComponent';

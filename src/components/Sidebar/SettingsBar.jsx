@@ -35,7 +35,7 @@ const SettingsBar = ({ menupoint }) => {
            border-0 bg-dark-800 z-20 mt-[-55px]  "
           >
             <p className="mx-2 text-primary"> {<item.icon />}</p>
-            <h2 className="text-white opacity-100">{item.title}</h2>
+            <h2 className="text-white opacity-100 text-lg">{item.title}</h2>
           </div>
           
         </div>
