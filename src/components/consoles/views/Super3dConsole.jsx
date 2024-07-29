@@ -18,58 +18,11 @@ const Super3dConsole = ({
     setActualtypedata,
     statusTable,
     setStatusTable,
+    filterTable, 
+    setFilterTable 
   } = MyConsoleContext();
   const { mainConsoleAnimations } = useAnimations();
   const { filterData } = useDatafilter();
-/*
-  const handleClick = (newValues) => {
-    const { icon, description, title, sign = "", ...rest } = newValues;
-    setStatusTable((prevStatusTable) => ({
-      ...prevStatusTable,
-      [nameconsole]: title,
-      sign: sign,
-      ...rest,
-    }));
-  };*/
-  const handleClicka = (newValues) => {
-    if (statusTable.dashboard !== "graph" && nameconsole === "graph") {
-      return; // Do nothing if dashboard is not "graph" and this is the "graph" console
-    }
-    const { icon, description, title, sign = "", ...rest } = newValues;
-    setStatusTable((prevStatusTable) => ({
-      ...prevStatusTable,
-      [nameconsole]: title,
-      sign: sign,
-      ...rest,
-    }));
-  };
-
-  const handleClick = (newValues) => {
-    if (
-      statusTable.dashboard !== "graph" &&
-      (nameconsole === "graph" || nameconsole === "filter" || nameconsole === "datatype")
-    ) {
-      return; // Do nothing if dashboard is not "graph" and this is the "graph", "filter", or "datatype" console
-    }
-    const { icon, description, title, sign = "", ...rest } = newValues;
-    setStatusTable((prevStatusTable) => ({
-      ...prevStatusTable,
-      [nameconsole]: title,
-      sign: sign,
-      ...rest,
-    }));
-  };
-
-  const colorIzec = (item) => {
-    if (statusTable.dashboard !== "graph" && nameconsole === "graph") {
-      return "bg-gray-400 cursor-not-allowed";
-    } else if (statusTable[nameconsole] === item.title) {
-      return "bg-600";
-    } else {
-      return "bg-950";
-    }
-  };
-
 
   const colorIze = (item) => {
     if (
@@ -83,6 +36,36 @@ const Super3dConsole = ({
       return "bg-950";
     }
   };
+
+  const handleClick = (newValues) => {
+    if (
+      statusTable.dashboard !== "graph" &&
+      (nameconsole === "graph" || nameconsole === "filter" || nameconsole === "datatype")
+    ) {
+      return; // Do nothing if dashboard is not "graph" and this is the "graph", "filter", or "datatype" console
+    }
+    const { icon, description, title, sign = "", ...rest } = newValues;
+    if (nameconsole === "filter") {
+
+     // console.log("történik valami???","nameconsole: ",nameconsole,"title: ",title)
+
+     //displayMode kell állítani!!!!
+      setFilterTable((prevFilterTable) => ({
+        ...prevFilterTable,
+        displayMode: title,
+       // sign: sign,
+       // ...rest,
+      }));
+    } else {
+      setStatusTable((prevStatusTable) => ({
+        ...prevStatusTable,
+        [nameconsole]: title,
+        sign: sign,
+        ...rest,
+      }));
+    }
+  };
+
 
   return (
     <div
@@ -181,3 +164,44 @@ export default Super3dConsole;
   };
 
 */
+
+
+/*
+  const colorIzec = (item) => {
+    if (statusTable.dashboard !== "graph" && nameconsole === "graph") {
+      return "bg-gray-400 cursor-not-allowed";
+    } else if (statusTable[nameconsole] === item.title) {
+      return "bg-600";
+    } else {
+      return "bg-950";
+    }
+  };
+
+
+
+
+    const handleClicka = (newValues) => {
+    if (statusTable.dashboard !== "graph" && nameconsole === "graph") {
+      return; // Do nothing if dashboard is not "graph" and this is the "graph" console
+    }
+    const { icon, description, title, sign = "", ...rest } = newValues;
+    setStatusTable((prevStatusTable) => ({
+      ...prevStatusTable,
+      [nameconsole]: title,
+      sign: sign,
+      ...rest,
+    }));
+  };
+
+*/
+
+/*
+  const handleClick = (newValues) => {
+    const { icon, description, title, sign = "", ...rest } = newValues;
+    setStatusTable((prevStatusTable) => ({
+      ...prevStatusTable,
+      [nameconsole]: title,
+      sign: sign,
+      ...rest,
+    }));
+  };*/

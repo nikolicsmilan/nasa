@@ -19,7 +19,7 @@ import {
 } from "../components/Charts";
 
 export const useDataVisualization = () => {
-  const { info, actualMainConsole, statusTable } = MyConsoleContext();
+  const { info, actualMainConsole, statusTable,filterTable } = MyConsoleContext();
 
   //ez változtatja a tartalmat
 
@@ -43,7 +43,7 @@ export const useDataVisualization = () => {
       switch (statusTable.graph) {
         case "area":
           return (
-            <div className="border-0 border-lime-400">
+            <div className="w-full border-0 border-orange-400 flex justify-center">
               <AreaChartComponent   />
             </div>
           );
@@ -86,7 +86,7 @@ export const useDataVisualization = () => {
     } else if (!actualMainConsole?.animations) {
       setConsoleContent(updateConsole(statusTable));
     }
-  }, [info, statusTable]);
+  }, [info, statusTable,filterTable]);
 
   return { updateConsole, consoleContent };
 };

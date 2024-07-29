@@ -16,6 +16,9 @@ const useDatafilter = () => {
     //WHICH GRAPH !!!
 // area | bar | line | pie | radar | radialBar | scatter | funnel
     // Visszaadjuk az első 'piece' elemet
+
+    //Most csak az Areara koncentrálunk
+    //Tulajdonképen 30 adatot jelenítünk meg
     const filtered = 0
 
     // Beállítjuk a szűrt adatokat
@@ -27,6 +30,10 @@ const useDatafilter = () => {
 };
 
 export default useDatafilter;
+
+
+
+
 /*
   const filterData = (attribute, upOrDown, piece) => {
     // Rendezzük az adatokat a megadott attribútum és irány alapján

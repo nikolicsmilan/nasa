@@ -11,17 +11,18 @@ const MainConsole = () => {
   return (
     <motion.div
       animate={animationVariants}
-      className="relative z-10 rounded inset-0  border-0
+      className="relative z-10 rounded inset-0  border-0 border-lime-400
   
     border-600 bg-gradien 
     text-dark flex flex-col items-start w-full h-full  shadow-2xl 
     transform perspective-1000  "
     >
-      <h3 className="bg-950 text-primary uppercase text-lg text-center w-full"></h3>
+    
 
       <div
-        className="border-0 w-full opacity-100 
-      z-50 relative p-2 overflow-y-scroll overflow-x-scroll   h-full text-white flex justify-center items-center"
+        className="border-0 border-red-400  w-full h-full opacity-100 top-[100px]
+      z-50 relative p-0 overflow-y-scroll overflow-x-scroll 
+         text-white flex justify-center items-start"
       >
         {consoleContent}
 

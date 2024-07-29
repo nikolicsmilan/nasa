@@ -3,7 +3,6 @@ import {
   FaProjectDiagram,
   FaPalette,
   FaVolumeUp,
-
   FaRocket,
   FaChartArea,
 } from "react-icons/fa";
@@ -34,7 +33,8 @@ import {
   FaSatelliteDish,
   FaSatellite,
   FaArrowUpWideShort,
-  FaArrowDownShortWide,FaDatabase 
+  FaArrowDownShortWide,
+  FaDatabase,
 } from "react-icons/fa6";
 import { BsJoystick } from "react-icons/bs";
 
@@ -50,6 +50,9 @@ import {
   MdAutoGraph,
   MdFilterListAlt,
   MdOutlineAutoGraph,
+  MdSignalCellularAlt1Bar,
+  MdSignalCellularAlt2Bar,
+  MdSignalCellularAlt,MdAnalytics 
 } from "react-icons/md";
 import { GiLevelEndFlag, GiHorizontalFlip } from "react-icons/gi";
 import { TfiRulerAlt2, TfiBarChart } from "react-icons/tfi";
@@ -63,7 +66,6 @@ import {
   HiMiniArrowsPointingIn,
   HiMiniArrowsPointingOut,
 } from "react-icons/hi2";
-
 
 import { TbDatabaseSearch } from "react-icons/tb";
 //Navigation menu Home page
@@ -194,10 +196,30 @@ export const dashboards = [
     animations: "yes",
   },
 ];
-//MdOutlineAutoGraph 
+//MdOutlineAutoGraph
 //GiEnergyArrow
 // filterconsole source
 export const filterconsole = [
+  {
+    title: "max",
+    icon: MdSignalCellularAlt,
+    description: "Order Increase",
+  },
+  {
+    title: "avg",
+    icon: MdSignalCellularAlt2Bar,
+    description: "Order Increase",
+  },
+  {
+    title: "min",
+    icon: MdSignalCellularAlt1Bar,
+    description: "Order Increase",
+  },
+  {
+    title: "all",
+    icon: MdAnalytics,
+    description: "Order Increase",
+  },
   {
     title: "increase",
     icon: FaArrowUpWideShort,
@@ -575,4 +597,3 @@ export const filterconsole = [
     icon: FaLanguage,
   },
 ];*/
-
