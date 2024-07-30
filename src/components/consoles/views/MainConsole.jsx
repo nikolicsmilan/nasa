@@ -11,7 +11,7 @@ const MainConsole = () => {
   return (
     <motion.div
       animate={animationVariants}
-      className="relative z-10 rounded inset-0  border-2 border-lime-400
+      className="relative z-10 rounded inset-0  border-0 border-lime-400
   
     border-600 bg-gradien 
     text-dark flex flex-col items-start w-full h-full  shadow-2xl 
@@ -20,7 +20,7 @@ const MainConsole = () => {
     
 
       <div
-        className="border-2 border-red-400  w-full h-full opacity-100 top-[80px]
+        className="border-0 border-red-400  w-full h-full opacity-100 top-[80px]
       z-50 relative p-0 overflow-y-scroll overflow-x-scroll 
          text-white flex justify-center items-start"
       >

@@ -15,9 +15,13 @@ const united = [...leftasideconsolesource, ...rightasideconsolesource];
 const MobileAsteroide = () => {
   const { consoleContent } = useDataVisualization();
   const { windowSize } = MyDataContext();
-  const { statusTable, setStatusTable } = MyConsoleContext();
+  const { statusTable, setStatusTable,setFilterTable } = MyConsoleContext();
   const [toggle, setToggle] = useState(false);
   const [subButtons, setSubButtons] = useState(united[0].data);
+  //Here need a localsstate cause aggregate 2 arrays and need the outer
+  // where find a nameconsole attribute from 6 consoles in localdata
+  //left and right consoles
+  const [nameconsole,setNameConsole]= useState("filter")
 
   /*
   const handleMenuChange = (name) => {
@@ -35,15 +39,16 @@ const MobileAsteroide = () => {
     const selectedItem = united.find((item) => item.name === name);
     if (selectedItem) {
       setSubButtons(selectedItem.data);
+      setNameConsole(name)
     }
   };
-
+/*
   const handleSubMenuChange = (property, value) => {
     setMenu3D((prevState) => ({
       ...prevState,
       [property]: value,
     }));
-  };
+  };*/
 
   const handleMouseEnter = () => {
     console.log("handleMouseEnter");
@@ -70,7 +75,12 @@ const MobileAsteroide = () => {
       ...prevStatusTable,
       ...rest,
     }));
+  
   };
+const closeHandler =()=>{
+  setToggle(false);
+}
+  
 /*
   const handleClick = (newValues) => {
     if (
@@ -88,6 +98,37 @@ const MobileAsteroide = () => {
     }));
   };*/
 
+
+
+  const handleClickB = (newValues) => {
+    if (
+      statusTable.dashboard !== "graph" &&
+      (nameconsole === "graph" || nameconsole === "filter" || nameconsole === "datatype")
+    ) {
+      return; // Do nothing if dashboard is not "graph" and this is the "graph", "filter", or "datatype" console
+    }
+    const { icon, description, title, sign = "", ...rest } = newValues;
+    if (nameconsole === "filter") {
+
+     // console.log("történik valami???","nameconsole: ",nameconsole,"title: ",title)
+
+     //displayMode kell állítani!!!!
+      setFilterTable((prevFilterTable) => ({
+        ...prevFilterTable,
+        displayMode: title,
+       // sign: sign,
+       // ...rest,
+      }));
+    } else {
+      setStatusTable((prevStatusTable) => ({
+        ...prevStatusTable,
+        [nameconsole]: title,
+        sign: sign,
+        ...rest,
+      }));
+    }
+  };
+
   return (
     <main className="app transition-all ease-in border-0 border-lime-400 relative z-50 w-screen">
       <AnimatePresence>
@@ -96,7 +137,7 @@ const MobileAsteroide = () => {
             className="border-0 p-2 border-primary flex flex-col items-center justify-center my-10 rounded-2xl w-full"
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
-          >
+          >{nameconsole}
             <div className="flex justify-center items-center my-0 w-full border-0 border-purple-400">
               <div className="relative border-0 border-sky-400 h-96 w-full">
                 {toggle && (
@@ -117,7 +158,7 @@ const MobileAsteroide = () => {
                     ))}
                   </motion.div>
                 )}
-                <div className="flex flex-col  justify-center items-center  w-full border-2">
+                <div className="flex flex-col  justify-center items-center  w-full border-0">
                   {consoleContent}
                 </div>
               </div>
@@ -125,13 +166,22 @@ const MobileAsteroide = () => {
             <div className=" flex flex-col justify-center items-center relative border-0 border-sky-400 h-10 w-96 my-0">
               {toggle && (
                 <motion.div
-                  className="cursor-pointer realtive  z-10 glassmorphism w-80   rounded mx-2 flex flex-wrap flex-row items-center justify-center"
+                  className="cursor-pointer realtive  z-50"
                   {...myAnimation("up")}
                 >
+                  <div className=" glassmorphism w-80   rounded mx-2 flex flex-wrap flex-row items-center justify-center">
                   <BottomConsole
                     buttons={subButtons}
-                    handleClick={handleClick}
+                    handleClick={handleClickB}
                   />
+                  </div>
+                <div className="flex justify-center p-2 m-2 ">
+                <div onClick={closeHandler} className=" w-12 h-8 bg-950 text-white flex justify-center items-center rounded">
+                 X
+                </div>
+                </div>
+
+                  
                 </motion.div>
               )}
             </div>

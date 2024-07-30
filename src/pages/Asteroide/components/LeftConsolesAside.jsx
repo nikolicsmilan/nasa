@@ -8,7 +8,7 @@ const LeftConsolesAside = () => {
     <div>
       <AsideConsole source={leftasideconsole} 
       />
-       <div className="flex flex-col w-96 text-primary relative top-[-200px]">
+       <div className="flex flex-col w-96 text-primary relative top-[40px]">
           {Object.entries(filterTable).map(([key, value]) => (
             <div key={key}>
               <strong>{key}:</strong> {value.toString()}
