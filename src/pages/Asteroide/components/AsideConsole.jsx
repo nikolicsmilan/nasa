@@ -10,7 +10,7 @@ const AsideConsole = ({ source, description,origin }) => {
   } = MyConsoleContext();
   return (
     <aside
-      className="  h-screen text-primary 
+      className=" text-primary 
         flex flex-col border-0 border-primary  mx-2 bg-gradient2 top-20 relative "
     >
      

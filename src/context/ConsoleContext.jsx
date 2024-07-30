@@ -13,7 +13,6 @@ const initStatusTable = {
   dashboard: "graph", // | graph
   graph: "area", //bar | line | pie | radar | radialBar | scatter | funnel
   information: "nasa",
-  filter: "increase",
   operation: "joystick",
   resorces: "firebase",
   //All
@@ -60,15 +59,7 @@ const calculateTopBottomAverage = (data) => {
     average10,
   };
 };
-/*
-const createFilteredData = ({ top10, bottom10, average10, displayMode }) => {
-  return top10.map((item, index) => ({
-    name: (index + 1).toString(),
-    max: displayMode === "max" ? item.h : null,
-    avg: displayMode === "avg" ? average10[index] ? average10[index].h : null : null,
-    min: displayMode === "min" ? bottom10[index] ? bottom10[index].h : null : null,
-  }));
-};*/
+
 
 const createFilteredData = ({ top10, bottom10, average10, displayMode }) => {
   console.log(
@@ -82,6 +73,24 @@ const createFilteredData = ({ top10, bottom10, average10, displayMode }) => {
     "displayMode: ",
     displayMode
   );
+
+  if (displayMode === "inc") {
+    const step = Math.floor(sortedData.length / 9); // 9 intermediate steps + min and max
+    const sampledData = [sortedData[0]]; // Start with min value
+
+    for (let i = 1; i < 9; i++) {
+      sampledData.push(sortedData[i * step]);
+    }
+
+    sampledData.push(sortedData[sortedData.length - 1]); // End with max value
+
+    return sampledData.map((item, index) => ({
+      name: (index + 1).toString(),
+      value: item.h,
+    }));
+  }
+
+
   return top10.map((item, index) => ({
     name: (index + 1).toString(),
     max: displayMode === "max" || displayMode === "all" ? item.h : null,
@@ -117,13 +126,7 @@ export const ConsoleContextProvider = ({ children }) => {
   const [info, setInfo] = useState("");
 
   useEffect(() => {
-    /* const { min, max, avg } = calculateStatistics(sumObject);
-    setFilterTable({
-      min: min.toFixed(2),
-      max: max.toFixed(2),
-      avg: avg.toFixed(2),
-      displayMode: filterTable.displayMode, // Keep existing display mode
-    });*/
+ 
 
     const topBottomAverage = calculateTopBottomAverage(sumObject);
 
@@ -133,13 +136,7 @@ export const ConsoleContextProvider = ({ children }) => {
       displayMode: filterTable.displayMode,
     });
 
-    /*
-    const newFilteredData = createFilteredData({
-      top10: topBottomAverage.top10,
-      bottom10: topBottomAverage.bottom10,
-      average10: topBottomAverage.average10,
-      displayMode: filterTable.displayMode,
-    });*/
+
 
     console.log(
       "newFilteredData in Context",
@@ -197,3 +194,31 @@ export const ConsoleContextProvider = ({ children }) => {
 export const MyConsoleContext = () => {
   return useContext(ConsoleContext);
 };
+
+
+/*
+const createFilteredData = ({ top10, bottom10, average10, displayMode }) => {
+  return top10.map((item, index) => ({
+    name: (index + 1).toString(),
+    max: displayMode === "max" ? item.h : null,
+    avg: displayMode === "avg" ? average10[index] ? average10[index].h : null : null,
+    min: displayMode === "min" ? bottom10[index] ? bottom10[index].h : null : null,
+  }));
+};*/
+
+    /*
+    const newFilteredData = createFilteredData({
+      top10: topBottomAverage.top10,
+      bottom10: topBottomAverage.bottom10,
+      average10: topBottomAverage.average10,
+      displayMode: filterTable.displayMode,
+    });*/
+
+
+       /* const { min, max, avg } = calculateStatistics(sumObject);
+    setFilterTable({
+      min: min.toFixed(2),
+      max: max.toFixed(2),
+      avg: avg.toFixed(2),
+      displayMode: filterTable.displayMode, // Keep existing display mode
+    });*/

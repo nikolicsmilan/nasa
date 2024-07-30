@@ -51,7 +51,8 @@ const LayoutAsteoride = () => {
               setSettingsOpen((prevToggle) => !prevToggle);
             }}
           />
-          <div className="flex">
+          {!toggle && (
+          <div className="flex ">
             {menu.map((item, index) => (
               <div
                 key={index}
@@ -68,7 +69,7 @@ const LayoutAsteoride = () => {
                 </div>
               </div>
             ))}
-          </div>
+          </div>)}
           {/*delete FaBars icon that one start two menu */}
           <FaCog
             className={`relative top-0 right-0 z-40 text-4xl m-1 p-2 
@@ -99,7 +100,7 @@ const LayoutAsteoride = () => {
               {/*Settingsbar service mobil and desktop screen 
               settingshome inherit from localdata
               */}
-              <div onClick={stopClozer}>
+              <div className="border-0 border-red-400" onClick={stopClozer}>
                 <SettingsBarAnimation menupoint={settingshome} />
               </div>
               {/*Settingsbar end */}

@@ -19,7 +19,7 @@ const DesktopConsoleView = ({ stopClozer }) => {
       animate={settingsOpen ? "animate" : "exit"}
       exit="exit"
       className={`hidden absolute inset-0
-     lg:flex items-start lg:items-center lg:justify-center 
+     lg:flex items-start lg:items-center lg:justify-center border-0
   `}
     >
       <div

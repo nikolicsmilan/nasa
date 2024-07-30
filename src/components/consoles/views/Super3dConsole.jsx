@@ -23,7 +23,7 @@ const Super3dConsole = ({
   } = MyConsoleContext();
   const { mainConsoleAnimations } = useAnimations();
   const { filterData } = useDatafilter();
-
+/*
   const colorIze = (item) => {
     if (
       statusTable.dashboard !== "graph" &&
@@ -35,7 +35,23 @@ const Super3dConsole = ({
     } else {
       return "bg-950";
     }
+  };*/
+
+  const colorIze = (item) => {
+    if (
+      statusTable.dashboard !== "graph" &&
+      (nameconsole === "graph" || nameconsole === "filter" || nameconsole === "datatype")
+    ) {
+      return "bg-stone-500 cursor-not-allowed";
+    } else if (nameconsole === "filter" && filterTable.displayMode === item.title) {
+      return "bg-600";
+    } else if (statusTable[nameconsole] === item.title) {
+      return "bg-600";
+    } else {
+      return "bg-950";
+    }
   };
+
 
   const handleClick = (newValues) => {
     if (
