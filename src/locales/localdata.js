@@ -224,7 +224,7 @@ export const filterconsole = [
     description: "Order Increase",
   },
   {
-    title: "decrease",
+    title: "desc",
     icon: FaArrowDownShortWide,
     description: "Order Decrease",
   },

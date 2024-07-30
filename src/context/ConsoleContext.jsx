@@ -39,9 +39,20 @@ export const ConsoleContextProvider = ({ children }) => {
       statusTable,
       displayMode: filterTable.displayMode,
     });
-
+    console.log(
+      "newFilteredData in Context",
+      newFilteredData,
+      "FilterTable: ",
+      filterTable
+    );
     setFilteredData(newFilteredData);
   }, [sumObject, statusTable, filterTable]);
+  useEffect(() => {
+    setStatusTable((prevFilterTable) => ({
+      ...prevFilterTable,
+      graph: "radar",
+    }));
+  }, []);
 
   return (
     <ConsoleContext.Provider

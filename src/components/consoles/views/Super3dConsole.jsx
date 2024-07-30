@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { MyConsoleContext } from "../../../context/ConsoleContext";
 import CircuitLines from "./CircuitLines";
 import { useAnimations } from "../../../hooks/use-animations";
@@ -18,8 +18,8 @@ const Super3dConsole = ({
     setActualtypedata,
     statusTable,
     setStatusTable,
-    filterTable, 
-    setFilterTable 
+    filterTable,
+    setFilterTable,
   } = MyConsoleContext();
   const { mainConsoleAnimations } = useAnimations();
 
@@ -27,10 +27,15 @@ const Super3dConsole = ({
   const colorIze = (item) => {
     if (
       statusTable.dashboard !== "graph" &&
-      (nameconsole === "graph" || nameconsole === "filter" || nameconsole === "datatype")
+      (nameconsole === "graph" ||
+        nameconsole === "filter" ||
+        nameconsole === "datatype")
     ) {
       return "bg-stone-500 cursor-not-allowed";
-    } else if (nameconsole === "filter" && filterTable.displayMode === item.title) {
+    } else if (
+      nameconsole === "filter" &&
+      filterTable.displayMode === item.title
+    ) {
       return "bg-600";
     } else if (statusTable[nameconsole] === item.title) {
       return "bg-600";
@@ -39,25 +44,31 @@ const Super3dConsole = ({
     }
   };
 
-
   const handleClick = (newValues) => {
     if (
       statusTable.dashboard !== "graph" &&
-      (nameconsole === "graph" || nameconsole === "filter" || nameconsole === "datatype")
+      (nameconsole === "graph" ||
+        nameconsole === "filter" ||
+        nameconsole === "datatype")
     ) {
       return; // Do nothing if dashboard is not "graph" and this is the "graph", "filter", or "datatype" console
     }
-    const { icon, description, title, sign = statusTable.sign, ...rest } = newValues;
+    const {
+      icon,
+      description,
+      title,
+      sign = statusTable.sign,
+      ...rest
+    } = newValues;
     if (nameconsole === "filter") {
+      // console.log("történik valami???","nameconsole: ",nameconsole,"title: ",title)
 
-     // console.log("történik valami???","nameconsole: ",nameconsole,"title: ",title)
-
-     //displayMode kell állítani!!!!
+      //displayMode kell állítani!!!!
       setFilterTable((prevFilterTable) => ({
         ...prevFilterTable,
         displayMode: title,
-       // sign: sign,
-       // ...rest,
+        // sign: sign,
+        // ...rest,
       }));
     } else {
       setStatusTable((prevStatusTable) => ({
@@ -68,7 +79,6 @@ const Super3dConsole = ({
       }));
     }
   };
-
 
   return (
     <div
@@ -102,7 +112,7 @@ const Super3dConsole = ({
             text-primary cursor-pointer ${colorIze(item)}`}
           >
             {<item.icon />}
-          
+
             <div className="absolute top-0 left-10 mt-[-40px] ml-2 hidden group-hover:block bg-gray-700 text-white text-sm rounded p-1 z-50">
               {statusTable[nameconsole]} {item.title}
             </div>
@@ -167,7 +177,6 @@ export default Super3dConsole;
   };
 
 */
-
 
 /*
   const colorIzec = (item) => {

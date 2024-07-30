@@ -29,8 +29,9 @@
 };*/
 
 export const calculateTopBottomAverage = (data, statusTable) => {
+  console.log("calculateTopBottomAverage run ... ")
   const { sign } = statusTable;
-console.log("In calculateTopBottomAverage sign: ",sign)
+//console.log("In calculateTopBottomAverage sign: ",sign)
   // Extract numeric values based on `sign`
   const numericValues = data
     .map((item) => parseFloat(item[sign])) // Extract numeric values based on `sign`

@@ -28,7 +28,7 @@ ChartJS.register(
 
 const AreaChartComponent = () => {
   const { users } = MyDataContext();
-  const { filteredData, actualMainConsole, actualTypeData, filterTable } = MyConsoleContext();
+  const { filteredData, actualTypeData, filterTable } = MyConsoleContext();
   const { width, height } = useWindowSize();
   const [colors, setColors] = useState({
     tooltip: "#000",
@@ -60,7 +60,7 @@ const AreaChartComponent = () => {
   }, [users.style]);
 
   useEffect(() => {
-    if (filterTable.displayMode === "inc") {
+    if (filterTable.displayMode === "inc" || filterTable.displayMode === "desc") {
       setChartData({
         labels: filteredData.map((d) => d.name),
         datasets: [
@@ -107,7 +107,7 @@ const AreaChartComponent = () => {
     }
   }, [
     filteredData,    
-    actualMainConsole.title,
+
     actualTypeData,
     colors.area1,
     colors.area2,
