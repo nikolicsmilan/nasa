@@ -2,7 +2,7 @@ import React from "react";
 import { MyConsoleContext } from "../../../context/ConsoleContext";
 import CircuitLines from "./CircuitLines";
 import { useAnimations } from "../../../hooks/use-animations";
-import useDatafilter from "../../../hooks/use-datafilter";
+
 const Super3dConsole = ({
   nameconsole,
   data,
@@ -22,20 +22,7 @@ const Super3dConsole = ({
     setFilterTable 
   } = MyConsoleContext();
   const { mainConsoleAnimations } = useAnimations();
-  const { filterData } = useDatafilter();
-/*
-  const colorIze = (item) => {
-    if (
-      statusTable.dashboard !== "graph" &&
-      (nameconsole === "graph" || nameconsole === "filter" || nameconsole === "datatype")
-    ) {
-      return "bg-stone-500 cursor-not-allowed";
-    } else if (statusTable[nameconsole] === item.title) {
-      return "bg-600";
-    } else {
-      return "bg-950";
-    }
-  };*/
+
 
   const colorIze = (item) => {
     if (
@@ -60,7 +47,7 @@ const Super3dConsole = ({
     ) {
       return; // Do nothing if dashboard is not "graph" and this is the "graph", "filter", or "datatype" console
     }
-    const { icon, description, title, sign = "", ...rest } = newValues;
+    const { icon, description, title, sign = statusTable.sign, ...rest } = newValues;
     if (nameconsole === "filter") {
 
      // console.log("történik valami???","nameconsole: ",nameconsole,"title: ",title)

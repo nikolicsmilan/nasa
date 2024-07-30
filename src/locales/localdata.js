@@ -185,14 +185,12 @@ export const dashboards = [
     title: "general",
     icon: MdDashboardCustomize,
     description: "General information",
-    sign: "",
     animations: "yes",
   },
   {
     title: "graph",
     icon: MdOutlineAutoGraph,
     description: "Graphs",
-    sign: "",
     animations: "yes",
   },
 ];
@@ -247,7 +245,7 @@ export const datatypeconsole = [
     title: "magnitudo",
     icon: MdBrightness6,
     description: "Magnitudo",
-    sign: "magnitudo",
+    sign: "h",
     animations: "yes",
   },
   {
@@ -290,16 +288,17 @@ export const datatypeconsole = [
     icon: GiEnergyArrow,
     description: "Energy",
     animations: "yes",
-    sign: "date",
+    sign: "ps_cum", 
   },
   {
     title: "date",
     icon: FaCalendarAlt,
     description: "Year of observation",
     animations: "yes",
-    sign: "date",
+    sign: "last_obs", 
   },
 ];
+
 
 export const graphconsole = [
   {

@@ -1,57 +1,37 @@
-import { useContext, useCallback } from "react";
-import { MyConsoleContext } from "./path-to-context-file";
+import { useState } from "react";
 
-const useStatusTable = () => {
-  const { statusTable, setSatusTable } = MyConsoleContext();
-
-  const updateStatusTable = useCallback((newItem) => {
-    setSatusTable((prevStatusTable) => {
-      let hasChanged = false;
-      const updatedStatusTable = { ...prevStatusTable };
-
-      // Különböző értékek alapján végrehajtott műveletek
-      if (newItem.dashboard !== prevStatusTable.dashboard) {
-        updatedStatusTable.dashboard = newItem.dashboard;
-        hasChanged = true;
-        // Add additional logic here if needed
-      }
-
-      if (newItem.graph !== prevStatusTable.graph) {
-        updatedStatusTable.graph = newItem.graph;
-        hasChanged = true;
-        // Add additional logic here if needed
-      }
-
-      if (newItem.filter !== prevStatusTable.filter) {
-        updatedStatusTable.filter = newItem.filter;
-        hasChanged = true;
-        // Add additional logic here if needed
-      }
-
-      if (newItem.piece !== prevStatusTable.piece) {
-        updatedStatusTable.piece = newItem.piece;
-        hasChanged = true;
-        // Add additional logic here if needed
-      }
-
-      if (newItem.sourcetype !== prevStatusTable.sourcetype) {
-        updatedStatusTable.sourcetype = newItem.sourcetype;
-        hasChanged = true;
-        // Add additional logic here if needed
-      }
-
-      if (newItem.animations !== prevStatusTable.animations) {
-        updatedStatusTable.animations = newItem.animations;
-        hasChanged = true;
-        // Add additional logic here if needed
-      }
-
-      // Csak akkor frissítjük a state-et, ha ténylegesen változott valami
-      return hasChanged ? updatedStatusTable : prevStatusTable;
-    });
-  }, [setSatusTable]);
-
-  return updateStatusTable;
+const initStatusTable = {
+  dashboard: "graph",
+  graph: "area",
+  information: "nasa",
+  operation: "joystick",
+  resorces: "firebase",
+  animations: "no",
+  sign: "h",
+  piece: 10,
+  order: "asc",
+  sourcetype: "max",
 };
 
-export default useStatusTable;
+export const useStatusTable = () => {
+  const [statusTable, setStatusTable] = useState(initStatusTable);
+  return [statusTable, setStatusTable];
+};
+/*
+const initStatusTable = {
+  dashboard: "graph", // | graph
+  graph: "area", //bar | line | pie | radar | radialBar | scatter | funnel
+  information: "nasa",
+  operation: "joystick",
+  resorces: "firebase",
+  //All
+  animations: "no", //or yes
+  // If there is a sign, filter for it
+  sign: "magnitudo", //magnitudo |ip | ps_max | v_inf | ts_max | diameter | energy | date
+  // Only filter
+  piece: 10,
+  order: "asc", //desc
+  sourcetype: "max", //min |
+};
+
+*/

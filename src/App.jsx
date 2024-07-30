@@ -5,8 +5,7 @@ import "./tailwind.css";
 import Home from "./pages/Home/Home";
 import Galery from "./pages/Galery/Galery";
 import LayoutHome from "./layouts/LayoutHome";
-import LayoutAsteoride from "./layouts/LayoutAsteoride"; 
-import LayoutDashboard from "./layouts/LayoutAsteoride";
+import LayoutAsteoride from "./layouts/LayoutAsteoride";
 import Error from "./pages/Error/Error";
 import AsteroideDetail from "./pages/AsteroideDetail/AsteroideDetail";
 import SpaceKnowledge from "./pages/Spaceknowledge/SpaceKnowledge";
@@ -14,9 +13,8 @@ import Quiz from "./pages/Quiz/Quiz";
 import SolarSytsem from "./pages/SolarSystem/SolarSystem";
 import { useSave } from "./hooks/use-saveuser";
 import { MyDataContext } from "./context/DataContext";
-
 import Asteroide from "./pages/Asteroide/Asteroide";
-import useDatafilter from "./hooks/use-datafilter";
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -34,15 +32,10 @@ const router = createBrowserRouter([
   },
 ]);
 function App() {
-  const { filterData } = useDatafilter();
   //It is needed for the initilazation
   const { saveUser } = useSave();
   const { choosenStyle } = MyDataContext();
-  //Once run that no cause problem empty data if somebody click on graphconsole
-  //without choose from dashboards the default dashboard is Magnitudo
-  useEffect(() => {
-    filterData("h", "up", 10);
-  }, []);
+
   return (
     <div className={`${choosenStyle} font-robotoMono `}>
       <RouterProvider router={router} />
