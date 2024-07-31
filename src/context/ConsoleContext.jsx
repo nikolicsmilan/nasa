@@ -10,7 +10,16 @@ import { useStatusTable } from "../hooks/use-statustable";
 import { useFilterTable } from "../hooks/use-filterTable";
 import { createFilteredData } from "../utils/createFilteredData";
 const ConsoleContext = createContext();
-
+const graphConfigInit = [
+  { name: "area", min: 5, max: 10 },
+  { name: "bar", min: 5, max: 10  },
+  { name: "line", min: 5, max: 10 },
+  { name: "pie", min: 5, max: 10  },
+  { name: "radar", min: 5, max: 10  },
+  { name: "radialBar", min: 5, max: 10 },
+  { name: "scatter", min: 5, max: 10 },
+  { name: "funnel", min: 5, max: 10 },
+];
 export const ConsoleContextProvider = ({ children }) => {
   const [sumObject, setSumObject] = useState(sentry.data);
   const [filteredData, setFilteredData] = useState(sentry.data);
@@ -27,7 +36,8 @@ export const ConsoleContextProvider = ({ children }) => {
   const [acitveMainConsole, setActiveMainConsole] = useState(false);
   const [animationVariants, setAnimationVariants] = useState({});
   const [info, setInfo] = useState("");
-
+  const [graphConfigurations, setGraphConfigurations] =
+    useState(graphConfigInit);
   // Amikor vissza váltok areara valamilyen paramétert nem kap meg valószinleg és
   //ezért üres lesz
   //a táblázat kixcsi az elején
@@ -37,12 +47,12 @@ export const ConsoleContextProvider = ({ children }) => {
       statusTable,
       displayMode: filterTable.displayMode,
     });
-    console.log(
+   /* console.log(
       "newFilteredData in Context",
       newFilteredData,
       "FilterTable: ",
       filterTable
-    );
+    );*/
     setFilteredData(newFilteredData);
   }, [sumObject, statusTable, filterTable]);
 
@@ -76,6 +86,7 @@ export const ConsoleContextProvider = ({ children }) => {
         setStatusTable,
         filterTable,
         setFilterTable,
+        graphConfigurations
       }}
     >
       {children}
