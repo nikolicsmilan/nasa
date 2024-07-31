@@ -9,7 +9,6 @@ import { sentry } from "../locales/nasadummy";
 import { useStatusTable } from "../hooks/use-statustable";
 import { useFilterTable } from "../hooks/use-filterTable";
 import { createFilteredData } from "../utils/createFilteredData";
-import { calculateTopBottomAverage } from "../utils/calculateTopBottomAverage";
 const ConsoleContext = createContext();
 
 export const ConsoleContextProvider = ({ children }) => {
@@ -29,7 +28,6 @@ export const ConsoleContextProvider = ({ children }) => {
   const [animationVariants, setAnimationVariants] = useState({});
   const [info, setInfo] = useState("");
 
-
   // Amikor vissza váltok areara valamilyen paramétert nem kap meg valószinleg és
   //ezért üres lesz
   //a táblázat kixcsi az elején
@@ -47,6 +45,7 @@ export const ConsoleContextProvider = ({ children }) => {
     );
     setFilteredData(newFilteredData);
   }, [sumObject, statusTable, filterTable]);
+
   useEffect(() => {
     setStatusTable((prevFilterTable) => ({
       ...prevFilterTable,

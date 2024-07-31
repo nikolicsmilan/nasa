@@ -6,6 +6,7 @@ const initFilterTable = {
   max: "",
   avg: "",
   displayMode: "max",
+  piece: 10,
 };
 
 export const useFilterTable = (sumObject) => {
@@ -18,6 +19,7 @@ export const useFilterTable = (sumObject) => {
       max: max.toFixed(2),
       avg: avg.toFixed(2),
       displayMode: filterTable.displayMode,
+      piece: filterTable.piece,
     });
   }, [sumObject]);
 

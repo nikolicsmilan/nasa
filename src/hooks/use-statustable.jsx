@@ -8,7 +8,6 @@ const initStatusTable = {
   resorces: "firebase",
   animations: "no",
   sign: "h",
-  piece: 10,
   order: "asc",
   sourcetype: "max",
 };
