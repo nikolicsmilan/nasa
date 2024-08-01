@@ -10,9 +10,9 @@ export const createFilteredData = ({ sumObject,statusTable, displayMode,piece  }
   // and average values. So divdide all of data 3 arrays
   const { top10, bottom10, average10 } = calculateTopBottomAverage(sumObject,statusTable,piece );
   const { sign } = statusTable;
-  //console.log("top10: ",top10)
+
   if (displayMode === "inc" || displayMode === "desc") {
-    return createSampledData(sumObject, statusTable, displayMode);
+    return createSampledData(sumObject, statusTable, displayMode,piece);
   }
   // depend by displayMode return all array or one by one: all || max | avg | min
   return createTopBottomAverageData(top10, bottom10, average10, displayMode, sign);

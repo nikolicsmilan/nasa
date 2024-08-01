@@ -10,6 +10,7 @@ const initStatusTable = {
   sign: "h",
   order: "asc",
   sourcetype: "max",
+  datatype: "magnitudo"
 };
 
 export const useStatusTable = () => {
