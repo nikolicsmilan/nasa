@@ -11,7 +11,7 @@ import { useFilterTable } from "../hooks/use-filterTable";
 import { createFilteredData } from "../utils/createFilteredData";
 const ConsoleContext = createContext();
 const graphConfigInit = [
-  { name: "area", min: 5, max: 10 },
+  { name: "area", min: 5, max: 12 },
   { name: "bar", min: 5, max: 10  },
   { name: "line", min: 5, max: 10 },
   { name: "pie", min: 5, max: 10  },
@@ -46,13 +46,9 @@ export const ConsoleContextProvider = ({ children }) => {
       sumObject,
       statusTable,
       displayMode: filterTable.displayMode,
+      piece: filterTable.piece,
     });
-   /* console.log(
-      "newFilteredData in Context",
-      newFilteredData,
-      "FilterTable: ",
-      filterTable
-    );*/
+  
     setFilteredData(newFilteredData);
   }, [sumObject, statusTable, filterTable]);
 
