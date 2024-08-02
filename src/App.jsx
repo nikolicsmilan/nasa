@@ -38,6 +38,9 @@ function App() {
 
   return (
     <div className={`${choosenStyle} font-robotoMono `}>
+       <div id="ezaz" className="text-primary hidden">
+        Sampling div tailwind for react charts for dynamic colors
+      </div>
       <RouterProvider router={router} />
     </div>
   );

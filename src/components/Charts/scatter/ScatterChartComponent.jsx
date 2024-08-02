@@ -72,9 +72,7 @@ const ScatterChartComponent = () => {
 
   return (
     <div className="border-0 border-purple-400 flex justify-center" style={{ width: width - 800, height: height - 200 }}>
-      <div id="ezaz" className="text-primary hidden">
-        Sampling div tailwind for react charts for dynamic colors
-      </div>
+    
       <Scatter
         data={chartData}
         options={{

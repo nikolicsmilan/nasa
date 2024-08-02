@@ -63,9 +63,7 @@ const AreaCharts = () => {
   }, [filteredData, statusTable.graph, actualTypeData]);
   return (
     <div className="border-0 border-purple-400">
-      <div id="ezaz" className="text-primary hidden">
-        Sampling div tailwind for react charts for dynamic colors
-      </div>
+     
       {/* Megjelenítjük a táblázatot */}
       <AreaChart
         height={height - 200}
