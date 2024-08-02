@@ -8,9 +8,9 @@ import {
   Tooltip,
   Legend
 } from 'recharts';
-import useWindowSize from '../../hooks/use-windowsize';
-import { MyDataContext } from '../../context/DataContext';
-import { MyConsoleContext } from '../../context/ConsoleContext';
+import useWindowSize from '../../../hooks/use-windowsize';
+import { MyDataContext } from '../../../context/DataContext';
+import { MyConsoleContext } from '../../../context/ConsoleContext';
 
 const LineChart = () => {
   const { width, height } = useWindowSize();

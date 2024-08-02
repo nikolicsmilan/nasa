@@ -8,9 +8,9 @@ import {
   Tooltip,
   Legend
 } from "recharts";
-import useWindowSize from "../../hooks/use-windowsize";
-import { MyDataContext } from "../../context/DataContext";
-import { MyConsoleContext } from "../../context/ConsoleContext";
+import useWindowSize from "../../../hooks/use-windowsize";
+import { MyDataContext } from "../../../context/DataContext";
+import { MyConsoleContext } from "../../../context/ConsoleContext";
 
 const data = [
   { name: "A", uv: 4000, pv: 2400, amt: 2400 },

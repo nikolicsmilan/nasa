@@ -1,12 +1,12 @@
-export { default as AreaCharts } from './AreaCharts';//Only usufull from Recharts
-export { default as AreaChartComponent  } from './AreaChartComponent';
-export { default as BarCharts } from './BarCharts';
-export { default as BarChartComponent } from './BarChartComponent';
-export { default as  LineChart} from './LineChart';
-export { default as  LineChartComponent } from './LineChartComponent';
-export { default as PieChart } from './PieChart';
-export { default as PieChartComponent  } from './PieChartComponent';
-export { default as RadarChartComponent } from './RadarChartComponent';
-export { default as RadialBarChartComponent } from './RadialBarChartComponent';
-export { default as ScatterChartComponent } from './ScatterChartComponent';
-export { default as FunnelChartComponent } from './FunnelChartComponent';
+export { default as AreaCharts } from './area/AreaCharts';//Only usufull from Recharts
+export { default as AreaChartComponent } from './area/AreaChartComponent.jsx';
+export { default as BarCharts } from './bar/BarCharts';
+export { default as BarChartComponent } from './bar/BarChartComponent';
+export { default as  LineChart} from './line/LineChart';
+export { default as  LineChartComponent } from './line/LineChartComponent';
+export { default as PieChart } from './pie/PieChart';
+export { default as PieChartComponent  } from './pie/PieChartComponent';
+export { default as RadarChartComponent } from './radar/RadarChartComponent';
+export { default as RadialBarChartComponent } from './radial/RadialBarChartComponent';
+export { default as ScatterChartComponent } from './scatter/ScatterChartComponent';
+export { default as FunnelChartComponent } from './funnel/FunnelChartComponent';

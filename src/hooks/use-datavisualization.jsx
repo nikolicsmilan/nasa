@@ -19,7 +19,8 @@ import {
 } from "../components/Charts";
 
 export const useDataVisualization = () => {
-  const { info, actualMainConsole, statusTable,filterTable } = MyConsoleContext();
+  const { info, actualMainConsole, statusTable, filterTable } =
+    MyConsoleContext();
 
   //ez változtatja a tartalmat
 
@@ -44,15 +45,15 @@ export const useDataVisualization = () => {
         case "area":
           return (
             <div className="w-full border-0 border-orange-400 flex justify-center">
-              <AreaChartComponent   />
+              <AreaChartComponent />
             </div>
           );
         case "bar":
           return <BarChartComponent />;
         case "line":
-          return <LineChartComponent  />;
+          return <LineChartComponent />;
         case "pie":
-          return <PieChartComponent  />;
+          return <PieChartComponent />;
         case "radar":
           return <RadarChartComponent />;
         case "radialBar":
@@ -86,7 +87,7 @@ export const useDataVisualization = () => {
     } else if (!actualMainConsole?.animations) {
       setConsoleContent(updateConsole(statusTable));
     }
-  }, [info, statusTable,filterTable]);
+  }, [info, statusTable, filterTable]);
 
   return { updateConsole, consoleContent };
 };

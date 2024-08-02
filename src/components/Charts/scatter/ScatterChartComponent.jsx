@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Chart as ChartJS, LinearScale, PointElement, Tooltip, Legend } from 'chart.js';
 import { Scatter } from 'react-chartjs-2';
-import useWindowSize from "../../hooks/use-windowsize";
-import { MyDataContext } from "../../context/DataContext";
-import { MyConsoleContext } from "../../context/ConsoleContext";
+import useWindowSize from "../../../hooks/use-windowsize";
+import { MyDataContext } from "../../../context/DataContext";
+import { MyConsoleContext } from "../../../context/ConsoleContext";
 
 ChartJS.register(LinearScale, PointElement, Tooltip, Legend);
 

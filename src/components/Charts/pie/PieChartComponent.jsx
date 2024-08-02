@@ -1,31 +1,31 @@
 import React, { useState, useEffect } from "react";
-import { Chart as ChartJS, RadialLinearScale, ArcElement, Tooltip, Legend } from 'chart.js';
-import { PolarArea } from 'react-chartjs-2';
-import useWindowSize from "../../hooks/use-windowsize";
-import { MyDataContext } from "../../context/DataContext";
-import { MyConsoleContext } from "../../context/ConsoleContext";
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
+import { Pie } from "react-chartjs-2";
+import useWindowSize from "../../../hooks/use-windowsize";
+import { MyDataContext } from "../../../context/DataContext";
+import { MyConsoleContext } from "../../../context/ConsoleContext";
 
-ChartJS.register(RadialLinearScale, ArcElement, Tooltip, Legend);
+ChartJS.register(ArcElement, Tooltip, Legend);
 
 const initialData = [
-  { name: "A", h: 4000 },
-  { name: "B", h: 3000 },
-  { name: "C", h: 2000 },
-  { name: "D", h: 2780 },
-  { name: "E", h: 1890 },
-  { name: "F", h: 2390 },
-  { name: "G", h: 3490 },
+  { name: "A", value: 4000 },
+  { name: "B", value: 3000 },
+  { name: "C", value: 2000 },
+  { name: "D", value: 2780 },
+  { name: "E", value: 1890 },
+  { name: "F", value: 2390 },
+  { name: "G", value: 3490 },
 ];
 
-const RadialBarChartComponent = () => {
+const PieChartComponent = () => {
   const { width, height } = useWindowSize();
   const [colors, setColors] = useState({ tooltip: "#000", legend: "#000" });
   const [chartData, setChartData] = useState({
     labels: initialData.map(d => d.name),
     datasets: [
       {
-        label: 'Dataset 1',
-        data: initialData.map(d => d.h),
+        label: 'Pie Dataset',
+        data: initialData.map(d => d.value),
         backgroundColor: [
           'rgba(255, 99, 132, 0.2)',
           'rgba(54, 162, 235, 0.2)',
@@ -66,18 +66,18 @@ const RadialBarChartComponent = () => {
   }, [users.style]);
 
   useEffect(() => {
-    if (actualMainConsole.title === "Radial" && actualTypeData === "h") {
+    if (actualMainConsole.title === "Pie" && actualTypeData === "value") {
       const transformedData = filteredData.map((item) => ({
-        name: item.fullname,
-        h: parseFloat(item.h),
+        name: item.name,
+        value: parseFloat(item.value),
       }));
 
       setChartData({
         labels: transformedData.map(d => d.name),
         datasets: [
           {
-            label: 'Dataset 1',
-            data: transformedData.map(d => d.h),
+            label: 'Pie Dataset',
+            data: transformedData.map(d => d.value),
             backgroundColor: [
               'rgba(255, 99, 132, 0.2)',
               'rgba(54, 162, 235, 0.2)',
@@ -108,7 +108,7 @@ const RadialBarChartComponent = () => {
       <div id="ezaz" className="text-primary hidden">
         Sampling div tailwind for react charts for dynamic colors
       </div>
-      <PolarArea
+      <Pie
         data={chartData}
         options={{
           plugins: {
@@ -120,32 +120,13 @@ const RadialBarChartComponent = () => {
                 color: colors.legend
               }
             }
-          },
-          scales: {
-            r: {
-              angleLines: {
-                color: colors.legend
-              },
-              grid: {
-                color: colors.legend
-              },
-              pointLabels: {
-                color: colors.legend
-              },
-              ticks: {
-                color: colors.legend
-              }
-            }
           }
         }}
         height={height - 200}
         width={width - 800}
       />
-    
     </div>
   );
 };
 
-export default RadialBarChartComponent;
-
-
+export default PieChartComponent;

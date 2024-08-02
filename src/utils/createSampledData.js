@@ -24,6 +24,7 @@
     return sampledData.map((item, index) => ({
       name: (index + 1).toString(),
       value: item.value,
+      fullname: item.fullname || '' 
     }));
   };
   

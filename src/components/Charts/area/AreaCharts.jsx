@@ -7,10 +7,10 @@ import {
   YAxis,
   Tooltip,
 } from "recharts";
-import useWindowSize from "../../hooks/use-windowsize";
-import { MyDataContext } from "../../context/DataContext";
-import { MyConsoleContext } from "../../context/ConsoleContext";
-import Table_1 from "../Table/Table_1";
+import useWindowSize from "../../../hooks/use-windowsize";
+import { MyDataContext } from "../../../context/DataContext";
+import { MyConsoleContext } from "../../../context/ConsoleContext";
+import Table_1 from "../../Table/Table_1";
 const data = [
   { name: "A", uv: 4000, pv: 2400, amt: 2400 },
   { name: "B", uv: 3000, pv: 1398, amt: 2210 },
