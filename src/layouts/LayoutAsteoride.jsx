@@ -57,7 +57,7 @@ const LayoutAsteoride = () => {
               <div
                 key={index}
                 onClick={() => handleClick(item)}
-                className="group relative z-50 border-0 hover:border-red-400 
+                className="glowy-button-5 group relative z-50 border-0 hover:border-red-400 
              p-2 rounded m-2 bg-950 text-primary cursor-pointer text-3xl hover:bg-600"
               >
                 {<item.icon />}
@@ -72,7 +72,7 @@ const LayoutAsteoride = () => {
           </div>)}
           {/*delete FaBars icon that one start two menu */}
           <FaCog
-            className={`relative top-0 right-0 z-40 text-4xl m-1 p-2 
+            className={` relative top-0 right-0 z-40 text-4xl m-1 p-2 
              cursor-pointer border-0`}
             onClick={() => {
               setToggle(true);

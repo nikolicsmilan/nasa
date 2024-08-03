@@ -136,4 +136,431 @@ because of the overwrite the base class
   -webkit-backdrop-filter: blur(4px);
   border: 1px solid rgba(255, 255, 255, 0.18);
 }
+/*
+button::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  box-shadow: 0 1px hsl(0 0% 100%/0.15)inset;
+  background: hsl(0 0% 10%);
+  width:200px;
+  height:200px;
+}
 
+button::after{
+  content:"";
+  position:absolute;
+  inset:-4px;
+  filter:blur(20px);
+  background: radial-gradient(50% 50% at center, hsl(var(--hu) 80% 70%),transparent);
+}*/
+/*
+.glow-button {
+  font-size: 20px;
+  color: white;
+  background-color: black;
+ 
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.3s ease-in-out;
+  position: relative;
+}
+
+.glow-button:hover {
+  color: #00ff00; 
+  text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00, 0 0 30px #00ff00, 0 0 40px #00ff00, 0 0 50px #00ff00, 0 0 60px #00ff00, 0 0 70px #00ff00;
+}
+
+.glow-button:active {
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}*/
+/*
+.glow-button {
+  position: relative;
+  font-size: 20px;
+  color: white;
+  background-color: black;
+  border: 2px solid white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.3s ease-in-out;
+  overflow: hidden;
+  cursor: pointer;
+  z-index: 0;
+}
+
+.glow-button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  box-shadow: 0 1px hsl(0 0% 100% / 0.15) inset;
+  background: hsl(0 0% 10%);
+  z-index: -1;
+}
+
+.glow-button::after {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  filter: blur(20px);
+  background: radial-gradient(circle, rgba(0, 255, 0, 0.7), transparent);
+  transition: all 0.3s ease-in-out;
+  opacity: 0;
+  z-index: -1;
+}
+
+.glow-button:hover::after {
+  opacity: 1;
+}*/
+
+/*
+
+.glow-button {
+  position: relative;
+  font-size: 20px;
+  color: white;
+  background-color: black;
+  border: 2px solid white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.3s ease-in-out;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.glow-button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  box-shadow: 0 1px hsl(0 0% 100% / 0.15) inset;
+  background: hsl(0 0% 10%);
+  width: 200px;
+  height: 200px;
+  pointer-events: none;
+}
+
+.glow-button::after {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  filter: blur(20px);
+  background: radial-gradient(circle, rgba(0, 255, 0, 0.7), transparent);
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+  opacity: 0;
+  transform: scale(0.5);
+  pointer-events: none;
+}
+
+.glow-button:hover::after {
+  opacity: 1;
+  transform: scale(1.5);
+}*/
+
+.glow-button {
+ position: relative;
+  font-size: 20px;
+  color: white;
+  background-color: black;
+  border: 2px solid white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.3s ease-in-out;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.glow-button::before {
+  content: "";
+ /* position: absolute;*/
+  inset: 0;
+  box-shadow: 0 1px hsl(0 0% 100% / 0.15) inset;
+  background: hsl(0 0% 10%);
+}
+
+.glow-button::after {
+  content: "";
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  top: var(--y);
+  left: var(--x);
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 72, 0, 0.7), transparent);
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.glow-button:hover::after {
+  opacity: 1;
+}
+
+.glow-button2 {
+  position: relative;
+  font-size: 20px;
+  color: white; /* Text color */
+  background-color: black; /* Background color */
+  border: 2px solid hsl(120, 100%, 50%); /* Glowing border color */
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  overflow: hidden;
+  cursor: pointer;
+  transition: color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+/* Glowing effect for text */
+.glow-button2::after {
+  content: "";
+  position: absolute;
+  top: var(--y);
+  left: var(--x);
+  width: 150px; /* Size of the glow effect */
+  height: 150px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0, 255, 0, 0.4), transparent);
+  transition: opacity 0.3s ease-in-out;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Glowing effect for button on hover */
+.glow-button2:hover {
+  color: hsl(120, 100%, 100%); /* White-greenish text on hover */
+  box-shadow: 0 0 15px hsl(120, 100%, 50%); /* Glowing green shadow */
+}
+
+.glow-button2:hover::after {
+  opacity: 1; /* Show the glowing effect */
+}
+
+.glowy-button-3 {
+  position: relative;
+  padding: 15px 30px;
+  font-size: 18px;
+  color: #fff;
+  background-color: #333;
+  border: 2px solid #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.glowy-button-3::before {
+  content: '';
+  position: absolute;
+  top: var(--y);
+  left: var(--x);
+  transform: translate(-50%, -50%);
+  width: 0;
+  height: 0;
+  background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 70%);
+  transition: width 0.5s ease, height 0.5s ease;
+}
+
+.glowy-button-3:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.glowy-button-3:hover {
+  color: #333;
+  background-color: #fff;
+  border-color: #333;
+  text-shadow: 0 0 5px rgba(255,255,255,0.8);
+  box-shadow: 0 0 20px rgba(255,255,255,0.8);
+}
+
+.glowy-button-4 {
+  position: relative;
+  padding: 15px 30px;
+  font-size: 18px;
+  color: #fff;
+  background: none;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  --hu: 200;
+}
+
+.glowy-button-4::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  box-shadow: 0 1px hsl(0 0% 100% / 0.15) inset;
+  background: hsl(0 0% 10%);
+}
+
+.glowy-button-4::after {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  filter: blur(20px);
+  background: radial-gradient(
+    circle at var(--x) var(--y),
+    hsl(var(--hu) 80% 70%),
+    transparent 50%
+  );
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.glowy-button-4:hover::after {
+  opacity: 1;
+}
+
+.glowy-button-4 span {
+  position: relative;
+  z-index: 1;
+}
+
+.glowy-button-4:hover span {
+  text-shadow: 0 0 10px hsl(var(--hu) 80% 70%);
+}
+
+
+.glowy-button-5 {
+  position: relative;
+  /*t ? * b* l*/
+ padding: 3px 3px 3px 3px;
+ /*padding:1px;*/
+ /* font-size: 18px;*/
+  color: #fff;
+  background: #333;
+  border: 0px solid #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.glowy-button-5::before {
+  content: "";
+  position: absolute;
+  top: var(--y);
+  left: var(--x);
+  transform: translate(-50%, -50%);
+  width: 0;
+  height: 0;
+  background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 70%);
+  transition: width 0.3s ease, height 0.3s ease;
+}
+
+.glowy-button-5:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.glowy-button-5:hover {
+ /* text-shadow: 0 0 5px #fff;*/
+  box-shadow: 0 0 10px #fff;
+  border-color: #fff;
+}
+
+.glowy-button-6 {
+  position: relative;
+  /*t ? * b* l*/
+ padding: 3px 3px 3px 3px;
+ /*padding:1px;*/
+ /* font-size: 18px;*/
+  color: #fff;
+  background: #333;
+  border: 0px solid #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+
+.glowy-button-6 {
+  position: relative;
+  /*t ? * b* l*/
+ padding: 3px 3px 3px 3px;
+ /*padding:1px;*/
+ /* font-size: 18px;*/
+  color: #fff;
+  background: #333;
+  border: 0px solid #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  overflow: hidden;
+  background: linear-gradient(
+    to bottom right,
+    hsla(0, 0%, 100%, 0.1) 20%,
+    hsla(0, 0%, 100%, 0.1) 20%
+  );
+}
+
+.glowy-button-6::before {
+  content: "";
+  position: absolute;
+  top: var(--y);
+  left: var(--x);
+  transform: translate(-50%, -50%);
+  width: 0;
+  height: 0;
+  background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 70%);
+  transition: width 0.3s ease, height 0.3s ease;
+}
+
+.glowy-button-6::before {
+  width: 300px;
+  height: 300px;
+}
+
+.glowy-button-6 {
+ /*text-shadow: 0 0 5px #fff;*/
+  box-shadow: 0 0 10px #fff;
+  border-color: #fff;
+}
+
+/*
+
+.glowy-button-5 {
+  position: relative;
+ padding: 15px 30px;
+  font-size: 18px;
+  color: #fff;
+  background: #333;
+  border: 2px solid #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.glowy-button-5::before {
+  content: "";
+  position: absolute;
+  top: var(--y);
+  left: var(--x);
+  transform: translate(-50%, -50%);
+  width: 0;
+  height: 0;
+  background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 70%);
+  transition: width 0.3s ease, height 0.3s ease;
+}
+
+.glowy-button-5:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.glowy-button-5:hover {
+  text-shadow: 0 0 5px #fff;
+  box-shadow: 0 0 10px #fff;
+  border-color: #fff;
+}
+*/

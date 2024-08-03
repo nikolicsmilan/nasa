@@ -39,7 +39,7 @@ const Super3dConsole = ({
           <div
             key={index}
             onClick={() => handleClick(item)}
-            className={`group relative border-0  p-1 rounded m-2 hover:bg-600 
+            className={`glowy-button-5 group relative border-0  p-1 rounded m-2 hover:bg-600 
             text-primary cursor-pointer ${colorIze(item)}`}
           >
             {<item.icon />}

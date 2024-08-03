@@ -1,6 +1,11 @@
 import React,{useState} from "react";
 import SquareminConsole from "../../../components/consoles/views/SquareminConsole";
 import { nasa } from "../../../locales/nasaapi";
+import GlowyButton from "../../../components/buttons/GlowyButton";
+import GlowButton2 from "../../../components/buttons/GlowButton2 ";
+import GlowyButton3 from "../../../components/buttons/GlowyButton3";
+import GlowyButton4 from "../../../components/buttons/GlowyButton4";
+import GlowyButton5 from "../../../components/buttons/GlowyButton5";
 const currentYear = new Date().getFullYear();
 const dummydata = [
   { title: "torino scale", value: 0 },
@@ -27,11 +32,25 @@ const GeneralDashboard = ({filteredData}) => {
         <div>
         <SquareminConsole title="sum of object" value={sumObject.count} />
         </div>
-      </div>
 
-      
+        
+      </div>
+<div>
+<div className="hidden lg:block ">
+<GlowyButton>GlowyButton1</GlowyButton>
+<GlowButton2>GlowyButton2</GlowButton2>
+<GlowyButton3>GlowyButton3</GlowyButton3>
+<GlowyButton4>GlowyButton4</GlowyButton4>
+<GlowyButton5>GlowyButton5</GlowyButton5>
+
+</div>
+
+
+</div>
+   
     </div>
   );
 };
 
 export default GeneralDashboard;
+//<button className="glow-button">Glowing Button</button>
