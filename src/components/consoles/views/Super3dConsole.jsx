@@ -20,7 +20,7 @@ const Super3dConsole = ({
           rotateZ(${rotateZ}deg)`,
         transformOrigin: origin,
       }}
-      className={`glassmorphis ${
+      className={`glowy-button-6 glassmorphis ${
         origin === "left center"
           ? "bg-gradientreverse  border-r-[0px] border-l-0"
           : "bg-gradien  border-r-0 border-l-[0px]"
@@ -29,7 +29,7 @@ const Super3dConsole = ({
       border-t-0 
       border-600 
       text-dark flex flex-col items-start w-80 
-      transform perspective-1000 m-0 p-0 h-36`}
+      transform perspective-1000 m-0 p-0 h-40`}
     >
       <h3 className=" text-primary uppercase text-lg text-center w-full">
         {nameconsole}

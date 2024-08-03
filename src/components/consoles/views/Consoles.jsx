@@ -13,8 +13,8 @@ const Consoles = ({ menupoint }) => {
   }
   return (
     <div
-      className="border-0 p-5 w-full flex 
-    flex-wrap justify-between overflow-y-auto  h-80 "
+      className=" border-0 p-5 w-full flex 
+    flex-wrap justify-between overflow-y-auto  h-72 "
     >
       {menupoint &&
         menupoint?.map((item) => (

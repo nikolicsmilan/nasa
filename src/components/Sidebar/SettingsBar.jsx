@@ -8,7 +8,7 @@ const SettingsBar = ({ menupoint }) => {
   const {  playSoundClick } = MyAudioContext();
   return (
     <div
-      className="p-5 lg:p-0 w-full flex lg:items-center lg:justify-center
+      className="glowy-button-6  p-0 lg:p-3 w-full flex lg:items-center lg:justify-center
     flex-wrap justify-between overflow-y-auto  lg:h-96"
     >
       {menupoint?.map((item) => (

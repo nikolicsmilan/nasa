@@ -6,7 +6,7 @@ const ChangingMainInside = () => {
     MyConsoleContext();
     const { updateConsole } = useDataVisualization();
   return (
-    <div>{updateConsole(actualMainConsole)}</div>
+    <div className='border-2 border-red-400'>{updateConsole(actualMainConsole)}</div>
   )
 }
 

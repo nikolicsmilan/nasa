@@ -23,7 +23,7 @@ const NavigationConsole = () => {
   //params: {params}
 
   return (
-    <div className="border-0 w-full ">
+    <div className=" border-0 w-full ">
       <Consoles menupoint={menu} />
     </div>
   );

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { MyConsoleContext } from "../../../context/ConsoleContext";
 import { useDataVisualization } from "../../../hooks/use-datavisualization";
-
+import useWindowSize from "../../../hooks/use-windowsize";
 const MainConsole = () => {
   const {
     actualMainConsole,
@@ -12,20 +12,21 @@ const MainConsole = () => {
     filteredData,
   } = MyConsoleContext();
   const { consoleContent } = useDataVisualization();
-
+  const { width, height } = useWindowSize();
   return (
     <motion.div
       animate={animationVariants}
-      className="relative z-10 rounded inset-0  border-0 border-lime-400
+      className=" flex flex-col items-center  relative z-10 rounded inset-0  border-0 border-lime-400
   
-    border-600 bg-gradien 
-    text-dark flex flex-col items-start w-full h-full  shadow-2xl 
+ 
+    text-dark w-full h-full  shadow-2xl 
     transform perspective-1000  "
     >
       <div
-        className="border-0 border-red-400  w-full h-full opacity-100 top-[80px]
+        className="glowy-button-6  border-0 border-red-400   opacity-100 top-[80px]
       z-50 relative p-0 overflow-y-scroll overflow-x-scroll 
-         text-white flex flex-col  justify-start items-center"
+         text-white flex flex-col   items-center justify-center w-96 lg:w-full h-full"
+        style={{ width: width - 800, height: height - 100 }}
       >
         {consoleContent}
       </div>

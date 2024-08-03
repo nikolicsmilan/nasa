@@ -17,10 +17,8 @@ const GeneralDashboard = ({filteredData}) => {
   const [sumObject, setSumObject] = useState(nasa);
 
   return (
-    <div className="flex flex-col w-full border-0">
-      <div className="text-950 text-xl font-bold uppercase text-center w-full border-0 my-2 bg-gradient">
-        <h1>Now only Dummy Data!!!</h1>
-      </div>
+    <div className="  flex flex-col w-full border-2">
+  
 
 
       <div className="flex ">
@@ -36,14 +34,7 @@ const GeneralDashboard = ({filteredData}) => {
         
       </div>
 <div>
-<div className="hidden lg:block ">
-<GlowyButton>GlowyButton1</GlowyButton>
-<GlowButton2>GlowyButton2</GlowButton2>
-<GlowyButton3>GlowyButton3</GlowyButton3>
-<GlowyButton4>GlowyButton4</GlowyButton4>
-<GlowyButton5>GlowyButton5</GlowyButton5>
 
-</div>
 
 
 </div>
@@ -53,4 +44,13 @@ const GeneralDashboard = ({filteredData}) => {
 };
 
 export default GeneralDashboard;
+/*
+<div className="hidden lg:block ">
+<GlowyButton>GlowyButton1</GlowyButton>
+<GlowButton2>GlowyButton2</GlowButton2>
+<GlowyButton3>GlowyButton3</GlowyButton3>
+<GlowyButton4>GlowyButton4</GlowyButton4>
+<GlowyButton5>GlowyButton5</GlowyButton5>
+
+</div>*/
 //<button className="glow-button">Glowing Button</button>

@@ -384,7 +384,7 @@ button::after{
   text-shadow: 0 0 5px rgba(255,255,255,0.8);
   box-shadow: 0 0 20px rgba(255,255,255,0.8);
 }
-
+/*
 .glowy-button-4 {
   position: relative;
   padding: 15px 30px;
@@ -417,6 +417,9 @@ button::after{
   );
   opacity: 0;
   transition: opacity 0.3s;
+  width: 80px;
+  height: 80px; 
+  transform: translate(-50%, -50%); 
 }
 
 .glowy-button-4:hover::after {
@@ -430,6 +433,53 @@ button::after{
 
 .glowy-button-4:hover span {
   text-shadow: 0 0 10px hsl(var(--hu) 80% 70%);
+}*/
+
+.glowy-button-4 {
+  position: relative;
+  padding: 15px 30px;
+  font-size: 18px;
+  color: #fff;
+  background: none;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  --hu: 200;
+}
+
+.glowy-button-4::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  box-shadow: 0 1px hsl(0 0% 100% / 0.15) inset;
+  background: hsl(0 0% 10%);
+}
+
+.glowy-button-4::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 80px; /* Méret beállítása */
+  height: 80px; /* Méret beállítása */
+  background: radial-gradient(
+    circle at center,
+    hsl(var(--hu) 80% 70%),
+    transparent 50%
+  );
+  filter: blur(20px);
+  opacity: 0;
+  transition: opacity 0.3s;
+  transform: translate(-50%, -50%); /* Középre igazítás */
+}
+
+.glowy-button-4:hover::after {
+  opacity: 1;
+}
+
+.glowy-button-4 span {
+  position: relative;
+  z-index: 1;
 }
 
 

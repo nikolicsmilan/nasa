@@ -17,11 +17,12 @@ import {
   ScatterChartComponent,
   FunnelChartComponent,
 } from "../components/Charts";
+import useWindowSize from "./use-windowsize";
 
 export const useDataVisualization = () => {
   const { info, actualMainConsole, statusTable, filterTable } =
     MyConsoleContext();
-
+    const { width, height } = useWindowSize();
   //ez változtatja a tartalmat
 
   //Ezt kell egyenként először kidolgozni
@@ -36,7 +37,7 @@ export const useDataVisualization = () => {
   const updateConsole = () => {
     if (statusTable.dashboard === "general") {
       return (
-        <div className="border-0 border-lime-400">
+        <div className="border-4 border-lime-400  w-full container glowy-button-6">
           <GeneralDashboard />
         </div>
       );
@@ -44,7 +45,7 @@ export const useDataVisualization = () => {
       switch (statusTable.graph) {
         case "area":
           return (
-            <div className="w-full border-0 border-orange-400 flex justify-center">
+            <div className=" w-full border-0 border-orange-400 flex justify-center">
               <AreaChartComponent />
             </div>
           );
