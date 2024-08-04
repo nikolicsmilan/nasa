@@ -52,7 +52,7 @@ const LayoutAsteoride = () => {
             }}
           />
           {!toggle && (
-          <div className="flex ">
+          <div className="flex glowy-button-6 relative top-2">
             {menu.map((item, index) => (
               <div
                 key={index}

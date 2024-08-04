@@ -6,12 +6,12 @@ const BottomConsole = ({buttons,handleClick}) => {
 
 {buttons?.map((item) => (
                     <div
-                      className="text-3xl text-info m-2 flex  flex-col justify-center items-center shadow-xl text-primary"
+                      className="glowy-button-5 text-3xl text-info m-2 flex  flex-col justify-center items-center shadow-xl text-primary"
                       onClick={() => handleClick(item)}
                     >
-                      <p className="border-0 flex justify-center items-center flex-col">
+                      <p className=" border-0 flex justify-center items-center flex-col">
                       {<item.icon />}
-                      <p className='text-sm'>{item.title}</p>
+                      <p className='text-sm hidden '>{item.title}</p>
                       </p>
                     
                     </div>

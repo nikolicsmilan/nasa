@@ -34,7 +34,7 @@ export const myAnimation = (direction) => {
     },
     animate: {
       x: direction === "left" ? 60 : direction === "right" ? -10 : 0,
-      y: direction === "up" ? 60 : direction === "down" ? -100 : 0,
+      y: direction === "up" ? 40 : direction === "down" ? -100 : 0,
       opacity: 1,
       transition: { ...transition, delay: 0 },
     },

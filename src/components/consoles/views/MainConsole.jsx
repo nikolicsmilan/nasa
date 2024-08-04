@@ -23,10 +23,10 @@ const MainConsole = () => {
     transform perspective-1000  "
     >
       <div
-        className="glowy-button-6  border-0 border-red-400   opacity-100 top-[80px]
+        className="glowy-button-8  border-0 border-red-400   opacity-100 top-[100px]
       z-50 relative p-0 overflow-y-scroll overflow-x-scroll 
          text-white flex flex-col   items-center justify-center w-96 lg:w-full h-full"
-        style={{ width: width - 800, height: height - 100 }}
+        style={{ width: width - 800, height: height - 120 }}
       >
         {consoleContent}
       </div>

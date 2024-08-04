@@ -20,7 +20,8 @@ const Super3dConsole = ({
           rotateZ(${rotateZ}deg)`,
         transformOrigin: origin,
       }}
-      className={`glowy-button-6 glassmorphis ${
+      //put dependency glowy-button-6
+      className={`glassmorphis ${
         origin === "left center"
           ? "bg-gradientreverse  border-r-[0px] border-l-0"
           : "bg-gradien  border-r-0 border-l-[0px]"
@@ -34,7 +35,7 @@ const Super3dConsole = ({
       <h3 className=" text-primary uppercase text-lg text-center w-full">
         {nameconsole}
       </h3>
-      <div className="flex flex-row flex-wrap text-3xl my-0 border-0 relative z-10 cursor-pointer  ">
+      <div className="glowy-button-6   flex flex-row flex-wrap text-3xl my-0 border-0 relative z-10 cursor-pointer  ">
         {data.map((item, index) => (
           <div
             key={index}

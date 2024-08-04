@@ -14,6 +14,45 @@ const Consoles = ({ menupoint }) => {
   return (
     <div
       className=" border-0 p-5 w-full flex 
+    flex-wrap justify-between overflow-y-auto  h-72  "
+    >
+      {menupoint &&
+        menupoint?.map((item) => (
+          <NavLink onClick={handleClick} key={item?.title} to={item?.link}>
+            <div
+              key={item?.id}
+              className={`  
+             cursor-pointer rounded relative flex-col my-1 w-40 lg:w-48 md:w-40
+             h-14  border-0 border-orange-400 `}
+            >
+              <div
+                className={`bg-950  rounded
+             w-40 md:w-40 lg:w-48 h-full text-white shadow-2xl border-0 
+                mt-[0px] z-40`}
+              ></div>
+              {/*The shadow inside the button as a line. Its differ to the other consoles */}
+              <div
+                className="hidde   rounded
+            text-base opacity-100 flex h-0
+             border-purple-400 shadow-2xl items-center 
+              border-0 bg-dark-800 z-20 mt-[-30px]  text-sky-100"
+              >
+                <p className="mx-2 text-primary  "> {<item.icon />}</p>
+                <h2 className=" opacity-100">{item?.title}</h2>
+              </div>
+            </div>
+          </NavLink>
+        ))}
+    </div>
+  );
+};
+
+export default Consoles;
+//
+
+/*
+    <div
+      className=" border-0 p-5 w-full flex 
     flex-wrap justify-between overflow-y-auto  h-72 "
     >
       {menupoint &&
@@ -30,13 +69,13 @@ const Consoles = ({ menupoint }) => {
              w-40 md:w-40 lg:w-48 h-full text-white shadow-2xl border-0 
                md:opacity-10 opacity-10 mt-[0px] z-40`}
               ></div>
-              {/*The shadow inside the button as a line. Its differ to the other consoles */}
+             
               <div
                 className="hidde  customshadow2 rounded
             text-base opacity-100 flex h-0
              border-purple-400 shadow-2xl items-center 
               border-0 bg-dark-800 z-20 mt-[-30px]  text-sky-100"
-              >
+              >ssss
                 <p className="mx-2 text-primary"> {<item.icon />}</p>
                 <h2 className=" opacity-100">{item?.title}</h2>
               </div>
@@ -44,8 +83,4 @@ const Consoles = ({ menupoint }) => {
           </NavLink>
         ))}
     </div>
-  );
-};
-
-export default Consoles;
-//
+*/

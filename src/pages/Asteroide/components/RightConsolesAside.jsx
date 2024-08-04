@@ -5,10 +5,10 @@ import { MyConsoleContext } from "../../../context/ConsoleContext";
 const RightConsolesAside = () => {
   const { rightasideconsole,statusTable } = MyConsoleContext();
   return (
-    <div className="border-0 border-red-400 bg-sky-40">
+    <div className="border-0 border-red-400 ">
       <AsideConsole source={rightasideconsole} 
     />
-      <div className="flex flex-col w-96 text-primary relative top-[40px]">
+      <div className="flex flex-col w-64 text-primary relative top-[40px]">
           {Object.entries(statusTable).map(([key, value]) => (
             <div key={key}>
               <strong>{key}:</strong> {value.toString()}

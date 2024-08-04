@@ -614,3 +614,70 @@ button::after{
   border-color: #fff;
 }
 */
+
+.glowy-button-7 h2 {
+  transition: text-shadow 0.3s ease, color 0.3s ease;
+}
+
+.glowy-button-7:hover h2 {
+  text-shadow: 0 0 3px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 0, 0, 0.6), 0 0 30px rgba(255, 0, 0, 0.6), 0 0 40px rgba(255, 0, 0, 0.6);
+  color: rgba(255, 0, 0, 1); /* Esetleges színváltoztatás */
+}
+
+
+.glowy-button-8 {
+  position: relative;
+  /*t ? * b* l*/
+ padding: 3px 3px 3px 3px;
+ /*padding:1px;*/
+ /* font-size: 18px;*/
+  color: #fff;
+  background: #333;
+  border: 0px solid #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+
+.glowy-button-8 {
+  position: relative;
+  /*t ? * b* l*/
+ padding: 3px 3px 3px 3px;
+ /*padding:1px;*/
+ /* font-size: 18px;*/
+  color: #fff;
+  background: #333;
+  border: 0px solid #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  overflow: hidden;
+  background: linear-gradient(
+    to bottom right,
+    hsla(0, 0%, 100%, 0.1) 20%,
+    hsla(0, 0%, 100%, 0.1) 20%
+  );
+}
+
+.glowy-button-8::before {
+  content: "";
+  position: absolute;
+  top: var(--y);
+  left: var(--x);
+  transform: translate(-50%, -50%);
+  width: 0;
+  height: 0;
+  background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 70%);
+  transition: width 0.3s ease, height 0.3s ease;
+}
+
+.glowy-button-8::before {
+  width: 1300px;
+  height: 1300px;
+}
+
+.glowy-button-8 {
+ /*text-shadow: 0 0 5px #fff;*/
+  box-shadow: 0 0 10px #fff;
+  border-color: #fff;
+}

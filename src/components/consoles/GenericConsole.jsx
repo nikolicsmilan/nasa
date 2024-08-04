@@ -8,14 +8,14 @@ const GenericConsole = ({ data, handleClick, placeholder }) => {
           <div
             key={item.title}
             onClick={() => handleClick(item)}
-            className={`shadowactive customshadow3 cursor-pointer rounded relative flex-col my-1 w-40 lg:w-48 md:w-40 h-14 border-0 m-0 border-lime-400 text-base`}
+            className={`   cursor-pointer rounded relative flex-col my-1 w-40 lg:w-48 md:w-40 h-14 border-0 m-0 border-lime-400 text-base`}
           >
             <div
-              className={`bg-primary customshadow2 lime:boxShadow rounded w-40 md:w-40 lg:w-48 h-full text-white shadow-2xl border-0 md:opacity-10 opacity-10 mt-[0px] z-40`}
+              className={`bg-950  rounded w-40 md:w-40 lg:w-48 h-full text-white  border-0  mt-[0px] z-40`}
             ></div>
-            <div className="customshadow2 rounded opacity-100 flex h-14 border-purple-400 shadow-2xl items-center border-0 bg-dark-800 z-20 mt-[-55px]">
-              <p className="mx-2 text-primary">{<item.icon />}</p>
-              <h2 className="text-white opacity-100">{item.title}</h2>
+            <div className="glowy-button-5 bg-950 rounded opacity-100 flex h-14 border-purple-400 shadow-2xl items-center border-0 bg-dark-800 z-20 mt-[-55px]">
+              <p className="mx-2 text-primary text-xl">{<item.icon />}</p>
+              <h2 className="text-white opacity-100 text-lg">{item.title}</h2>
             </div>
           </div>
         ))}

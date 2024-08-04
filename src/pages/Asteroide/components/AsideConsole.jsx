@@ -11,7 +11,7 @@ const AsideConsole = ({ source, description,origin }) => {
   return (
     <aside
       className=" text-primary 
-        flex flex-col border-0 border-primary  mx-2 bg-gradient2 top-20 relative "
+        flex flex-col border-0 border-primary  mx-0 bg-gradient2 top-20 relative "
     >
      
       <div className="flex flex-col  h-full bg-red-40  ">

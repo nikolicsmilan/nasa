@@ -37,8 +37,8 @@ export const useDataVisualization = () => {
   const updateConsole = () => {
     if (statusTable.dashboard === "general") {
       return (
-        <div className="border-4 border-lime-400  w-full container glowy-button-6">
-          <GeneralDashboard />
+        <div className="border-0 border-lime-400  w-full  ">
+          <GeneralDashboard />dsadas
         </div>
       );
     } else if (statusTable.dashboard === "graph") {
