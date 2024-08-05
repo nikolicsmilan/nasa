@@ -26,15 +26,19 @@ const Super3dConsole = ({
           ? "bg-gradientreverse  border-r-[0px] border-l-0"
           : "bg-gradien  border-r-0 border-l-[0px]"
       } 
-      relative z-10 rounded inset-0 border-b-0 
-      border-t-0 
+      relative z-10 rounded inset-0 
+
       border-600 
       text-dark flex flex-col items-start w-80 
-      transform perspective-1000 m-0 p-0 h-40`}
+      transform perspective-1000 m-0 p-0 h-40 border-0`}
     >
-      <h3 className=" text-primary uppercase text-lg text-center w-full">
+     <div className="flex justify-center border-0 w-full relative top-[-10px]">
+     <h3 className=" text-primary uppercase text-lg text-center w-full ">
         {nameconsole}
       </h3>
+
+     </div>
+
       <div className="glowy-button-6   flex flex-row flex-wrap text-3xl my-0 border-0 relative z-10 cursor-pointer  ">
         {data.map((item, index) => (
           <div
