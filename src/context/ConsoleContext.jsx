@@ -8,12 +8,12 @@ import {
 import { sentry } from "../locales/nasadummy";
 import { useStatusTable } from "../hooks/use-statustable";
 import { useFilterTable } from "../hooks/use-filterTable";
-import { createFilteredData } from "../utils/createFilteredData";
+import { mainFilteredData } from "../utils/mainFilteredData";
 const ConsoleContext = createContext();
 const graphConfigInit = [
   { name: "area", min: 5, max: 12 },
   { name: "bar", min: 5, max: 10  },
-  { name: "line", min: 5, max: 10 },
+  { name: "line", min: 5, max: 11 },
   { name: "pie", min: 5, max: 10  },
   { name: "radar", min: 5, max: 10  },
   { name: "radialBar", min: 5, max: 10 },
@@ -42,7 +42,7 @@ export const ConsoleContextProvider = ({ children }) => {
   //ezért üres lesz
   //a táblázat kixcsi az elején
   useEffect(() => {
-    const newFilteredData = createFilteredData({
+    const newFilteredData = mainFilteredData({
       sumObject,
       statusTable,
       displayMode: filterTable.displayMode,

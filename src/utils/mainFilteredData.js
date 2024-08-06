@@ -2,9 +2,11 @@ import { createSampledData } from "./createSampledData";
 import { createTopBottomAverageData } from "./createTopBottomAverageData";
 import { calculateTopBottomAverage } from "./calculateTopBottomAverage";
 import { createBarChartData } from "./createBarChartData";
-export const createFilteredData = ({
+//
+export const mainFilteredData = ({
   sumObject,
   statusTable,
+  filterTable,
   displayMode,
   piece,
 }) => {

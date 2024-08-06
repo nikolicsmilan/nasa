@@ -36,31 +36,3 @@ const MainConsole = () => {
 
 export default MainConsole;
 
-//This is for showing inc and desc!!!
-/*
-       <div className="flex flex-row flex-wrap w-full text-primary relative top-[-40px] border-2">
-  {filteredData.map((item, index) => (
-    <div key={index} className="border-2 p-2 m-2">
-      <strong>Name:</strong> <p>{item.name}</p>
-      <strong>Value:</strong> <p>{item.value}</p>
-    </div>
-  ))}
-</div>
-
-*/
-
-/*
-<div className="flex flex-row flex-wrap w-full text-primary relative top-[-40px] border-2">
-{Object.entries(filteredData).map(([key, value]) => (
-  <div key={key} className="border-2 p-2 m-2">
-    <strong>{key}:</strong><p> {value.toString()}</p>
-  </div>
-))}
-</div>*/
-
-//info: {info}
-/*
-  Dashboard:{statusTable.title}{" "}
-         Graph: {statusTable.graph}           filter:{" "}
-        {statusTable.filter} {" "} piece: {statusTable.piece} 
-*/

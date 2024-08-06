@@ -1,6 +1,7 @@
 import React from "react";
-import { useClick } from "../../../hooks/use-click";
 import { useColor } from "../../../hooks/use-color";
+import { useDataVisualization } from "../../../hooks/use-datavisualization";
+
 const Super3dConsole = ({
   nameconsole,
   data,
@@ -10,7 +11,8 @@ const Super3dConsole = ({
   origin,
 }) => {
   const { colorIze } = useColor(nameconsole);
-  const { handleClick } = useClick(nameconsole);
+  const { handleClick } = useDataVisualization();
+
   return (
     <div
       style={{
@@ -36,14 +38,12 @@ const Super3dConsole = ({
      <h3 className=" text-primary uppercase text-lg text-center w-full ">
         {nameconsole}
       </h3>
-
      </div>
-
       <div className="glowy-button-6   flex flex-row flex-wrap text-3xl my-0 border-0 relative z-10 cursor-pointer  ">
         {data.map((item, index) => (
           <div
             key={index}
-            onClick={() => handleClick(item)}
+            onClick={() => handleClick(nameconsole, item)}
             className={`glowy-button-5 group relative border-0  p-1 rounded m-2 hover:bg-600 
             text-primary cursor-pointer ${colorIze(item)}`}
           >
@@ -59,3 +59,5 @@ const Super3dConsole = ({
 };
 
 export default Super3dConsole;
+
+

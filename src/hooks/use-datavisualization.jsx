@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+
+/*import React, { useEffect, useState, useContext } from "react";
 import ReachartsExample from "../pages/Asteroide/components/RechartExample2";
 import { MyConsoleContext } from "../context/ConsoleContext";
 import TestCharts2 from "../pages/Asteroide/components/TestCharts2";
@@ -20,32 +21,29 @@ import {
 import useWindowSize from "./use-windowsize";
 
 export const useDataVisualization = () => {
-  const { info, actualMainConsole, statusTable, filterTable } =
-    MyConsoleContext();
-    const { width, height } = useWindowSize();
-  //ez változtatja a tartalmat
+  const {
+    info,
+    actualMainConsole,
+    statusTable,
+    filterTable,
+    setStatusTable,
+    setFilterTable,
+    graphConfigurations
+  } = MyConsoleContext();
+  const { width, height } = useWindowSize();
 
-  //Ezt kell egyenként először kidolgozni
-  // először komponens
-  //Kell egy Táblázat forma is
-  // aztán adat
-  //>> 1.Ebből kettős alul felülről
-  // 2.illetve darabonként emelni 2-10
-  //3. kiegészítés ha a chart megkívánja más értékkel összenhaonlítás
-  //ezt mindig chartonként kell eldönteni
-  //aztán animáció
   const updateConsole = () => {
     if (statusTable.dashboard === "general") {
       return (
-        <div className="border-0 border-lime-400  w-full  ">
-          <GeneralDashboard />dsadas
+        <div className="border-0 border-lime-400 w-full">
+          <GeneralDashboard />
         </div>
       );
     } else if (statusTable.dashboard === "graph") {
       switch (statusTable.graph) {
         case "area":
           return (
-            <div className=" w-full border-0 border-orange-400 flex justify-center">
+            <div className="w-full border-0 border-orange-400 flex justify-center">
               <AreaChartComponent />
             </div>
           );
@@ -78,9 +76,8 @@ export const useDataVisualization = () => {
       );
     }
   };
-  const [consoleContent, setConsoleContent] = useState(
-    updateConsole(actualMainConsole)
-  );
+
+  const [consoleContent, setConsoleContent] = useState(updateConsole(actualMainConsole));
 
   useEffect(() => {
     if (info === "animáció 6" && statusTable?.animations === "yes") {
@@ -90,89 +87,131 @@ export const useDataVisualization = () => {
     }
   }, [info, statusTable, filterTable]);
 
-  return { updateConsole, consoleContent };
+  const handleClick = (nameconsole, newValues) => {
+    const { title, sign = statusTable.sign } = newValues;
+
+    const isDisabled = () => {
+      if (
+        statusTable.dashboard === "graph" &&
+        statusTable.graph === "bar" &&
+        nameconsole === "filter" &&
+        ["all", "inc", "desc"].includes(title)
+      ) {
+        return true;
+      }
+      if (
+        statusTable.dashboard !== "graph" &&
+        (nameconsole === "graph" ||
+          nameconsole === "filter" ||
+          nameconsole === "datatype")
+      ) {
+        return true;
+      }
+      if (nameconsole === "filter" && (title === "plusone" || title === "minusone")) {
+        const config = graphConfigurations.find(
+          (config) => config.name === statusTable.graph
+        );
+        if (title === "plusone" && filterTable.piece >= config.max) {
+          return true;
+        } else if (title === "minusone" && filterTable.piece <= config.min) {
+          return true;
+        }
+      }
+      return false;
+    };
+
+    if (isDisabled()) {
+      return;
+    }
+
+    if (nameconsole === "graph") {
+      const newGraphConfig = graphConfigurations.find(
+        (config) => config.name === title
+      );
+      if (newGraphConfig) {
+        setStatusTable((prevStatusTable) => ({
+          ...prevStatusTable,
+          graph: title,
+          sign: sign,
+        }));
+        setFilterTable((prevFilterTable) => ({
+          ...prevFilterTable,
+          piece: newGraphConfig.max, // Set piece to the max value of the new graph
+          displayMode: title === "bar" ? "max" : prevFilterTable.displayMode // Set displayMode to "max" if the graph is "bar"
+        }));
+      }
+    } else if (nameconsole === "filter") {
+      setFilterTable((prevFilterTable) => {
+        let newPiece = prevFilterTable.piece;
+        const config = graphConfigurations.find(
+          (config) => config.name === statusTable.graph
+        );
+        if (!config) return prevFilterTable;
+
+        if (title === "plusone" && newPiece < config.max) {
+          newPiece += 1;
+        } else if (title === "minusone" && newPiece > config.min) {
+          newPiece -= 1;
+        }
+        return {
+          ...prevFilterTable,
+          displayMode: title === "plusone" || title === "minusone" ? prevFilterTable.displayMode : title,
+          piece: newPiece,
+        };
+      });
+    } else {
+      setStatusTable((prevStatusTable) => ({
+        ...prevStatusTable,
+        [nameconsole]: title,
+        sign: sign,
+      }));
+    }
+  };
+
+  return { updateConsole, consoleContent, handleClick };
+};*/
+
+import React, { useEffect, useState, useContext } from "react";
+import { MyConsoleContext } from "../context/ConsoleContext";
+import useWindowSize from "./use-windowsize";
+import {DashboardContent} from "../pages/Asteroide/dashboards/DashboardContent"
+import {handleGraphClick} from "../utils/handleGraphClick";
+import {handleFilterClick} from "../utils/handleFilterClick"
+export const useDataVisualization = () => {
+  const {
+    info,
+    actualMainConsole,
+    statusTable,
+    filterTable,
+    setStatusTable,
+    setFilterTable,
+    graphConfigurations
+  } = MyConsoleContext()
+  const { width, height } = useWindowSize();
+
+  const [consoleContent, setConsoleContent] = useState(() => <DashboardContent />);
+
+  useEffect(() => {
+    setConsoleContent(<DashboardContent />);
+  }, [info, statusTable, filterTable]);
+
+  const handleClick = (nameconsole, newValues) => {
+    const { title, sign = statusTable.sign } = newValues;
+
+    if (nameconsole === "graph") {
+      handleGraphClick(title, sign,graphConfigurations,setStatusTable,setFilterTable);
+    } else if (nameconsole === "filter") {
+      handleFilterClick(title,setFilterTable,graphConfigurations,statusTable);
+    } else {
+      setStatusTable((prevStatusTable) => ({
+        ...prevStatusTable,
+        [nameconsole]: title,
+        sign: sign,
+      }));
+    }
+  };
+
+  return { consoleContent, handleClick };
 };
 
-/*
-  const updateConsole = () => {
-    if (statusTable.dashboard === "Magnitudo" && statusTable.graph === "Area") {
-      return (
-        <div className="border-0 border-lime-400">
-          <AreaCharts />
-        </div>
-      );
-    } else if (statusTable.dashboard === "General") {
-      return (
-        <div className="border-0 border-lime-400">
-          <GeneralDashboard />
-        </div>
-      );
-    } else if (statusTable.dashboard === "Potential Impacts") {
-      return (
-        <div>
-          <TestCharts2 />
-        </div>
-      );
-    } else if (statusTable.dashboard === "Year") {
-      return (
-        <div className="border-0 border-red-400">
-          <ReachartsExample />
-        </div>
-      );
-    } else if (statusTable.dashboard === "Bar") {
-      return (
-        <div>
-          <BarCharts />
-        </div>
-      );
-    } else {
-      return (
-        <div className="flex border-0 p-2 border-lime-400 w-full justify-center">
-          <h1>This console is under development</h1>
-        </div>
-      );
-    }
-  };
-*/
-/*
 
-  const updateConsole = () => {
-    if (statusTable.dashboard === "Magnitudo" && statusTable.graph === "Area") {
-      return (
-        <div className="border-0 border-lime-400">
-          <AreaCharts />
-        </div>
-      );
-    } else if (statusTable.dashboard === "General") {
-      return (
-        <div className="border-0 border-lime-400">
-          <GeneralDashboard />
-        </div>
-      );
-    } else if (statusTable.dashboard === "Potential Impacts") {
-      return (
-        <div>
-          <TestCharts2 />
-        </div>
-      );
-    } else if (statusTable.dashboard === "Year") {
-      return (
-        <div className="border-0 border-red-400">
-          <ReachartsExample />
-        </div>
-      );
-    } else if (statusTable.dashboard === "Bar") {
-      return (
-        <div>
-          <BarCharts />
-        </div>
-      );
-    } else {
-      return (
-        <div className="flex border-0 p-2 border-lime-400 w-full justify-center">
-          <h1>This console is under development</h1>
-        </div>
-      );
-    }
-  };
-*/
