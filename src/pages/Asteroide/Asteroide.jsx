@@ -19,7 +19,8 @@ const Asteroide = () => {
         loop
         muted
       ></video>
-
+      {/*Ha elrejtem a consoleconetnt eta DesktopAsteroide ba be van ágyazva akkor 
+hiába csatlom a MobilAstreodi ába bele */}
       <div
         className={`hidden xl:flex border-0 border-red-400 w-full   ${
           toggle ? "opacity-0" : "opacity-100"

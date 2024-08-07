@@ -30,8 +30,7 @@ ChartJS.register(
 
 const AreaChartComponent = () => {
   const { users } = MyDataContext();
-  const { filteredData,  filterTable, statusTable } =
-    MyConsoleContext();
+  const { filteredData, filterTable, statusTable } = MyConsoleContext();
   const { width, height } = useWindowSize();
   const colors = useAreaChartColors(users.style);
   const chartData = useAreaChartData(
@@ -39,13 +38,9 @@ const AreaChartComponent = () => {
     filterTable.displayMode,
     colors
   );
-//style={{ width: width - 800, height: height - 200 }}
+  //style={{ width: width - 800, height: height - 200 }}
   return (
-    <div
-      className=" border-0 "
-      
-    >
-     
+    <div className=" border-0 "  style={{ width: width - 800, height: height - 200 }}>
       <CustomAreaChartLine
         filteredData={filteredData}
         filterTable={filterTable}

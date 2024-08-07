@@ -10,7 +10,7 @@ export const mainFilteredData = ({
   displayMode,
   piece,
 }) => {
-  console.log("createFilteredData run ... ");
+  //console.log("createFilteredData run ... ");
 
   // Sort data based on sign and choose top bottom and avarage
   //there are as many pieces as there are piece variables
@@ -20,14 +20,14 @@ export const mainFilteredData = ({
     piece
   );
   const { sign, graph } = statusTable;
-  console.log(
+ /* console.log(
     "top10: ",
     top10,
     "bottom10: ",
     bottom10,
     "average10: ",
     average10
-  );
+  );*/
   // Check the graph type and handle accordingly
   switch (graph) {
     case "area":

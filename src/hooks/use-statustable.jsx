@@ -7,10 +7,10 @@ const initStatusTable = {
   operation: "joystick",
   resorces: "firebase",
   animations: "no",
-  sign: "h",
+  sign: "ip",
   order: "asc",
   sourcetype: "max",
-  datatype: "magnitudo"
+  datatype: "potentialimpacts"
 };
 
 export const useStatusTable = () => {

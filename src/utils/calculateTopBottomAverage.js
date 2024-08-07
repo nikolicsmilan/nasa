@@ -1,7 +1,7 @@
 
 
 export const calculateTopBottomAverage = (data, statusTable, piece) => {
-  console.log("calculateTopBottomAverage run ... ");
+  //console.log("calculateTopBottomAverage run ... ");
   const { sign } = statusTable; // `sign` az az adatmező neve, amit az értékekhez használunk
 
   // Sort data based on sign

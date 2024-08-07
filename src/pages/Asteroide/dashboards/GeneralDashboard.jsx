@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 import SquareminConsole from "../../../components/consoles/views/SquareminConsole";
 import { nasa } from "../../../locales/nasaapi";
 import GlowyButton from "../../../components/buttons/GlowyButton";
@@ -10,17 +10,14 @@ const currentYear = new Date().getFullYear();
 const dummydata = [
   { title: "torino scale", value: 0 },
   { title: "palermo scale", value: 0 },
- // { title: "sum of object", value: 0 },
+  // { title: "sum of object", value: 0 },
   { title: "earliestimpact", value: currentYear + 100 },
 ];
-const GeneralDashboard = ({filteredData}) => {
+const GeneralDashboard = ({ filteredData }) => {
   const [sumObject, setSumObject] = useState(nasa);
 
   return (
     <div className="  flex flex-col w-full border-2">
-  
-
-
       <div className="flex ">
         {dummydata.map((item) => (
           <div>
@@ -28,17 +25,10 @@ const GeneralDashboard = ({filteredData}) => {
           </div>
         ))}
         <div>
-        <SquareminConsole title="sum of object" value={sumObject.count} />
+          <SquareminConsole title="sum of object" value={sumObject.count} />
         </div>
-
-        
       </div>
-<div>
-
-
-
-</div>
-   
+      <div></div>
     </div>
   );
 };

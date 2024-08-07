@@ -58,7 +58,7 @@ export const ConsoleContextProvider = ({ children }) => {
       graph: "radar",
     }));
   }, []);
-console.log("ConsoleContext filteredData: ",filteredData)
+//console.log("ConsoleContext filteredData: ",filteredData)
   return (
     <ConsoleContext.Provider
       value={{

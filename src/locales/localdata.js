@@ -242,17 +242,17 @@ export const filterconsole = [
 //
 export const datatypeconsole = [
   {
-    title: "magnitudo",
-    icon: MdBrightness6,
-    description: "Magnitudo",
-    sign: "h",
-    animations: "yes",
-  },
-  {
     title: "potentialimpacts",
     icon: FaExclamationTriangle,
     description: "Potential impacts",
     sign: "ip",
+    animations: "yes",
+  },
+  {
+    title: "magnitudo",
+    icon: MdBrightness6,
+    description: "Magnitudo",
+    sign: "h",
     animations: "yes",
   },
   {

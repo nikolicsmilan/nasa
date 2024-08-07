@@ -54,10 +54,12 @@ const BarChartComponent = () => {
               // Az értéket és a mértékegységet két sorba formázzuk
               const { dataIndex } = context;
               const fullname = filteredData[dataIndex]?.fullname || "Unknown";
-              const cleanedFullname = fullname.replace(/^\((.*)\)$/, '$1').trim();
+              const cleanedFullname = fullname
+                .replace(/^\((.*)\)$/, "$1")
+                .trim();
               return [
                 `${cleanedFullname}`,
-                `${label}`,             
+                `${label}`,
                 `${statusTable.datatype}`, // A mértékegység
                 `${context.parsed.y}`, // Az érték
               ];
@@ -82,11 +84,8 @@ const BarChartComponent = () => {
         displayColors: false, // Az adatpont színeinek elrejtése a tooltipben
         caretSize: 16, // Tooltip "nyíl" méretének beállítása
         backgroundColor: "#000", // Tooltip háttérszíne
-//        borderColor: "#000", // Tooltip szegélyszíne
-borderColor: [
-  "rgba(255, 99, 132, 1)",
-
-],
+        //        borderColor: "#000", // Tooltip szegélyszíne
+        borderColor: ["rgba(255, 99, 132, 1)"],
         borderWidth: 1, // Tooltip szegélyszélesség
         xAlign: "center", // Tooltip középre igazítása vízszintesen
         yAlign: "center",
@@ -123,7 +122,6 @@ borderColor: [
       className="border-0 border-purple-400 flex justify-center"
       style={{ width: width - 800, height: height - 200 }}
     >
-     
       <Bar
         data={chartData}
         options={options}

@@ -14,7 +14,7 @@ const DesktopAsteroide = ({}) => {
         <LeftConsolesAside />
       </div>
       <div className=" flex-1">
-        <MainConsole />
+        <MainConsole />dgdfgdfgdfgd
       </div>
       <div className="w-84 border-0">
         <RightConsolesAside />

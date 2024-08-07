@@ -10,7 +10,7 @@ import {
   FunnelChartComponent,
 } from "../../../components/Charts/index";
 import { MyConsoleContext } from "../../../context/ConsoleContext";
-
+//w-full border-0 border-orange-400 flex justify-center
 export const GraphContent = () => {
 
     const { statusTable, } =
@@ -18,7 +18,7 @@ export const GraphContent = () => {
     switch (statusTable.graph) {
       case "area":
         return (
-          <div className="w-full border-0 border-orange-400 flex justify-center">
+          <div className="">
             <AreaChartComponent />
           </div>
         );
