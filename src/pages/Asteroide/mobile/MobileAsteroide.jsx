@@ -24,7 +24,7 @@ const MobileAsteroide = () => {
   // where find a nameconsole attribute from 6 consoles in localdata
   //left and right consoles
   const [nameconsole, setNameConsole] = useState("dashboard");
-  const { handleClick } = useDataVisualization();
+  const { handleClick,consoleContent } = useDataVisualization();
   //console.log("MobileAsteroide: ", subButtons);
   
   const handleMenuChange = (name) => {
@@ -62,7 +62,7 @@ const MobileAsteroide = () => {
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
         >
-          {nameconsole}
+   
           <div className=" flex justify-center items-center my-0 w-full border-0 border-purple-400">
             <div className="relative border-0 border-sky-400 h-96 w-full">
               {toggle && (
@@ -83,7 +83,7 @@ const MobileAsteroide = () => {
                   ))}
                 </motion.div>
               )}
-              <div className="border-0 border-orange-400 flex flex-col  justify-center items-center  w-full ">
+              <div className="border-0  border-orange-400 flex flex-col  justify-center items-center  w-full ">
                 <MainConsole />
               </div>
             </div>

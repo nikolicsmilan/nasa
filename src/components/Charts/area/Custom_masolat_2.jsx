@@ -1,11 +1,17 @@
 import React from "react";
 import { Line } from "react-chartjs-2";
-import { Chart as ChartJS, Title, Tooltip, Legend, LineElement, CategoryScale, LinearScale } from "chart.js";
-
-ChartJS.register(Title, Tooltip, Legend, LineElement, CategoryScale, LinearScale);
 
 const CustomAreaChartLine = ({
+  //Three or one object max min value
   data,
+  /*for exmample   {
+            label: "Max",
+            data: filteredData.map((d) => d.max?.value),
+            borderColor: "rgba(136, 132, 216, 1)",
+            backgroundColor: colors.area1,
+            fill: true,
+            tension: 0.4,
+          },*/
   colors,
   statusTable,
   width,
@@ -13,9 +19,6 @@ const CustomAreaChartLine = ({
   filterTable,
   filteredData,
 }) => {
-  // Egyéni plugin a mértékegység grafikonra helyezésére
-
-
   const options = {
     plugins: {
       tooltip: {
@@ -26,6 +29,7 @@ const CustomAreaChartLine = ({
               label += " ";
             }
             if (context.parsed.y !== null) {
+              // Az értéket és a mértékegységet két sorba formázzuk
               const { dataIndex } = context;
               const { displayMode } = filterTable;
               const fullname =
@@ -45,47 +49,36 @@ const CustomAreaChartLine = ({
             return label;
           },
         },
+
         bodyColor: colors.tooltip,
         bodyFont: {
           size: 16,
-          lineHeight: 1.5,
+          lineHeight: 1.5, // Növelhetjük a vonalak közötti távolságot
         },
         titleFont: {
-          size: 16,
-          color: colors.tooltip,
+          size: 16, // Tooltip címének betűmérete
+          color: colors.tooltip, // Tooltip címének színe
         },
         footerFont: {
           size: 20,
         },
         padding: 10,
-        displayColors: false,
-        caretSize: 16,
-        backgroundColor: "#000",
-        borderColor: "#000",
-        borderWidth: 1,
-        xAlign: "center",
+        displayColors: false, // Az adatpont színeinek elrejtése a tooltipben
+        caretSize: 16, // Tooltip "nyíl" méretének beállítása
+        backgroundColor: "#000", // Tooltip háttérszíne
+        borderColor: "#000", // Tooltip szegélyszíne
+        borderWidth: 1, // Tooltip szegélyszélesség
+        xAlign: "center", // Tooltip középre igazítása vízszintesen
         yAlign: "center",
       },
+
       legend: {
         labels: {
           color: colors.legend,
         },
       },
-      title: {
-        display: true,
-        text: `${statusTable.datatype.charAt(0).toUpperCase() + statusTable.datatype.slice(1)}`,
-        color: colors.legend,
-        font: {
-          size: 20,
-        },
-        position: 'top',
-        align: 'center',
-        padding: {
-          bottom: 10,
-        },
-      },
-      
     },
+
     scales: {
       x: {
         ticks: {
@@ -103,6 +96,7 @@ const CustomAreaChartLine = ({
         },
       },
     },
+
     interaction: {
       mode: "nearest",
       axis: "x",
@@ -114,5 +108,3 @@ const CustomAreaChartLine = ({
 };
 
 export default CustomAreaChartLine;
-
-

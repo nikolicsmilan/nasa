@@ -39,16 +39,27 @@ const AreaChartComponent = () => {
     colors
   );
   //style={{ width: width - 800, height: height - 200 }}
+
+  const breakpoints = {
+    sm: 640,
+    md: 768,
+    lg: 1024,
+    xl: 1200, // Ahogy a Tailwind-ben definiáltad
+    '2xl': 1536,
+  };
+
+  const chartWidth = width >= breakpoints.lg ? width  : width + 1000;
+  const chartHeight = width >= breakpoints.lg ? height : height + 1200;
   return (
-    <div className=" border-0 "  style={{ width: width - 800, height: height - 200 }}>
+    <div className=" border-0 flex flex-col   items-center justify-center "  style={width >= breakpoints.lg ? { width: width - 800, height: height - 200 } : {width: width+1200 , height: height-200 }} >
       <CustomAreaChartLine
         filteredData={filteredData}
         filterTable={filterTable}
         data={chartData}
         colors={colors}
         statusTable={statusTable}
-        height={height - 200}
-        width={width - 800}
+        height={chartHeight}
+        width={chartWidth}
       />
     </div>
   );
