@@ -27,14 +27,14 @@ const MainConsole = () => {
   
  
     text-dark w-screen md:w-full h-full  shadow-2xl 
-    transform perspective-1000  "
+    transform perspective-1000 p-2 "
     >
       <div
-        className=" glowy-button-8  border-0 border-red-400   opacity-100 md:top-[100px]
+        className="glowy-button-8  border-2  border-primary   opacity-100 md:top-[100px]
       z-50 relative p-0 overflow-y-scroll overflow-x-scroll 
          text-white flex flex-col   items-center justify-center lg:w-full h-full"
         // style={{ width: width - 800, height: height - 120 }}
-        style={width >= breakpoints.lg ? { width: width - 800, height: height - 200 } : {width: width }}
+        style={width >= breakpoints.lg ? { width: width - 800, height: height - 200 } : {width: width-20 }}
       >
         {consoleContent}
       </div>

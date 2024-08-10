@@ -13,7 +13,7 @@ const Consoles = ({ menupoint }) => {
   }
   return (
     <div
-      className=" border-0 p-5 w-full flex 
+      className=" border-0  border-red-400  p-5 w-full flex 
     flex-wrap justify-between overflow-y-auto  h-72  "
     >
       {menupoint &&
@@ -21,7 +21,7 @@ const Consoles = ({ menupoint }) => {
           <NavLink onClick={handleClick} key={item?.title} to={item?.link}>
             <div
               key={item?.id}
-              className={`  
+              className={` glowy-button- 
              cursor-pointer rounded relative flex-col my-1 w-40 lg:w-48 md:w-40
              h-14  border-0 border-orange-400 `}
             >

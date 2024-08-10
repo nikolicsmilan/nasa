@@ -8,7 +8,7 @@ const GenericConsole = ({ data, handleClick, placeholder }) => {
           <div
             key={item.title}
             onClick={() => handleClick(item)}
-            className={`   cursor-pointer rounded relative flex-col my-1 w-40 lg:w-48 md:w-40 h-14 border-0 m-0 border-lime-400 text-base`}
+            className={`glowy-button-   cursor-pointer rounded relative flex-col my-1 w-40 lg:w-48 md:w-40 h-14 border-0 m-0 border-lime-400 text-base`}
           >
             <div
               className={`bg-950  rounded w-40 md:w-40 lg:w-48 h-full text-white  border-0  mt-[0px] z-40`}

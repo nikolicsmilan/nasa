@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { mainconsole, sizeconsole } from "../../../locales/localdata";
-import { myAnimation } from "../../../utils/motion";
+import { myAnimation3 } from "../../../utils/motion";
 import { MyDataContext } from "../../../context/DataContext";
 import { MyConsoleContext } from "../../../context/ConsoleContext";
 import BottomConsole from "../../../components/consoles/BottomConsole";
@@ -11,22 +10,20 @@ import {
 } from "../../../locales/localdata";
 import { useDataVisualization } from "../../../hooks/use-datavisualization";
 import MainConsole from "../../../components/consoles/views/MainConsole";
-
+import { mobilmenu } from "../../../locales/localdata";
+import useWindowSize from "../../../hooks/use-windowsize";
 const united = [...leftasideconsolesource, ...rightasideconsolesource];
 const MobileAsteroide = () => {
-
-  const { windowSize } = MyDataContext();
-  const { statusTable, setStatusTable, setFilterTable, animationVariants } =
-    MyConsoleContext();
+  const { width, height } = useWindowSize();
   const [toggle, setToggle] = useState(false);
   const [subButtons, setSubButtons] = useState(united[0].data);
   //Here need a localsstate cause aggregate 2 arrays and need the outer
   // where find a nameconsole attribute from 6 consoles in localdata
   //left and right consoles
   const [nameconsole, setNameConsole] = useState("dashboard");
-  const { handleClick,consoleContent } = useDataVisualization();
+  const { handleClick, consoleContent } = useDataVisualization();
   //console.log("MobileAsteroide: ", subButtons);
-  
+
   const handleMenuChange = (name) => {
     const selectedItem = united.find((item) => item.name === name);
     if (selectedItem) {
@@ -34,7 +31,6 @@ const MobileAsteroide = () => {
       setNameConsole(name);
     }
   };
-
 
   const handleMouseEnter = () => {
     console.log("handleMouseEnter");
@@ -46,30 +42,33 @@ const MobileAsteroide = () => {
     setToggle(false);
   };
 
-
   const closeHandler = () => {
     setToggle(false);
   };
 
-
-
+  const menuHandler = (item) => {
+    if (item.title === "showmenu") {
+      setToggle(true);
+    } else {
+      setToggle(false);
+    }
+  };
 
   return (
     <main className="app transition-all ease-in border-0 border-lime-400 relative z-50 w-screen">
       <AnimatePresence>
         <div
-          className="relative top-[100px] border-0 p-2 border-sky-400 flex flex-col items-center justify-center my-1 rounded-2xl w-full"
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
+          className="relative top-[60px] border-0 p-2 border-sky-400 flex flex-col items-center justify-center my-1 rounded-2xl w-full"
+          // onMouseEnter={handleMouseEnter}
+          // onMouseLeave={handleMouseLeave}
         >
-   
           <div className=" flex justify-center items-center my-0 w-full border-0 border-purple-400">
             <div className="relative border-0 border-sky-400 h-96 w-full">
               {toggle && (
                 <motion.div
-                  className="glowy-button-6 absolute top-0   z-50   rounded m-2 flex flex-col 
+                  className=" absolute top-0   z-50   rounded m-2 flex flex-col 
                    items-center justify-start border-0 border-red-400"
-                  {...myAnimation(windowSize.width > 640 ? "left" : "right")}
+                  {...myAnimation3("right",width,height)}
                 >
                   {united.map((item) => (
                     <div
@@ -88,39 +87,50 @@ const MobileAsteroide = () => {
               </div>
             </div>
           </div>
-          <div className=" flex flex-col justify-center items-center relative border-0 h-full border-sky-400 h-10 w-96 my-0">
+          <div className=" flex flex-col  items-center relative border- h-32 border-sky-400  w-96 my-0">
             {toggle && (
               <motion.div
                 className=" cursor-pointer realtive  z-50"
-                {...myAnimation("up")}
+                {...myAnimation3("up",width,height)}
               >
-                <div className=" glowy-button-6 w-80 h-32 rounded mx-2 flex flex-wrap flex-row items-center justify-center">
+                <div className="  w-80 h-28 rounded mx-2 flex flex-wrap flex-row items-center justify-center border-0">
                   <BottomConsole
                     buttons={subButtons}
                     //handleClick={handleClickB}
-                   // onClick={() => handleClick(nameconsole, item)}
+                    // onClick={() => handleClick(nameconsole, item)}
                     handleClick={handleClick}
                     nameconsole={nameconsole}
                   />
-                </div>
-                <div className="flex justify-center p-2 m-0 ">
-                  <div
-                    onClick={closeHandler}
-                    className=" w-10 h-8 bg-950 text-white flex justify-center items-center rounded"
-                  >
-                    X
-                  </div>
                 </div>
               </motion.div>
             )}
           </div>
         </div>
       </AnimatePresence>
+
+      <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2">
+        <div className="flex  relative top-2">
+          {mobilmenu.map((item, index) => (
+            <div
+              key={index}
+              onClick={() => menuHandler(item)}
+              className="glowy-button-5 group relative z-50 border-0 hover:border-red-400 p-2 rounded m-2 bg-950 text-primary cursor-pointer text-3xl hover:bg-600"
+            >
+              {<item.icon />}
+              <div className="hidden text-center absolute top-0 left-0 mt-[80px] ml-2 w-32  group-hover:block bg-gray-700 text-white text-sm rounded p-1 z-50">
+                {item.description}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
     </main>
   );
 };
 
 export default MobileAsteroide;
+
+/* */
 
 //  {consoleContent}
 
@@ -156,7 +166,7 @@ export default MobileAsteroide;
   };
 */
 
-  /*
+/*
   const handleClick = (newValues) => {
     if (
       statusTable.dashboard !== "graph" &&
@@ -172,7 +182,6 @@ export default MobileAsteroide;
       ...rest,
     }));
   };*/
-
 
 /*
   const handleClick = (newValues) => {

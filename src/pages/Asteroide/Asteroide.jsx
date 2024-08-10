@@ -9,7 +9,7 @@ const Asteroide = () => {
 
   return (
     <div
-      className={`min-h-screen flex border-0  border-orange-400
+      className={`min-h-screen flex border-0  border-lime-400
        z-50 relative ${toggle ? "opacity-70" : ""}`}
     >
       <video

@@ -540,6 +540,22 @@ export const menu = [
   },
 ];
 
+export const mobilmenu = [
+  {
+    title: "showmenu",
+    icon: HiMiniArrowsPointingIn,
+    description: "Show the menu",
+  },
+  {
+    title: "dontshow",
+    icon: HiMiniArrowsPointingOut,
+    description: "Don't show the menu",
+    sign: "ps_max",
+    animations: "yes",
+  },
+  
+];
+
 /*
 export const operationsconsole = [
   {
