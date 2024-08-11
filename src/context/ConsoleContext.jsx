@@ -12,18 +12,21 @@ import { mainFilteredData } from "../utils/mainFilteredData";
 const ConsoleContext = createContext();
 const graphConfigInit = [
   { name: "area", min: 5, max: 12 },
-  { name: "bar", min: 5, max: 10  },
+  { name: "bar", min: 5, max: 10 },
   { name: "line", min: 5, max: 11 },
-  { name: "pie", min: 5, max: 10  },
-  { name: "radar", min: 5, max: 10  },
+  { name: "pie", min: 5, max: 10 },
+  { name: "radar", min: 5, max: 10 },
   { name: "radialBar", min: 5, max: 10 },
   { name: "scatter", min: 5, max: 10 },
   { name: "funnel", min: 5, max: 10 },
 ];
+const united = [...leftasideconsolesource, ...rightasideconsolesource];
 export const ConsoleContextProvider = ({ children }) => {
   const [sumObject, setSumObject] = useState(sentry.data);
+  const [subButtons, setSubButtons] = useState(united[0].data);
   const [filteredData, setFilteredData] = useState(sentry.data);
   const [statusTable, setStatusTable] = useStatusTable();
+  const [nameconsole, setNameConsole] = useState("dashboard");
   //const [filterTable, setFilterTable] = useState(initFilterTable);
   const [filterTable, setFilterTable] = useFilterTable(sumObject);
   const [leftasideconsole, setLeftasideconsole] = useState(
@@ -48,7 +51,7 @@ export const ConsoleContextProvider = ({ children }) => {
       displayMode: filterTable.displayMode,
       piece: filterTable.piece,
     });
-  
+
     setFilteredData(newFilteredData);
   }, [sumObject, statusTable, filterTable]);
 
@@ -58,7 +61,7 @@ export const ConsoleContextProvider = ({ children }) => {
       graph: "radar",
     }));
   }, []);
-//console.log("ConsoleContext filteredData: ",filteredData)
+  //console.log("ConsoleContext filteredData: ",filteredData)
   return (
     <ConsoleContext.Provider
       value={{
@@ -82,7 +85,11 @@ export const ConsoleContextProvider = ({ children }) => {
         setStatusTable,
         filterTable,
         setFilterTable,
-        graphConfigurations
+        graphConfigurations,
+        nameconsole,
+        setNameConsole,
+        subButtons,
+        setSubButtons,united
       }}
     >
       {children}

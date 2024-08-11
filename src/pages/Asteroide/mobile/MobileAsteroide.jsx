@@ -13,24 +13,28 @@ import MainConsole from "../../../components/consoles/views/MainConsole";
 import { mobilmenu } from "../../../locales/localdata";
 import useWindowSize from "../../../hooks/use-windowsize";
 const united = [...leftasideconsolesource, ...rightasideconsolesource];
+import { graphconsole } from "../../../locales/localdata";
+
 const MobileAsteroide = () => {
   const { width, height } = useWindowSize();
   const [toggle, setToggle] = useState(false);
-  const [subButtons, setSubButtons] = useState(united[0].data);
+ // const [subButtons, setSubButtons] = useState(united[0].data);
+  const { setStatusTable,nameconsole, setNameConsole,subButtons } = MyConsoleContext();
   //Here need a localsstate cause aggregate 2 arrays and need the outer
   // where find a nameconsole attribute from 6 consoles in localdata
   //left and right consoles
-  const [nameconsole, setNameConsole] = useState("dashboard");
-  const { handleClick, consoleContent } = useDataVisualization();
+  //const [nameconsole, setNameConsole] = useState("dashboard");
+  const { handleClick, consoleContent,handleMenuChange } = useDataVisualization();
   //console.log("MobileAsteroide: ", subButtons);
-
+/*
   const handleMenuChange = (name) => {
     const selectedItem = united.find((item) => item.name === name);
     if (selectedItem) {
       setSubButtons(selectedItem.data);
       setNameConsole(name);
     }
-  };
+
+  };*/
 
   const handleMouseEnter = () => {
     console.log("handleMouseEnter");
@@ -68,7 +72,7 @@ const MobileAsteroide = () => {
                 <motion.div
                   className=" absolute top-0   z-50   rounded m-2 flex flex-col 
                    items-center justify-start border-0 border-red-400"
-                  {...myAnimation3("right",width,height)}
+                  {...myAnimation3("right", width, height)}
                 >
                   {united.map((item) => (
                     <div
@@ -91,7 +95,7 @@ const MobileAsteroide = () => {
             {toggle && (
               <motion.div
                 className=" cursor-pointer realtive  z-50"
-                {...myAnimation3("up",width,height)}
+                {...myAnimation3("up", width, height)}
               >
                 <div className="  w-80 h-28 rounded mx-2 flex flex-wrap flex-row items-center justify-center border-0">
                   <BottomConsole

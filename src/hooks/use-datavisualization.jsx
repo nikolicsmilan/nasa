@@ -11,6 +11,11 @@ export const useDataVisualization = () => {
     setStatusTable,
     setFilterTable,
     graphConfigurations,
+    nameconsole,
+    setNameConsole,
+    subButtons,
+    setSubButtons,
+    united,
   } = MyConsoleContext();
 
   const [consoleContent, setConsoleContent] = useState(() => (
@@ -19,14 +24,33 @@ export const useDataVisualization = () => {
 
   useEffect(() => {
     setConsoleContent(<DashboardContent />);
+
+    if (statusTable.dashboard === "graph") {
+      handleMenuChange("graph");
+    }
   }, [info, statusTable, filterTable]);
 
+  const handleMenuChange = (name) => {
+    const selectedItem = united.find((item) => item.name === name);
+    if (selectedItem) {
+      setSubButtons(selectedItem.data);
+      setNameConsole(name);
+    }
+  };
+
   const handleClick = (nameconsole, newValues) => {
-
-    console.log("useDataVisualization: ","nameconsole: ",nameconsole,"newValues: ",newValues)
+    console.log(
+      "useDataVisualization: ",
+      "nameconsole: ",
+      nameconsole,
+      "newValues: ",
+      newValues
+    );
     const { title, sign = statusTable.sign } = newValues;
-
+    //console.log("useDataVisualization handleClick most A",statusTable.dashboard );
+ 
     if (nameconsole === "graph") {
+   
       handleGraphClick(
         title,
         sign,
@@ -50,9 +74,14 @@ export const useDataVisualization = () => {
     }
   };
 
-  return { consoleContent, handleClick };
+  return { consoleContent, handleClick, handleMenuChange };
 };
 
+/*
+   if (statusTable.dashboard === "graph") {
+      handleMenuChange("graph")
+    }
+*/
 
 /*
   const handleClick = (nameconsole, newValues) => {

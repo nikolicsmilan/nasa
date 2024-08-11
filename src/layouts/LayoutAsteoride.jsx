@@ -41,8 +41,8 @@ const LayoutAsteoride = () => {
   };
 
   // Ellenőrizd a szélességet és a magasságot is
-  const isProblematicSize = (width >= 768 && width < 1200) || height < 666;
-
+  const isProblematicSize = false
+//const isProblematicSize = (width >= 768 && width < 1200) || height < 630;
   return (
     <AnimatePresence>
       <div className={`overflow-y-auto overflow-x-hidden lg:overflow-y-hidden mystyle border-0 border-red-400 bg-black text-primary h-screen flex flex-col w-full justify-center items-center`}>
@@ -106,7 +106,8 @@ const LayoutAsteoride = () => {
             </div>
           ) : (
             <>
-              <div className="md:hidden xl:block w-full border-0 border-red-400 z-50 relative">
+            {/*md:hidden xl:block */}
+              <div className=" w-full border-0 border-red-400 z-50 relative">
                 <Outlet />
               </div>
 

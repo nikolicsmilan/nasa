@@ -68,6 +68,7 @@ import {
 } from "react-icons/hi2";
 
 import { TbDatabaseSearch } from "react-icons/tb";
+import { BsGraphDown } from "react-icons/bs";
 //Navigation menu Home page
 export const homemenu = [
   {
@@ -408,7 +409,7 @@ export const leftasideconsolesource = [
   },
   {
     name: "graph",
-    icon: MdAutoGraph,
+    icon: BsGraphDown,
     description: "Year of observation",
     origin: "right center",
     data: graphconsole,
