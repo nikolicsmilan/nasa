@@ -35,6 +35,7 @@ export const ConsoleContextProvider = ({ children }) => {
   const [rightasideconsole, setRightasideconsole] = useState(
     rightasideconsolesource
   );
+  const [mobiletoggle, setMobileToggle] = useState(false);
   const [actualMainConsole, setActualMainConsole] = useState("Year");
   const [acitveMainConsole, setActiveMainConsole] = useState(false);
   const [animationVariants, setAnimationVariants] = useState({});
@@ -89,7 +90,7 @@ export const ConsoleContextProvider = ({ children }) => {
         nameconsole,
         setNameConsole,
         subButtons,
-        setSubButtons,united
+        setSubButtons,united,mobiletoggle, setMobileToggle
       }}
     >
       {children}

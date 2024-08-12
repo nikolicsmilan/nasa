@@ -24,7 +24,10 @@ export const useDataVisualization = () => {
 
   useEffect(() => {
     setConsoleContent(<DashboardContent />);
-
+//EZ RONTJA EL A DOLGOKAT
+// MERT CSAK A SUBBTONS VÁLTOZÁSAKOR FUTHATNA LE
+//DE ÍGY MINDIG LEFUT HISZEN MINDEN AZON VAN AMIKOR A DASHBOARD GRAPH
+//HISZEN CSAK GENERAL ÉS GRAPH VAN!!!
     if (statusTable.dashboard === "graph") {
       handleMenuChange("graph");
     }

@@ -17,16 +17,24 @@ import { graphconsole } from "../../../locales/localdata";
 
 const MobileAsteroide = () => {
   const { width, height } = useWindowSize();
-  const [toggle, setToggle] = useState(false);
- // const [subButtons, setSubButtons] = useState(united[0].data);
-  const { setStatusTable,nameconsole, setNameConsole,subButtons } = MyConsoleContext();
+
+  // const [subButtons, setSubButtons] = useState(united[0].data);
+  const {
+    setStatusTable,
+    nameconsole,
+    setNameConsole,
+    subButtons,
+    mobiletoggle,
+    setMobileToggle,
+  } = MyConsoleContext();
   //Here need a localsstate cause aggregate 2 arrays and need the outer
   // where find a nameconsole attribute from 6 consoles in localdata
   //left and right consoles
   //const [nameconsole, setNameConsole] = useState("dashboard");
-  const { handleClick, consoleContent,handleMenuChange } = useDataVisualization();
+  const { handleClick, consoleContent, handleMenuChange } =
+    useDataVisualization();
   //console.log("MobileAsteroide: ", subButtons);
-/*
+  /*
   const handleMenuChange = (name) => {
     const selectedItem = united.find((item) => item.name === name);
     if (selectedItem) {
@@ -49,14 +57,14 @@ const MobileAsteroide = () => {
   const closeHandler = () => {
     setToggle(false);
   };
-
+  /*
   const menuHandler = (item) => {
     if (item.title === "showmenu") {
       setToggle(true);
     } else {
       setToggle(false);
     }
-  };
+  };*/
 
   return (
     <main className="app transition-all ease-in border-0 border-lime-400 relative z-50 w-screen">
@@ -68,7 +76,7 @@ const MobileAsteroide = () => {
         >
           <div className=" flex justify-center items-center my-0 w-full border-0 border-purple-400">
             <div className="relative border-0 border-sky-400 h-96 w-full">
-              {toggle && (
+              {mobiletoggle && (
                 <motion.div
                   className=" absolute top-0   z-50   rounded m-2 flex flex-col 
                    items-center justify-start border-0 border-red-400"
@@ -92,7 +100,7 @@ const MobileAsteroide = () => {
             </div>
           </div>
           <div className=" flex flex-col  items-center relative border- h-32 border-sky-400  w-96 my-0">
-            {toggle && (
+            {mobiletoggle && (
               <motion.div
                 className=" cursor-pointer realtive  z-50"
                 {...myAnimation3("up", width, height)}
@@ -111,8 +119,13 @@ const MobileAsteroide = () => {
           </div>
         </div>
       </AnimatePresence>
+    </main>
+  );
+};
 
-      <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2">
+export default MobileAsteroide;
+
+/*     <div className="absolute z-50 top-0 left-1/2 transform -translate-x-1/2">
         <div className="flex  relative top-2">
           {mobilmenu.map((item, index) => (
             <div
@@ -127,14 +140,7 @@ const MobileAsteroide = () => {
             </div>
           ))}
         </div>
-      </div>
-    </main>
-  );
-};
-
-export default MobileAsteroide;
-
-/* */
+      </div>*/
 
 //  {consoleContent}
 
