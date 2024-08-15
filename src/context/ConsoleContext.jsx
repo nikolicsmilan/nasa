@@ -55,13 +55,13 @@ export const ConsoleContextProvider = ({ children }) => {
 
     setFilteredData(newFilteredData);
   }, [sumObject, statusTable, filterTable]);
-
+/*
   useEffect(() => {
     setStatusTable((prevFilterTable) => ({
       ...prevFilterTable,
-      graph: "radar",
+      graph: "area",
     }));
-  }, []);
+  }, []);*/
   //console.log("ConsoleContext filteredData: ",filteredData)
   return (
     <ConsoleContext.Provider

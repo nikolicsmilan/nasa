@@ -51,7 +51,7 @@ const AreaChartComponent = () => {
   const chartWidth = width >= breakpoints.lg ? width  : width + 1000;
   const chartHeight = width >= breakpoints.lg ? height : height + 1200;
   return (
-    <div className=" border-0 flex flex-col   items-center justify-center "  style={width >= breakpoints.lg ? { width: width - 800, height: height - 200 } : {width: width+1200 , height: height-200 }} >
+    <div className=" border-0 border-red-400 flex flex-col   items-center justify-center "  style={width >= breakpoints.lg ? { width: width - 800, height: height - 200 } : {width: width+1200 , height: height-200 }} >
       <CustomAreaChartLine
         filteredData={filteredData}
         filterTable={filterTable}

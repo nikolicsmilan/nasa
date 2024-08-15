@@ -14,6 +14,8 @@ import SolarSytsem from "./pages/SolarSystem/SolarSystem";
 import { useSave } from "./hooks/use-saveuser";
 import { MyDataContext } from "./context/DataContext";
 import Asteroide from "./pages/Asteroide/Asteroide";
+import { useDataVisualization } from "./hooks/use-datavisualization";
+import { graphconsole } from "./locales/localdata";
 
 const router = createBrowserRouter([
   {
@@ -35,7 +37,12 @@ function App() {
   //It is needed for the initilazation
   const { saveUser } = useSave();
   const { choosenStyle } = MyDataContext();
+  const { handleClick } = useDataVisualization();
 
+  useEffect(()=>{
+    handleClick('graph', graphconsole[1])
+    handleClick('graph', graphconsole[0])
+  },[])
   return (
     <div className={`${choosenStyle} font-robotoMono `}>
        <div id="ezaz" className="text-primary hidden">
@@ -47,6 +54,7 @@ function App() {
 }
 
 export default App;
+
 
 //  FONTOS HA ELHAGYOD A / JELET A CHILDRENNÉL REALTIVE PATH LESZ ÍGY MEG ABSZULÚT TEHÁT  ELÉ KELL ÍRNI AMI A PARENTBEN VAN!!!!!!!!!!!!!!!
 //  path: "/route", /galery >> abszolút

@@ -18,7 +18,7 @@ export const GraphContent = () => {
     switch (statusTable.graph) {
       case "area":
         return (
-          <div className="border-0 flex flex-col   items-center justify-center">
+          <div className="border-t-4 border-primary flex flex-col   items-center justify-center">
             <AreaChartComponent />
           </div>
         );
