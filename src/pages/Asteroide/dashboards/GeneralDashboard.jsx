@@ -17,15 +17,24 @@ const GeneralDashboard = ({ filteredData }) => {
   const [sumObject, setSumObject] = useState(nasa);
 
   return (
-    <div className="  flex flex-col w-full border-2">
-      <div className="flex ">
-        {dummydata.map((item) => (
-          <div>
-            <SquareminConsole title={item.title} value={item.value} />
+    <div className="  flex flex-col w-full border-0 h-full justify-start">
+      <div className="flex justify-start flex-wrap m-1 border-0 border-primary  w-96 m-2">
+        <div className=" glowy-button-6 shadow-2xl w-full border-b-4 border-t-2 border-r-4 border-l-2 rounded-2xl border-black flex justify-start flex-wrap shadow-2xl">
+          <div className=" w-full">
+            {" "}
+            <h1 className="my-5 text-center text-primary text-lg">Main data</h1>
           </div>
-        ))}
-        <div>
-          <SquareminConsole title="sum of object" value={sumObject.count} />
+          <div className="border-0 w-full flex flex-wrap ">
+          {dummydata.map((item) => (
+            <div>
+              <SquareminConsole title={item.title} value={item.value} />
+            </div>
+          ))}
+          <div>
+            <SquareminConsole title="sum of object" value={sumObject.count} />
+          </div>
+          </div>
+       
         </div>
       </div>
       <div></div>
