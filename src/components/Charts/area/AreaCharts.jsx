@@ -62,7 +62,7 @@ const AreaCharts = () => {
     }
   }, [filteredData, statusTable.graph, actualTypeData]);
   return (
-    <div className="border-0 border-purple-400">
+    <div className="border-2 border-purple-400">
      
       {/* Megjelenítjük a táblázatot */}
       <AreaChart

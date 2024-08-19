@@ -9,8 +9,10 @@ const DataContext = createContext();
 export const DataContextProvider = ({ children }) => {
 
   const [windowSize, setWindowSize] = useState({
-    width: undefined,
-    height: undefined,
+  //  width: undefined,
+   // height: undefined,
+   width: window.innerWidth || 800, // Provide a default value like 800
+   height: window.innerHeight || 600, // Provide a default value like 600
   });
   const [toggle, setToggle] = useState(true);
   const [settingsOpen, setSettingsOpen] = useState(false);

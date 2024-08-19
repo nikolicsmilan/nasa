@@ -8,8 +8,10 @@ const useWindowSize = () => {
   useEffect(() => {
     const handleResize = () => {
       setWindowSize({
-        width: window.innerWidth,
-        height: window.innerHeight,
+     //   width: window.innerWidth,
+      //  height: window.innerHeight,
+      width: window.innerWidth || 800, // Provide a default value like 800
+      height: window.innerHeight || 600, // Provide a default value like 600
       });
     };
 

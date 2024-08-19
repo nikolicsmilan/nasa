@@ -14,7 +14,7 @@ const DesktopAsteroide = ({}) => {
         <LeftConsolesAside />
       </div>
       <div className=" flex-1">
-        <MainConsole />dgdfgdfgdfgd
+        <MainConsole />
       </div>
       <div className="w-84 border-0">
         <RightConsolesAside />
@@ -24,3 +24,5 @@ const DesktopAsteroide = ({}) => {
 };
 
 export default DesktopAsteroide;
+//IIT HIBA VAN MERT A MAIN CONSOLE MAGA IS FOG DÖNTÉST HOZNI WIDTH
+// ÉS HEIGHT ALAPJÁN DE EZ AZ AreaChartComponent BEN IS MEG VAN

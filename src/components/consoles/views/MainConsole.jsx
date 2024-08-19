@@ -43,6 +43,13 @@ const MainConsole = () => {
 };
 
 export default MainConsole;
+//IIT HIBA VAN MERT A MAIN CONSOLE MAGA IS FOG DÖNTÉST HOZNI WIDTH
+// ÉS HEIGHT ALAPJÁN DE EZ AZ AreaChartComponent BEN IS MEG VAN
+// MobileAsteroide BAN IS VAN DÖNTÉS EZEN ÉRTÉKEK ALAPJÁN
+
+
+
+
 //  style={{ width: width - 800, height: height - 120 }}
 /*
 
