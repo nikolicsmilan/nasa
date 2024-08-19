@@ -155,7 +155,15 @@ const LayoutAsteoride = () => {
             </>
           )}
         </main>
-        <div className="absolute lg:hidden z-50 top-0 left-1/2 transform -translate-x-1/2">
+      
+      </div>
+    </AnimatePresence>
+  );
+};
+
+export default LayoutAsteoride;
+/*
+  <div className="absolute lg:hidden z-50 top-0 left-1/2 transform -translate-x-1/2">
               <div className="flex  relative top-2 ">
                 {mobilmenu.map((item, index) => (
                   <div
@@ -171,13 +179,7 @@ const LayoutAsteoride = () => {
                 ))}
               </div>
             </div>
-      </div>
-    </AnimatePresence>
-  );
-};
-
-export default LayoutAsteoride;
-
+*/
 /*
 
           <div className="hidden md:block xl:hidden">

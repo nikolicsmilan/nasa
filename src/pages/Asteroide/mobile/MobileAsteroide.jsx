@@ -82,16 +82,18 @@ const MobileAsteroide = () => {
                    items-center justify-start border-0 border-red-400"
                   {...myAnimation3("right", width, height)}
                 >
-                  {united.map((item) => (
-                    <div
-                      className="cursor-pointer text-3xl text-info m-2 flex flex-col justify-center"
-                      onClick={() => handleMenuChange(item.name)}
-                    >
-                      <span className=" glowy-button-5 border-0 shadow flex justify-center items-center h-12 w-12 text-4xl text-primary">
-                        {<item.icon />}
-                      </span>
-                    </div>
-                  ))}
+              {united.map((item, index) => (
+  <div
+    key={item.name || index} // Add the key prop here
+    className="cursor-pointer text-3xl text-info m-2 flex flex-col justify-center"
+    onClick={() => handleMenuChange(item.name)}
+  >
+    <span className="glowy-button-5 border-0 shadow flex justify-center items-center h-12 w-12 text-4xl text-primary">
+      {<item.icon />}
+    </span>
+  </div>
+))}
+
                 </motion.div>
               )}
               <div className="border-0  border-orange-400 flex flex-col  justify-center items-center  w-full ">

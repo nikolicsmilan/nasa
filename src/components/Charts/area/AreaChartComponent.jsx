@@ -66,14 +66,6 @@ const AreaChartComponent = () => {
 };
 
 export default AreaChartComponent;
-//IIT HIBA VAN MERT A MAIN CONSOLE MAGA IS FOG DÖNTÉST HOZNI WIDTH
-// ÉS HEIGHT ALAPJÁN DE EZ AZ AreaChartComponent BEN IS MEG VAN
-// MobileAsteroide BAN IS VAN DÖNTÉS EZEN ÉRTÉKEK ALAPJÁN
-
-
-
-
-
 /*
 
 

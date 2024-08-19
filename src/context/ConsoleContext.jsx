@@ -27,7 +27,6 @@ export const ConsoleContextProvider = ({ children }) => {
   const [filteredData, setFilteredData] = useState(sentry.data);
   const [statusTable, setStatusTable] = useStatusTable();
   const [nameconsole, setNameConsole] = useState("dashboard");
-  //const [filterTable, setFilterTable] = useState(initFilterTable);
   const [filterTable, setFilterTable] = useFilterTable(sumObject);
   const [leftasideconsole, setLeftasideconsole] = useState(
     leftasideconsolesource
@@ -55,7 +54,7 @@ export const ConsoleContextProvider = ({ children }) => {
 
     setFilteredData(newFilteredData);
   }, [sumObject, statusTable, filterTable]);
-/*
+  /*
   useEffect(() => {
     setStatusTable((prevFilterTable) => ({
       ...prevFilterTable,
@@ -90,7 +89,10 @@ export const ConsoleContextProvider = ({ children }) => {
         nameconsole,
         setNameConsole,
         subButtons,
-        setSubButtons,united,mobiletoggle, setMobileToggle
+        setSubButtons,
+        united,
+        mobiletoggle,
+        setMobileToggle,
       }}
     >
       {children}
