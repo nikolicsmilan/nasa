@@ -18,7 +18,7 @@ export const GraphContent = () => {
     case "area":
       return (
         <div
-          className={`border-t-4 border-primary flex flex-col
+          className={`border-0 w-full border-purple-400 flex flex-col
              items-center justify-center ${
             mobiletoggle ? "opacity-50" : ""
           }`}

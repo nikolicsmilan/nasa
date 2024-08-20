@@ -5,7 +5,7 @@ import { useDataVisualization } from "../../../hooks/use-datavisualization";
 import useWindowSize from "../../../hooks/use-windowsize";
 import { mobilmenu } from "../../../locales/localdata";
 const MainConsole = () => {
-  const { animationVariants, mobiletoggle, setMobileToggle, statusTable } =
+  const { animationVariants, mobiletoggle, setMobileToggle, statusTable,message, } =
     MyConsoleContext();
   const { consoleContent } = useDataVisualization();
   const { width, height } = useWindowSize();
@@ -27,11 +27,12 @@ const MainConsole = () => {
     setActiveMenu(item.title); // Update selected menu item
   };
 
-  const fullglass = "glowy-button-8  border-2 ";
+  const fullglass = "glowy-button-8  border-0 ";
   return (
     <motion.div
       animate={animationVariants}
-      className=" flex flex-col items-center  relative z-10 rounded inset-0  border-0 border-lime-400
+      className=" flex flex-col items-center md:justify-center relative z-10 rounded inset-0
+        border-0  border-lime-400
   
  
     text-dark w-screen md:w-full h-full  shadow-2xl 
@@ -40,18 +41,21 @@ const MainConsole = () => {
       <div
         className={`${
           statusTable.dashboard === "graph" ? fullglass : ""
-        }  border-primary   opacity-100 md:top-[100px]
+        }  border-red-400 border-0  opacity-100 md:top-[20px]
       z-50 relative p-0 overflow-y-scroll overflow-x-scroll 
-         text-white flex flex-col   items-center justify-center lg:w-full h-full`}
+         text-white flex flex-col   items-center justify-center w-screen 
+         xl:w-full h-full `}
         // style={{ width: width - 800, height: height - 120 }}
         style={
-          width >= breakpoints.lg
-            ? { width: width - 800, height: height - 200 }
+          width >= breakpoints.xl
+            ? { width: width - 800, height: height - 150 }
             : { width: width - 20 }
         }
       >
         {consoleContent}
-        <div className="absolut lg:hidden z-50  border-0 w-full flex justify-center items-center">
+      <p className="hidden xl:block text-center text-primary px-2">  {message?.description}</p>
+
+        <div className="absolut  xl:hidden z-50  border-0 border-orange-400 w-full flex justify-center items-center">
           <div className="flex  ">
             {mobilmenu.map((item, index) => (
               <div

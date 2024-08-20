@@ -76,7 +76,7 @@ const LayoutAsteoride = () => {
             </div>
 
             {!toggle && (
-              <div className="lg:flex glowy-button-6 relative top-2 hidden">
+              <div className="xl:flex glowy-button-6 relative top-2 hidden">
                 {menu.map((item, index) => (
                   <div
                     key={index}

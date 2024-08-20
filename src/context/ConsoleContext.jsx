@@ -39,6 +39,15 @@ export const ConsoleContextProvider = ({ children }) => {
   const [acitveMainConsole, setActiveMainConsole] = useState(false);
   const [animationVariants, setAnimationVariants] = useState({});
   const [info, setInfo] = useState("");
+  /*const[message,setMessage]  = useState({
+    description:`You see the ${statusTable.dashboard} 
+    console ${statusTable.graph} chart's in ${filterTable.displayMode}
+     filter with ${filterTable.piece} piece`
+  });*/
+  const [message, setMessage] = useState({
+    description: `You are viewing the ${statusTable.dashboard} console with  ${statusTable.graph} chart in ${filterTable.displayMode} mode, filtered to show ${filterTable.piece} items.`
+});
+
   const [graphConfigurations, setGraphConfigurations] =
     useState(graphConfigInit);
   // Amikor vissza váltok areara valamilyen paramétert nem kap meg valószinleg és
@@ -54,6 +63,11 @@ export const ConsoleContextProvider = ({ children }) => {
 
     setFilteredData(newFilteredData);
   }, [sumObject, statusTable, filterTable]);
+  useEffect(() => {
+    setMessage({
+      description: `You are viewing the ${statusTable.dashboard} dashboard with ${statusTable.graph} chart in ${filterTable.displayMode} mode, filtered to show ${filterTable.piece} items.`,
+    });
+  }, [statusTable, filterTable]);
   /*
   useEffect(() => {
     setStatusTable((prevFilterTable) => ({
@@ -93,6 +107,7 @@ export const ConsoleContextProvider = ({ children }) => {
         united,
         mobiletoggle,
         setMobileToggle,
+        message,setMessage
       }}
     >
       {children}
