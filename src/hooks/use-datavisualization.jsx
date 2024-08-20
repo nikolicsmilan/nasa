@@ -24,11 +24,11 @@ export const useDataVisualization = () => {
 
   useEffect(() => {
     setConsoleContent(<DashboardContent />);
-//EZ RONTJA EL A DOLGOKAT
-// MERT CSAK A SUBBTONS VÁLTOZÁSAKOR FUTHATNA LE
-//DE ÍGY MINDIG LEFUT HISZEN MINDEN AZON VAN AMIKOR A DASHBOARD GRAPH
-//HISZEN CSAK GENERAL ÉS GRAPH VAN!!!
-    if (statusTable.dashboard === "graph") {
+    //EZ RONTJA EL A DOLGOKAT
+    // MERT CSAK A SUBBTONS VÁLTOZÁSAKOR FUTHATNA LE
+    //DE ÍGY MINDIG LEFUT HISZEN MINDEN AZON VAN AMIKOR A DASHBOARD GRAPH
+    //HISZEN CSAK GENERAL ÉS GRAPH VAN!!!
+    if (statusTable.dashboard === "graph" && nameconsole === "graph") {
       handleMenuChange("graph");
     }
   }, [info, statusTable, filterTable]);
@@ -51,9 +51,8 @@ export const useDataVisualization = () => {
     );
     const { title, sign = statusTable.sign } = newValues;
     //console.log("useDataVisualization handleClick most A",statusTable.dashboard );
- 
+
     if (nameconsole === "graph") {
-   
       handleGraphClick(
         title,
         sign,
