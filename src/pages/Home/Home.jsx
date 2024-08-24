@@ -21,7 +21,7 @@ const Home = () => {
   z-50  relative h-screen  ${settingsOpen ? "opacity-20 " : ""} `}
       >
         <div
-          className="flex flex-col lg:flex h-full md:h-screen w-full md:w-1/2
+          className="flex flex-col lg:flex h-72 md:h-full md:h-screen w-full md:w-1/2
             justify-center items-center  
            z-50 border-0
            border-orange-500  lg:bg-gradient opacity-70"
@@ -44,8 +44,8 @@ const Home = () => {
         </div>
 
         <div
-          className="flex w-full h-full md:w-1/2 justify-center
-         md:justify-center items-center border-0 "
+          className="flex w-full h-96 md:h-full md:w-1/2 justify-center
+         md:justify-center items-center border-0  md:my-0 bg-dark opacity-80"
         >
           <div>
             <BiggerConsoles menupoint={start} />

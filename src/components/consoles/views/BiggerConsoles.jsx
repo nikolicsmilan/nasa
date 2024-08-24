@@ -17,8 +17,8 @@ const BiggerConsoles = ({menupoint}) => {
             key={item.id} // Asszumáltam, hogy van egy id az item objektumban
             className={`glowy-button-6 glowy-button-7  shadowactive customshadow3 cursor-pointer 
             rounded-2xl 
-            relative flex-col m-0 w-52  h-52 
-            border-0 border-orange-400`}
+            relative flex-col m-0 w-52  h-52 border-2 
+       border-primary hover:border-4`}
           >
             <div className={`  bg-primary  rounded-2xl
            w-96 h-full shado-2xl border-2 border-lime-400
@@ -42,7 +42,7 @@ const BiggerConsoles = ({menupoint}) => {
 }
 
 export default BiggerConsoles
-
+//     border-l-4 border-b-4 border-t-0 border-r-0 
 
 /*
 import React from 'react'
