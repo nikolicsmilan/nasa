@@ -32,7 +32,7 @@ const MainConsole = () => {
     <motion.div
       animate={animationVariants}
       className=" flex flex-col items-center md:justify-center relative z-10 rounded inset-0
-        border-0  border-lime-400
+        border-0 border-lime-400
   
  
     text-dark w-screen md:w-full h-full  shadow-2xl 
@@ -48,12 +48,12 @@ const MainConsole = () => {
         // style={{ width: width - 800, height: height - 120 }}
         style={
           width >= breakpoints.xl
-            ? { width: width - 800, height: height - 150 }
+            ? { width: width - 600, height: height - 150 }
             : { width: width - 20 }
         }
       >
         {consoleContent}
-      <p className="hidden xl:block text-center text-primary px-2">  {message?.description}</p>
+      <p className="hidden xl:hidden text-center text-primary px-2">  {message?.description}</p>
 
         <div className="absolut  xl:hidden z-50  border-0 border-orange-400 w-full flex justify-center items-center">
           <div className="flex  ">

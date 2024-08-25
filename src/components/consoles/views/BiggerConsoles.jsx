@@ -21,7 +21,7 @@ const BiggerConsoles = ({menupoint}) => {
        border-primary hover:border-4`}
           >
             <div className={`  bg-primary  rounded-2xl
-           w-96 h-full shado-2xl border-2 border-lime-400
+           w-96 h-full shadow-2xl border-2 border-lime-400
                 opacity-10 mt-[0px] z-40`}></div>
 
             <div className="border-  customshadow rounded-2xl text-2xl opacity-100

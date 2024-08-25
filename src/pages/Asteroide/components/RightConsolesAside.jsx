@@ -8,7 +8,7 @@ const RightConsolesAside = () => {
     <div className="border-0 border-red-400 ">
       <AsideConsole source={rightasideconsole} 
     />
-      <div className="flex flex-col w-64 text-primary relative top-[40px]">
+      <div className="hidden flex flex-col w-64 text-primary relative top-[40px]">
           {Object.entries(statusTable).map(([key, value]) => (
             <div key={key}>
               <strong>{key}:</strong> {value.toString()}

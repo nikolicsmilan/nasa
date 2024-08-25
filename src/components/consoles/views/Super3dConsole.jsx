@@ -31,7 +31,7 @@ const Super3dConsole = ({
       relative z-10 rounded inset-0 
 
       border-600 
-      text-dark flex flex-col items-start w-80 
+      text-dark flex flex-col items-start w-64 
       transform perspective-1000 m-0 p-0 h-40 border-0`}
     >
      <div className="flex justify-center border-0 w-full relative top-[-10px]">
