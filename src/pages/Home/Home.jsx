@@ -45,9 +45,9 @@ const Home = () => {
 
         <div
           className="flex w-full h-96 md:h-full md:w-1/2 justify-center
-         md:justify-center items-center border-0  md:my-0 bg-dark opacity-80"
+         md:justify-center items-center border-0   md:my-0  "
         >
-          <div>
+          <div className="rounded-2xl border-0 opacity-80 h-48 w-48 flex justify-center items-center bg-dark">
             <BiggerConsoles menupoint={start} />
           </div>
         </div>

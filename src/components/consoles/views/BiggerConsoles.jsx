@@ -17,7 +17,7 @@ const BiggerConsoles = ({menupoint}) => {
             key={item.id} // Asszumáltam, hogy van egy id az item objektumban
             className={`glowy-button-6 glowy-button-7  shadowactive customshadow3 cursor-pointer 
             rounded-2xl 
-            relative flex-col m-0 w-52  h-52 border-2 
+            relative flex-col m-0 w-48  h-48 border-l-4 border-b-4 border-t-2
        border-primary hover:border-4`}
           >
             <div className={`  bg-primary  rounded-2xl
@@ -27,9 +27,9 @@ const BiggerConsoles = ({menupoint}) => {
             <div className="border-  customshadow rounded-2xl text-2xl opacity-100
              flex h-56 border-purple-400 shadow-2xl 
              items-center justify-center border-0 bg-dark-800 
-             z-20 mt-[-210px] font-bold">
+             z-20 mt-[-200px] font-bold">
               <p className={`text-primary mx-2 transform rotate-90 text-4xl `}> {<item.icon />}</p>
-              <h2 className="text-red-600 opacity-100 font-bold text-4xl uppercase ">{item.title}</h2>
+              <h2 className="text-red-600 opacity-100 font-bold text-3xl uppercase ">{item.title}</h2>
             </div>
 
 

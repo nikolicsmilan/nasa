@@ -19,15 +19,39 @@ const GeneralDashboard = ({ filteredData }) => {
   const { mobiletoggle } = MyConsoleContext();
   const tomb = [1, 2, 3,];
   return (
-<div
-  className={`glowy-button-6  border-b-4 border-t-2 border-r-4 border-l-2
-  rounded-2xl border-black flex justify-start flex-wrap shadow-2xl w-full h-full flex flex-col border-2 justify-start bg-lim-400 ${
-    mobiletoggle ? "opacity-50" : ""
-  }`}
->
-  <div className="w-full h-20 text-primary border-0 text-center my-10 text-lg">General Dashboard</div>
-</div>
-
+    <div
+      className={`  flex flex-col w-full border-0 h-full justify-start ${
+        mobiletoggle ? "opacity-50" : ""
+      }`}
+    >
+      <div className="flex justify-center flex-wrap border-2 border-primary  w-full p-1">
+        {tomb.map((item) => (
+          <div className=" glowy-button-6  border-b-4 border-t-2 border-r-4 border-l-2
+           rounded-2xl border-black flex justify-start flex-wrap shadow-2xl w-60 h-60">
+            <div className=" w-full">
+              {" "}
+              <h1 className="my-1 text-center text-primary text-lg">
+                Main data
+              </h1>
+            </div>
+            <div className="border-0 w-full flex flex-wrap justify-center ">
+              {dummydata.map((item) => (
+                <div>
+                  <SquareminConsole title={item.title} value={item.value} />
+                </div>
+              ))}
+              <div>
+                <SquareminConsole
+                  title="sum of object"
+                  value={sumObject.count}
+                />
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+      <div></div>
+    </div>
   );
 };
 

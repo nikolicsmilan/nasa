@@ -70,37 +70,64 @@ const MobileAsteroide = () => {
     <main className="app transition-all ease-in border-0 border-lime-400 relative z-50 w-screen">
       <AnimatePresence>
         <div
-          className="relative top-[60px] border-0 p-2 border-sky-400 flex flex-col items-center justify-center my-1 rounded-2xl w-full"
+          className="relative  border-0 p-2 border-sky-400 flex flex-col items-center justify-center my-1 rounded-2xl w-full h-full"
           // onMouseEnter={handleMouseEnter}
           // onMouseLeave={handleMouseLeave}
         >
-          <div className=" flex justify-center items-center my-0 w-full border-0 border-purple-400">
-            <div className="relative border-0 border-sky-400 h-96 w-full">
+          <div className=" flex justify-center items-center my-0 w-full h-full border-0 border-purple-400">
+            <div className="relative border-0 border-sky-400 h-full w-full">
               {mobiletoggle && (
                 <motion.div
                   className=" absolute top-0   z-50   rounded m-2 flex flex-col 
                    items-center justify-start border-0 border-red-400"
                   {...myAnimation3("right", width, height)}
                 >
-              {united.map((item, index) => (
-  <div
-    key={item.name || index} // Add the key prop here
-    className="cursor-pointer text-3xl text-info m-2 flex flex-col justify-center"
-    onClick={() => handleMenuChange(item.name)}
-  >
-    <span className="glowy-button-5 border-0 shadow flex justify-center items-center h-12 w-12 text-4xl text-primary">
-      {<item.icon />}
-    </span>
-  </div>
-))}
-
+                  {united.map((item, index) => (
+                    <div
+                      key={item.name || index} // Add the key prop here
+                      className="cursor-pointer text-3xl text-info m-2 flex flex-col justify-center"
+                      onClick={() => handleMenuChange(item.name)}
+                    >
+                      <span className="glowy-button-5 border-0 border-primary  shadow flex justify-center items-center h-12 w-12 text-4xl text-primary">
+                        {<item.icon />}
+                      </span>
+                    </div>
+                  ))}
                 </motion.div>
               )}
-              <div className="border-0  border-orange-400 flex flex-col  justify-center items-center  w-full ">
+              <div className="border-0 h-full p-4 border-orange-400 flex flex-col  justify-center items-center  w-full ">
                 <MainConsole />
               </div>
             </div>
           </div>
+
+          {mobiletoggle && (
+            <div className=" absolute flex flex-col  items-center  border- h-32 border-sky-400  w-96 my-0">
+              <motion.div
+                className=" cursor-pointer realtive  z-50"
+                {...myAnimation3("up", width, height)}
+              >
+                <div className="  w-80 h-28 rounded mx-2 flex flex-wrap flex-row items-center justify-center border-0">
+                  <BottomConsole
+                    buttons={subButtons}
+                    //handleClick={handleClickB}
+                    // onClick={() => handleClick(nameconsole, item)}
+                    handleClick={handleClick}
+                    nameconsole={nameconsole}
+                  />
+                </div>
+              </motion.div>
+            </div>
+          )}
+        </div>
+      </AnimatePresence>
+    </main>
+  );
+};
+
+export default MobileAsteroide;
+
+/*
           <div className=" flex flex-col  items-center relative border- h-32 border-sky-400  w-96 my-0">
             {mobiletoggle && (
               <motion.div
@@ -119,13 +146,10 @@ const MobileAsteroide = () => {
               </motion.div>
             )}
           </div>
-        </div>
-      </AnimatePresence>
-    </main>
-  );
-};
 
-export default MobileAsteroide;
+
+
+*/
 
 /*     <div className="absolute z-50 top-0 left-1/2 transform -translate-x-1/2">
         <div className="flex  relative top-2">

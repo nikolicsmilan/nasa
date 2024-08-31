@@ -39,7 +39,7 @@ const Super3dConsole = ({
         {nameconsole}
       </h3>
      </div>
-      <div className="glowy-button-6   flex flex-row flex-wrap text-3xl my-0 border-0 relative z-10 cursor-pointer  ">
+      <div className="glowy-button-   flex flex-row flex-wrap text-3xl my-0 border-0 relative z-10 cursor-pointer  ">
         {data.map((item, index) => (
           <div
             key={index}
