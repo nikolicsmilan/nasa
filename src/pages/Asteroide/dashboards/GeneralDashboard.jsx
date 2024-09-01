@@ -17,17 +17,19 @@ const dummydata = [
 const GeneralDashboard = ({ filteredData }) => {
   const [sumObject, setSumObject] = useState(nasa);
   const { mobiletoggle } = MyConsoleContext();
-  const tomb = [1, 2, 3,];
+  const tomb = [1, 2, 3];
   return (
-<div
-  className={`glowy-button-6  border-b-4 border-t-2 border-r-4 border-l-2
-  rounded-2xl border-black flex justify-start flex-wrap shadow-2xl w-full h-full flex flex-col border-2 justify-start bg-lim-400 ${
-    mobiletoggle ? "opacity-50" : ""
-  }`}
->
-  <div className="w-full h-20 text-primary border-0 text-center my-10 text-lg">General Dashboard</div>
-</div>
-
+    <div
+      className={` flex  flex-wrap  w-full
+   flex-col justify-start bg-lim-400 ${mobiletoggle ? "opacity-50" : ""}`}
+    >
+      <div
+        className="w-full h-20 text-primary
+   border-0 text-center my-10 text-lg"
+      >
+        General Dashboard
+      </div>
+    </div>
   );
 };
 

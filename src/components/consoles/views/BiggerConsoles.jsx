@@ -17,7 +17,7 @@ const BiggerConsoles = ({menupoint}) => {
             key={item.id} // Asszumáltam, hogy van egy id az item objektumban
             className={`glowy-button-6 glowy-button-7  shadowactive customshadow3 cursor-pointer 
             rounded-2xl 
-            relative flex-col m-0 w-48  h-48 border-l-4 border-b-4 border-t-2
+            relative flex-col m-0 w-48  h-48 border-r-2 border-b-2 border-t-0
        border-primary hover:border-4`}
           >
             <div className={`  bg-primary  rounded-2xl

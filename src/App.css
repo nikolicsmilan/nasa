@@ -25,7 +25,6 @@ because of the overwrite the base class
  (concatenation is higher order)*/
 /*MainNavigationConsole.js custom shadow  */
 
-
 .mystyle .customshadow2 {
   box-shadow: 0px 0px 10px 3px rgba(44, 78, 82, 0.75);
   -webkit-box-shadow: 0px 0px 10px 3px rgba(44, 78, 82, 0.75);
@@ -127,7 +126,6 @@ because of the overwrite the base class
 ::-webkit-scrollbar-thumb:hover {
   background: #cf1414;
 }*/
-
 
 .glassmorphism {
   background: rgba(255, 255, 255, 0.25);
@@ -264,7 +262,7 @@ button::after{
 }*/
 
 .glow-button {
- position: relative;
+  position: relative;
   font-size: 20px;
   color: white;
   background-color: black;
@@ -280,7 +278,7 @@ button::after{
 
 .glow-button::before {
   content: "";
- /* position: absolute;*/
+  /* position: absolute;*/
   inset: 0;
   box-shadow: 0 1px hsl(0 0% 100% / 0.15) inset;
   background: hsl(0 0% 10%);
@@ -361,14 +359,18 @@ button::after{
 }
 
 .glowy-button-3::before {
-  content: '';
+  content: "";
   position: absolute;
   top: var(--y);
   left: var(--x);
   transform: translate(-50%, -50%);
   width: 0;
   height: 0;
-  background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 70%);
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.8) 0%,
+    rgba(255, 255, 255, 0) 70%
+  );
   transition: width 0.5s ease, height 0.5s ease;
 }
 
@@ -381,8 +383,8 @@ button::after{
   color: #333;
   background-color: #fff;
   border-color: #333;
-  text-shadow: 0 0 5px rgba(255,255,255,0.8);
-  box-shadow: 0 0 20px rgba(255,255,255,0.8);
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
 }
 /*
 .glowy-button-4 {
@@ -482,13 +484,12 @@ button::after{
   z-index: 1;
 }
 
-
 .glowy-button-5 {
   position: relative;
   /*t ? * b* l*/
- padding: 3px 3px 3px 3px;
- /*padding:1px;*/
- /* font-size: 18px;*/
+  padding: 3px 3px 3px 3px;
+  /*padding:1px;*/
+  /* font-size: 18px;*/
   color: #fff;
   background: #333;
   border: 0px solid #fff;
@@ -505,7 +506,11 @@ button::after{
   transform: translate(-50%, -50%);
   width: 0;
   height: 0;
-  background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 70%);
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.8) 0%,
+    rgba(255, 255, 255, 0) 70%
+  );
   transition: width 0.3s ease, height 0.3s ease;
 }
 
@@ -515,7 +520,7 @@ button::after{
 }
 
 .glowy-button-5:hover {
- /* text-shadow: 0 0 5px #fff;*/
+  /* text-shadow: 0 0 5px #fff;*/
   box-shadow: 0 0 10px #fff;
   border-color: #fff;
 }
@@ -523,24 +528,9 @@ button::after{
 .glowy-button-6 {
   position: relative;
   /*t ? * b* l*/
- padding: 3px 3px 3px 3px;
- /*padding:1px;*/
- /* font-size: 18px;*/
-  color: #fff;
-  background: #333;
-  border: 0px solid #fff;
-  border-radius: 5px;
-  cursor: pointer;
-  overflow: hidden;
-}
-
-
-.glowy-button-6 {
-  position: relative;
-  /*t ? * b* l*/
- padding: 3px 3px 3px 3px;
- /*padding:1px;*/
- /* font-size: 18px;*/
+  padding: 3px 3px 3px 3px;
+  /*padding:1px;*/
+  /* font-size: 18px;*/
   color: #fff;
   background: #333;
   border: 0px solid #fff;
@@ -562,7 +552,11 @@ button::after{
   transform: translate(-50%, -50%);
   width: 0;
   height: 0;
-  background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 70%);
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.8) 0%,
+    rgba(255, 255, 255, 0) 70%
+  );
   transition: width 0.3s ease, height 0.3s ease;
 }
 
@@ -572,7 +566,7 @@ button::after{
 }
 
 .glowy-button-6 {
- /*text-shadow: 0 0 5px #fff;*/
+  /*text-shadow: 0 0 5px #fff;*/
   box-shadow: 0 0 10px #fff;
   border-color: #fff;
 }
@@ -620,17 +614,17 @@ button::after{
 }
 
 .glowy-button-7:hover h2 {
-  text-shadow: 0 0 3px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 0, 0, 0.6), 0 0 30px rgba(255, 0, 0, 0.6), 0 0 40px rgba(255, 0, 0, 0.6);
+  text-shadow: 0 0 3px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 0, 0, 0.6),
+    0 0 30px rgba(255, 0, 0, 0.6), 0 0 40px rgba(255, 0, 0, 0.6);
   color: rgba(255, 0, 0, 1); /* Esetleges színváltoztatás */
 }
-
 
 .glowy-button-8 {
   position: relative;
   /*t ? * b* l*/
- padding: 3px 3px 3px 3px;
- /*padding:1px;*/
- /* font-size: 18px;*/
+  padding: 3px 3px 3px 3px;
+  /*padding:1px;*/
+  /* font-size: 18px;*/
   color: #fff;
   background: #333;
   border: 0px solid #fff;
@@ -639,13 +633,12 @@ button::after{
   overflow: hidden;
 }
 
-
 .glowy-button-8 {
   position: relative;
   /*t ? * b* l*/
- padding: 3px 3px 3px 3px;
- /*padding:1px;*/
- /* font-size: 18px;*/
+  padding: 3px 3px 3px 3px;
+  /*padding:1px;*/
+  /* font-size: 18px;*/
   color: #fff;
   background: #333;
   border: 0px solid #fff;
@@ -667,7 +660,11 @@ button::after{
   transform: translate(-50%, -50%);
   width: 0;
   height: 0;
-  background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 70%);
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.8) 0%,
+    rgba(255, 255, 255, 0) 70%
+  );
   transition: width 0.3s ease, height 0.3s ease;
 }
 
@@ -677,7 +674,53 @@ button::after{
 }
 
 .glowy-button-8 {
- /*text-shadow: 0 0 5px #fff;*/
+  /*text-shadow: 0 0 5px #fff;*/
   box-shadow: 0 0 10px #fff;
+  border-color: #fff;
+}
+
+.glowy-button-9 {
+  position: relative;
+  /*t ? * b* l*/
+  padding: 3px 3px 3px 3px;
+  /*padding:1px;*/
+  /* font-size: 18px;*/
+  color: #fff;
+  background: #333;
+  border: 0px solid #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  overflow: hidden;
+  background: linear-gradient(
+    to bottom right,
+    hsla(0, 0%, 100%, 0.1) 20%,
+    hsla(0, 0%, 100%, 0.1) 20%
+  );
+}
+
+.glowy-button-9::before {
+  content: "";
+  position: absolute;
+  top: var(--y);
+  left: var(--x);
+  transform: translate(-160%, -80%);
+  width: 0;
+  height: 0;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.8) 0%,
+    rgba(255, 255, 255, 0) 70%
+  );
+  transition: width 0.3s ease, height 0.3s ease;
+}
+/*This cahnge the ray size*/
+.glowy-button-9::before {
+  /*width: 500px;
+  height: 500px;*/
+}
+/*This cahnge the ray size*/
+.glowy-button-9 {
+  /*text-shadow: 0 0 5px #fff;*/
+  /* box-shadow: 0 0 50px #fff;*/
   border-color: #fff;
 }

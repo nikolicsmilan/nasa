@@ -45,13 +45,21 @@ const AreaChartComponent = () => {
     md: 768,
     lg: 1024,
     xl: 1200, // Ahogy a Tailwind-ben definiáltad
-    '2xl': 1536,
+    "2xl": 1536,
   };
 
-  const chartWidth = width >= breakpoints.xl ? width  : width + 1700;
+  const chartWidth = width >= breakpoints.xl ? width : width + 1700;
   const chartHeight = width >= breakpoints.xl ? height : height + 2200;
   return (
-    <div className=" border-0 border-red-400 flex flex-col   items-center justify-center "  style={width >= breakpoints.xl ? { width: width - 800, height: height - 200 } : {width: width , height: height-200 }} >
+    <div
+      className=" flex flex-col 
+        items-center justify-center "
+      style={
+        width >= breakpoints.xl
+          ? { width: width - 600, height: height - 100 }
+          : { width: width, height: height - 200 }
+      }
+    >
       <CustomAreaChartLine
         filteredData={filteredData}
         filterTable={filterTable}
