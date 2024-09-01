@@ -45,8 +45,8 @@ export const ConsoleContextProvider = ({ children }) => {
      filter with ${filterTable.piece} piece`
   });*/
   const [message, setMessage] = useState({
-    description: `You are viewing the ${statusTable.dashboard} console with  ${statusTable.graph} chart in ${filterTable.displayMode} mode, filtered to show ${filterTable.piece} items.`
-});
+    description: `You are viewing the ${statusTable.dashboard} console with  ${statusTable.graph} chart in ${filterTable.displayMode} mode, filtered to show ${filterTable.piece} items.`,
+  });
 
   const [graphConfigurations, setGraphConfigurations] =
     useState(graphConfigInit);
@@ -107,7 +107,8 @@ export const ConsoleContextProvider = ({ children }) => {
         united,
         mobiletoggle,
         setMobileToggle,
-        message,setMessage
+        message,
+        setMessage,
       }}
     >
       {children}
