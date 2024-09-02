@@ -394,15 +394,28 @@ export const resourceconsole = [
   },
 ];
 
+export const dashboradsourceforMobile = [ {
+  name: "dashboard",
+  icon: MdDashboard,
+  description: "Dashboard",
+  origin: "right center",
+  data: dashboards,
+  position: {
+    x: "-10",
+    y: "20",
+    z: "0",
+  },
+},]
+
 export const leftasideconsolesource = [
   {
-    name: "dashboard",
-    icon: MdDashboard,
-    description: "Year of observation",
+    name: "datatype",
+    icon: TbDatabaseSearch,
+    description: "Type of Data",
     origin: "right center",
-    data: dashboards,
+    data: datatypeconsole,
     position: {
-      x: "-10",
+      x: "10",
       y: "20",
       z: "0",
     },

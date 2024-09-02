@@ -4,6 +4,7 @@ import { useInfo } from "../hooks/use-info";
 import {
   leftasideconsolesource,
   rightasideconsolesource,
+  dashboradsourceforMobile,
 } from "../locales/localdata";
 import { sentry } from "../locales/nasadummy";
 import { useStatusTable } from "../hooks/use-statustable";
@@ -20,10 +21,11 @@ const graphConfigInit = [
   { name: "scatter", min: 5, max: 10 },
   { name: "funnel", min: 5, max: 10 },
 ];
-const united = [...leftasideconsolesource, ...rightasideconsolesource];
+//const united = [...leftasideconsolesource, ...dashboradsourceforMobile];
 export const ConsoleContextProvider = ({ children }) => {
+  const [united,setUnited] = useState([...dashboradsourceforMobile,...leftasideconsolesource, ]);
   const [sumObject, setSumObject] = useState(sentry.data);
-  const [subButtons, setSubButtons] = useState(united[0].data);
+  const [subButtons, setSubButtons] = useState(dashboradsourceforMobile.data);
   const [filteredData, setFilteredData] = useState(sentry.data);
   const [statusTable, setStatusTable] = useStatusTable();
   const [nameconsole, setNameConsole] = useState("dashboard");
@@ -34,6 +36,7 @@ export const ConsoleContextProvider = ({ children }) => {
   const [rightasideconsole, setRightasideconsole] = useState(
     rightasideconsolesource
   );
+ 
   const [mobiletoggle, setMobileToggle] = useState(false);
   const [actualMainConsole, setActualMainConsole] = useState("Year");
   const [acitveMainConsole, setActiveMainConsole] = useState(false);
@@ -45,7 +48,7 @@ export const ConsoleContextProvider = ({ children }) => {
      filter with ${filterTable.piece} piece`
   });*/
   const [message, setMessage] = useState({
-    description: `You are viewing the ${statusTable.dashboard} console with  ${statusTable.graph} chart in ${filterTable.displayMode} mode, filtered to show ${filterTable.piece} items.`,
+    description: `You are viewing the ${statusTable.dashboard} console with a ${statusTable.graph} chart in ${filterTable.displayMode} mode, filtered to show ${filterTable.piece} items, focusing on ${statusTable.datatype}.`,
   });
 
   const [graphConfigurations, setGraphConfigurations] =
@@ -65,9 +68,10 @@ export const ConsoleContextProvider = ({ children }) => {
   }, [sumObject, statusTable, filterTable]);
   useEffect(() => {
     setMessage({
-      description: `You are viewing the ${statusTable.dashboard} dashboard with ${statusTable.graph} chart in ${filterTable.displayMode} mode, filtered to show ${filterTable.piece} items.`,
+      description: `You are viewing the ${statusTable.dashboard} dashboard with ${statusTable.graph} chart in ${filterTable.displayMode} mode, filtered to show ${filterTable.piece} items, focusing on ${statusTable.datatype}.`,
     });
   }, [statusTable, filterTable]);
+
   /*
   useEffect(() => {
     setStatusTable((prevFilterTable) => ({

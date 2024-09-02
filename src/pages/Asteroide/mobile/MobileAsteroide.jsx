@@ -6,16 +6,22 @@ import { MyConsoleContext } from "../../../context/ConsoleContext";
 import BottomConsole from "../../../components/consoles/BottomConsole";
 import {
   rightasideconsolesource,
+  dashboradsourceforMobile,
   leftasideconsolesource,
 } from "../../../locales/localdata";
 import { useDataVisualization } from "../../../hooks/use-datavisualization";
 import MainConsole from "../../../components/consoles/views/MainConsole";
 import { mobilmenu } from "../../../locales/localdata";
 import useWindowSize from "../../../hooks/use-windowsize";
-const united = [...leftasideconsolesource, ...rightasideconsolesource];
+
+
+
+//const united = [...dashboradsourceforMobile,...leftasideconsolesource,];
+
 import { graphconsole } from "../../../locales/localdata";
 
 const MobileAsteroide = () => {
+  //console.log('united: ',united)
   const { width, height } = useWindowSize();
 
   // const [subButtons, setSubButtons] = useState(united[0].data);
@@ -26,6 +32,7 @@ const MobileAsteroide = () => {
     subButtons,
     mobiletoggle,
     setMobileToggle,
+    united
   } = MyConsoleContext();
   //Here need a localsstate cause aggregate 2 arrays and need the outer
   // where find a nameconsole attribute from 6 consoles in localdata
@@ -65,7 +72,7 @@ const MobileAsteroide = () => {
       setToggle(false);
     }
   };*/
-
+  console.log(united.map(item => item.name));
   return (
     <main className="app transition-all ease-in border-0 border-lime-400 relative z-50 w-screen">
       <AnimatePresence>
@@ -102,7 +109,7 @@ const MobileAsteroide = () => {
           </div>
 
           {mobiletoggle && (
-            <div className=" absolute flex flex-col  items-center  border- h-32 border-sky-400  w-96 my-0">
+            <div className=" absolute flex flex-col  items-center  border-0 h-32 border-sky-400  w-96 my-0">
               <motion.div
                 className=" cursor-pointer realtive  z-50"
                 {...myAnimation3("up", width, height)}

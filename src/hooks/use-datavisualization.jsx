@@ -34,21 +34,26 @@ export const useDataVisualization = () => {
   }, [info, statusTable, filterTable]);
 
   const handleMenuChange = (name) => {
+
+    console.log('handleMenuChange: ',name)
+    console.log(united.map(item => item.name));
     const selectedItem = united.find((item) => item.name === name);
+    console.log("selectedItem: ",selectedItem)
     if (selectedItem) {
+    
       setSubButtons(selectedItem.data);
       setNameConsole(name);
     }
   };
 
   const handleClick = (nameconsole, newValues) => {
-    console.log(
+  /*  console.log(
       "useDataVisualization: ",
       "nameconsole: ",
       nameconsole,
       "newValues: ",
       newValues
-    );
+    );*/
     const { title, sign = statusTable.sign } = newValues;
     //console.log("useDataVisualization handleClick most A",statusTable.dashboard );
 

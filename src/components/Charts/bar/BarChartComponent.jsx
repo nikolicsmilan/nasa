@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+/*import React, { useState, useEffect } from "react";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -117,6 +117,8 @@ const BarChartComponent = () => {
       intersect: false,
     },
   };
+
+
   return (
     <div
       className="border-0 border-purple-400 flex justify-center"
@@ -132,4 +134,69 @@ const BarChartComponent = () => {
   );
 };
 
+export default BarChartComponent;*/
+
+
+import React from "react";
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend,
+} from "chart.js";
+import useWindowSize from "../../../hooks/use-windowsize";
+import { MyDataContext } from "../../../context/DataContext";
+import { MyConsoleContext } from "../../../context/ConsoleContext";
+import useBarhartColors from "../../../hooks/use-barchartcolors";
+import useBarChartData from "../../../hooks/use-barchartsdata";
+import CustomBarChart from "./CustomBarChart";
+
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend
+);
+
+const BarChartComponent = () => {
+  const { users } = MyDataContext();
+  const {
+    filteredData,
+    actualMainConsole,
+    actualTypeData,
+    statusTable,
+    filterTable,
+  } = MyConsoleContext();
+  const { width, height } = useWindowSize();
+  const colors = useBarhartColors(users.style);
+  const chartData = useBarChartData(
+    filteredData,
+    filterTable.displayMode,
+    colors
+  );
+
+  return (
+    <div
+      className="border-0 border-purple-400 flex justify-center"
+      style={{ width: width - 800, height: height - 200 }}
+    >
+      <CustomBarChart
+        data={chartData}
+        colors={colors}
+        statusTable={statusTable}
+        height={height - 200}
+        width={width - 800}
+        filterTable={filterTable}
+        filteredData={filteredData}
+      />
+    </div>
+  );
+};
+
 export default BarChartComponent;
+
