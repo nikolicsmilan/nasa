@@ -42,20 +42,12 @@ export const ConsoleContextProvider = ({ children }) => {
   const [acitveMainConsole, setActiveMainConsole] = useState(false);
   const [animationVariants, setAnimationVariants] = useState({});
   const [info, setInfo] = useState("");
-  /*const[message,setMessage]  = useState({
-    description:`You see the ${statusTable.dashboard} 
-    console ${statusTable.graph} chart's in ${filterTable.displayMode}
-     filter with ${filterTable.piece} piece`
-  });*/
   const [message, setMessage] = useState({
     description: `You are viewing the ${statusTable.dashboard} console with a ${statusTable.graph} chart in ${filterTable.displayMode} mode, filtered to show ${filterTable.piece} items, focusing on ${statusTable.datatype}.`,
   });
 
   const [graphConfigurations, setGraphConfigurations] =
     useState(graphConfigInit);
-  // Amikor vissza váltok areara valamilyen paramétert nem kap meg valószinleg és
-  //ezért üres lesz
-  //a táblázat kixcsi az elején
   useEffect(() => {
     const newFilteredData = mainFilteredData({
       sumObject,
@@ -71,15 +63,6 @@ export const ConsoleContextProvider = ({ children }) => {
       description: `You are viewing the ${statusTable.dashboard} dashboard with ${statusTable.graph} chart in ${filterTable.displayMode} mode, filtered to show ${filterTable.piece} items, focusing on ${statusTable.datatype}.`,
     });
   }, [statusTable, filterTable]);
-
-  /*
-  useEffect(() => {
-    setStatusTable((prevFilterTable) => ({
-      ...prevFilterTable,
-      graph: "area",
-    }));
-  }, []);*/
-  //console.log("ConsoleContext filteredData: ",filteredData)
   return (
     <ConsoleContext.Provider
       value={{

@@ -10,7 +10,7 @@ const initStatusTable = {
   sign: "ip",
   order: "asc",
   sourcetype: "max",
-  datatype: "potentialimpacts"
+  datatype: "impacts"
 };
 
 export const useStatusTable = () => {

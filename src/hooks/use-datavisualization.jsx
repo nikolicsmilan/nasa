@@ -13,7 +13,6 @@ export const useDataVisualization = () => {
     graphConfigurations,
     nameconsole,
     setNameConsole,
-    subButtons,
     setSubButtons,
     united,
   } = MyConsoleContext();
@@ -24,38 +23,24 @@ export const useDataVisualization = () => {
 
   useEffect(() => {
     setConsoleContent(<DashboardContent />);
-    //EZ RONTJA EL A DOLGOKAT
-    // MERT CSAK A SUBBTONS VÁLTOZÁSAKOR FUTHATNA LE
-    //DE ÍGY MINDIG LEFUT HISZEN MINDEN AZON VAN AMIKOR A DASHBOARD GRAPH
-    //HISZEN CSAK GENERAL ÉS GRAPH VAN!!!
     if (statusTable.dashboard === "graph" && nameconsole === "graph") {
       handleMenuChange("graph");
     }
   }, [info, statusTable, filterTable]);
 
   const handleMenuChange = (name) => {
-
-    console.log('handleMenuChange: ',name)
-    console.log(united.map(item => item.name));
+    console.log("handleMenuChange: ", name);
+    console.log(united.map((item) => item.name));
     const selectedItem = united.find((item) => item.name === name);
-    console.log("selectedItem: ",selectedItem)
+    console.log("selectedItem: ", selectedItem);
     if (selectedItem) {
-    
       setSubButtons(selectedItem.data);
       setNameConsole(name);
     }
   };
 
   const handleClick = (nameconsole, newValues) => {
-  /*  console.log(
-      "useDataVisualization: ",
-      "nameconsole: ",
-      nameconsole,
-      "newValues: ",
-      newValues
-    );*/
     const { title, sign = statusTable.sign } = newValues;
-    //console.log("useDataVisualization handleClick most A",statusTable.dashboard );
 
     if (nameconsole === "graph") {
       handleGraphClick(
@@ -84,38 +69,3 @@ export const useDataVisualization = () => {
   return { consoleContent, handleClick, handleMenuChange };
 };
 
-/*
-   if (statusTable.dashboard === "graph") {
-      handleMenuChange("graph")
-    }
-*/
-
-/*
-  const handleClick = (nameconsole, newValues) => {
-    const { title, sign = statusTable.sign } = newValues;
-
-    if (nameconsole === "graph") {
-      handleGraphClick(
-        title,
-        sign,
-        graphConfigurations,
-        setStatusTable,
-        setFilterTable
-      );
-    } else if (nameconsole === "filter") {
-      handleFilterClick(
-        title,
-        setFilterTable,
-        graphConfigurations,
-        statusTable
-      );
-    } else {
-      setStatusTable((prevStatusTable) => ({
-        ...prevStatusTable,
-        [nameconsole]: title,
-        sign: sign,
-      }));
-    }
-  };
-
-*/

@@ -243,7 +243,7 @@ export const filterconsole = [
 //
 export const datatypeconsole = [
   {
-    title: "potentialimpacts",
+    title: "impacts",
     icon: FaExclamationTriangle,
     description: "Potential impacts",
     sign: "ip",
