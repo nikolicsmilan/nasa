@@ -1,9 +1,30 @@
-import React from 'react'
+import React from "react";
+import { Line } from "react-chartjs-2";
+import {
+  Chart as ChartJS,
+  Title,
+  Tooltip,
+  Legend,
+  LineElement,
+  CategoryScale,
+  LinearScale,
+} from "chart.js";
+import { linechartoptions } from "../../../locales/chartoptions"; // Hasonlóan, mint az area chart options
 
-const CustomLineChart = () => {
-  return (
-    <div>CustomLineChartComponent</div>
-  )
-}
+ChartJS.register(Title, Tooltip, Legend, LineElement, CategoryScale, LinearScale);
 
-export default CustomLineChart
+const CustomLineChart = ({
+  data,
+  colors,
+  statusTable,
+  width,
+  height,
+  filterTable,
+  filteredData,
+}) => {
+  const options = linechartoptions(colors, statusTable, filterTable, filteredData);
+
+  return <Line data={data} options={options} height={height} width={width} />;
+};
+
+export default CustomLineChart;
