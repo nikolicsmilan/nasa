@@ -724,3 +724,45 @@ button::after{
   /* box-shadow: 0 0 50px #fff;*/
   border-color: #fff;
 }
+
+
+.hexagon {
+  position: relative;
+  width: 70px;
+  height: 60px;
+ /* background-color: #114d66;*/ /* Tailwind sky-400 */
+  margin: 20px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+  background: linear-gradient(
+    to bottom right,
+    hsla(0, 0%, 100%, 0.1) 20%,
+    hsla(0, 0%, 100%, 0.1) 20%
+  );
+}
+
+.hexagon::before {
+  content: "";
+  position: absolute;
+  top: var(--y);
+  left: var(--x);
+  transform: translate(-45%, -20%);
+  width: 0;
+  height: 0;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.8) 0%,
+    rgba(255, 255, 255, 0) 70%
+  );
+  transition: width 0.3s ease, height 0.3s ease;
+}
+
+.hexagon::before {
+  width: 300px;
+  height: 300px;
+}
+
+
+

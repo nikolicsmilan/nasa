@@ -11,6 +11,7 @@ import logo from "../assets/images/earthbg7.png";
 import BiggerConsoles from "../components/consoles/views/BiggerConsoles";
 import { menu } from "../locales/localdata";
 
+
 const LayoutHome = () => {
   const { setToggle, settingsOpen, setSettingsOpen, toggle, choosenStyle } =
     MyDataContext();

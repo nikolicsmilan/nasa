@@ -15,21 +15,21 @@ const BiggerConsoles = ({menupoint}) => {
         >
           <div
             key={item.id} // Asszumáltam, hogy van egy id az item objektumban
-            className={`glowy-button-6 glowy-button-7  shadowactive customshadow3 cursor-pointer 
+            className={`hexagon glowy-button-7 bg-950  shadowactive customshadow3 cursor-pointer 
             rounded-2xl 
-            relative flex-col m-0 w-48  h-48 border-r-2 border-b-2 border-t-0
-       border-primary hover:border-4`}
+            relative flex-col m-0 w-40  h-32 border-r-2 border-b-0 border-t-0
+       border-primary hover:border-0`}
           >
             <div className={`  bg-primary  rounded-2xl
            w-96 h-full shadow-2xl border-2 border-lime-400
                 opacity-10 mt-[0px] z-40`}></div>
 
-            <div className="border-  customshadow rounded-2xl text-2xl opacity-100
-             flex h-56 border-purple-400 shadow-2xl 
+            <div className="border-0  customshadow rounded-2xl text-2xl opacity-100
+             flex h-32 border-purple-400 shadow-2xl 
              items-center justify-center border-0 bg-dark-800 
-             z-20 mt-[-200px] font-bold">
-              <p className={`text-primary mx-2 transform rotate-90 text-4xl `}> {<item.icon />}</p>
-              <h2 className="text-red-600 opacity-100 font-bold text-3xl uppercase ">{item.title}</h2>
+             z-20 mt-[-130px] font-bold">
+              <p className={`text-primary mx-2 transform rotate-90 text-4xl hidden`}> {<item.icon />}</p>
+              <h2 className=" opacity-100 font-bold text-3xl uppercase ">{item.title}</h2>
             </div>
 
 

@@ -45,10 +45,10 @@ const DataConsole = () => {
       <div>Sound: {users.sound}</div>
       <div>Language: {users.language}</div>
       <div className=" ">
-      <div className="hidden  lg:block">Size: lg</div>
-      <div className="hidden md:block lg:hidden">Size: md</div>
-      <div className=" block md:hidden lg:hidden">Size: sm</div>
-    </div> 
+        <div className="hidden  lg:block">Size: lg</div>
+        <div className="hidden md:block lg:hidden">Size: md</div>
+        <div className=" block md:hidden lg:hidden">Size: sm</div>
+      </div>
     </div>
   );
 };

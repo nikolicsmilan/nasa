@@ -3,6 +3,8 @@ import { MyDataContext } from "../../context/DataContext";
 import BiggerConsoles from "../../components/consoles/views/BiggerConsoles";
 import { start } from "../../locales/localdata";
 import { SiNasa } from "react-icons/si";
+import {navigation} from "../../locales/hexagon"
+import HexagonalIconList from "../../components/consoles/views/HexagonalIconList";
 const Home = () => {
   const { setSettings, settingsOpen } = MyDataContext();
   useEffect(() => {
@@ -47,8 +49,9 @@ const Home = () => {
           className="flex w-full h-96 md:h-full md:w-1/2 justify-center
          md:justify-center items-center border-0   md:my-0  "
         >
-          <div className="rounded-2xl border-0 opacity-80 h-48 w-48 flex justify-center items-center bg-dark">
-            <BiggerConsoles menupoint={start} />
+          <div className="rounded-2xl border-0 opacity-80 h-48 w-48 flex justify-center items-center ">
+       
+            <HexagonalIconList items={navigation} centerItem={navigation[0]} />
           </div>
         </div>
       </div>
@@ -64,6 +67,7 @@ const Home = () => {
 };
 
 export default Home;
+//       <BiggerConsoles menupoint={start} />
 /*
   <div className="flex flex-col text-center">
             <span className="bg-dark p-1 text-primary">Earth</span>{" "}
