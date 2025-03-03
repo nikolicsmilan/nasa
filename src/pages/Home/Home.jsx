@@ -1,16 +1,40 @@
-import React, { useEffect } from "react";
+import { useEffect, useState, lazy, Suspense } from "react";
 import { MyDataContext } from "../../context/DataContext";
-import BiggerConsoles from "../../components/consoles/views/BiggerConsoles";
-import { start } from "../../locales/localdata";
 import { SiNasa } from "react-icons/si";
-import {navigation} from "../../locales/hexagon"
-import HexagonalIconList from "../../components/consoles/views/HexagonalIconList";
+
+import muhold from "../../../public/muhold_compress.mp4";
+
+// Fluoreszkáló Pajzs lazy betöltése
+//const PajzsSVG = lazy(() => import("/src/components/PajzsSVG"));
+const StatusIndicator = lazy(() => import("./components/StatusIndicator"));
+const NotificationButton = lazy(() =>
+  import("./components/NotificationButton")
+); 
+const BrowserObjectButton = lazy(() =>
+  import("./components/BrowserObjectButton")
+); // Elhagytam a pontokat// Elhagytam a pontokat
 const Home = () => {
   const { setSettings, settingsOpen } = MyDataContext();
+  const [videoBetoltve, setVideoBetoltve] = useState(false);
+  const [szin, setSzin] = useState("green"); // Kezdeti szín
+  const szinek = ["green", "yellow", "orange", "red"];
+  const [szinIndex, setSzinIndex] = useState(0);
+
   useEffect(() => {
-    setSettings;
     setSettings("Navigation");
-  }, []);
+    const timeoutId = setTimeout(() => {
+      setVideoBetoltve(true);
+    }, 500);
+    return () => clearTimeout(timeoutId);
+  }, [setSettings]);
+
+  useEffect(() => {
+    setSzin(szinek[szinIndex]);
+  }, [szinIndex]);
+
+  const valtoztasdASzin = () => {
+    setSzinIndex((prevIndex) => (prevIndex + 1) % szinek.length);
+  };
 
   return (
     <div
@@ -20,58 +44,57 @@ const Home = () => {
     >
       <div
         className={` flex flex-col md:flex-row border-0 border-red-400 w-full   
-  z-50  relative h-screen  ${settingsOpen ? "opacity-20 " : ""} `}
+          z-50  relative   ${settingsOpen ? "opacity-20 " : ""} `}
       >
         <div
-          className="flex flex-col lg:flex h-72 md:h-full md:h-screen w-full md:w-1/2
-            justify-center items-center  
-           z-50 border-0
-           border-orange-500  lg:bg-gradient opacity-70"
+          className="flex flex-col lg:flex h-screen  w-full md:w-1/2
+              justify-center items-center  
+             z-50 border-0
+             border-orange-500  lg:bg-gradien opacity-70  h-80"
         >
-          <header className="h-full lg:flex items-center justify-center px-6 relative top-20 lg:top-0">
-            <div className="flex flex-col justify-center items-center px-2">
-              <h1 className="text-4xl lg:text-7xl font-semibold px-2 border-b-2 border-primary">
-                {" "}
-                SENTRY
-              </h1>
-              <p className="border-0 h-24 m-0 p-0 mt-[-25px]">
-                {" "}
-                <SiNasa className="text-8xl lg:text-9xl px-0 text-red-500" />{" "}
+          <header className="lg:flex items-center justify-center px-6 relative  border-0 border-pink-400">
+            <div className="flex flex-col justify-start items-center  relative px-2 ">
+              <div className="border-0  m-0 p-0 ">
+                <SiNasa className="text-9xl lg:text-9xl px-0 text-red-500" />
+              </div>
+              <p className="-mt-[20px] text-xl text-center text-primary font-bold">
+              Aszteroida-veszélyjelző rendszer
               </p>
             </div>
-
-          <div>  <p className="lg:text-950 text-xl text-center 
-           text-primary bg-black lg:bg-transparent px-1 rounded">Earth Impact Monitoring </p></div>
           </header>
+          <Suspense fallback={<div>Loading...</div>}>
+            <StatusIndicator szin="#27ae60" />
+          </Suspense>
+          <Suspense fallback={<div>Loading...</div>}>
+            <NotificationButton />
+          </Suspense>
+          <Suspense fallback={<div>Loading...</div>}>
+            <BrowserObjectButton />
+          </Suspense>
         </div>
 
         <div
-          className="flex w-full h-96 md:h-full md:w-1/2 justify-center
-         md:justify-center items-center border-0   md:my-0  "
+          className="flex w-full  md:w-1/2 justify-center
+             md:justify-center items-center border-0 border-blue-300  md:my-0  flex-col"
         >
-          <div className="rounded-2xl border-0 opacity-80 h-48 w-48 flex justify-center items-center ">
-       
-            <HexagonalIconList items={navigation} centerItem={navigation[0]} />
-          </div>
+          <div
+            className="rounded-2xl border-0  border-red-400 opacity-80 
+              w-48 flex justify-center items-center "
+          ></div>
         </div>
       </div>
-      <video
-        src="https://sablonossablon.web.app/video/optimized_earth2.mp4"
-        className="background-video border-0 border-red-400  opacity-100"
-        autoPlay
-        loop
-        muted
-      ></video>
+      {videoBetoltve && (
+        <video
+          src={muhold}
+          className="background-video border-0 border-red-400  opacity-100"
+          autoPlay
+          loop
+          muted
+        />
+      )}
     </div>
   );
 };
 
 export default Home;
-//       <BiggerConsoles menupoint={start} />
-/*
-  <div className="flex flex-col text-center">
-            <span className="bg-dark p-1 text-primary">Earth</span>{" "}
-            <span className="bg-dark p-1 my-2 text-primary">Impact</span>
-            <span className="bg-dark p-1 my-2 text-primary">Monitoring</span>
-            </div>
-*/
+// Earth Impact Monitoring 

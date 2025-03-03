@@ -7,7 +7,7 @@ import SettingsBarAnimation from "../components/Sidebar/SettingsBarAnimation";
 import { settingshome } from "../locales/localdata";
 import MobileConsoleView from "../components/consoles/views/MobileConsoleView";
 import DesktopConsoleView from "../components/consoles/views/DesktopConsoleView";
-import logo from "../assets/images/earthbg7.png";
+import logo from "../assets/images/sat3.png"
 import { menu, mobilmenu } from "../locales/localdata";
 import { MyConsoleContext } from "../context/ConsoleContext";
 import useWindowSize from "../hooks/use-windowsize";

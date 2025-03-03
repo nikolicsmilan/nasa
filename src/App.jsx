@@ -1,51 +1,72 @@
-import React, { useEffect } from "react";
+import  { useEffect, lazy, Suspense } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./App.css";
 import "./tailwind.css";
-import Home from "./pages/Home/Home";
-import Galery from "./pages/Galery/Galery";
-import LayoutHome from "./layouts/LayoutHome";
-import LayoutAsteoride from "./layouts/LayoutAsteoride";
 import Error from "./pages/Error/Error";
-import AsteroideDetail from "./pages/AsteroideDetail/AsteroideDetail";
-import SpaceKnowledge from "./pages/Spaceknowledge/SpaceKnowledge";
-import Quiz from "./pages/Quiz/Quiz";
-import SolarSytsem from "./pages/SolarSystem/SolarSystem";
-import { useSave } from "./hooks/use-saveuser";
+import { useSave } from "./hooks/use-saveuser"; // Ezt ne lazy-zd!
 import { MyDataContext } from "./context/DataContext";
-import Asteroide from "./pages/Asteroide/Asteroide";
 import { useDataVisualization } from "./hooks/use-datavisualization";
 import { graphconsole } from "./locales/localdata";
+
+const LayoutHome = lazy(() => import("./layouts/LayoutHome"));
+const LayoutAsteoride = lazy(() => import("./layouts/LayoutAsteoride"));
+const Home = lazy(() => import("./pages/Home/Home"));
+const Asteroide = lazy(() => import("./pages/Asteroide/Asteroide"));
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <LayoutHome />,
+    element: (
+      <Suspense fallback={<div>Loading Layout...</div>}>
+        <LayoutHome />
+      </Suspense>
+    ),
     errorElement: <Error />,
     children: [
-      { index: true, element: <Home /> }, //path: "", ez a 2 alternatíva van de szerintem ez is jó path:"/",
+      {
+        index: true,
+        element: (
+          <Suspense fallback={<div>Loading Home...</div>}>
+            <Home />
+          </Suspense>
+        ),
+      },
     ],
   },
   {
     path: "/asteroide",
-    element: <LayoutAsteoride />,
+    element: (
+      <Suspense fallback={<div>Loading Asteroide Layout...</div>}>
+        <LayoutAsteoride />
+      </Suspense>
+    ),
     errorElement: <Error />,
-    children: [{ index: true, element: <Asteroide /> }],
+    children: [
+      {
+        index: true,
+        element: (
+          <Suspense fallback={<div>Loading Asteroide Page...</div>}>
+            <Asteroide />
+          </Suspense>
+        ),
+      },
+    ],
   },
 ]);
 function App() {
-  //It is needed for the initilazation
+  //Ez kell, hogy fusson azonnal!
   const { saveUser } = useSave();
+
   const { choosenStyle } = MyDataContext();
   const { handleClick } = useDataVisualization();
 
-  useEffect(()=>{
-    handleClick('graph', graphconsole[1])
-    handleClick('graph', graphconsole[0])
-  },[])
+  useEffect(() => {
+    handleClick("graph", graphconsole[1]);
+    handleClick("graph", graphconsole[0]);
+  }, []);
   return (
     <div className={`${choosenStyle} font-robotoMono `}>
-       <div id="ezaz" className="text-primary hidden">
+      <div id="ezaz" className="text-primary hidden">
         Sampling div tailwind for react charts for dynamic colors
       </div>
       <RouterProvider router={router} />
@@ -54,8 +75,6 @@ function App() {
 }
 
 export default App;
-
-
 //  FONTOS HA ELHAGYOD A / JELET A CHILDRENNÉL REALTIVE PATH LESZ ÍGY MEG ABSZULÚT TEHÁT  ELÉ KELL ÍRNI AMI A PARENTBEN VAN!!!!!!!!!!!!!!!
 //  path: "/route", /galery >> abszolút
 // path:/route, galery >> relatív

@@ -1,7 +1,21 @@
+
 body {
   background: black;
 }
 
+/* App.css */
+.fluoreszkal {
+  animation: fluoreszkalas 2s infinite alternate;
+}
+
+@keyframes fluoreszkalas {
+  from {
+    filter: drop-shadow(0 0 0.2rem #fff) drop-shadow(0 0 0.5rem currentColor);
+  }
+  to {
+    filter: drop-shadow(0 0 0.5rem #fff) drop-shadow(0 0 1rem currentColor);
+  }
+}
 .background-video-container {
   position: relative;
   width: 100%;
@@ -764,5 +778,20 @@ button::after{
   height: 300px;
 }
 
+.stroke-neon {
+  stroke: #00FFFF;
+  stroke-width: 5;
+  stroke-linecap: round;
+}
+.fill-neon {
+  fill: #00FFFF;
+}
+.drop-shadow-neon {
+  filter: drop-shadow(0 0 10px #00FFFF);
+}
+.stroke-grid {
+    stroke: rgba(255, 255, 255, 0.2);
+    stroke-width: 1;
+}
 
 

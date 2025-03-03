@@ -1,19 +1,17 @@
-import React, { useEffect } from "react";
+import React, { useEffect, lazy, Suspense, memo } from "react";
 import { Outlet } from "react-router-dom";
 import { FaCog } from "react-icons/fa";
 import { AnimatePresence } from "framer-motion";
 import { MyDataContext } from "../context/DataContext";
-import SettingsBarAnimation from "../components/Sidebar/SettingsBarAnimation";
 import { settingshome } from "../locales/localdata";
-import MobileConsoleView from "../components/consoles/views/MobileConsoleView";
-import DesktopConsoleView from "../components/consoles/views/DesktopConsoleView";
-import logo from "../assets/images/earthbg7.png";
-import BiggerConsoles from "../components/consoles/views/BiggerConsoles";
-import { menu } from "../locales/localdata";
+import logo from "../assets/images/sat3.png"
+// Lazy betöltés
+const SettingsBarAnimation = lazy(() => import("../components/Sidebar/SettingsBarAnimation"));
+const MobileConsoleView = lazy(() => import("../components/consoles/views/MobileConsoleView"));
+const DesktopConsoleView = lazy(() => import("../components/consoles/views/DesktopConsoleView"));
 
-
-const LayoutHome = () => {
-  const { setToggle, settingsOpen, setSettingsOpen, toggle, choosenStyle } =
+const LayoutHome = memo(() => {
+  const { setToggle, settingsOpen, setSettingsOpen, toggle } =
     MyDataContext();
 
   const clozer = () => {
@@ -52,8 +50,6 @@ const LayoutHome = () => {
               setSettingsOpen((prevToggle) => !prevToggle);
             }}
           />
-        
-          {/*delete FaBars icon that one start two menu */}
           <FaCog
             className={`relative top-0 right-0 z-40 text-4xl m-1 p-2 
              cursor-pointer border-0`}
@@ -76,29 +72,25 @@ const LayoutHome = () => {
               onClick={clozer}
               className="absolute z-50  h-full w-full top-0 right-0 border-lime-300 border-0"
             >
-              {/*MobileMainconsole: content depend on settings  */}
-              <MobileConsoleView stopClozer={stopClozer} />
-              {/*MobileMainconsole end  */}
+              <Suspense fallback={<div>Loading...</div>}>
+                <MobileConsoleView stopClozer={stopClozer} />
+              </Suspense>
 
-              {/*Settingsbar service mobil and desktop screen 
-              settingshome inherit from localdata
-              */}
               <div onClick={stopClozer}>
-                <SettingsBarAnimation menupoint={settingshome} />
+                <Suspense fallback={<div>Loading...</div>}>
+                  <SettingsBarAnimation menupoint={settingshome} />
+                </Suspense>
               </div>
-              {/*Settingsbar end */}
 
-              {/*Desktop Mainconsole: content depend on settings  */}
-
-              <DesktopConsoleView stopClozer={stopClozer} />
-
-              {/*Desktop Mainconsole end  */}
+              <Suspense fallback={<div>Loading...</div>}>
+                <DesktopConsoleView stopClozer={stopClozer} />
+              </Suspense>
             </div>
           )}
         </main>
       </div>
     </AnimatePresence>
   );
-};
+});
 
 export default LayoutHome;
