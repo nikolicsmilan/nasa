@@ -67,9 +67,9 @@ const StatusIndicator = ({ szin = "#27ae60" }) => {
   const stateInfo = getStateInfo(szin);
 
   return (
-    <div className="flex flex-col items-center">
-      <div className="relative">
-        <svg viewBox="0 0 120 150" className="w-64 h-80" style={{ filter: `drop-shadow(0 0 ${stateInfo.glowIntensity} ${szin})` }}>
+    <div className="flex flex-col items-center border-0 w-80">
+      <div className="relative border-0 ">
+        <svg viewBox="0 0 100 120" className="w-60 h-80" style={{ filter: `drop-shadow(0 0 ${stateInfo.glowIntensity} ${szin})` }}>
           <Pajzs szin={szin} glowIntensity={stateInfo.glowIntensity}>
             <KozepsoKor szin={szin} />
             <text
@@ -102,7 +102,7 @@ const StatusIndicator = ({ szin = "#27ae60" }) => {
             mixBlendMode: 'screen'
           }}
         >
-          <svg viewBox="0 0 120 150" className="w-full h-full">
+          <svg viewBox="0 0 100 120" className="w-full h-full">
             <Pajzs szin={szin} glowIntensity={stateInfo.glowIntensity}>
               <path
                 d="M10 20 
