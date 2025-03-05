@@ -20,7 +20,11 @@ const colorPalette = {
 const Pajzs = ({ szin, glowIntensity, children }) => (
   <g>
     <path
-      d="M60,10 L110,40 L110,95 C110,125 85,140 60,140 C35,140 10,125 10,95 L10,40 L60,10Z"
+      d="M10 20 
+         Q50 0, 90 20 
+         L90 80 
+         Q50 100, 10 80 
+         Z"
       fill="rgba(0,0,0,0.05)"
       stroke={szin}
       strokeWidth="1.5"
@@ -35,16 +39,16 @@ const Pajzs = ({ szin, glowIntensity, children }) => (
 const KozepsoKor = ({ szin }) => (
   <g>
     <circle
-      cx="60"
-      cy="75"
+      cx="50"
+      cy="50"
       r="20"
       fill={szin}
       opacity="0.2"
       style={{ filter: `drop-shadow(0 0 5px ${szin})` }}
     />
     <circle
-      cx="60"
-      cy="75"
+      cx="50"
+      cy="50"
       r="20"
       fill="transparent"
       stroke={szin}
@@ -69,8 +73,8 @@ const StatusIndicator = ({ szin = "#27ae60" }) => {
           <Pajzs szin={szin} glowIntensity={stateInfo.glowIntensity}>
             <KozepsoKor szin={szin} />
             <text
-              x="60"
-              y="83"
+              x="50"
+              y="58"
               textAnchor="middle"
               fontSize="26"
               fontWeight="bold"
@@ -79,7 +83,7 @@ const StatusIndicator = ({ szin = "#27ae60" }) => {
               {stateInfo.icon}
             </text>
             <text
-              x="60"
+              x="50"
               y="115"
               textAnchor="middle"
               fontSize="9"
@@ -101,7 +105,11 @@ const StatusIndicator = ({ szin = "#27ae60" }) => {
           <svg viewBox="0 0 120 150" className="w-full h-full">
             <Pajzs szin={szin} glowIntensity={stateInfo.glowIntensity}>
               <path
-                d="M60,10 L110,40 L110,95 C110,125 85,140 60,140 C35,140 10,125 10,95 L10,40 L60,10Z"
+                d="M10 20 
+                   Q50 0, 90 20 
+                   L90 80 
+                   Q50 100, 10 80 
+                   Z"
                 fill="transparent"
                 stroke={szin}
                 strokeWidth="1"
@@ -111,8 +119,8 @@ const StatusIndicator = ({ szin = "#27ae60" }) => {
               />
               <KozepsoKor szin={szin} />
               <circle
-                cx="60"
-                cy="75"
+                cx="50"
+                cy="50"
                 r="25"
                 fill={szin}
                 opacity="0.15"
