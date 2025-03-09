@@ -6,6 +6,7 @@ const { mongoConnect } = require('./services/mongo');
 const logger = require('./utils/logger'); // Import the logger module
 
 const PORT = process.env.PORT || 8000;
+const CONNECT_TO_DB = process.env.CONNECT_TO_DB === 'true';
 
 const server = http.createServer(app);
 
@@ -20,7 +21,13 @@ const server = http.createServer(app);
 // - Retry capability: It's easier to implement retries for database connection in case of failure.
 async function startServer() {
   try {
-    await mongoConnect();  
+    if (CONNECT_TO_DB) {
+      await mongoConnect();
+      logger.info('Connected to MongoDB');
+    } else {
+      logger.info('Not connecting to MongoDB');
+    }
+
     server.listen(PORT, () => {
       logger.info(`Listening on port ${PORT}...`); // Use the logger module
     });
