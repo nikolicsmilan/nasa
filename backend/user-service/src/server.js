@@ -3,7 +3,7 @@ require('dotenv').config();
 const app = require('./app');
 const { mongoConnect } = require('./services/mongo');
 
-const logger = require('./utils/logger'); // Import the logger module
+//const logger = require('./utils/logger'); // Import the logger module
 
 const PORT = process.env.PORT || 8000;
 const CONNECT_TO_DB = process.env.CONNECT_TO_DB === 'true';
@@ -23,16 +23,18 @@ async function startServer() {
   try {
     if (CONNECT_TO_DB) {
       await mongoConnect();
-      logger.info('Connected to MongoDB');
+     // logger.info('Connected to MongoDB');
     } else {
-      logger.info('Not connecting to MongoDB');
+    //  logger.info('Not connecting to MongoDB');
+    console.log(`Start without mongo db `)
     }
 
     server.listen(PORT, () => {
-      logger.info(`Listening on port ${PORT}...`); // Use the logger module
+     // logger.info(`Listening on port ${PORT}...`); // Use the logger module
+     console.log(`Listening on port ${PORT}...`)
     });
   } catch (error) {
-    logger.error("Error during server startup:", error);
+   // logger.error("Error during server startup:", error);
     process.exit(1); // Exit the process if startup fails
   }
 }
