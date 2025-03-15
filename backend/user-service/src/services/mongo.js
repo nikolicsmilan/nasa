@@ -12,9 +12,18 @@ mongoose.connection.once('open', () => {
 mongoose.connection.on('error', (err) => {
   console.error(err);
 });
-
+/*
 async function mongoConnect() {
   await mongoose.connect(MONGO_URL);
+}*/
+async function mongoConnect() {
+  try {
+    await mongoose.connect(MONGO_URL);
+    console.log('MongoDB connection ready!');
+  } catch (error) {
+    console.error('Error connecting to MongoDB:', error);
+    throw error; // Fontos: Dobjuk tovább a hibát!
+  }
 }
 
 async function mongoDisconnect() {
