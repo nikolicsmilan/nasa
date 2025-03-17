@@ -31,6 +31,7 @@ async function startServer() {
     if (CONNECT_TO_DB) {
       await mongoConnect();
       logEvents("Connected to MongoDB", "mongoLog.txt");
+      console.log("Connected to MongoDB");
     } else {
       logEvents("Not connecting to MongoDB", "mongoLog.txt");
       console.log(`Start without mongo db `);
@@ -41,6 +42,7 @@ async function startServer() {
       // Async callback
       //  server.listen(PORT, () => {
       await logEvents(`Listening on port ${PORT}...`, "serverLog.txt");
+      console.log(`Listening on port ${PORT}...`);
     });
   } catch (error) {
     // Awaiting here to ensure the error is logged
@@ -48,6 +50,7 @@ async function startServer() {
     // This is the best compromise, as it guarantees error
     //  logging in a critical situation, even though it blocks the thread briefly.
     await logEvents(error, "errorLog.txt");
+    console.error(error);
       process.exit(1);
   }
 }
