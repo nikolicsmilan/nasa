@@ -2,7 +2,7 @@ const { format } = require("date-fns");
 const { v4: uuid } = require("uuid");
 
 const fs = require("fs");
-const fsPromises = require("fs").promises; 
+const fsPromises = require("fs").promises;
 const path = require("path");
 
 const logEvents = async (message, logName) => {
@@ -10,16 +10,16 @@ const logEvents = async (message, logName) => {
   const logItem = `${dateTime}\t${uuid()}\t${message}\n`;
 
   try {
-    if (!fs.existsSync(path.join(__dirname, "..", "logs"))) {
-      // fs.mkdirSync(path.join(__dirname, '..', 'logs'));
-      await fsPromises.mkdir(path.join(__dirname, "..", "logs")); 
+    if (!fs.existsSync(path.join(__dirname, "..", "..", "logs"))) {
+      // fs.mkdirSync(path.join(__dirname, '..', '..', 'logs'));
+      await fsPromises.mkdir(path.join(__dirname, "..", "..", "logs"));
     }
 
-    // fs.appendFileSync(path.join(__dirname, '..', 'logs', logName), logItem);
+    // fs.appendFileSync(path.join(__dirname, '..', '..', 'logs', logName), logItem);
     await fsPromises.appendFile(
-      path.join(__dirname, "..", "logs", logName),
+      path.join(__dirname, "..","..", "logs", logName),
       logItem
-    ); 
+    );
   } catch (err) {
     console.log(err);
   }
