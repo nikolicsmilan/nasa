@@ -15,7 +15,7 @@ const app = express();
 // Create a rotating write stream
 const accessLogStream = rfs.createStream('access.log', {
     interval: '1d', // Rotate daily
-    path: path.join(__dirname, '..', '..', 'logs', 'morgan') // Log directory
+    path: path.join(__dirname,  '..', 'logs', 'morgan') // Log directory
   });
 
   // Setup the logger
@@ -26,7 +26,7 @@ app.use(express.urlencoded({ extended: false })); // Parse URL-encoded request b
 
 //Routes
 app.get('/', (req, res) => {
-    res.send('Nincs World3git !');
+    res.send('Nincs World4!');
   });
 //app.use('/', api);
 
