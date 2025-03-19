@@ -28,7 +28,7 @@ const GlowyButton4 = ({ children }) => {
   };
 
   return (
-    <button ref={buttonRef} className="glowy-button-4 w-screen h-screen " style={glowStyle}>
+    <button ref={buttonRef} className="glowy-button-4 w-40 h-40 " style={glowStyle}>
       {children}
     </button>
   );

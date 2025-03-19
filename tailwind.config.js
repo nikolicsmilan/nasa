@@ -15,7 +15,7 @@ module.exports = {
             primary: "blue",
           },
           fontFamily: {
-            sans: ['system-ui', 'sans-serif'], // Alapértelmezett sans-serif a system-ui
+            sans: ['Montserrat', 'sans-serif'], // Alapértelmezett sans-serif a system-ui
           },
           fontSize: {
             xs: "0.563rem",
@@ -44,7 +44,7 @@ module.exports = {
               asidebg: "rgb(129, 171, 178)",
             },
             fontFamily: {
-              robotoMono: ['system-ui', 'monospace'], // Itt is cseréld le!
+              robotoMono: ['Monstreat', 'monospace'], // Itt is cseréld le!
             },
             backgroundImage: {
               gradient:
@@ -69,7 +69,7 @@ module.exports = {
               asidebg: "rgb(129, 171, 178)",
             },
             fontFamily: {
-              robotoMono: ['system-ui', 'monospace'], // Itt is cseréld le!
+              robotoMono: ['Montserrat', 'monospace'], // Itt is cseréld le!
             },
             backgroundImage: {
               gradient:

@@ -7,6 +7,7 @@ import GlowyButton3 from "../../../components/buttons/GlowyButton3";
 import GlowyButton4 from "../../../components/buttons/GlowyButton4";
 import GlowyButton5 from "../../../components/buttons/GlowyButton5";
 import { MyConsoleContext } from "../../../context/ConsoleContext";
+import Table_1 from "../../../components/Table/Table_1";
 const currentYear = new Date().getFullYear();
 const dummydata = [
   { title: "torino scale", value: 0 },
@@ -29,6 +30,14 @@ const GeneralDashboard = ({ filteredData }) => {
       >
         General Dashboard
       </div>
+      <div className="flex">
+      <GlowButton2/>
+      <GlowyButton3>Szöveg</GlowyButton3>
+      <GlowyButton4>Szöveg</GlowyButton4>
+      <GlowyButton5>Szüvegem</GlowyButton5>
+      <Table_1/>
+      </div>
+     
     </div>
   );
 };
