@@ -4,7 +4,7 @@ import { FaCog } from "react-icons/fa";
 import { AnimatePresence } from "framer-motion";
 import { MyDataContext } from "../context/DataContext";
 import { settingshome } from "../locales/localdata";
-import logo from "../assets/images/sat3.png"
+import logo from "../assets/images/sat4.png"
 // Lazy betöltés
 const SettingsBarAnimation = lazy(() => import("../components/Sidebar/SettingsBarAnimation"));
 const MobileConsoleView = lazy(() => import("../components/consoles/views/MobileConsoleView"));

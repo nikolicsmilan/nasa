@@ -7,7 +7,7 @@ import SettingsBarAnimation from "../components/Sidebar/SettingsBarAnimation";
 import { settingshome } from "../locales/localdata";
 import MobileConsoleView from "../components/consoles/views/MobileConsoleView";
 import DesktopConsoleView from "../components/consoles/views/DesktopConsoleView";
-import logo from "../assets/images/sat3.png"
+import logo from "../assets/images/sat4.png"
 import { menu, mobilmenu } from "../locales/localdata";
 import { MyConsoleContext } from "../context/ConsoleContext";
 import useWindowSize from "../hooks/use-windowsize";
@@ -140,69 +140,3 @@ const LayoutAsteoride = () => {
 export default LayoutAsteoride;
 
 
-/*
-  <div className="w-32 border-2 px-5">
-              {statusTable.dashboard.charAt(0).toUpperCase() +
-                statusTable.dashboard.slice(1)}
-            </div>
-
-            {!toggle && (
-              <div className="xl:flex glowy-button- relative top-2 hidden">
-                {menu.map((item, index) => (
-                  <div
-                    key={index}
-                    onClick={() => handleClick(item)}
-                    className="glowy-button-5 group relative z-50 border-0 hover:border-red-400 p-2 rounded m-2 bg-950 text-primary cursor-pointer text-3xl hover:bg-600"
-                  >
-                    {<item.icon />}
-                    <div className="text-center absolute top-0 left-0 mt-[80px] ml-2 w-32 hidden group-hover:block bg-gray-700 text-white text-sm rounded p-1 z-50">
-                      {item.description}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            )}
-
-         
-            <div className="w-32 border-2 text-right px-5">
-              {statusTable.graph.charAt(0).toUpperCase() +
-                statusTable.graph.slice(1)}
-            </div>
-*/
-/*
-  <div className="absolute lg:hidden z-50 top-0 left-1/2 transform -translate-x-1/2">
-              <div className="flex  relative top-2 ">
-                {mobilmenu.map((item, index) => (
-                  <div
-                    key={index}
-                    onClick={() => menuHandler(item)}
-                    className="glowy-button-5 group relative z-50 border-0 hover:border-red-400 p-2 rounded m-2 bg-950 text-primary cursor-pointer text-3xl hover:bg-600"
-                  >
-                    {<item.icon />}
-                    <div className="hidden text-center absolute top-0 left-0 mt-[80px] ml-2 w-32  group-hover:block bg-gray-700 text-white text-sm rounded p-1 z-50">
-                      {item.description}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-*/
-/*
-
-          <div className="hidden md:block xl:hidden">
-            <div className="p-10 flex flex-col justify-center items-center border-0 w-screen h-screen">
-              <h1 className="text-center text-lg">
-                You are using a display of a problematic size. We suppose rotate
-                your screen.
-              </h1>
-            
-              <div className="m-10 text-center">
-              <p className="m-1"> (If you can't use this app even after rotating it,
-                contact the manufacturer to get them to make a normal sized
-                display for 99% of devices.</p>
-                <p> Your screen height: {height} px</p>
-                <p> Your screen width: {width} px)</p>
-              </div>
-            </div>
-          </div>
-*/

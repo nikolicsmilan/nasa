@@ -1,4 +1,3 @@
-// TableComponent.js
 import React from "react";
 
 const Table_1 = ({ data }) => {
