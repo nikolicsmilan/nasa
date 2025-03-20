@@ -1,19 +1,3 @@
-/*import React from 'react';
-import { Link } from 'react-router-dom';
-
-const BrowserObjectButton = () => {
-  return (
-    <div className='border-0 text-center w-96 my-10'>
-    
-      <Link to="/objects" className="inline-block bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded">
-     Veszélyes objektumok
-      </Link>
-    </div>
-  );
-};
-
-export default BrowserObjectButton;*/
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 
@@ -22,9 +6,12 @@ const BrowserObjectButton = () => {
     <div className='text-center w-full md:w-96 my-0'>
       <Link 
         to="/objects" 
-        className="w-80 inline-block bg-600 hover:bg-red-600 text-white font-bold py-3 px-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 ease-in-out"
+        className="w-80 inline-block bg-600
+         hover:bg-red-600 text-white 
+         font-bold py-3 px-6 rounded-lg shadow-lg hover:shadow-xl 
+         transition-all duration-300 ease-in-out uppercase"
       >
-        Megfigyelt objektumok listája
+       Aszteroida info
       </Link>
     </div>
   );

@@ -3,7 +3,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./App.css";
 import "./tailwind.css";
 import Error from "./pages/Error/Error";
-import { useSave } from "./hooks/use-saveuser"; // Ezt ne lazy-zd!
+import { useSave } from "./hooks/use-saveuser"; 
 import { MyDataContext } from "./context/DataContext";
 import { useDataVisualization } from "./hooks/use-datavisualization";
 import { graphconsole } from "./locales/localdata";
@@ -54,7 +54,7 @@ const router = createBrowserRouter([
   },
 ]);
 function App() {
-  //Ez kell, hogy fusson azonnal!
+  //This needs to run immediately!
   const { saveUser } = useSave();
 
   const { choosenStyle } = MyDataContext();
@@ -65,7 +65,7 @@ function App() {
     handleClick("graph", graphconsole[0]);
   }, []);
   return (
-    <div className={`${choosenStyle} font-robotoMono `}>
+    <div className={`${choosenStyle} font-mono text-base`}>
       <div id="ezaz" className="text-primary hidden">
         Sampling div tailwind for react charts for dynamic colors
       </div>

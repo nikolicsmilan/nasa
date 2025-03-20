@@ -3,7 +3,7 @@ module.exports = {
   theme: {
     extend: {
       screens: {
-        'xl': '1200px', // Egyedi breakpoint 1200px
+        'xl': '1200px', 
       },
     },
   },
@@ -15,7 +15,7 @@ module.exports = {
             primary: "blue",
           },
           fontFamily: {
-            sans: ['system-ui', 'sans-serif'], // Alapértelmezett sans-serif a system-ui
+            mono: ['monospace'],
           },
           fontSize: {
             xs: "0.563rem",
@@ -44,7 +44,7 @@ module.exports = {
               asidebg: "rgb(129, 171, 178)",
             },
             fontFamily: {
-              robotoMono: ['system-ui', 'monospace'], // Itt is cseréld le!
+              mono: ['monospace'],
             },
             backgroundImage: {
               gradient:
@@ -69,7 +69,7 @@ module.exports = {
               asidebg: "rgb(129, 171, 178)",
             },
             fontFamily: {
-              robotoMono: ['system-ui', 'monospace'], // Itt is cseréld le!
+              mono: ['monospace'], 
             },
             backgroundImage: {
               gradient:
@@ -97,7 +97,7 @@ module.exports = {
               asidebg: "rgb(129, 171, 178)",
             },
             fontFamily: {
-              robotoMono: ['system-ui', 'monospace'], // Itt is cseréld le!
+              mono: ['monospace'],
             },
             backgroundImage: {
               gradient:
@@ -122,7 +122,7 @@ module.exports = {
               asidebg: "rgb(237, 237, 237)",
             },
             fontFamily: {
-              robotoMono: ['system-ui', 'monospace'], // Itt is cseréld le!
+              mono: ['monospace'],
             },
             backgroundImage: {
               gradient:
@@ -138,25 +138,4 @@ module.exports = {
   ],
 };
 
-/*
-fontFamily: {
-  futura: ["Futura", "ui-sans-serif", "system-ui"],
-  arial: ["Arial", "ui-sans-serif", "system-ui"],
-  orbitron: ["Orbitron", "sans-serif"],
-  robotoMono: ["Roboto Mono", "monospace"],
-  exo2: ["Exo 2", "sans-serif"],
-},
-backgroundImage: {
-  gradient:
-    "linear-gradient(45deg, #082f49 1%, #075985 10%,  #cffafe 90% )",
-    mybackground: "url('../src/assets/images/desk.jpg')",
-},*/
-// gradient: "linear-gradient(130deg, #7dd3fc,  #082f49 90%)",
 
-/* fontFamily: {
-              futura: ["Futura", "ui-sans-serif", "system-ui"],
-              arial: ["Arial", "ui-sans-serif", "system-ui"],
-              orbitron: ["Orbitron", "sans-serif"],
-              robotoMono: ["Roboto Mono", "monospace"],
-              exo2: ["Exo 2", "sans-serif"],
-            }, */

@@ -1,6 +1,6 @@
 import React from 'react';
 
-// Színpaletta az állapotinformációkhoz
+// Color palette for status information
 const colorPalette = {
   "#27ae60": { icon: "✓", message: "NINCS VESZÉLY", glowIntensity: "4px" },
   "#2ecc71": { icon: "✓", message: "NINCS VESZÉLY", glowIntensity: "4px" },
@@ -16,8 +16,8 @@ const colorPalette = {
   "red":     { icon: "✕", message: "VESZÉLYES", glowIntensity: "12px" },
 };
 
-// SVG pajzs komponens
-const Pajzs = ({ szin, glowIntensity, children }) => (
+// SVG shield component
+const Shield = ({ color, glowIntensity, children }) => (
   <g>
     <path
       d="M10 20 
@@ -26,59 +26,59 @@ const Pajzs = ({ szin, glowIntensity, children }) => (
          Q50 100, 10 80 
          Z"
       fill="rgba(0,0,0,0.05)"
-      stroke={szin}
+      stroke={color}
       strokeWidth="1.5"
-      style={{ filter: `drop-shadow(0 0 ${glowIntensity} ${szin})` }}
+      style={{ filter: `drop-shadow(0 0 ${glowIntensity} ${color})` }}
     />
    
     {children}
   </g>
 );
 
-// SVG központi kör komponens
-const KozepsoKor = ({ szin }) => (
+//SVG center circle component
+const CentralCircle = ({ color }) => (
   <g>
     <circle
       cx="50"
       cy="50"
       r="20"
-      fill={szin}
+      fill={color}
       opacity="0.2"
-      style={{ filter: `drop-shadow(0 0 5px ${szin})` }}
+      style={{ filter: `drop-shadow(0 0 5px ${color})` }}
     />
     <circle
       cx="50"
       cy="50"
       r="20"
       fill="transparent"
-      stroke={szin}
+      stroke={color}
       strokeWidth="1"
-      style={{ filter: `drop-shadow(0 0 3px ${szin})` }}
+      style={{ filter: `drop-shadow(0 0 3px ${color})` }}
     />
   </g>
 );
 
-const StatusIndicator = ({ szin = "#27ae60" }) => {
-  const getStateInfo = (szin) => {
-    const szinLower = szin.toLowerCase();
-    return colorPalette[szinLower] || { icon: "?", message: "ISMERETLEN", glowIntensity: "6px" };
+const StatusIndicator = ({ color = "#27ae60" }) => {
+  const getStateInfo = (color) => {
+    const colorLower = color.toLowerCase();
+    return colorPalette[colorLower] || { icon: "?", message: "ISMERETLEN", glowIntensity: "6px" };
   };
 
-  const stateInfo = getStateInfo(szin);
+  const stateInfo = getStateInfo(color);
 
   return (
     <div className="flex flex-col items-center border-0 w-80">
       <div className="relative border-0 ">
-        <svg viewBox="0 0 100 120" className="w-60 h-80" style={{ filter: `drop-shadow(0 0 ${stateInfo.glowIntensity} ${szin})` }}>
-          <Pajzs szin={szin} glowIntensity={stateInfo.glowIntensity}>
-            <KozepsoKor szin={szin} />
+        <svg viewBox="0 0 100 120" className="w-60 h-80" style={{ filter: `drop-shadow(0 0 ${stateInfo.glowIntensity} ${color})` }}>
+          <Shield color={color} glowIntensity={stateInfo.glowIntensity}>
+            <CentralCircle color={color} />
             <text
               x="50"
               y="58"
               textAnchor="middle"
               fontSize="26"
               fontWeight="bold"
-              fill={szin}
+              fill={color}
             >
               {stateInfo.icon}
             </text>
@@ -88,12 +88,12 @@ const StatusIndicator = ({ szin = "#27ae60" }) => {
               textAnchor="middle"
               fontSize="9"
               fontWeight="bold"
-              fill={szin}
+              fill={color}
               className="animate-"
             >
               {stateInfo.message}
             </text>
-          </Pajzs>
+          </Shield>
         </svg>
         <div
           className="absolute inset-0 w-full h-full"
@@ -103,7 +103,7 @@ const StatusIndicator = ({ szin = "#27ae60" }) => {
           }}
         >
           <svg viewBox="0 0 100 120" className="w-full h-full">
-            <Pajzs szin={szin} glowIntensity={stateInfo.glowIntensity}>
+            <Shield color={color} glowIntensity={stateInfo.glowIntensity}>
               <path
                 d="M10 20 
                    Q50 0, 90 20 
@@ -111,18 +111,18 @@ const StatusIndicator = ({ szin = "#27ae60" }) => {
                    Q50 100, 10 80 
                    Z"
                 fill="transparent"
-                stroke={szin}
+                stroke={color}
                 strokeWidth="1"
                 opacity="0.3"
                 className="animate-pulse"
                 style={{ animationDuration: '4s' }}
               />
-              <KozepsoKor szin={szin} />
+              <CentralCircle color={color} />
               <circle
                 cx="50"
                 cy="50"
                 r="25"
-                fill={szin}
+                fill={color}
                 opacity="0.15"
                 className="animate-pulse"
                 style={{
@@ -130,7 +130,7 @@ const StatusIndicator = ({ szin = "#27ae60" }) => {
                   animationDuration: '3s'
                 }}
               />
-            </Pajzs>
+            </Shield>
           </svg>
         </div>
       </div>
@@ -140,12 +140,3 @@ const StatusIndicator = ({ szin = "#27ae60" }) => {
 
 export default StatusIndicator;
 
-/*
- <path
-      d="M60,15 L105,42 L105,92 C105,120 82,133 60,133 C38,133 15,120 15,92 L15,42 L60,15Z"
-      fill="transparent"
-      stroke={szin}
-      strokeWidth="1"
-      opacity="0.7"
-    />
-*/
