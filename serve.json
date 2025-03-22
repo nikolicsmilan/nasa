@@ -1,0 +1,13 @@
+{
+    "headers": [
+      {
+        "source": "/assets/index-*.js",
+        "headers": [
+          {
+            "key": "Content-Type",
+            "value": "application/javascript"
+          }
+        ]
+      }
+    ]
+  }
