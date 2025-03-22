@@ -1,7 +1,7 @@
 import  { useEffect, lazy, Suspense } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./App.css";
-//import "./tailwind.css";
+import "./tailwind.css";
 import Error from "./pages/Error/Error";
 import { useSave } from "./hooks/use-saveuser"; 
 import { MyDataContext } from "./context/DataContext";
