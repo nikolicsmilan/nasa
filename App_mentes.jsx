@@ -1,7 +1,7 @@
 import  { useEffect, lazy, Suspense } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import "./App.css";
-import "./tailwind.css";
+//import "./App.css";
+//import "./tailwind.css";
 import Error from "./pages/Error/Error";
 import { useSave } from "./hooks/use-saveuser"; 
 import { MyDataContext } from "./context/DataContext";
@@ -55,7 +55,7 @@ const router = createBrowserRouter([
 ]);
 function App() {
   //This needs to run immediately!
- const { saveUser } = useSave();
+  const { saveUser } = useSave();
 
   const { choosenStyle } = MyDataContext();
   const { handleClick } = useDataVisualization();
@@ -65,12 +65,7 @@ function App() {
     handleClick("graph", graphconsole[0]);
   }, []);
   return (
-    <div className={`${choosenStyle} font-mono text-base`}>
-      <div id="ezaz" className="text-primary hidden">
-        Sampling div tailwind for react charts for dynamic colors
-      </div>
-      <RouterProvider router={router} />
-    </div>
+    <div>Nothing</div>
   );
 }
 
