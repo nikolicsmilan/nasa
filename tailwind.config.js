@@ -133,6 +133,28 @@ module.exports = {
             },
           },
         },
+
+        {
+          name: "sky-refined", // Új téma neve
+          extend: {
+            colors: {
+              primary: "#22d3ee", // sky-400 (vagy a neked tetsző árnyalat)
+              200: "#bae6fd", // sky-200
+              600: "#0284c7", // sky-600
+              950: "rgba(8, 47, 73, 0.7)", // sky-950 áttetsző
+              success: "rgb(63, 178, 121)",
+              info: "rgb(191, 191, 191)",
+              dark: "rgb(0, 0, 0)",
+              asidebg: "rgb(129, 171, 178)",
+            },
+            fontFamily: {
+              mono: ['"Fira Code"', 'monospace']
+            },
+            boxShadow: {
+              DEFAULT: "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)", // Enyhébb árnyék
+            },
+          },
+        },
       ],
     }),
   ],

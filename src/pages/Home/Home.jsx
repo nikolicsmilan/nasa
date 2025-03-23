@@ -2,6 +2,8 @@ import { useEffect, useState, lazy, Suspense } from "react";
 import { MyDataContext } from "../../context/DataContext";
 import { SiNasa } from "react-icons/si";
 import satelite from "../../../public/muhold_compress.mp4";
+import SubscribeConsole from "../../components/consoles/Subscribeconsole/SubscribeConsole";
+import { AnimatePresence } from "framer-motion";
 
 // Fluorescent Shield lazy loading
 const StatusIndicator = lazy(() => import("./components/StatusIndicator"));
@@ -12,7 +14,8 @@ const BrowserObjectButton = lazy(() =>
   import("./components/BrowserObjectButton")
 );
 const Home = () => {
-  const { setSettings, settingsOpen } = MyDataContext();
+  const { setSettings, settingsOpen, subscribeToggle, setSubscribeToggle } =
+    MyDataContext();
   const [videoLoaded, setVideoLoaded] = useState(false);
 
   useEffect(() => {
@@ -22,6 +25,11 @@ const Home = () => {
     }, 500);
     return () => clearTimeout(timeoutId);
   }, [setSettings]);
+
+  const handleSubscribe = () => {
+    setSubscribeToggle((prevState) => !prevState);
+    console.log("hozéééééééééééééééééééééééééééééééééééé");
+  };
 
   return (
     <div
@@ -54,11 +62,18 @@ const Home = () => {
             <StatusIndicator color="#27ae60" />
           </Suspense>
           <Suspense fallback={<div>Töltés...</div>}>
-            <NotificationButton />
+            <NotificationButton handleSubscribe={handleSubscribe} />
           </Suspense>
           <Suspense fallback={<div>Töltés...</div>}>
             <BrowserObjectButton />
           </Suspense>
+        </div>
+        <div className="border-0 border-sky-400  w-full md:w-1/2 ">
+          <AnimatePresence>
+            <SubscribeConsole
+              subscribeToggle={subscribeToggle}
+            ></SubscribeConsole>
+          </AnimatePresence>
         </div>
       </div>
       {/*Delay video loading for improved initial paint performance */}
@@ -76,5 +91,3 @@ const Home = () => {
 };
 
 export default Home;
-
-

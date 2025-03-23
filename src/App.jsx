@@ -12,7 +12,7 @@ const LayoutHome = lazy(() => import("./layouts/LayoutHome"));
 const LayoutAsteoride = lazy(() => import("./layouts/LayoutAsteoride"));
 const Home = lazy(() => import("./pages/Home/Home"));
 const Asteroide = lazy(() => import("./pages/Asteroide/Asteroide"));
-const Subscribe = lazy(() => import("./pages/Subscribe/Subscribe"));
+
 
 const router = createBrowserRouter([
   {
@@ -29,14 +29,6 @@ const router = createBrowserRouter([
         element: (
           <Suspense fallback={<div>Loading Home...</div>}>
             <Home />
-          </Suspense>
-        ),
-      },
-      {
-        path: "/subscribe",
-        element: (
-          <Suspense fallback={<div>Loading Subscribe Page...</div>}>
-            <Subscribe />
           </Suspense>
         ),
       },
