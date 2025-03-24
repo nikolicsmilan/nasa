@@ -3,18 +3,17 @@ import { useSave } from "../hooks/use-saveuser";
 import { useInfo } from "../hooks/use-info";
 import UAParser from "ua-parser-js";
 
-
 const DataContext = createContext();
 
 export const DataContextProvider = ({ children }) => {
-
   const [windowSize, setWindowSize] = useState({
-  //  width: undefined,
-   // height: undefined,
-   width: window.innerWidth || 800, // Provide a default value like 800
-   height: window.innerHeight || 600, // Provide a default value like 600
+    //  width: undefined,
+    // height: undefined,
+    width: window.innerWidth || 800, // Provide a default value like 800
+    height: window.innerHeight || 600, // Provide a default value like 600
   });
   const [toggle, setToggle] = useState(true);
+  const [subscribeToggle, setSubscribeToggle] = useState(false);
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [settings, setSettings] = useState("Navigation");
   const [users, setUsers] = useState({
@@ -62,7 +61,8 @@ export const DataContextProvider = ({ children }) => {
         setIPAddress,
         latitude,
         longitude,
-       
+        subscribeToggle,
+        setSubscribeToggle,
       }}
     >
       {children}

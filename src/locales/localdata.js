@@ -154,6 +154,10 @@ export const styles = [
     title: "space",
     icon: FaPalette,
   },
+  {
+    title: "sky-refined",
+    icon: MdAutoGraph,
+  },
 ];
 
 //sounds menu to every page

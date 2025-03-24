@@ -13,6 +13,7 @@ const LayoutAsteoride = lazy(() => import("./layouts/LayoutAsteoride"));
 const Home = lazy(() => import("./pages/Home/Home"));
 const Asteroide = lazy(() => import("./pages/Asteroide/Asteroide"));
 
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -52,6 +53,8 @@ const router = createBrowserRouter([
       },
     ],
   },
+
+
 ]);
 function App() {
   //This needs to run immediately!
