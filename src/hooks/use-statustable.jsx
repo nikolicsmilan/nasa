@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 const initStatusTable = {
-  dashboard: "general",
+  dashboard: "graph",
   graph: "area",
   information: "nasa",
   operation: "joystick",

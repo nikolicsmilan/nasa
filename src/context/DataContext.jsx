@@ -13,7 +13,7 @@ export const DataContextProvider = ({ children }) => {
     height: window.innerHeight || 600, // Provide a default value like 600
   });
   const [toggle, setToggle] = useState(true);
-  const [subscribeToggle, setSubscribeToggle] = useState(true);
+  const [subscribeToggle, setSubscribeToggle] = useState(false);
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [settings, setSettings] = useState("Navigation");
   const [users, setUsers] = useState({

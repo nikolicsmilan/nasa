@@ -4,7 +4,7 @@ import { Link } from "react-router-dom"; // A navigációhoz
 import { motion } from "framer-motion";
 import { subcribeAnimation } from "../../../utils/motion";
 
-const SubscribeConsole = ({subscribeToggle}) => {
+const SubscribeConsole = ({subscribeToggle, setSubscribeToggle}) => {
 
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
@@ -22,6 +22,9 @@ const SubscribeConsole = ({subscribeToggle}) => {
       setMessage(error.response.data.message);
     }
   };
+  const handleClose = () => {
+    setSubscribeToggle(false);
+  };
 
   return (
     <motion.div
@@ -29,10 +32,13 @@ const SubscribeConsole = ({subscribeToggle}) => {
     initial="exit"
     animate={subscribeToggle ? "animate" : "exit"}
     exit="exit"
-    className="flex w-96 flex-col items-center justify-center h-full"
+    className="flex  flex-col items-center justify-center h-full
+     absolute top-0 left-0 w-full   md:relative md:w-96 md:h-full md:z-0
+   border-0 border-orange-400 "
   >
     {/* A tartalom a hátterezett konténerbe kerül */}
-    <div className="bg-sky-950/70 rounded-lg p-8 w-96 max-w-md shadow-lg border border-sky-600">
+    <div className="z-50 bg-sky-950/70 rounded-lg p-8 w-96 max-w-md 
+    shadow-lg border border-sky-600">
       <h1 className="text-2xl font-bold text-sky-200 mb-4">Feliratkozás</h1>
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
         <div>
@@ -74,12 +80,12 @@ const SubscribeConsole = ({subscribeToggle}) => {
         {message && <div className="text-sky-200">{message}</div>}
       </form>
       {/* Vissza gomb */}
-      <Link
-        to="/"
-        className="mt-4 inline-block align-baseline font-bold text-sm text-sky-200 hover:text-sky-200/80"
-      >
-        Vissza a főoldalra
-      </Link>
+      <button
+          onClick={handleClose}
+          className="mt-4 inline-block align-baseline font-bold text-sm text-sky-200 hover:text-sky-200/80"
+        >
+          Mégsem
+        </button>
     </div>
   </motion.div>
   );

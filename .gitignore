@@ -1,47 +1,47 @@
-# Logs
-logs
+# Logs and temporary files
+logs/
 *.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
+*.suo
+*.sw?
+.DS_Store
 
+# Node.js dependencies
 node_modules
 backend/user-service/node_modules #Explicit kizárás a backendhez
+
+# Build artifacts
 dist
 dist-ssr
-*.local
+build/
 
-# Editor directories and files
+# Editor and IDE files
 .vscode/*
 !.vscode/extensions.json
 .idea
-.DS_Store
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
-#own
-#Don't upload this file
-/src/firebase.js
+
+# OS generated files
+*.local
 
 # Firebase Hosting cache
 .firebase/
 
-# Don't upload this folder
+# Environment variables
+.env
+.env.*
+
+# Linting configuration
+.eslintrc.js
+
+# Specific files to exclude 
+/src/firebase.js
 /src/api/
 /src/pages/mentes
 /src/assets
 /src/assets/video
 /src/assets/images
-build/
-
-.env
-.env.*
-
-.eslintrc.js
-
-dist
 
