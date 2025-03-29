@@ -9,7 +9,7 @@ const DesktopMenuAsteroide = () => {
   return (
     <div
       //put dependency glowy-button-6
-      className={`w-full border-0 border-red-400 h-20  
+      className={`w-full border-0 border-red-400  
       text-dark flex flex-col items-center text-3xl 
         `}
     >

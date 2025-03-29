@@ -5,6 +5,7 @@
 
 body {
   background: black;
+ /* padding-top: 60px;*/
 }
 
 /* App.css */
@@ -203,8 +204,8 @@ because of the overwrite the base class
   position: absolute;
   top: var(--y);
   left: var(--x);
-  width: 150px; /* Size of the glow effect */
-  height: 150px;
+  width: 50px; /* Size of the glow effect */
+  height: 50px;
   transform: translate(-50%, -50%);
   border-radius: 50%;
   background: radial-gradient(circle, rgba(0, 255, 0, 0.4), transparent);
@@ -657,6 +658,48 @@ because of the overwrite the base class
 .stroke-grid {
     stroke: rgba(255, 255, 255, 0.2);
     stroke-width: 1;
+}
+
+.glowy-table {
+  position: relative;
+  font-size: 20px;
+  color: white; /* Text color */
+  background-color: black; /* Background color */
+  border: 2px solid #22d3ee; /* Glowing border color (primary szín) */
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  overflow: hidden;
+  cursor: pointer;
+  transition: color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+/* Glowing effect for text */
+.glowy-table::after {
+  content: "";
+  position: absolute;
+  top: var(--y);
+  left: var(--x);
+  width: 150px; /* Size of the glow effect */
+  height: 150px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(34, 211, 238, 0.4), transparent); /* Glowing effect (primary szín) */
+  transition: opacity 0.3s ease-in-out;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Glowing effect for button on hover */
+.glowy-table:hover {
+  color: #bae6fd; /* sky-200 text on hover */
+  box-shadow: 0 0 15px #22d3ee; /* Glowing shadow (primary szín) */
+}
+
+.glowy-table:hover::after {
+  opacity: 1; /* Show the glowing effect */
 }
 
 
