@@ -26,6 +26,10 @@ const userSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
+  subscriptions: [{ // Subscriptions array
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Subscriber'
+  }],
   // Additional fields for the user profile (optional)
   // profilePicture: { type: String },
   // location: { type: String },

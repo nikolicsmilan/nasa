@@ -6,19 +6,21 @@ const subscriberSchema = new mongoose.Schema({
     required: true,
     auto: true // Automatikusan generálja a MongoDB
   },
-  username: {
-    type: String,
-    required: true,
-  },
   email: {
     type: String,
     required: true,
     unique: true, // Fontos, hogy az email egyedi legyen
+    trim: true,
+    lowercase: true,
   },
   subscriptionDate: {
     type: Date,
     default: Date.now,
   },
+  user: { // Hivatkozás a felhasználóra
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User'
+  }
 });
 
 module.exports = mongoose.model("Subscriber", subscriberSchema);
