@@ -10,22 +10,31 @@ const SubscribeConsole = ({subscribeToggle, setSubscribeToggle}) => {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    try {
-      const response = await axios.post("/api/subscribe", {
-        username,
-        email,
-      });
-      setMessage(response.data.message);
-    } catch (error) {
-      setMessage(error.response.data.message);
-    }
-  };
   const handleClose = () => {
     setSubscribeToggle(false);
   };
 
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      const response = await axios.post("http://localhost:3500/api/subscribers", {
+        username,
+        email,
+      });
+      console.log("Backend response:", response); // Here you can check the full response
+      console.log("Status code:", response.status); // Here you can check the status code
+  
+      if (response.status === 201) {
+        setMessage(response.data.message); // Successful subscription
+      } else {
+        setMessage("An error occurred during subscription."); // Something went wrong
+      }
+  
+    } catch (error) {
+      console.error("Error during subscription:", error);
+      setMessage(error.response?.data?.message || "An error occurred during subscription."); // Display error message
+    }
+  };
   return (
     <motion.div
     variants={subcribeAnimation("right")}

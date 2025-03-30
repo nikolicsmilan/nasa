@@ -52,13 +52,15 @@ const LayoutAsteoride = () => {
   return (
     <AnimatePresence>
       <div
-        className={`overflow-y-auto overflow-x-hidden lg:overflow-y-hidden mystyle border-0 border-red-400
+        className={`overflow-y-aut overflow-x-hidden lg:overflow-y-hidden mystyle border-0 border-red-400
          bg-black text-primary h-screen flex flex-col w-full justify-center items-center`}
       >
-        <header className="w-full flex justify-between border-0 border-lime-600 absolute z-40 top-0 right-0">
+        <header className="w-full flex justify-between border-0 border-lime-600
+         absolute z-40 top-0 right-0 h-20">
           <img
             src={logo}
-            className="relative top-0 right-0 z-40 w-24 m-1 p-2 cursor-pointer border-0"
+            className="relative top-0 right-0 z-40  w-20 m-1 p-2 
+             cursor-pointer border-0"
             onClick={() => {
               setToggle(true);
               setSettingsOpen((prevToggle) => !prevToggle);

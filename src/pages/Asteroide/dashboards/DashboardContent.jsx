@@ -1,5 +1,6 @@
 import GeneralDashboard from "./GeneralDashboard";
 import { GraphContent } from "./GraphContent";
+import TestDashboard from "./TestDashboard";
 import { MyConsoleContext } from "../../../context/ConsoleContext";
 
 export const DashboardContent = () => {
@@ -10,6 +11,9 @@ export const DashboardContent = () => {
 
   if (statusTable.dashboard === "graph") {
     return <GraphContent />;
+  }
+  if (statusTable.dashboard === "test") {
+    return <TestDashboard />;
   }
 
   return (

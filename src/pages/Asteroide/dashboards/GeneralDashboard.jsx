@@ -8,6 +8,7 @@ import GlowyButton4 from "../../../components/buttons/GlowyButton4";
 import GlowyButton5 from "../../../components/buttons/GlowyButton5";
 import { MyConsoleContext } from "../../../context/ConsoleContext";
 import Table_1 from "../../../components/Table/Table_1";
+import SubscriberTable from "../components/SubscriberTable";
 const currentYear = new Date().getFullYear();
 const dummydata = [
   { title: "torino scale", value: 0 },
@@ -21,23 +22,19 @@ const GeneralDashboard = ({ filteredData }) => {
   const tomb = [1, 2, 3];
   return (
     <div
-      className={` flex  flex-wrap  w-full
-   flex-col justify-start bg-lim-400 ${mobiletoggle ? "opacity-50" : ""}`}
+      className={`border-0 p-5 border-red-400 flex flex-wrap w-full 
+   flex-col justify-between bg-lim-400 ${mobiletoggle ? "opacity-50" : ""}`}
     >
       <div
-        className="w-full h-20 text-primary
-   border-0 text-center my-10 text-lg"
+        className="w-full text-primary
+   border-0 text-center my-0 text-lg"
       >
         General Dashboard
       </div>
-      <div className="flex">
-      <GlowButton2/>
-      <GlowyButton3>Szöveg</GlowyButton3>
-      <GlowyButton4>Szöveg</GlowyButton4>
-      <GlowyButton5>Szüvegem</GlowyButton5>
-      <Table_1/>
+
+      <div className="flex flex-col">
+        <SubscriberTable />
       </div>
-     
     </div>
   );
 };

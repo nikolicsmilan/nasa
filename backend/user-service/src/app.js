@@ -7,7 +7,7 @@ const path = require('path');
 const corsOptions = require('./config/corsOptions'); // Import CORS options
 //const authRoutes = require('./auth/authRoutes');   // Import auth routes
 //const userRoutes = require('./user/userRoutes');   // Import user routes
-//const api = require('./routes/api');
+const api = require('./routes/api');
 
 const app = express();
 
@@ -25,9 +25,11 @@ app.use(express.json());    // Parse JSON request bodies
 app.use(express.urlencoded({ extended: false })); // Parse URL-encoded request bodies
 
 //Routes
-app.get('/', (req, res) => {
-    res.send('Nincs World4!');
-  });
-//app.use('/', api);
+
+console.log("app.js: api middleware");
+app.use('/api', (req, res, next) => {
+  console.log("app.js: /api útvonalra érkezett kérés");
+  next(); // Fontos, hogy a next() függvényt meghívd
+}, api);
 
 module.exports = app;
