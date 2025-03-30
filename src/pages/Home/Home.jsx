@@ -2,7 +2,7 @@ import { useEffect, useState, lazy, Suspense } from "react";
 import { MyDataContext } from "../../context/DataContext";
 import { SiNasa } from "react-icons/si";
 import satelite from "../../../public/muhold_compress.mp4";
-import SubscribeConsole from "../../components/consoles/Subscribeconsole/SubscribeConsole";
+import SubscribeConsole from "./components/SubscribeConsole";
 import { AnimatePresence } from "framer-motion";
 
 // Fluorescent Shield lazy loading
