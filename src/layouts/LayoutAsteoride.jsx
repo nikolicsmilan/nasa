@@ -12,10 +12,12 @@ import { menu, mobilmenu } from "../locales/localdata";
 import { MyConsoleContext } from "../context/ConsoleContext";
 import useWindowSize from "../hooks/use-windowsize";
 import DesktopMenuAsteroide from "../pages/Asteroide/components/DesktopMenuAsteroide";
+import { navigationData } from "../locales/navigationData";
 const LayoutAsteoride = () => {
   const { setToggle, settingsOpen, setSettingsOpen, toggle } = MyDataContext();
   const { statusTable, mobiletoggle, setMobileToggle } = MyConsoleContext();
   const { width, height } = useWindowSize();
+
   const clozer = () => {
     setSettingsOpen(false);
   };
@@ -67,14 +69,11 @@ const LayoutAsteoride = () => {
             }}
           />
           <div
-            className="lg:flex justify-between items-center hidden border-0 border-orange-400 w-full"
-            style={
-              width >= breakpoints.lg
-                ? { width: width - 800 }
-                : { width: width }
-            }
+            className="lg:flex flex-1 flex-row justify-center items-center hidden border-0
+             border-orange-400 "
+            
           >
-        <DesktopMenuAsteroide/>
+        <DesktopMenuAsteroide navigationData={navigationData}/>
           </div>
           <FaCog
             className="relative top-0 right-0 z-40 text-4xl m-1 p-2 cursor-pointer border-0"
@@ -84,6 +83,7 @@ const LayoutAsteoride = () => {
             }}
           />
         </header>
+        {/* The header is set to MainConsole component. That relative setti */}
 
         <main className="flex flex-grow z-30 w-full h-full relative border-0 border-purple-400 justify-center">
           {isProblematicSize ? (
@@ -120,8 +120,8 @@ const LayoutAsteoride = () => {
                   <MobileConsoleView stopClozer={stopClozer} />
 
                   <div
-                    className="flex flex-col items-center justify-center my-10 p-2
-                    border-0 h-40 w-full border-red-400"
+                    className="flex flex-col items-center  my-10 p-2
+                    border-0  w-full border-red-400"
                     onClick={stopClozer}
                   >
                     <SettingsBarAnimation menupoint={settingshome} />

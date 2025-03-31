@@ -1,72 +1,156 @@
-import  { useEffect, lazy, Suspense } from "react";
+import { useEffect, lazy, Suspense } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./App.css";
 import "./tailwind.css";
 import Error from "./pages/Error/Error";
-import { useSave } from "./hooks/use-saveuser"; 
+import { useSave } from "./hooks/use-saveuser";
 import { MyDataContext } from "./context/DataContext";
 import { useDataVisualization } from "./hooks/use-datavisualization";
 import { graphconsole } from "./locales/localdata";
-
+import useAsteroidData from "./hooks/useAsteroidData";
+import { filterconsole } from "./locales/localdata";
 const LayoutHome = lazy(() => import("./layouts/LayoutHome"));
 const LayoutAsteoride = lazy(() => import("./layouts/LayoutAsteoride"));
 const Home = lazy(() => import("./pages/Home/Home"));
 const Asteroide = lazy(() => import("./pages/Asteroide/Asteroide"));
+const Graph = lazy(() => import("./pages/Graph/Graph"));
+const Test = lazy(() => import("./pages/Test/Test"));
+const Admin = lazy(() => import("./pages/Admin/Admin"));
 
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: (
-      <Suspense fallback={<div>Loading Layout...</div>}>
-        <LayoutHome />
-      </Suspense>
-    ),
-    errorElement: <Error />,
-    children: [
-      {
-        index: true,
-        element: (
-          <Suspense fallback={<div>Loading Home...</div>}>
-            <Home />
-          </Suspense>
-        ),
-      },
-    ],
-  },
-  {
-    path: "/asteroide",
-    element: (
-      <Suspense fallback={<div>Loading Asteroide Layout...</div>}>
-        <LayoutAsteoride />
-      </Suspense>
-    ),
-    errorElement: <Error />,
-    children: [
-      {
-        index: true,
-        element: (
-          <Suspense fallback={<div>Loading Asteroide Page...</div>}>
-            <Asteroide />
-          </Suspense>
-        ),
-      },
-    ],
-  },
-
-
-]);
 function App() {
   //This needs to run immediately!
- const { saveUser } = useSave();
+  const { saveUser } = useSave();
 
   const { choosenStyle } = MyDataContext();
   const { handleClick } = useDataVisualization();
-
+  const asteroidData = useAsteroidData();
   useEffect(() => {
     handleClick("graph", graphconsole[1]);
     handleClick("graph", graphconsole[0]);
   }, []);
+
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: (
+        <Suspense fallback={<div>Loading Layout...</div>}>
+          <LayoutHome />
+        </Suspense>
+      ),
+      errorElement: <Error />,
+      children: [
+        {
+          index: true,
+          element: (
+            <Suspense fallback={<div>Loading Home...</div>}>
+              <Home />
+            </Suspense>
+          ),
+        },
+      ],
+    },
+    {
+      path: "/asteroide",
+      element: (
+        <Suspense fallback={<div>Loading Asteroide Layout...</div>}>
+          <LayoutAsteoride />
+        </Suspense>
+      ),
+      errorElement: <Error />,
+      children: [
+        {
+          index: true,
+          element: (
+            <Suspense fallback={<div>Loading Asteroide...</div>}>
+              <Asteroide
+                mainConsole={asteroidData}
+                settingsConsole={filterconsole} 
+                informationConsole={filterconsole.map(
+                  (item) => item.description
+                )} 
+              />
+            </Suspense>
+          ),
+        },
+      ],
+    },
+    {
+      path: "/graph",
+      element: (
+        <Suspense fallback={<div>Loading Graph Layout...</div>}>
+          <LayoutAsteoride />
+        </Suspense>
+      ),
+      errorElement: <Error />,
+      children: [
+        {
+          index: true,
+          element: (
+            <Suspense fallback={<div>Loading Graph...</div>}>
+              <Graph
+                mainConsole={asteroidData}
+                settingsConsole={filterconsole} 
+                informationConsole={filterconsole.map(
+                  (item) => item.description
+                )} 
+              />
+            </Suspense>
+          ),
+        },
+      ],
+    },
+    {
+      path: "/test",
+      element: (
+        <Suspense fallback={<div>Loading Graph Layout...</div>}>
+          <LayoutAsteoride />
+        </Suspense>
+      ),
+      errorElement: <Error />,
+      children: [
+        {
+          index: true,
+          element: (
+            <Suspense fallback={<div>Loading Graph...</div>}>
+              <Test
+                mainConsole={asteroidData}
+                settingsConsole={filterconsole} 
+                informationConsole={filterconsole.map(
+                  (item) => item.description
+                )} 
+              />
+            </Suspense>
+          ),
+        },
+      ],
+    },
+    {
+      path: "/admin",
+      element: (
+        <Suspense fallback={<div>Loading Graph Layout...</div>}>
+          <LayoutAsteoride />
+        </Suspense>
+      ),
+      errorElement: <Error />,
+      children: [
+        {
+          index: true,
+          element: (
+            <Suspense fallback={<div>Loading Graph...</div>}>
+              <Admin
+                mainConsole={asteroidData}
+                settingsConsole={filterconsole} 
+                informationConsole={filterconsole.map(
+                  (item) => item.description
+                )} 
+              />
+            </Suspense>
+          ),
+        },
+      ],
+    },
+  ]);
   return (
     <div className={`${choosenStyle} font-mono text-base`}>
       <div id="ezaz" className="text-primary hidden">

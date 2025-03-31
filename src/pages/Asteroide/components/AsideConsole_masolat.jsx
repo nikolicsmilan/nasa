@@ -1,5 +1,6 @@
 import React from "react";
 import Super3dConsole from "../../../components/consoles/views/Super3dConsole";
+//ez csak formát ad neki ledarálja a kapot adatokat
 import { MyConsoleContext } from "../../../context/ConsoleContext";
 import useWindowSize from "../../../hooks/use-windowsize";
 const AsideConsole = ({ source, description,origin }) => {
@@ -19,7 +20,7 @@ const AsideConsole = ({ source, description,origin }) => {
     <aside
       className=" text-primary 
         flex flex-col border-0 border-primary  mx-0
-         bg-gradient2 top-20 relative overflow-y-auto "
+         bg-gradient2 top-20 relative overflow-y-auto"
          style={
           width >= breakpoints["2xl"] 
             ? { width: width - 600, height: height - 150 } // 2XL gets a 150 adjustment
@@ -36,13 +37,15 @@ const AsideConsole = ({ source, description,origin }) => {
               nameconsole={item.name}
               data={item.data}
               origin={origin}
+            // rotateX={0 ||item.position.x}
+             // rotateY={0 ||item.position.y}
+             // rotateZ={0 ||item.position.z}
               description="Ide funkciók kellenek gombok szűrők  adatbázis alapján"
             />
           </div>
         ))}
-       End
       </div>
-   
+    
     </aside>
   );
 };

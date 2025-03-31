@@ -57,7 +57,7 @@ import {
 import { GiLevelEndFlag, GiHorizontalFlip } from "react-icons/gi";
 import { TfiRulerAlt2, TfiBarChart } from "react-icons/tfi";
 import { AiOutlineRadarChart } from "react-icons/ai";
-import { TbChartArcs3, TbApi } from "react-icons/tb";
+import { TbChartArcs3, TbApi,TbDatabaseSearch,TbTestPipe2Filled  } from "react-icons/tb";
 import { IoMdFunnel, IoIosInformationCircleOutline } from "react-icons/io";
 import { BiScatterChart } from "react-icons/bi";
 import { SiNasa, SiFirebase } from "react-icons/si";
@@ -67,8 +67,9 @@ import {
   HiMiniArrowsPointingOut,
 } from "react-icons/hi2";
 
-import { TbDatabaseSearch } from "react-icons/tb";
+
 import { BsGraphDown } from "react-icons/bs";
+
 //Navigation menu Home page
 export const homemenu = [
   {
@@ -106,7 +107,7 @@ export const returnMenu = [
 
 export const settingshome = [
   {
-    title: "Navigation",
+    title: "Menu",
     icon: FaProjectDiagram,
   },
   {
@@ -187,15 +188,27 @@ export const languages = [
 // filterconsole source
 export const dashboards = [
   {
-    title: "general",
-    icon: MdDashboardCustomize,
+    title: "Asteroide",
+    icon: GiEnergyArrow,
     description: "General information",
     animations: "yes",
   },
   {
-    title: "graph",
+    title: "Graph",
     icon: MdOutlineAutoGraph,
     description: "Graphs",
+    animations: "yes",
+  },
+  {
+    title: "Test",
+    icon: TbTestPipe2Filled,
+    description: "Test",
+    animations: "yes",
+  },
+  {
+    title: "Admin",
+    icon: MdDashboardCustomize,
+    description: "Admin",
     animations: "yes",
   },
 ];

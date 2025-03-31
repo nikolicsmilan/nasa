@@ -16,8 +16,8 @@ const SettingsBarAnimation = ({ menupoint }) => {
       initial="exit"
       animate={settingsOpen ? "animate" : "exit"}
       exit="exit"
-      className="lg:w-60 w-full border-0 lg:border-0 
-     rounded m-0 h-96  lg:h-96
+      className="lg:w-60  border-0 lg:border-0 
+     rounded m-1 h-60  lg:h-96
     lg:absolute relative  top-20 lg:right-5 lg:bottom-0
    z-50 flex flex-col items-center "
     >
