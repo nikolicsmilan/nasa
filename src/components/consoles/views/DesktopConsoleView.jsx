@@ -24,7 +24,7 @@ const DesktopConsoleView = ({ stopClozer }) => {
     >
       <div
         onClick={stopClozer}
-        className="glowy-button-6 h-[300px] w-[500px] hidde lg:flex flex-wrap lg:max-w-2xl  border-4 border-primary  relative z-50  "
+        className="glowy-button-6 h-[300px] w-[500px] hidde lg:flex flex-wrap lg:max-w-2xl  border-2 border-primary  relative z-50  "
       >
         <p
           className={` text-primary m-1 text-center border-2 h-6 w-full uppercase relative top-[-50px]`}
