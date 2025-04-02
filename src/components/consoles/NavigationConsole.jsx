@@ -23,7 +23,10 @@ const NavigationConsole = () => {
   //params: {params}
 
   return (
-    <div className=" border-0 border-purple-600 mx-0 w-full ">
+    <div className=" border-2 border-purple-600 mx-0 w-full ">
+    {console.log(
+    `homemenu: ${JSON.stringify(homemenu, null, 2)} asteroidemenu: ${JSON.stringify(asteroidemenu, null, 2)}`
+  )}
       <Consoles menupoint={menu} />
     </div>
   );
