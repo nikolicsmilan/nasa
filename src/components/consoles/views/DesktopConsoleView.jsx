@@ -27,7 +27,7 @@ const DesktopConsoleView = ({ stopClozer }) => {
         className="glowy-button-6 h-[300px] w-[500px] hidde lg:flex flex-wrap lg:max-w-2xl  border-2 border-primary  relative z-50  "
       >
         <p
-          className={` text-primary m-1 text-center border-2 h-6 w-full uppercase relative top-[-50px]`}
+          className={` text-primary m-1 text-center border-0 h-6 w-full uppercase relative `}
         >
           {settings} console -{" "}
           <span className="text-white">{choosenStyle}</span>
@@ -47,18 +47,19 @@ const DesktopConsoleView = ({ stopClozer }) => {
         <div
           className={`absolute bottom-0 right-0 w-8 h-8 bg-transparent border-b-2 border-r-2 border-600 transform translate-x-1 translate-y-2`}
         ></div>
-        {/* settings values equal settingshome in localdata */}
-        {settings === "Navigation" && <NavigationConsole />}
-        {settings === "Style" && <StyleConsole users={users} />}
+        {/* settings values equal settingshome in localdata */} 
+        {settings === "Menu" && <NavigationConsole />}
+        {settings === "Style" && <StyleConsole  />}
         {settings === "Sound" && <SoundConsole />}
         {settings === "Language" && <LanguageConsole />}
-        {settings === "Data" && <DataConsole />}
+       
       </div>
     </motion.div>
   );
 };
 
 export default DesktopConsoleView;
+// {settings === "Data" && <DataConsole />}
 //h-[700px]
 /*  <div className=" w-full shadow-green text-center bottom-[-50px] relative">
           Sound: {users.sound} | Language: {users.language}{" "}

@@ -20,7 +20,7 @@ const MobileConsoleView = ({ stopClozer }) => {
             border-2   border-primary h-2/4  
             relative top-[60px]  z-50 flex lg:hidden flex-col   "
     >
-      {settings === "Navigation" && <NavigationConsole />}
+      {settings === "Menu" && <NavigationConsole />}
       {settings === "Style" && <StyleConsole users={users} />}
       {settings === "Sound" && <SoundConsole />}
       {settings === "Language" && <LanguageConsole />}

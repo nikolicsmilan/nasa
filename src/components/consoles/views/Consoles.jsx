@@ -10,17 +10,17 @@ const Consoles = ({ menupoint }) => {
     setSettingsOpen(false);
   };
   return (
-    <div
+   <div
       className=" border-2 h-full  border-red-400  p-0 w-full flex 
     flex-wrap  overflow-y-auto  items-start center justify-center  "
-    >{console.log(`menupoint ${menupoint.title}`)}
+    >
       {menupoint &&
         menupoint?.map((item) => (
           <NavLink onClick={handleClick} key={item?.title} to={item?.link}>
             <div
               key={item?.id}
               className={`text-3xl glowy-button- 
-             cursor-pointer rounded relative flex-col my-0  border-0 border-orange-400 `}
+             cursor-pointer rou*nded relative flex-col my-0  border-0 border-orange-400 `}
             >
               <div
                 className={`flex flex-col  items-center justify-center
@@ -33,7 +33,7 @@ const Consoles = ({ menupoint }) => {
                   className=" ml-2 hidde group-hover:block  text-white 
             text-sm rounded  z-50"
                 >
-                  {item.title}
+                  {item.title}fggdfgd
                 </div>
               </div>
               {/*The shadow inside the button as a line. Its differ to the other consoles */}
