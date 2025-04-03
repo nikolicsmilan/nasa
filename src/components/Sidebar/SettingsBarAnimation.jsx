@@ -9,7 +9,7 @@ import { slideAnimation } from "../../utils/motion";
 //SETTINGSBAR ANIMATION
 const SettingsBarAnimation = ({ menupoint }) => {
   const { settingsOpen } = MyDataContext();
-
+console.log("Ez a SettingsBarAnimation menupoint: ",menupoint)
   return (
     <motion.div
       variants={slideAnimation("right")}

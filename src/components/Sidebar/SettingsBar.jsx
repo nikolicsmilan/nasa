@@ -9,7 +9,7 @@ const SettingsBar = ({ menupoint }) => {
 
   return (
     <div
-      className="  p-0 lg:p-3 w-full flex items-center justify-start
+      className="p-0 lg:p-3 w-full flex items-center justify-start
     flex-wrap  overflow-y-auto  lg:h-96 border-0 border-primary  "
     >
       {menupoint?.map((item) => (
