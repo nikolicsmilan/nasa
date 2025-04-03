@@ -8,16 +8,17 @@ import GenericConsole from "./GenericConsole";
 const StyleConsole = () => {
   const { saveUser } = useSave();
   const { playSoundClick } = MyAudioContext();
-  const { setChoosenStyle } = MyDataContext();
+  const { setChoosenStyle, users } = MyDataContext();
 
   const handleClick = (item) => {
-    saveUser("style", item?.title)
+    saveUser("style", item?.title);
     setChoosenStyle(item?.title);
-     playSoundClick()
+    playSoundClick();
   };
 
   return (
     <GenericConsole
+      active={users.style}
       data={styles}
       handleClick={handleClick}
       placeholder="ITT VAN VALAMI"
