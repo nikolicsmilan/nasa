@@ -52,7 +52,7 @@ const DesktopConsoleView = ({ stopClozer }) => {
         {settings === "Style" && <StyleConsole  />}
         {settings === "Sound" && <SoundConsole />}
         {settings === "Language" && <LanguageConsole />}
-       
+        {settings === "Data" && <DataConsole />}
       </div>
     </motion.div>
   );
