@@ -1,48 +1,97 @@
 // .eslintrc.cjs
 module.exports = {
   root: true,
-  // Alapértelmezett beállítások (lehetnek üresek vagy általánosak)
-  ignorePatterns: ['dist', 'build', '.eslintrc.cjs', 'node_modules'],
+  // --- ADD THIS SECTION ---
+  env: {
+    browser: true, // Assume browser environment globally unless overridden
+    es2020: true,   // Allow ES2020 features globally
+    node: true      // Allow Node.js globals globally (useful for config files, backend)
+  },
+  parserOptions: {
+    ecmaVersion: 'latest', // Use the latest ECMAScript standard
+    sourceType: 'module',  // Expect ES modules globally
+    ecmaFeatures: {
+      jsx: true           // Enable JSX parsing globally (React projects usually need this)
+    }
+  },
+  // -----------------------
+  settings: {             // Move settings to root if applicable globally
+    react: {
+      version: 'detect' // Automatically detect React version
+    }
+  },
+  ignorePatterns: ['dist', 'build', '.eslintrc.cjs', 'node_modules', '**/*_mentes.*', '**/*.config.js'], // Ignore backup files and maybe root config files if they cause issues
+
+  extends: [ // Move common extends here
+    'eslint:recommended',
+    'plugin:react/recommended', // Keep react rules accessible globally for overrides
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+    'prettier' // Keep prettier at the end globally
+  ],
+  plugins: [ // Move common plugins here
+     'react', // Explicitly declare react plugin
+     'react-hooks',
+     'react-refresh'
+  ],
+
 
   overrides: [
-    // Frontend (React) specifikus beállítások
+    // Frontend (React) specific settings
     {
-      files: ['frontend/**/*.{js,jsx,ts,tsx}'], // Csak a frontend mappán belüli fájlokra
-      env: { browser: true, es2020: true },
-      extends: [
-        'eslint:recommended',
-        'plugin:react/recommended',
-        'plugin:react/jsx-runtime',
-        'plugin:react-hooks/recommended',
-        'prettier', // Fontos, hogy a Prettier legyen az utolsó az extends-ben itt is!
-      ],
-      parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
-      settings: { react: { version: '18.2' } },
-      plugins: ['react-refresh'],
+      files: ['src/**/*.{js,jsx,ts,tsx}', 'frontend/**/*.{js,jsx,ts,tsx}'], // Apply to src/ and frontend/ folders
+      // env, parserOptions, settings, extends, plugins are inherited from root
+      // Only specify things that DIFFER from the root config
       rules: {
-        'react/prop-types': 'off', // Példa: prop-types kikapcsolása, ha TS-t használsz
-        'react/react-in-jsx-scope': 'off', // Az új JSX transform miatt nem kell
+         // Frontend-specific rules override/add to root rules
+        'react/prop-types': 'off',
+        'react/react-in-jsx-scope': 'off',
         'react/jsx-no-target-blank': 'off',
         'react-refresh/only-export-components': [
           'warn',
           { allowConstantExport: true },
         ],
-        // ... egyéb frontend specifikus szabályok
+         // Maybe disable node-specific rules here if needed
+         'no-console': 'off', // Example: Allow console in frontend dev
       },
     },
-    // Backend (Node.js) specifikus beállítások
+    // Backend (Node.js) specific settings
     {
-      files: ['backend/**/*.js'], // Csak a backend mappán belüli fájlokra
-      env: { node: true, es2020: true },
-      extends: [
-        'eslint:recommended',
-        'prettier', // Prettier itt is kell, ha használod backend kódon is
-      ],
-      parserOptions: { ecmaVersion: 'latest', sourceType: 'module' }, // Vagy 'commonjs', ha CJS-t használsz a backendben
+      files: ['backend/**/*.js'], // Apply only to files within the backend folder
+      env: {
+        node: true, // Ensure Node.js env is primary here
+        browser: false // Ensure browser env is off here
+      },
+      // Inherits 'eslint:recommended', 'prettier' from root
+      // Can add node-specific extends if needed: e.g., 'plugin:node/recommended' (requires installation)
       rules: {
-        // ... backend specifikus szabályok (pl. nincs böngésző API használat)
-        'no-console': 'warn', // Példa szabály
+        // Backend-specific rules override/add to root rules
+        'react/prop-types': 'off', // Turn off react rules for backend
+        'react/react-in-jsx-scope': 'off',
+        'react-hooks/rules-of-hooks': 'off',
+        'react-refresh/only-export-components': 'off',
+        // Add/adjust backend rules
+        'no-console': 'warn', // Keep console warning for backend
+        'no-unused-vars': ['warn', { 'argsIgnorePattern': '^_' }], // Example: warn unused vars, ignore if starts with _
+
+        // Example node-specific rules (if you install eslint-plugin-node)
+        // 'node/no-unpublished-require': 'off',
       },
     },
+    // Config files (Example) - Often need CommonJS if not using type:module everywhere
+    // {
+    //   files: ['*.config.js', '.eslintrc.cjs'],
+    //   env: {
+    //     node: true,
+    //   },
+    //   parserOptions: {
+    //     sourceType: 'script' // Or 'commonjs' if applicable depending on ESLint version/plugins
+    //   }
+    // }
   ],
+   // Global rules can be defined here, they apply unless overridden
+   rules: {
+       // Example: Allow console.log globally for now, override specific folders
+       // 'no-console': 'off',
+   }
 };
