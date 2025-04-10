@@ -17,14 +17,14 @@ const Super3dConsole = ({
     <div
      
       //put dependency glowy-button-6
-      className={`glassmorphis 
+      className={` glassmorphis 
       relative z-10 rounded 
 
       border-600 
       text-dark flex flex-col items-start w-80 
      m-0 p-0  border-0`}
     >
-      
+        <p className="text-center glowy-button-10 p-1 m-3 mt-1 w-64 hidden">{nameconsole}</p>
       <div className="hover:glowy-button-5   flex flex-row flex-wrap text-2xl my-0
         relative z-10 cursor-pointer border-0 ">
         {data.map((item, index) => (

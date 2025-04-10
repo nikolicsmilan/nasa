@@ -76,7 +76,7 @@ const LayoutAsteoride = () => {
         <DesktopMenuAsteroide navigationData={navigationData}/>
           </div>
           <FaCog
-            className="relative top-0 right-0 z-40 text-4xl m-1 p-2 cursor-pointer border-0"
+            className=" relative top-0 right-0 z-40 text-4xl m-1 p-2 cursor-pointer border-0"
             onClick={() => {
               setToggle(true);
               setSettingsOpen((prevToggle) => !prevToggle);
