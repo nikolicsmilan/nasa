@@ -27,19 +27,19 @@ const AsideConsole = ({ source, description,origin }) => {
               : { width: width - 20, height: height - 250 } // Other sizes
         }
     >
-     
+     {console.log("source: ",source)}
       <div className="flex flex-col  h-full bg-red-40  ">
         {source.map((item, index) => (
-          <div key={index} className="relative border-400  my-1 border-0 p-2 ">
+          <div key={index} className="relative border-400  my-1 border-2 p-2 ">
             <Super3dConsole
               nameconsole={item.name}
               data={item.data}
-              origin={origin}
+             // origin={origin}
               description="Ide funkciók kellenek gombok szűrők  adatbázis alapján"
             />
           </div>
         ))}
-       End
+    
       </div>
    
     </aside>
