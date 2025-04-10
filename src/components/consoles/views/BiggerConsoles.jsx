@@ -1,4 +1,3 @@
-import React from 'react'
 import { NavLink } from "react-router-dom";
 import { MyDataContext } from '../../../context/DataContext';
 const BiggerConsoles = ({menupoint}) => {
@@ -45,7 +44,7 @@ export default BiggerConsoles
 //     border-l-4 border-b-4 border-t-0 border-r-0 
 
 /*
-import React from 'react'
+
 import { NavLink } from "react-router-dom";
 import { MyDataContext } from '../../../context/DataContext';
 const BiggerConsoles = ({menupoint}) => {

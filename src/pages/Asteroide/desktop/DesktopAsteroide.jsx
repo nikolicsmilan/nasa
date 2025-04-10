@@ -1,10 +1,9 @@
-import React from "react";
 import MainConsole from "../../../components/consoles/views/MainConsole";
 import LeftConsolesAside from "../components/LeftConsolesAside";
 import RightConsolesAside from "../components/RightConsolesAside";
 //import MainConsoleFrame from '../components/MainConsoleFrame'
 
-const DesktopAsteroide = ({}) => {
+const DesktopAsteroide = () => {
   return (
     <div
       className={`flex flex-row  w-full 

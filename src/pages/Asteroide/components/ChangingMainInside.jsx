@@ -1,4 +1,3 @@
-import React from 'react'
 import { useDataVisualization } from '../../../hooks/use-datavisualization'
 import { MyConsoleContext } from '../../../context/ConsoleContext';
 const ChangingMainInside = () => {

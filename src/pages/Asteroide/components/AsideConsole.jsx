@@ -1,4 +1,3 @@
-import React from "react";
 import Super3dConsole from "../../../components/consoles/views/Super3dConsole";
 import { MyConsoleContext } from "../../../context/ConsoleContext";
 import useWindowSize from "../../../hooks/use-windowsize";

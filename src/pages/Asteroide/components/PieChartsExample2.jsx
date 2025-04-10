@@ -1,4 +1,3 @@
-import React from 'react';
 import { Sector } from 'recharts';
 
 const PieChartsExample2 = (props) => {

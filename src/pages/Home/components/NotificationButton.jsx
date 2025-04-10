@@ -1,6 +1,3 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-
 const NotificationButton = ({handleSubscribe}) => {
   return (
     <div className='border-0 text-center w-96'>

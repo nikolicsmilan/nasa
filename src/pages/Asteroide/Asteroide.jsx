@@ -1,6 +1,4 @@
-import React from "react";
 import { MyDataContext } from "../../context/DataContext";
-
 import DesktopAsteroide from "./desktop/DesktopAsteroide";
 import MobileAsteroide from "./mobile/MobileAsteroide";
 

@@ -27,7 +27,7 @@ export const DataContextProvider = ({ children }) => {
   const [ipAddress, setIPAddress] = useState("");
   const [latitude, setLatitude] = useState(null);
   const [longitude, setLongitude] = useState(null);
-  //console.log("Ez a browserInfo: ", browserInfo);
+ 
 
   useEffect(() => {
     // Parse the user agent string to get browser and device information
@@ -82,8 +82,8 @@ export const MyDataContext = () => {
 const { browser: { name: browserName } = {} } = browserInfo;
 
 // Ez egy üres karakterláncot ad a browserName-nek, ha a browserInfo null vagy üres
-console.log(`Böngésző neve: ${browserName}`);*/
-//console.log("Ez a browserName: ",browserName)
+
+
 
 /*
   useEffect(()=>{
