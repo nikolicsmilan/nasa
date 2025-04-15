@@ -1,6 +1,7 @@
 import ControlPanel from "../components/ControlPanel";
 import CenterPanel from "../components/CenterPanel";
 import InfoPanel from "../components/InfoPanel";
+import GraphControls from "../components/GraphControls";
 
 const GraphDesktop = ({ graphdatasource }) => {
   return (
@@ -9,7 +10,9 @@ const GraphDesktop = ({ graphdatasource }) => {
        relative z-50 border-0 border-pink-400`}
     >
       <div className="border-0 border-red-400 w-80">
-        <ControlPanel graphdatasource={graphdatasource} />
+        <ControlPanel>
+          <GraphControls graphdatasource={graphdatasource} />
+        </ControlPanel>
       </div>
       <div className="border-0 lg:relative lg:top-5 flex-1  ">
         <CenterPanel />

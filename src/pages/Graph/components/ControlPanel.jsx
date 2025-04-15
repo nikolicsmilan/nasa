@@ -1,6 +1,5 @@
-import Super3dConsole from "../../../components/consoles/views/Super3dConsole";
 import useWindowSize from "../../../hooks/use-windowsize";
-const ControlPanel = ({ graphdatasource={name:"hozé"} }) => {
+const ControlPanel = ({ children }) => {
   const { width, height } = useWindowSize();
 
   const breakpoints = {
@@ -17,29 +16,13 @@ const ControlPanel = ({ graphdatasource={name:"hozé"} }) => {
          bg-gradient2 top-20 relative overflow-y-auto opacity-100 z-50 rounded"
       style={
         width >= breakpoints["2xl"]
-          ? {  height: height - 150 } // 2XL gets a 150 adjustment
+          ? { height: height - 150 } // 2XL gets a 150 adjustment
           : width >= breakpoints.xl
           ? { height: height - 50 } // XL gets a 50 adjustment
-          : {  height: height - 250 } // Other sizes
+          : { height: height - 250 } // Other sizes
       }
     >
-     <div className="flex flex-col   border-lime-400  ">
-   
-     {
-          graphdatasource.map((item, index) => (
-            <div
-              key={index}
-              className="relative border-400  my-1 border-0 p-2 "
-            >
-              <Super3dConsole
-                nameconsole={item.name}
-                data={item.data}
-                description="Ide funkciók kellenek gombok szűrők  adatbázis alapján"
-              />
-            </div>
-          ))}
-      </div>
-   
+      {children}
     </aside>
   );
 };
