@@ -3,6 +3,7 @@ import CenterPanel from "../components/CenterPanel";
 import InfoPanel from "../components/InfoPanel";
 import GraphControls from "../components/GraphControls";
 import GraphCenterContent from "../components/GraphCenterPanel";
+import GraphInfoContent from "../components/GraphInfoContent";
 
 const GraphDesktop = ({ graphdatasource }) => {
   return (
@@ -21,7 +22,9 @@ const GraphDesktop = ({ graphdatasource }) => {
         </CenterPanel>
       </div>
       <div className="w-64 border-0">
-        <InfoPanel />
+        <InfoPanel >
+        <GraphInfoContent/>
+        </InfoPanel>
       </div>
     </div>
   );

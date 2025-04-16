@@ -1,4 +1,4 @@
-import { MyConsoleContext } from "../../../context/ConsoleContext";
+/*import { MyConsoleContext } from "../../../context/ConsoleContext";
 
 import TypingAnimation from "../../../components/TypingAnimation/TypingAnimation";
 const InfoPanel = () => {
@@ -14,6 +14,18 @@ const InfoPanel = () => {
           </div>
         ))}
       </div>
+    </div>
+  );
+};
+
+export default InfoPanel;*/
+
+
+const InfoPanel = ({ children }) => {
+  return (
+    <div className="border-0 p-1 border-red-400 top-20 relative">
+      {/* Megjeleníti a gyermekként kapott tartalmat */}
+      {children}
     </div>
   );
 };
