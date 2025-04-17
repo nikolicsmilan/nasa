@@ -51,12 +51,18 @@ import {
   MdOutlineAutoGraph,
   MdSignalCellularAlt1Bar,
   MdSignalCellularAlt2Bar,
-  MdSignalCellularAlt,MdAnalytics 
+  MdSignalCellularAlt,
+  MdAnalytics,
 } from "react-icons/md";
 import { GiLevelEndFlag, GiHorizontalFlip } from "react-icons/gi";
 import { TfiRulerAlt2, TfiBarChart } from "react-icons/tfi";
 import { AiOutlineRadarChart } from "react-icons/ai";
-import { TbChartArcs3, TbApi,TbDatabaseSearch,TbTestPipe2Filled  } from "react-icons/tb";
+import {
+  TbChartArcs3,
+  TbApi,
+  TbDatabaseSearch,
+  TbTestPipe2Filled,
+} from "react-icons/tb";
 import { IoMdFunnel, IoIosInformationCircleOutline } from "react-icons/io";
 import { BiScatterChart } from "react-icons/bi";
 import { SiNasa, SiFirebase } from "react-icons/si";
@@ -65,7 +71,6 @@ import {
   HiMiniArrowsPointingIn,
   HiMiniArrowsPointingOut,
 } from "react-icons/hi2";
-
 
 import { BsGraphDown } from "react-icons/bs";
 
@@ -305,17 +310,16 @@ export const datatypeconsole = [
     icon: GiEnergyArrow,
     description: "Energy",
     animations: "yes",
-    sign: "ps_cum", 
+    sign: "ps_cum",
   },
   {
     title: "date",
     icon: FaCalendarAlt,
     description: "Year of observation",
     animations: "yes",
-    sign: "last_obs", 
+    sign: "last_obs",
   },
 ];
-
 
 export const graphconsole = [
   {
@@ -410,18 +414,16 @@ export const resourceconsole = [
   },
 ];
 
-export const dashboradsourceforMobile = [ {
-  name: "dashboard",
-  icon: MdDashboard,
-  description: "Dashboard",
-  origin: "right center",
-  data: dashboards,
-  position: {
-    x: "-10",
-    y: "20",
-    z: "0",
+export const dashboradsourceforMobile = [
+  {
+    name: "dashboard",
+    icon: MdDashboard,
+    description: "Dashboard",
+    origin: "right center",
+    data: dashboards,
+  
   },
-},]
+];
 
 export const leftasideconsolesource = [
   {
@@ -430,11 +432,6 @@ export const leftasideconsolesource = [
     description: "Type of Data",
     origin: "right center",
     data: datatypeconsole,
-    position: {
-      x: "10",
-      y: "20",
-      z: "0",
-    },
   },
   {
     name: "graph",
@@ -442,11 +439,6 @@ export const leftasideconsolesource = [
     description: "Year of observation",
     origin: "right center",
     data: graphconsole,
-    position: {
-      x: "-10",
-      y: "20",
-      z: "0",
-    },
   },
   {
     name: "filter",
@@ -454,11 +446,6 @@ export const leftasideconsolesource = [
     description: "Year of observation",
     origin: "right center",
     data: filterconsole,
-    position: {
-      x: "10",
-      y: "20",
-      z: "0",
-    },
   },
 ];
 
@@ -469,11 +456,6 @@ export const rightasideconsolesource = [
     description: "Type of Data",
     origin: "right center",
     data: datatypeconsole,
-    position: {
-      x: "10",
-      y: "20",
-      z: "0",
-    },
   },
   {
     name: "information",
@@ -481,11 +463,6 @@ export const rightasideconsolesource = [
     description: "Year of observation",
     origin: "right center",
     data: informationconsole,
-    position: {
-      x: "-10",
-      y: "20",
-      z: "0",
-    },
   },
 
   {
@@ -494,11 +471,6 @@ export const rightasideconsolesource = [
     description: "Year of observation",
     origin: "right center",
     data: resourceconsole,
-    position: {
-      x: "10",
-      y: "20",
-      z: "0",
-    },
   },
 ];
 
@@ -583,7 +555,6 @@ export const mobilmenu = [
     sign: "ps_max",
     animations: "yes",
   },
-  
 ];
 
 /*

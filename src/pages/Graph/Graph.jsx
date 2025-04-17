@@ -1,8 +1,12 @@
+import { useState } from "react";
 import { MyDataContext } from "../../context/DataContext";
 import GraphDesktop from "./desktop/GraphDesktop";
 import GraphMobile from "./mobile/GraphMobile";
 import { graphdatasource } from "../../locales/graphdata";
+import { leftasideconsolesource } from "../../locales/localdata";
 const Graph = () => {
+
+ 
   const { toggle } = MyDataContext();
   console.log("graphdatasource: ", graphdatasource);
   return (

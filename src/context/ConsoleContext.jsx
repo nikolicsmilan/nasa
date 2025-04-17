@@ -21,11 +21,9 @@ const graphConfigInit = [
   { name: "scatter", min: 5, max: 10 },
   { name: "funnel", min: 5, max: 10 },
 ];
-//const united = [...leftasideconsolesource, ...dashboradsourceforMobile];
+
 export const ConsoleContextProvider = ({ children }) => {
-  const [united,setUnited] = useState([...dashboradsourceforMobile,...leftasideconsolesource, ]);
   const [sumObject, setSumObject] = useState(sentry.data);
-  const [subButtons, setSubButtons] = useState(dashboradsourceforMobile.data);
   const [filteredData, setFilteredData] = useState(sentry.data);
   const [statusTable, setStatusTable] = useStatusTable();
   const [nameconsole, setNameConsole] = useState("dashboard");
@@ -89,9 +87,9 @@ export const ConsoleContextProvider = ({ children }) => {
         graphConfigurations,
         nameconsole,
         setNameConsole,
-        subButtons,
-        setSubButtons,
-        united,
+        //subButtons,
+       // setSubButtons,
+       // united,
         mobiletoggle,
         setMobileToggle,
         message,

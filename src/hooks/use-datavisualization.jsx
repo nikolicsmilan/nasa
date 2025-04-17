@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { MyConsoleContext } from "../context/ConsoleContext";
 import { DashboardContent } from "../pages/Asteroide/dashboards/DashboardContent";
 import { handleGraphClick } from "../utils/handleGraphClick";
 import { handleFilterClick } from "../utils/handleFilterClick";
-export const useDataVisualization = () => {
+
+export const useDataVisualization = (united) => {
   const {
     info,
     statusTable,
@@ -14,7 +15,7 @@ export const useDataVisualization = () => {
     nameconsole,
     setNameConsole,
     setSubButtons,
-    united,
+    //united már nem jön contextből
   } = MyConsoleContext();
 
   const [consoleContent, setConsoleContent] = useState(() => (
@@ -27,17 +28,17 @@ export const useDataVisualization = () => {
       handleMenuChange("graph");
     }
   }, [info, statusTable, filterTable]);
-
+/*
   const handleMenuChange = (name) => {
-    console.log("handleMenuChange: ", name);
-    console.log(united.map((item) => item.name));
+ //console.log("handleMenuChange: ", name);
+  //  console.log(united.map((item) => item.name));
     const selectedItem = united.find((item) => item.name === name);
-    console.log("selectedItem: ", selectedItem);
+   // console.log("selectedItem: ", selectedItem);
     if (selectedItem) {
       setSubButtons(selectedItem.data);
       setNameConsole(name);
     }
-  };
+  };*/
 
   const handleClick = (nameconsole, newValues) => {
     const { title, sign = statusTable.sign } = newValues;
@@ -66,6 +67,6 @@ export const useDataVisualization = () => {
     }
   };
 
-  return { consoleContent, handleClick, handleMenuChange };
+  return { consoleContent, handleClick};
 };
 

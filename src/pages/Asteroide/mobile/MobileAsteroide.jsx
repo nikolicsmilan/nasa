@@ -1,4 +1,4 @@
-import React from "react";
+import{useState} from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { myAnimation3 } from "../../../utils/motion";
 import { MyConsoleContext } from "../../../context/ConsoleContext";
@@ -6,13 +6,16 @@ import BottomConsole from "../../../components/consoles/BottomConsole";
 import { useDataVisualization } from "../../../hooks/use-datavisualization";
 import MainConsole from "../../../components/consoles/views/MainConsole";
 import useWindowSize from "../../../hooks/use-windowsize";
-
+import { leftasideconsolesource,dashboradsourceforMobile } from "../../../locales/localdata";
+import { useMenuLogic } from "../../../hooks/useMenuLogic";
 const MobileAsteroide = () => {
   const { width, height } = useWindowSize();
-  const { nameconsole, subButtons, mobiletoggle, united } = MyConsoleContext();
+  const [united,setUnited] = useState([...dashboradsourceforMobile,...leftasideconsolesource, ]);
+    const [subButtons, setSubButtons] = useState(dashboradsourceforMobile.data);
+  const { nameconsole,  mobiletoggle,  } = MyConsoleContext();
 
-  const { handleClick, handleMenuChange } = useDataVisualization();
-
+  const { handleClick } = useDataVisualization();
+  const {  handleMenuChange } = useMenuLogic(united,setSubButtons);
   console.log(united.map((item) => item.name));
   return (
     <main className="app transition-all ease-in border-0 border-lime-400 relative z-50 w-screen">
