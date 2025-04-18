@@ -1,10 +1,9 @@
-import React from "react";
 import { MyDataContext } from "../../context/DataContext";
 import { MyAudioContext } from "../../context/AudioContext";
 
 //SETTINGSBAR LOOK
 const SettingsBar = ({ menupoint }) => {
-  const { choosenStyle, setSettings } = MyDataContext();
+  const { setSettings } = MyDataContext();
   const { playSoundClick } = MyAudioContext();
 
   return (
@@ -14,6 +13,7 @@ const SettingsBar = ({ menupoint }) => {
     >
       {menupoint?.map((item) => (
         <div
+        key={item?.title}
           onClick={() => {
             setSettings(item?.title);
             playSoundClick();

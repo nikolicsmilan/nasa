@@ -6,7 +6,6 @@ import { createBarChartData } from "./createBarChartData";
 export const mainFilteredData = ({
   sumObject,
   statusTable,
-  filterTable,
   displayMode,
   piece,
 }) => {

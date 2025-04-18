@@ -17,7 +17,7 @@ const dummydata = [
   { title: "earliestimpact", value: currentYear + 100 },
 ];
 const GeneralDashboard = ({ filteredData }) => {
-  const [sumObject, setSumObject] = useState(nasa);
+ 
   const { mobiletoggle } = MyConsoleContext();
   const tomb = [1, 2, 3];
   return (

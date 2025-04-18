@@ -1,4 +1,4 @@
-import{useState} from "react";
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { myAnimation3 } from "../../../utils/motion";
 import { MyConsoleContext } from "../../../context/ConsoleContext";
@@ -6,16 +6,22 @@ import BottomConsole from "../../../components/consoles/BottomConsole";
 import { useDataVisualization } from "../../../hooks/use-datavisualization";
 import MainConsole from "../../../components/consoles/views/MainConsole";
 import useWindowSize from "../../../hooks/use-windowsize";
-import { leftasideconsolesource,dashboradsourceforMobile } from "../../../locales/localdata";
+import {
+  leftasideconsolesource,
+  dashboradsourceforMobile,
+} from "../../../locales/localdata";
 import { useMenuLogic } from "../../../hooks/useMenuLogic";
 const MobileAsteroide = () => {
   const { width, height } = useWindowSize();
-  const [united,setUnited] = useState([...dashboradsourceforMobile,...leftasideconsolesource, ]);
-    const [subButtons, setSubButtons] = useState(dashboradsourceforMobile.data);
-  const { nameconsole,  mobiletoggle,  } = MyConsoleContext();
+  const [united, setUnited] = useState([
+    ...dashboradsourceforMobile,
+    ...leftasideconsolesource,
+  ]);
+  const [subButtons, setSubButtons] = useState(dashboradsourceforMobile.data);
+  const { nameconsole, mobiletoggle } = MyConsoleContext();
 
   const { handleClick } = useDataVisualization();
-  const {  handleMenuChange } = useMenuLogic(united,setSubButtons);
+  const { handleMenuChange } = useMenuLogic(united, setSubButtons);
   console.log(united.map((item) => item.name));
   return (
     <main className="app transition-all ease-in border-0 border-lime-400 relative z-50 w-screen">
@@ -31,7 +37,7 @@ const MobileAsteroide = () => {
                 >
                   {united.map((item, index) => (
                     <div
-                      key={item.name || index} 
+                      key={item.name || index}
                       className="cursor-pointer text-3xl text-info m-2 flex flex-col justify-center"
                       onClick={() => handleMenuChange(item.name)}
                     >

@@ -54,7 +54,7 @@ const Home = () => {
               </div>
               {/*English name in future: Earth Impact Monitoring */}
               <p className="-mt-[20px] text-xl text-center text-primary font-bold">
-                Aszteroida-vészjelző rendszer!
+                Aszteroida-vészjelző rendszer
               </p>
             </div>
           </header>
