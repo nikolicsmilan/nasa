@@ -1,18 +1,18 @@
 import GeneralDashboard from "./GeneralDashboard";
 import { GraphContent } from "./GraphContent";
 import TestDashboard from "./TestDashboard";
-import { MyConsoleContext } from "../../../context/ConsoleContext";
+//import { MyConsoleContext } from "../../../context/ConsoleContext";
 
-export const DashboardContent = () => {
-  const { statusTable } = MyConsoleContext();
-  if (statusTable.dashboard === "general") {
+export const DashboardContent = ({ statusTable,filteredData,handleClick}) => {
+ // const { statusTable } = MyConsoleContext();
+  if (statusTable?.dashboard === "general") {
     return <GeneralDashboard />;
   }
 
-  if (statusTable.dashboard === "graph") {
-    return <GraphContent />;
+  if (statusTable?.dashboard === "graph") {
+    return <GraphContent  statusTable={statusTable} filteredData={filteredData} handleClick={handleClick}/>;
   }
-  if (statusTable.dashboard === "test") {
+  if (statusTable?.dashboard === "test") {
     return <TestDashboard />;
   }
 

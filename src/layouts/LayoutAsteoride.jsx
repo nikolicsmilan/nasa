@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { Outlet } from "react-router-dom";
 import { FaCog } from "react-icons/fa";
 import { AnimatePresence } from "framer-motion";
@@ -8,14 +8,12 @@ import { settingshome } from "../locales/localdata";
 import MobileConsoleView from "../components/consoles/views/MobileConsoleView";
 import DesktopConsoleView from "../components/consoles/views/DesktopConsoleView";
 import logo from "../assets/images/sat4.png"
-import { menu, mobilmenu } from "../locales/localdata";
-import { MyConsoleContext } from "../context/ConsoleContext";
 import useWindowSize from "../hooks/use-windowsize";
 import DesktopMenuAsteroide from "../pages/Asteroide/components/DesktopMenuAsteroide";
 import { navigationData } from "../locales/navigationData";
 const LayoutAsteoride = () => {
   const { setToggle, settingsOpen, setSettingsOpen, toggle } = MyDataContext();
-  const { statusTable, mobiletoggle, setMobileToggle } = MyConsoleContext();
+
   const { width, height } = useWindowSize();
 
   const clozer = () => {
@@ -34,20 +32,7 @@ const LayoutAsteoride = () => {
     }
   }, [settingsOpen, setToggle]);
 
-  const breakpoints = {
-    sm: 640,
-    md: 768,
-    lg: 1024,
-    xl: 1200,
-    "2xl": 1536,
-  };
-  const menuHandler = (item) => {
-    if (item.title === "showmenu") {
-      setMobileToggle(true);
-    } else {
-      setMobileToggle(false);
-    }
-  };
+
   // Ellenőrizd a szélességet és a magasságot is
   const isProblematicSize = false;
   //const isProblematicSize = (width >= 768 && width < 1200) || height < 630;
