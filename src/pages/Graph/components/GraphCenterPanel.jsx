@@ -1,9 +1,9 @@
-import { useDataVisualization } from "../../../hooks/use-datavisualization"; // Ellenőrizd az elérési utat!
+//import { useDataVisualization } from "../../../hooks/use-datavisualization"; // Ellenőrizd az elérési utat!
 import useWindowSize from "../../../hooks/use-windowsize"; // Ellenőrizd az elérési utat!
 
-const GraphCenterContent = () => {
+const GraphCenterPanel = ({consoleContent}) => {
   // Hook-ok és kontextus használata az adatok és állapotok eléréséhez
-  const { consoleContent } = useDataVisualization();
+  //const { consoleContent } = useDataVisualization();
   const { width, height } = useWindowSize();
 
   // Breakpoint definíciók (maradhatnak itt, vagy kiemelhetők egy közös helyre)
@@ -37,4 +37,4 @@ const GraphCenterContent = () => {
   );
 };
 
-export default GraphCenterContent;
+export default GraphCenterPanel;

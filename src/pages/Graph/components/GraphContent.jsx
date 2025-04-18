@@ -9,20 +9,23 @@ import {
   FunnelChartComponent,
 } from "../../../components/Charts/index";
 import { MyConsoleContext } from "../../../context/ConsoleContext";
+
 //w-full border-0 border-orange-400 flex justify-center
 
-export const GraphContent = () => {
-  const { statusTable, mobiletoggle } = MyConsoleContext();
+export const GraphContent = ({ statusTable, filterTable, filteredData }) => {
+  const { mobiletoggle } = MyConsoleContext();
+
   switch (statusTable.graph) {
     case "area":
       return (
         <div
           className={`border-0 border-red-400 w-full  flex flex-col
-             items-center justify-center ${
-            mobiletoggle ? "opacity-50" : ""
-          }`}
+             items-center justify-center ${mobiletoggle ? "opacity-50" : ""}`}
         >
-          <AreaChartComponent />
+          <AreaChartComponent
+            statusTable={statusTable}
+            filteredData={filteredData}
+          />
         </div>
       );
     case "bar":
