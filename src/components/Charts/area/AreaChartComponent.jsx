@@ -26,9 +26,9 @@ ChartJS.register(
   Filler
 );
 
-const AreaChartComponent = () => {
+const AreaChartComponent = (statusTable,filterTable,filteredData) => {
   const { users } = MyDataContext();
-  const { filteredData, filterTable, statusTable } = MyConsoleContext();
+  //const { filteredData, filterTable, statusTable } = MyConsoleContext();
   const { width, height } = useWindowSize();
   const colors = useAreaChartColors(users.style);
   const chartData = useAreaChartData(

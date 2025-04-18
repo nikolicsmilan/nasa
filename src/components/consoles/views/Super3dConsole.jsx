@@ -1,21 +1,12 @@
-import React from "react";
-import { useColor } from "../../../hooks/use-color";
-import { useDataVisualization } from "../../../hooks/use-datavisualization";
+//import { useColor } from "../../../hooks/use-color";
+//import { useDataVisualization } from "../../../hooks/use-datavisualization";
 
-const Super3dConsole = ({
-  nameconsole,
-  data,
-  rotateX,
-  rotateY,
-  rotateZ,
-  origin,
-}) => {
-  const { colorIze } = useColor(nameconsole);
-  const { handleClick } = useDataVisualization();
+const Super3dConsole = ({ nameconsole, data, handleClick }) => {
+  //const { colorIze } = useColor(nameconsole);
+  //  const { handleClick } = useDataVisualization();
 
   return (
     <div
-     
       //put dependency glowy-button-6
       className={` glassmorphis 
       relative z-10 rounded 
@@ -24,9 +15,13 @@ const Super3dConsole = ({
       text-dark flex flex-col items-start w-80 
      m-0 p-0  border-0`}
     >
-        <p className="text-center glowy-button-10 p-1 m-3 mt-1 w-64 hidden">{nameconsole}</p>
-      <div className="hover:glowy-button-5   flex flex-row flex-wrap text-2xl my-0
-        relative z-10 cursor-pointer border-0 ">
+      <p className="text-center glowy-button-10 p-1 m-3 mt-1 w-64 hidden">
+        {nameconsole}
+      </p>
+      <div
+        className="hover:glowy-button-5   flex flex-row flex-wrap text-2xl my-0
+        relative z-10 cursor-pointer border-0 "
+      >
         {data.map((item, index) => (
           <div
             key={index}

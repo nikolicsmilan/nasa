@@ -1,9 +1,9 @@
-import { MyConsoleContext } from "../../../context/ConsoleContext"; // Ellenőrizd az utat
+//import { MyConsoleContext } from "../../../context/ConsoleContext"; // Ellenőrizd az utat
 import TypingAnimation from "../../../components/TypingAnimation/TypingAnimation"; // Ellenőrizd az utat
 
-const GraphInfoContent = () => {
+const GraphInfoContent = ({message,statusTable}) => {
   // Kontextusból származó adatok lekérése
-  const { statusTable, message } = MyConsoleContext();
+ // const { statusTable, message } = MyConsoleContext();
 
   return (
 
