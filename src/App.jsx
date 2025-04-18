@@ -1,14 +1,15 @@
-import { useEffect, lazy, Suspense } from "react";
+import {  useState,lazy, Suspense } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./App.css";
 import "./tailwind.css";
 import Error from "./pages/Error/Error";
 import { useSave } from "./hooks/use-saveuser";
 import { MyDataContext } from "./context/DataContext";
-import { useDataVisualization } from "./hooks/use-datavisualization";
-import { graphconsole } from "./locales/localdata";
+//import { useDataVisualization } from "./hooks/use-datavisualization";
+//import { graphconsole } from "./locales/localdata";
 import useAsteroidData from "./hooks/useAsteroidData";
 import { filterconsole } from "./locales/localdata";
+import { sentry } from "./locales/nasadummy";
 const LayoutHome = lazy(() => import("./layouts/LayoutHome"));
 const LayoutAsteoride = lazy(() => import("./layouts/LayoutAsteoride"));
 const Home = lazy(() => import("./pages/Home/Home"));
@@ -23,12 +24,12 @@ function App() {
   const { saveUser } = useSave();
 
   const { choosenStyle } = MyDataContext();
-  const { handleClick } = useDataVisualization();
+
+
+  // This will be the sumobject. sumObject now is dummy data
   const asteroidData = useAsteroidData();
-  useEffect(() => {
-    handleClick("graph", graphconsole[1]);
-    handleClick("graph", graphconsole[0]);
-  }, []);
+  const [sumObject, setSumObject] = useState(sentry.data);
+
 
   const router = createBrowserRouter([
     {
@@ -63,13 +64,7 @@ function App() {
           index: true,
           element: (
             <Suspense fallback={<div>Loading Asteroide...</div>}>
-              <Asteroide
-                mainConsole={asteroidData}
-                settingsConsole={filterconsole} 
-                informationConsole={filterconsole.map(
-                  (item) => item.description
-                )} 
-              />
+             
             </Suspense>
           ),
         },
@@ -89,11 +84,7 @@ function App() {
           element: (
             <Suspense fallback={<div>Loading Graph...</div>}>
               <Graph
-                mainConsole={asteroidData}
-                settingsConsole={filterconsole} 
-                informationConsole={filterconsole.map(
-                  (item) => item.description
-                )} 
+             sumObject={sumObject}
               />
             </Suspense>
           ),
@@ -178,4 +169,15 @@ export default App;
       </div>
       <RouterProvider router={router} />
     </div>
+*/
+
+
+/*
+ <Asteroide
+                mainConsole={asteroidData}
+                settingsConsole={filterconsole} 
+                informationConsole={filterconsole.map(
+                  (item) => item.description
+                )} 
+              />
 */

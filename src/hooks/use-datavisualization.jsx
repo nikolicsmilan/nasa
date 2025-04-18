@@ -4,31 +4,47 @@ import { DashboardContent } from "../pages/Asteroide/dashboards/DashboardContent
 import { handleGraphClick } from "../utils/handleGraphClick";
 import { handleFilterClick } from "../utils/handleFilterClick";
 
-export const useDataVisualization = (united) => {
+export const useDataVisualization = (
+  statusTable,
+  setStatusTable,
+  filterTable,
+  setFilterTable,
+  filteredData
+) => {
   const {
     info,
-    statusTable,
-    filterTable,
-    setStatusTable,
-    setFilterTable,
+    // statusTable,
+    //filterTable,
     graphConfigurations,
     nameconsole,
-    setNameConsole,
-    setSubButtons,
+    //setNameConsole,
+    // setSubButtons,
     //united már nem jön contextből
   } = MyConsoleContext();
 
   const [consoleContent, setConsoleContent] = useState(() => (
-    <DashboardContent />
+    <DashboardContent  statusTable={statusTable} filteredData={filteredData} />
   ));
 
   useEffect(() => {
-    setConsoleContent(<DashboardContent />);
+    setConsoleContent(<DashboardContent  statusTable={statusTable} filteredData={filteredData} handleClick={handleClick}/>);
+    //ez a része valószínűleg nem ide való hanem mobil nézetre
+    //de még azt is teljesen átalakítom mert alapvetően rosz a logika benne
+    if (statusTable?.dashboard === "graph" && nameconsole === "graph") {
+    //  handleMenuChange("graph");
+    }
+  }, [info, statusTable, filterTable]);
+
+
+  /*
+    useEffect(() => {
+    setConsoleContent(<DashboardContent  statusTable={statusTable}/>);
     if (statusTable.dashboard === "graph" && nameconsole === "graph") {
       handleMenuChange("graph");
     }
   }, [info, statusTable, filterTable]);
-/*
+  */
+  /*
   const handleMenuChange = (name) => {
  //console.log("handleMenuChange: ", name);
   //  console.log(united.map((item) => item.name));
@@ -41,7 +57,7 @@ export const useDataVisualization = (united) => {
   };*/
 
   const handleClick = (nameconsole, newValues) => {
-    const { title, sign = statusTable.sign } = newValues;
+    const { title, sign = statusTable?.sign } = newValues;
 
     if (nameconsole === "graph") {
       handleGraphClick(
@@ -67,6 +83,5 @@ export const useDataVisualization = (united) => {
     }
   };
 
-  return { consoleContent, handleClick};
+  return {  handleClick };
 };
-
