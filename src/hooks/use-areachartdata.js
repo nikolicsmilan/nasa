@@ -1,73 +1,43 @@
-// useAreaChartData.js
 import { useState, useEffect } from 'react';
 
-const useAreaChartData = (filteredData, displayMode, colors) => {
+// A hook most már csak a feldolgozott adatokat és a színeket kapja
+const useAreaChartData = (displayedData, colors) => {
   const [chartData, setChartData] = useState({
     labels: [],
     datasets: [],
   });
 
   useEffect(() => {
-    if (displayMode === "inc") {
-      setChartData({
-        labels: filteredData.map((d) => d.name),
-        datasets: [
-          {
-            label: "Value",
-            data: filteredData.map((d) => d.value),
-            borderColor: "rgba(255, 99, 132, 1)", // Szín "inc" módhoz
-            backgroundColor: colors.areaInc,
-            fill: true,
-            tension: 0.4,
-          },
-        ],
-      });
-    } else if (displayMode === "desc") {
-      setChartData({
-        labels: filteredData.map((d) => d.name),
-        datasets: [
-          {
-            label: "Value",
-            data: filteredData.map((d) => d.value),
-            borderColor: "rgba(54, 162, 235, 1)", // Szín "desc" módhoz
-            backgroundColor: colors.areaDesc,
-            fill: true,
-            tension: 0.4,
-          },
-        ],
-      });
-    } else {
-      setChartData({
-        labels: filteredData.map((d) => d.name),
-        datasets: [
-          {
-            label: "Max",
-            data: filteredData.map((d) => d.max?.value),
-            borderColor: "rgba(136, 132, 216, 1)",
-            backgroundColor: colors.area1,
-            fill: true,
-            tension: 0.4,
-          },
-          {
-            label: "Avg",
-            data: filteredData.map((d) => d.avg?.value),
-            borderColor: "rgba(130, 202, 157, 1)",
-            backgroundColor: colors.area2,
-            fill: true,
-            tension: 0.4,
-          },
-          {
-            label: "Min",
-            data: filteredData.map((d) => d.min?.value),
-            borderColor: "rgba(251, 191, 36, 1)",
-            backgroundColor: colors.area3,
-            fill: true,
-            tension: 0.4,
-          },
-        ],
-      });
+    // Biztonságos hozzáférés a színekhez alapértelmezett értékkel
+    const currentColors = colors || {
+      area1: 'rgba(136, 132, 216, 0.5)', // Csak egy színre van szükségünk
+    };
+
+    // Ellenőrizzük, hogy a displayedData érvényes-e
+    if (!displayedData || displayedData.length === 0) {
+      setChartData({ labels: [], datasets: [] }); // Üres chart, ha nincs adat
+      return;
     }
-  }, [filteredData, displayMode, colors]);
+
+    // ÚJ, EGYSZERŰSÍTETT LOGIKA:
+    // Létrehozunk EGYETLEN datasettet a displayedData alapján.
+    setChartData({
+      // Label lehet a fullname (ha van) vagy az index
+      labels: displayedData.map((d, index) => d.fullname || `Item ${index + 1}`),
+      datasets: [
+        {
+          label: "Value", // TODO: Ezt később a 'config.dataType'-ból kellene venni dinamikusan
+          data: displayedData.map((d) => d._parsedValue), // A parse-olt értékeket használjuk
+          borderColor: currentColors.area1, // Használunk egy színt a palettáról
+          backgroundColor: currentColors.area1,
+          fill: true,
+          tension: 0.4,
+        },
+        // NINCS TÖBB max, avg, min dataset!
+      ],
+    });
+
+  }, [displayedData, colors]); // Függőségek: a bejövő adat és a színek
 
   return chartData;
 };
