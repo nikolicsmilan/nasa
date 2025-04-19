@@ -1,212 +1,124 @@
 import {
+  // Fa ikonkészlet (Régebbi vagy általános)
   FaChartArea,
   FaCalendarAlt,
   FaExclamationTriangle,
   FaTachometerAlt,
   FaChartLine,
-  FaPlus,
-  FaMinus,
 } from "react-icons/fa";
-import { FaArrowUpWideShort, FaArrowDownShortWide } from "react-icons/fa6";
+
 import {
+  // Fa6 ikonkészlet (Újabb, pl. rendezéshez)
+  FaArrowUpWideShort,
+  FaArrowDownShortWide,
+} from "react-icons/fa6";
+
+import {
+  // Md ikonkészlet
   MdOutlineFormatListNumbered,
   MdBrightness6,
   MdPieChart,
-  MdFilterListAlt,
-  MdSignalCellularAlt1Bar,
-  MdSignalCellularAlt2Bar,
-  MdSignalCellularAlt,
-  MdAnalytics,
+  MdFilterListAlt, // filter group icon
 } from "react-icons/md";
-import { GiLevelEndFlag } from "react-icons/gi";
-import { TfiRulerAlt2, TfiBarChart } from "react-icons/tfi";
-import { AiOutlineRadarChart } from "react-icons/ai";
-import { TbChartArcs3, TbDatabaseSearch } from "react-icons/tb";
-import { IoMdFunnel } from "react-icons/io";
-import { BiScatterChart } from "react-icons/bi";
-import { GiEnergyArrow } from "react-icons/gi";
-import { BsGraphDown } from "react-icons/bs";
 
-export const datatypeconsole = [
-  {
-    title: "impacts",
-    icon: FaExclamationTriangle,
-    description: "Potential impacts",
-    sign: "ip",
-    animations: "yes",
-  },
-  {
-    title: "magnitudo",
-    icon: MdBrightness6,
-    description: "Magnitudo",
-    sign: "h",
-    animations: "yes",
-  },
-  {
-    title: "palermo",
-    icon: MdOutlineFormatListNumbered,
-    description: "Palermo scale",
-    sign: "ps_max",
-    animations: "yes",
-  },
-  {
-    title: "velocity",
-    icon: FaTachometerAlt,
-    description: "Velocity",
-    sign: "v_inf",
-    animations: "yes",
-  },
-  {
-    title: "torino",
-    icon: GiLevelEndFlag,
-    description: "Torino scale",
-    sign: "ts_max",
-    animations: "yes",
-  },
-  {
-    title: "diameter",
-    icon: TfiRulerAlt2,
-    description: "Diameter",
-    sign: "diameter",
-    animations: "yes",
-  },
-  {
-    title: "energy",
-    icon: GiEnergyArrow,
-    description: "Energy",
-    animations: "yes",
-    sign: "ps_cum",
-  },
-  {
-    title: "date",
-    icon: FaCalendarAlt,
-    description: "Year of observation",
-    animations: "yes",
-    sign: "last_obs",
-  },
+import {
+  // Gi ikonkészlet
+  GiLevelEndFlag,
+  GiEnergyArrow,
+} from "react-icons/gi";
+
+import {
+  // Tfi ikonkészlet
+  TfiRulerAlt2,
+  TfiBarChart,
+} from "react-icons/tfi";
+
+import {
+  // Ai ikonkészlet
+  AiOutlineRadarChart,
+} from "react-icons/ai";
+
+import {
+  // Tb ikonkészlet
+  TbChartArcs3,
+  TbDatabaseSearch, // datatype group icon
+} from "react-icons/tb";
+
+import {
+  // Io ikonkészlet
+  IoMdFunnel,
+} from "react-icons/io";
+
+import {
+  // Bi ikonkészlet
+  BiScatterChart,
+} from "react-icons/bi";
+
+import {
+  // Bs ikonkészlet
+  BsGraphDown, // graph group icon
+} from "react-icons/bs";
+
+// --- 1. Adattípus Konzol ---
+// A felhasználó által választható adatok, amiket megjelenítünk.
+export const datatypeConsole = [
+  { title: "impacts", icon: FaExclamationTriangle, description: "Potential impacts", sign: "ip" },
+  { title: "magnitudo", icon: MdBrightness6, description: "Magnitudo", sign: "h" },
+  { title: "palermo", icon: MdOutlineFormatListNumbered, description: "Palermo scale", sign: "ps_max" },
+  { title: "velocity", icon: FaTachometerAlt, description: "Velocity", sign: "v_inf" },
+  { title: "torino", icon: GiLevelEndFlag, description: "Torino scale", sign: "ts_max" },
+  { title: "diameter", icon: TfiRulerAlt2, description: "Diameter", sign: "diameter" },
+  { title: "energy", icon: GiEnergyArrow, description: "Energy", sign: "ps_cum" },
+  { title: "date", icon: FaCalendarAlt, description: "Observation Date", sign: "last_obs" }, // Leírás pontosítva
 ];
 
-export const graphconsole = [
-  {
-    title: "area",
-    icon: FaChartArea,
-    description: "Area",
-  },
-  {
-    title: "bar",
-    icon: TfiBarChart,
-    description: "BarChart",
-  },
-  {
-    title: "line",
-    icon: FaChartLine,
-    description: "LineChart",
-  },
-  {
-    title: "pie",
-    icon: MdPieChart,
-    description: "PieChart",
-  },
-  {
-    title: "radar",
-    icon: AiOutlineRadarChart,
-    description: "RadarChart",
-  },
-  {
-    title: "radialBar",
-    icon: TbChartArcs3,
-    description: "RadaialBarChart",
-  },
-  {
-    title: "scatter",
-    icon: BiScatterChart,
-    description: "ScatterChart",
-  },
-  {
-    title: "funnel",
-    icon: IoMdFunnel,
-    description: "FunnelChart",
-  },
+// --- 2. Grafikon Típus Konzol ---
+// A felhasználó által választható megjelenítési formák.
+export const graphConsole = [
+  { title: "area", icon: FaChartArea, description: "Area Chart" }, // Leírás pontosítva
+  { title: "bar", icon: TfiBarChart, description: "Bar Chart" },
+  { title: "line", icon: FaChartLine, description: "Line Chart" },
+  { title: "pie", icon: MdPieChart, description: "Pie Chart" },
+  { title: "radar", icon: AiOutlineRadarChart, description: "Radar Chart" },
+  { title: "radialBar", icon: TbChartArcs3, description: "Radial Bar Chart" }, // Leírás pontosítva
+  { title: "scatter", icon: BiScatterChart, description: "Scatter Chart" },
+  { title: "funnel", icon: IoMdFunnel, description: "Funnel Chart" },
 ];
 
-export const filterconsole = [
+// --- 3. Rendezés Konzol (EGYSZERŰSÍTETT) ---
+// A felhasználó által választható rendezési irányok.
+export const sortOrderConsole = [
   {
-    title: "max",
-    icon: MdSignalCellularAlt,
-    description: "Order Increase",
-  },
-  {
-    title: "avg",
-    icon: MdSignalCellularAlt2Bar,
-    description: "Order Increase",
-  },
-  {
-    title: "min",
-    icon: MdSignalCellularAlt1Bar,
-    description: "Order Increase",
-  },
-  {
-    title: "all",
-    icon: MdAnalytics,
-    description: "Order Increase",
-  },
-  {
-    title: "inc",
+    title: "inc", // Ezt használja a belső logika ('asc')
     icon: FaArrowUpWideShort,
-    description: "Order Increase",
+    description: "Ascending Order",
   },
   {
-    title: "desc",
+    title: "desc", // Ezt használja a belső logika ('desc')
     icon: FaArrowDownShortWide,
-    description: "Order Decrease",
-  },
-  {
-    title: "plusone",
-    icon: FaPlus,
-    description: "Plus one Item",
-  },
-  {
-    title: "minusone",
-    icon: FaMinus,
-    description: "Minus one Item",
+    description: "Descending Order",
   },
 ];
 
-export const graphdatasource = [
+// --- A Fő Adatforrás Struktúra a Vezérlőkhöz ---
+// Ez a tömb határozza meg, melyik gombcsoportok jelennek meg és milyen gombokkal.
+export const graphControlConfiguration = [ // Beszédesebb név
   {
-    name: "datatype",
-    icon: TbDatabaseSearch,
-    description: "Type of Data",
-    origin: "right center",
-    data: datatypeconsole,
-    position: {
-      x: "10",
-      y: "20",
-      z: "0",
-    },
+    name: "datatype",        // Ezt használja az updateConfig a csoport azonosítására
+    icon: TbDatabaseSearch,  // A csoport ikonja (opcionális)
+    description: "Select Data Type", // A csoport leírása (opcionális)
+    data: datatypeConsole,   // A csoport gombjai
   },
   {
-    name: "graph",
+    name: "graph",           // Ezt használja az updateConfig
     icon: BsGraphDown,
-    description: "Year of observation",
-    origin: "right center",
-    data: graphconsole,
-    position: {
-      x: "-10",
-      y: "20",
-      z: "0",
-    },
+    description: "Select Chart Type",
+    data: graphConsole,
   },
   {
-    name: "filter",
+    name: "filter",          // Ezt használja az updateConfig (az 'inc'/'desc' kezelésére)
     icon: MdFilterListAlt,
-    description: "Year of observation",
-    origin: "right center",
-    data: filterconsole,
-    position: {
-      x: "10",
-      y: "20",
-      z: "0",
-    },
+    description: "Select Sort Order",
+    data: sortOrderConsole,  // Az egyszerűsített rendezési gombokra mutat
   },
 ];
