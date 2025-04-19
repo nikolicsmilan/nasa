@@ -22,6 +22,7 @@ const CustomAreaChartLine = ({
   colors,
   width,
   height,
+  displayedData
   // Régi propok eltávolítva: statusTable, filterTable, filteredData
 }) => {
 
@@ -29,12 +30,13 @@ const CustomAreaChartLine = ({
   // A filterTable és filteredData helyett a config-ból származó infókat használja majd
   const options = areachartlineoptions(
     colors,
-    config // <<<--- Átadjuk a config-ot
+    config ,
+    displayedData // <<<--- Átadjuk a config-ot
     // filteredData már nem kell itt, a tooltip callback a 'data'-ból dolgozhat
   );
 
   return <Line data={data} options={options} height={height} width={width} />;
 };
-
+//options={options}
 export default CustomAreaChartLine;
 

@@ -38,7 +38,7 @@ const useAreaChartData = (displayedData, colors) => {
     });
 
   }, [displayedData, colors]); // Függőségek: a bejövő adat és a színek
-
+  console.log("useAreaChartData - Returning:", JSON.stringify(chartData));
   return chartData;
 };
 

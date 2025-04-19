@@ -1,7 +1,77 @@
 // locales/chartoptions.js
 
 // Fogadja az ÚJ 'config' objektumot
-export const areachartlineoptions = (colors, config) => {
+
+// locales/chartoptions.js
+// locales/chartoptions.js
+
+// Fogadja az ÚJ 'config' objektumot
+// locales/chartoptions.js
+// src/locales/chartoptions.js
+
+// Fogadja a displayedData-t is!
+export const areachartlineoptions = (colors, config, displayedData) => {
+  const { dataType } = config || {};
+  if (!config || !dataType) { return {}; }
+
+  // Biztonsági ellenőrzés a displayedData-ra is
+  const safeDisplayedData = Array.isArray(displayedData) ? displayedData : [];
+
+  return {
+    // ... (responsive, maintainAspectRatio, parsing: false - ezt lehet, hogy ki kell venni, ha a data prop már nem objektumokat tartalmaz!) ...
+    // FONTOS: Ha visszatérünk ehhez a data access módhoz a tooltipben,
+    // akkor a useAreaChartData-nak NEM kell {y, fullname} objektumokat visszaadnia,
+    // elég csak a sima _parsedValue számokat! Ellenőrizzük ezt is.
+    // Ha a useAreaChartData csak számokat ad, akkor a parsing: false MARADJON!
+    responsive: true,
+    maintainAspectRatio: false,
+    // parsing: false, // Ezt lehet, hogy ki kell venni, ha useAreaChartData csak számokat ad vissza a data tömbben
+
+    plugins: {
+      tooltip: {
+        enabled: true,
+        callbacks: {
+          label: function (context) {
+            let datasetLabel = context.dataset.label || "";
+            const yValue = context.parsed?.y;
+            const dataIndex = context.dataIndex; // Index az adatsorban
+
+            // A fullname-et a külső displayedData tömbből vesszük az index alapján
+            const originalItem = safeDisplayedData[dataIndex]; // <<<--- VÁLTOZÁS ITT
+            const fullname = originalItem?.fullname || 'Unknown Asteroid';
+            const cleanedFullname = fullname.replace(/^\((.*)\)$/, "$1").trim();
+
+            if (yValue !== null && yValue !== undefined) {
+              return [
+                `${cleanedFullname}`,
+                `${dataType}: ${yValue}`,
+              ];
+            }
+            return datasetLabel ? `${datasetLabel}: N/A` : 'N/A';
+          },
+        },
+        // ... (Tooltip stílusok maradnak) ...
+        backgroundColor: "rgba(0, 0, 0, 0.8)",
+        // ...
+      },
+      // ... (legend, title maradnak az átírt formában) ...
+      legend: { /* ... */ },
+      title: { /* ... */ },
+    },
+    // ... (scales, interaction, animation maradnak az átírt formában) ...
+    scales: { /* ... */ },
+    interaction: { /* ... */ },
+    animation: { /* ... */ },
+  };
+};
+
+// TODO: A többi options függvényt is hasonlóan kell átírni, ha szükségük van az adatokra!
+
+// Itt kellene lennie a többi chart options függvénynek is (barchartOptions, linechartoptions stb.),
+// amelyeket hasonlóan át kell majd írni, hogy a 'config' objektumot használják.
+// export const barchartOptions = (colors, config) => { ... };
+// export const linechartoptions = (colors, config) => { ... }; // Ez valószínűleg ugyanaz lehet, mint az areachartlineoptions
+/*export const areachartlineoptions = (colors, config) => {
   // A régi statusTable és filterTable helyett a config-ból vesszük az értékeket
   const { dataType, itemCount } = config; // Vegyük ki a szükségeseket
 
@@ -94,7 +164,7 @@ export const areachartlineoptions = (colors, config) => {
     animation: false, // Animáció kikapcsolása gyorsíthat
     parsing: false, // Ha az adat már előre formázott
   };
-};
+};*/
 
 // Fontos: Hasonlóan módosítani kell a barchartOptions, linechartoptions stb. függvényeket is,
 // hogy azok is a 'config' objektumot fogadják és használják!

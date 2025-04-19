@@ -31,7 +31,8 @@ const AreaChartComponent = ({ config, displayedData }) => {
   const { users } = MyDataContext(); // Ez maradhat, ha a style kell
   const { width, height } = useWindowSize();
   const colors = useAreaChartColors(users?.style); // Biztonságosabb hozzáférés
-
+console.log("AreaChartComponent: colors",colors)
+console.log("AreaChartComponent displayedData: ",displayedData)
   // A useAreaChartData hooknak most az ÚJ propokat adjuk át.
   // A 'displayMode' már nem feltétlenül releváns az Area chartnál az új logikában.
   // Lehet, hogy a useAreaChartData-nak csak a displayedData és a colors kell.
@@ -62,7 +63,7 @@ const AreaChartComponent = ({ config, displayedData }) => {
       {/* A CustomAreaChartLine-nak is az ÚJ propokat adjuk át */}
       <CustomAreaChartLine
         config={config}              // ÚJ
-        // displayedData={displayedData} // Valószínűleg a chartData (data prop) elég neki
+        displayedData={displayedData} // Valószínűleg a chartData (data prop) elég neki
         data={chartData}             // A useAreaChartData által generált adatok
         colors={colors}
         height={chartHeight}
