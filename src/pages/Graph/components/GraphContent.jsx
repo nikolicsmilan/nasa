@@ -19,11 +19,12 @@ export const GraphContent = ({ statusTable, filterTable, filteredData }) => {
     case "area":
       return (
         <div
-          className={`border-0 border-red-400 w-full  flex flex-col
+          className={` border-2 border-lime-400 w-full  flex flex-col
              items-center justify-center ${mobiletoggle ? "opacity-50" : ""}`}
         >
           <AreaChartComponent
             statusTable={statusTable}
+            filterTable={filterTable}
             filteredData={filteredData}
           />
         </div>

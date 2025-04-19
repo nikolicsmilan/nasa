@@ -11,7 +11,6 @@ import {
 } from "chart.js";
 import useWindowSize from "../../../hooks/use-windowsize";
 import { MyDataContext } from "../../../context/DataContext";
-import { MyConsoleContext } from "../../../context/ConsoleContext";
 import useAreaChartColors from "../../../hooks/use-areachartcolors";
 import useAreaChartData from "../../../hooks/use-areachartdata";
 import CustomAreaChartLine from "./CustomAreaChartLine";
@@ -26,7 +25,7 @@ ChartJS.register(
   Filler
 );
 
-const AreaChartComponent = (statusTable,filterTable,filteredData) => {
+const AreaChartComponent = ({statusTable,filterTable,filteredData}) => {
   const { users } = MyDataContext();
   //const { filteredData, filterTable, statusTable } = MyConsoleContext();
   const { width, height } = useWindowSize();
@@ -59,11 +58,11 @@ const AreaChartComponent = (statusTable,filterTable,filteredData) => {
       }
     >
       <CustomAreaChartLine
+       statusTable={statusTable}
         filteredData={filteredData}
         filterTable={filterTable}
         data={chartData}
-        colors={colors}
-        statusTable={statusTable}
+        colors={colors}       
         height={chartHeight}
         width={chartWidth}
       />
