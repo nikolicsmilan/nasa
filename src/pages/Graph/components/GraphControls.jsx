@@ -1,6 +1,6 @@
 import Super3dConsole from "../../../components/consoles/views/Super3dConsole";
 
-const GraphControls = ({ graphdatasource, handleClick }) => {
+const GraphControls = ({ graphdatasource, handleClick,config  }) => {
   return (
     <div className="flex flex-col   border-lime-400  ">
       {graphdatasource.map((item, index) => (
@@ -8,9 +8,10 @@ const GraphControls = ({ graphdatasource, handleClick }) => {
           <Super3dConsole
             handleClick={handleClick}
             nameconsole={item.name}
-            data={item.data}
+            data={item.data}          
             description="Ide funkciók kellenek gombok szűrők  adatbázis alapján"
-          />
+            config={config} 
+         />
         </div>
       ))}
     </div>

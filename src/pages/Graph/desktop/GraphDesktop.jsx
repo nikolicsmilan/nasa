@@ -24,7 +24,8 @@ const GraphDesktop = ({
           <GraphControls
             graphdatasource={graphdatasource}
             handleClick={handleClick} // Az updateConfig függvényt kapja
-          />
+            config={config}
+         />
         </ControlPanel>
       </div>
 
