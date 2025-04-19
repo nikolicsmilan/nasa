@@ -12,8 +12,9 @@ import {
 import useWindowSize from "../../../hooks/use-windowsize";
 import { MyDataContext } from "../../../context/DataContext";
 import useAreaChartColors from "../../../hooks/use-areachartcolors";
-import useAreaChartData from "../../../hooks/use-areachartdata";
+import useAreaChartData from "../../../hooks/use-areachartdata"; // Ezt a hookot is lehet, hogy módosítani kell!
 import CustomAreaChartLine from "./CustomAreaChartLine";
+
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -25,46 +26,48 @@ ChartJS.register(
   Filler
 );
 
-const AreaChartComponent = ({statusTable,filterTable,filteredData}) => {
-  const { users } = MyDataContext();
-  //const { filteredData, filterTable, statusTable } = MyConsoleContext();
+// Fogadja az ÚJ propokat
+const AreaChartComponent = ({ config, displayedData }) => {
+  const { users } = MyDataContext(); // Ez maradhat, ha a style kell
   const { width, height } = useWindowSize();
-  const colors = useAreaChartColors(users.style);
+  const colors = useAreaChartColors(users?.style); // Biztonságosabb hozzáférés
+
+  // A useAreaChartData hooknak most az ÚJ propokat adjuk át.
+  // A 'displayMode' már nem feltétlenül releváns az Area chartnál az új logikában.
+  // Lehet, hogy a useAreaChartData-nak csak a displayedData és a colors kell.
+  // Ellenőrizd a useAreaChartData hookot, hogy mire van szüksége!
+  // Itt most feltételezem, hogy csak az adatokra és a színekre van szüksége.
   const chartData = useAreaChartData(
-    filteredData,
-    filterTable.displayMode,
+    displayedData, // A már feldolgozott és leszűrt adatok
+    // config.displayMode, // Valószínűleg nem kell már itt
     colors
   );
-  //style={{ width: width - 800, height: height - 200 }}
 
   const breakpoints = {
-    sm: 640,
-    md: 768,
-    lg: 1024,
-    xl: 1200, // Ahogy a Tailwind-ben definiáltad
-    "2xl": 1536,
+    sm: 640, md: 768, lg: 1024, xl: 1200, "2xl": 1536,
   };
 
-  const chartWidth = width >= breakpoints.xl ? width : width + 1700;
-  const chartHeight = width >= breakpoints.xl ? height : height + 2200;
+  const chartWidth = width >= breakpoints.xl ? width : width + 1700; // Ez a logika fura, de maradjon egyelőre
+  const chartHeight = width >= breakpoints.xl ? height : height + 2200; // Ez a logika fura, de maradjon egyelőre
+
   return (
     <div
-      className=" flex flex-col 
-        items-center justify-center "
+      className=" flex flex-col items-center justify-center "
       style={
         width >= breakpoints.xl
           ? { width: width - 600, height: height - 100 }
           : { width: width, height: height - 200 }
       }
     >
+      {/* A CustomAreaChartLine-nak is az ÚJ propokat adjuk át */}
       <CustomAreaChartLine
-       statusTable={statusTable}
-        filteredData={filteredData}
-        filterTable={filterTable}
-        data={chartData}
-        colors={colors}       
+        config={config}              // ÚJ
+        // displayedData={displayedData} // Valószínűleg a chartData (data prop) elég neki
+        data={chartData}             // A useAreaChartData által generált adatok
+        colors={colors}
         height={chartHeight}
         width={chartWidth}
+        // Régi propok eltávolítva: statusTable, filterTable, filteredData
       />
     </div>
   );

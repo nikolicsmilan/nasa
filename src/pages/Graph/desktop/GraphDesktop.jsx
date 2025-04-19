@@ -1,48 +1,51 @@
-
 import ControlPanel from "../components/ControlPanel";
-import CenterPanel from "../components/CenterPanel";
+import CenterPanel from "../components/CenterPanel"; // Ez a keret maradt
 import InfoPanel from "../components/InfoPanel";
 import GraphControls from "../components/GraphControls";
-import GraphCenterPanel from "../components/GraphCenterPanel";
+// import GraphCenterPanel from "../components/GraphCenterPanel"; // Ezt már elvileg eltávolítottuk/kommenteltük
+import { GraphContent } from "../components/GraphContent"; // Named import helyes
 import GraphInfoContent from "../components/GraphInfoContent";
-import {GraphContent} from "../components/GraphContent"
 
+// Fogadja az ÚJ propokat, régiek eltávolítva
 const GraphDesktop = ({
-  statusTable,
-  filterTable,
-  filteredData,
-  graphdatasource,
-  message,
-  handleClick,
-  
+  config,          // ÚJ: Az egységes konfigurációs objektum
+  displayedData,   // ÚJ: A feldolgozott, megjelenítendő adatok
+  graphdatasource, // Marad: A vezérlők konfigurációja
+  message,         // Marad: Az üzenet objektum
+  handleClick,     // Marad: Az updateConfig függvény (ezen a néven)
 }) => {
-
-
   return (
     <div
-      className={`flex flex-row  w-full 
-       relative z-50 border-2 border-sky-400`}
+      className={`flex flex-row w-full relative z-50 border-0 border-sky-400`}
     >
-      <div className="border-2 border-red-400 w-80">
+      {/* GraphControls: csak a graphdatasource és a handleClick kell neki */}
+      <div className="border-0 border-red-400 w-80">
         <ControlPanel>
           <GraphControls
             graphdatasource={graphdatasource}
-            handleClick={handleClick}
+            handleClick={handleClick} // Az updateConfig függvényt kapja
           />
         </ControlPanel>
       </div>
-      <div className="border-2 lg:relative lg:top-5 flex-1  ">
+
+      {/* CenterPanel -> GraphContent: config és displayedData kell neki */}
+      <div className="border-0 lg:relative lg:top-5 flex-1">
         <CenterPanel>
-        <GraphContent
-            statusTable={statusTable}
-            filterTable={filterTable}   // <<<--- Add tovább
-            filteredData={filteredData} // <<<--- Add tovább
+          <GraphContent
+            config={config}             // <<<--- ÚJ prop átadása
+            displayedData={displayedData} // <<<--- ÚJ prop átadása
+            // Régi propok (statusTable, filterTable, filteredData) eltávolítva
           />
         </CenterPanel>
       </div>
-      <div className="w-64 border-2">
+
+      {/* InfoPanel -> GraphInfoContent: message és config kell neki */}
+      <div className="w-64 border-0">
         <InfoPanel>
-          <GraphInfoContent message={message}  statusTable={statusTable} />
+          <GraphInfoContent
+             message={message}
+             config={config} // <<<--- ÚJ prop átadása (statusTable helyett)
+          />
         </InfoPanel>
       </div>
     </div>
@@ -50,7 +53,3 @@ const GraphDesktop = ({
 };
 
 export default GraphDesktop;
-//IIT HIBA VAN MERT A MAIN CONSOLE MAGA IS FOG DÖNTÉST HOZNI WIDTH
-// ÉS HEIGHT ALAPJÁN DE EZ AZ AreaChartComponent BEN IS MEG VAN
-
-//GraphDesktop

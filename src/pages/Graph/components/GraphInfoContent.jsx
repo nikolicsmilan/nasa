@@ -1,20 +1,27 @@
-//import { MyConsoleContext } from "../../../context/ConsoleContext"; // Ellenőrizd az utat
-import TypingAnimation from "../../../components/TypingAnimation/TypingAnimation"; // Ellenőrizd az utat
+// import { MyConsoleContext } from "../../../context/ConsoleContext"; // <<<--- ELTÁVOLÍTVA
+import TypingAnimation from "../../../components/TypingAnimation/TypingAnimation";
 
-const GraphInfoContent = ({message,statusTable}) => {
-  // Kontextusból származó adatok lekérése
- // const { statusTable, message } = MyConsoleContext();
+// Fogadja az ÚJ 'config' propot 'statusTable' helyett
+const GraphInfoContent = ({ message, config }) => {
+  // const { statusTable, message } = MyConsoleContext(); // <<<--- ELTÁVOLÍTVA
+
+  // Null check a message és config objektumokra a biztonság kedvéért
+  const description = message?.description || "Loading message...";
+  const configEntries = config ? Object.entries(config) : [];
 
   return (
+    <>
+      {/* Az üzenet megjelenítése marad */}
+      <TypingAnimation customcontent={description} />
 
-    <> 
-      <TypingAnimation customcontent={message.description} />
-      
-      <div className="hidden flex flex-col w-64 text-primary relative top-[40px]">
-        {/* Objektum bejárása és megjelenítése */}
-        {Object.entries(statusTable).map(([key, value]) => (
+      {/* A config objektum kiírása (ha debuggolni akarod) */}
+      {/* A 'hidden' class-t eltávolítottam, hogy lásd, de visszaállíthatod */}
+      <div className="flex flex-col w-64 text-primary relative top-[40px] text-xs overflow-auto max-h-60 border mt-2 p-1 border-gray-500">
+        <p className="font-bold mb-1">Current Config:</p>
+        {/* Most a 'config' objektumot járjuk be */}
+        {configEntries.map(([key, value]) => (
           <div key={key}>
-            <strong>{key}:</strong> {value.toString()}
+            <strong className="text-secondary">{key}:</strong> {value?.toString() ?? 'N/A'}
           </div>
         ))}
       </div>

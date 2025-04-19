@@ -8,45 +8,57 @@ import {
   ScatterChartComponent,
   FunnelChartComponent,
 } from "../../../components/Charts/index";
-import { MyConsoleContext } from "../../../context/ConsoleContext";
+// import { MyConsoleContext } from "../../../context/ConsoleContext"; // <<<--- ELTÁVOLÍTVA
 
-//w-full border-0 border-orange-400 flex justify-center
+// Fogadja az ÚJ propokat
+export const GraphContent = ({ config, displayedData }) => {
+  // const { mobiletoggle } = MyConsoleContext(); // <<<--- ELTÁVOLÍTVA
 
-export const GraphContent = ({ statusTable, filterTable, filteredData }) => {
-  const { mobiletoggle } = MyConsoleContext();
+  // Ellenőrizzük, hogy a config és a graphType létezik-e
+  const graphType = config?.graphType;
+  if (!graphType) {
+    // Ha nincs graphType, nem tudunk mit megjeleníteni
+    return (
+      <div className="flex border-0 p-2 border-red-500 w-full justify-center">
+        <h1>Graph type not specified in config.</h1>
+      </div>
+    );
+  }
 
-  switch (statusTable.graph) {
+  // A switch most a config.graphType alapján dönt
+  switch (graphType) {
     case "area":
       return (
         <div
-          className={` border-2 border-lime-400 w-full  flex flex-col
-             items-center justify-center ${mobiletoggle ? "opacity-50" : ""}`}
+          // className={`... ${mobiletoggle ? "opacity-50" : ""}`} // <<<--- ELTÁVOLÍTVA
+          className={`border-0 border-lime-400 w-full flex flex-col items-center justify-center`}
         >
+          {/* A chart komponensnek is az ÚJ propokat adjuk át */}
           <AreaChartComponent
-            statusTable={statusTable}
-            filterTable={filterTable}
-            filteredData={filteredData}
+            config={config}
+            displayedData={displayedData}
           />
         </div>
       );
     case "bar":
-      return <BarChartComponent />;
+      // Hasonlóan átadjuk az új propokat
+      return <BarChartComponent config={config} displayedData={displayedData} />;
     case "line":
-      return <LineChartComponent />;
+      return <LineChartComponent config={config} displayedData={displayedData} />;
     case "pie":
-      return <PieChartComponent />;
+      return <PieChartComponent config={config} displayedData={displayedData} />;
     case "radar":
-      return <RadarChartComponent />;
+      return <RadarChartComponent config={config} displayedData={displayedData} />;
     case "radialBar":
-      return <RadialBarChartComponent />;
+      return <RadialBarChartComponent config={config} displayedData={displayedData} />;
     case "scatter":
-      return <ScatterChartComponent />;
+      return <ScatterChartComponent config={config} displayedData={displayedData} />;
     case "funnel":
-      return <FunnelChartComponent />;
+      return <FunnelChartComponent config={config} displayedData={displayedData} />;
     default:
       return (
-        <div className="flex border-0 p-2 border-lime-400 w-full justify-center">
-          <h1>This graph type is under development</h1>
+        <div className="flex border-0 p-2 border-yellow-400 w-full justify-center">
+          <h1>Chart type '{graphType}' is under development or unknown.</h1>
         </div>
       );
   }
