@@ -17,7 +17,7 @@ const initialConfig = {
   dataKey: 'ip',       // Hozzá tartozó kulcs
   graphType: 'area',   // Kezdő grafikon típus
   sortOrder: 'desc',   // Kezdő rendezés (desc, mert az első adattípus választás is ezt állítja be)
-  itemCount: 20,       // Fix (vagy később állítható) darabszám
+  itemCount: 30,       // Fix (vagy később állítható) darabszám
 };
 
 const Graph = ({ sumObject }) => {
