@@ -28,8 +28,8 @@ function App() {
 
   // This will be the sumobject. sumObject now is dummy data
   const asteroidData = useAsteroidData();
-  const [sumObject, setSumObject] = useState(sentry.data);
-
+  //const [sumObject, setSumObject] = useState(sentry.data);
+  const [sumObject, setSumObject] = useState(sentry);
 
   const router = createBrowserRouter([
     {

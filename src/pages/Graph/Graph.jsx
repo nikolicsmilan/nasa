@@ -1,151 +1,200 @@
-import { useState, useEffect, useCallback, useMemo } from "react"; // useEffect marad a message-hez, useMemo az adathoz
+import { useState, useEffect, useCallback, useMemo } from "react";
 import { MyDataContext } from "../../context/DataContext";
 import GraphDesktop from "./desktop/GraphDesktop";
 import GraphMobile from "./mobile/GraphMobile";
-import { graphControlConfiguration } from "../../locales/graphdata"; // <<<--- Az új, letisztult konfiguráció importálása
-// Régi hookok és segédfüggvények importjai eltávolítva:
-// import { useStatusTable } from "../../hooks/use-statustable";
-// import { useFilterTable } from "../../hooks/use-filterTable";
-// import { mainFilteredData } from "../../utils/mainFilteredData";
-// import { handleGraphClick } from "../../utils/handleGraphClick";
-// import { handleFilterClick } from "../../utils/handleFilterClick";
-// import { graphconsole } from "../../locales/localdata"; // Erre már nincs szükség itt
+import { graphControlConfiguration } from "../../locales/graphdata";
 
-// 1. Új, egységes kezdeti konfiguráció
+// Kezdeti konfiguráció, totalItems 0-val indul
 const initialConfig = {
-  dataType: 'impacts', // Kezdő adattípus
-  dataKey: 'ip',       // Hozzá tartozó kulcs
-  graphType: 'area',   // Kezdő grafikon típus
-  sortOrder: 'desc',   // Kezdő rendezés (desc, mert az első adattípus választás is ezt állítja be)
-  itemCount: 30,       // Fix (vagy később állítható) darabszám
+  dataType: "impacts",
+  dataKey: "ip",
+  graphType: "area",
+  sortOrder: "desc",
+  totalItems: 0, // Kezdeti érték 0, frissülni fog
 };
 
+// A komponens fogadja a 'sumObject' prop-ot, ami a teljes adatobjektumot tartalmazza (data és count)
 const Graph = ({ sumObject }) => {
-  // 2. Egységes state hook
+  // DEBUG: Komponens indításakor logoljuk a kapott prop struktúráját
+  try {
+    console.log('>>> DEBUG: Graph component received sumObject structure:', sumObject ? { count: sumObject.count, dataLength: sumObject.data?.length } : sumObject);
+  } catch (e) {
+    console.error(">>> DEBUG: Error stringifying sumObject", e);
+    console.log('>>> DEBUG: Graph component received sumObject (raw):', sumObject);
+  }
+
   const [config, setConfig] = useState(initialConfig);
-  const [message, setMessage] = useState(''); // Message state marad
-  const { toggle } = MyDataContext(); // DataContext marad
+  const [message, setMessage] = useState("");
+  const { toggle } = MyDataContext();
 
-  // 3. Új, egységes állapotfrissítő függvény
+  // useEffect hook a totalItems dinamikus beállítására
+  useEffect(() => {
+    console.log('>>> DEBUG: useEffect for totalItems running. Checking sumObject.count:', sumObject?.count); // DEBUG
+    // Ellenőrizzük, hogy a sumObject és annak count mezője létezik-e
+    if (sumObject?.count) {
+      const countStr = String(sumObject.count); // Biztonság kedvéért stringgé alakítjuk
+      const count = parseInt(countStr, 10);
+      console.log('>>> DEBUG: useEffect - Parsed count:', count); // DEBUG
+      // Csak akkor frissítünk, ha érvényes szám
+      if (!isNaN(count)) {
+        setConfig((prevConfig) => {
+          // Csak akkor adjunk vissza új objektumot, ha tényleg változott az érték
+          if (prevConfig.totalItems !== count) {
+            console.log(">>> DEBUG: useEffect - Updating config.totalItems from", prevConfig.totalItems, "to:", count); // DEBUG
+            return { ...prevConfig, totalItems: count };
+          }
+          // Ha nem változott, adjuk vissza az előző state-et
+          console.log(">>> DEBUG: useEffect - config.totalItems already up-to-date:", prevConfig.totalItems); // DEBUG
+          return prevConfig;
+        });
+      } else {
+         console.warn(">>> DEBUG: useEffect - Parsed count is NaN. Original sumObject.count:", sumObject.count); // DEBUG
+      }
+    } else {
+        console.log(">>> DEBUG: useEffect - sumObject or sumObject.count is missing or invalid."); // DEBUG
+    }
+  }, [sumObject]); // Ez a hook lefut, ha a sumObject prop megváltozik
+
+  // Állapotfrissítő függvény a vezérlőgombokhoz (változatlan)
   const updateConfig = useCallback((controlGroupName, itemData) => {
-    const { title, sign } = itemData; // Gomb adatai
-
-    setConfig(prevConfig => {
-      console.log(`Updating config: group='${controlGroupName}', title='${title}', sign='${sign}'`, "PREV_CONFIG:", prevConfig); // DEBUG
-
+    const { title, sign } = itemData;
+    setConfig((prevConfig) => {
+      console.log(
+        `>>> DEBUG: updateConfig called. group='${controlGroupName}', title='${title}'. Prev config:`, // DEBUG
+        prevConfig
+      );
       switch (controlGroupName) {
-        case 'datatype':
-          return {
-            ...prevConfig,
-            dataType: title,
-            dataKey: sign,
-            sortOrder: 'desc', // Alapértelmezett csökkenő ennél a csoportnál
-          };
-        case 'graph':
+        case "datatype":
+          return { ...prevConfig, dataType: title, dataKey: sign, sortOrder: "desc" };
+        case "graph":
           return { ...prevConfig, graphType: title };
-        case 'filter': // Csak 'inc' és 'desc' van itt
-          if (title === 'inc' || title === 'desc') {
-            return { ...prevConfig, sortOrder: title === 'inc' ? 'asc' : 'desc' };
+        case "filter":
+          if (title === "inc" || title === "desc") {
+            return { ...prevConfig, sortOrder: title === "inc" ? "asc" : "desc" };
           }
           return prevConfig;
         default:
-          console.warn("Unknown control group:", controlGroupName);
+          console.warn(">>> DEBUG: updateConfig - Unknown control group:", controlGroupName); // DEBUG
           return prevConfig;
       }
     });
-  }, []); // Nincs függőség, setConfig stabil
+  }, []); // Nincs külső függősége
 
-  // 4. Adatok feldolgozása és szűrése useMemo-val
+  // Adatok feldolgozása és szűrése useMemo-val
   const displayedData = useMemo(() => {
-    //console.log("Recalculating displayedData with config:", config); // Részletesebb debughoz
-    if (!sumObject || sumObject.length === 0) return [];
+    // A sumObject.data tömböt használjuk forrásként
+    const sourceData = sumObject?.data;
+    // DEBUG: Logoljuk a useMemo futását és a releváns értékeket
+    console.log(`>>> DEBUG: useMemo running. config.totalItems: ${config.totalItems}, sourceData length: ${sourceData?.length ?? 0}`); // DEBUG
 
-    const { dataKey, sortOrder, itemCount } = config;
+    // Ha nincs adat, üres tömböt adunk vissza
+    if (!sourceData || sourceData.length === 0) {
+        console.log(">>> DEBUG: useMemo exiting early - no sourceData."); // DEBUG
+        return [];
+    }
 
-    const processedData = sumObject
-      .map(item => {
+    // Kiolvassuk a szükséges konfigurációs értékeket
+    const { dataKey, sortOrder, totalItems } = config;
+
+    // Adatok feldolgozása (map, filter, sort)
+    const processedData = sourceData
+      .map((item) => {
+        // Érték kinyerése és parse-olása
         const rawValue = item ? item[dataKey] : undefined;
         let parsedValue;
-        if (dataKey === 'last_obs') { // Dátum kezelése
+        if (dataKey === "last_obs") { // Dátum kezelése
           parsedValue = rawValue ? new Date(rawValue) : null;
-          if (parsedValue instanceof Date && isNaN(parsedValue.getTime())) parsedValue = null; // Érvénytelen dátum kiszűrése
+          if (parsedValue instanceof Date && isNaN(parsedValue.getTime()))
+            parsedValue = null;
         } else { // Számok kezelése
-          parsedValue = rawValue !== null && rawValue !== undefined ? parseFloat(rawValue) : NaN;
+          parsedValue =
+            rawValue !== null && rawValue !== undefined
+              ? parseFloat(rawValue)
+              : NaN;
         }
-        return {
-          ...item,
-          _parsedValue: parsedValue, // Ezt használjuk a továbbiakban
-        };
+        if (rawValue === undefined) return null;
+        return { ...item, _parsedValue: parsedValue };
       })
-      .filter(item => item._parsedValue !== null && !isNaN(item._parsedValue)); // Érvényes, parse-olt értékek
+      .filter( // Kiszűrjük a null elemeket és azokat, ahol a parse-olás nem sikerült
+        (item) => item !== null && item._parsedValue !== null && !isNaN(item._parsedValue)
+      );
 
+    // DEBUG: Logoljuk a feldolgozott adatmennyiséget rendezés előtt
+    console.log(`>>> DEBUG: useMemo - processedData length before sort: ${processedData.length}`); // DEBUG
+
+    // Rendezés a config.sortOrder alapján
     processedData.sort((a, b) => {
       const valA = a._parsedValue;
       const valB = b._parsedValue;
-      if (valA < valB) return sortOrder === 'asc' ? -1 : 1;
-      if (valA > valB) return sortOrder === 'asc' ? 1 : -1;
+      if (valA < valB) return sortOrder === "asc" ? -1 : 1;
+      if (valA > valB) return sortOrder === "asc" ? 1 : -1;
       return 0;
     });
 
-    return processedData.slice(0, itemCount);
+    // A feldolgozott és rendezett adatok levágása a config.totalItems alapján
+    // DEBUG: Logoljuk a slice előtti állapotot
+    console.log(`>>> DEBUG: useMemo - Slicing processed data (${processedData.length} items) to max ${totalItems} items.`); // DEBUG
+    const result = processedData.slice(0, totalItems);
+    // DEBUG: Logoljuk a slice utáni eredmény hosszát
+    console.log(`>>> DEBUG: useMemo - Final displayedData length after slice: ${result.length}`); // DEBUG
+    return result;
 
-  }, [sumObject, config]); // Újraszámolódik, ha az alap adat vagy a config változik
+  }, [sumObject, config]); // Újraszámolódik, ha a sumObject vagy a config változik
 
-  // 5. Message frissítése useEffect-ben (az új config alapján)
+  // DEBUG: Logoljuk a rendereléskor elérhető displayedData hosszát
+  console.log('>>> DEBUG: Component rendered. Final displayedData length:', displayedData.length); // DEBUG
+
+  // Message state frissítése useEffect-ben
   useEffect(() => {
-    setMessage({
-      description: `You are viewing the ${config.graphType} chart, displaying ${displayedData.length} items sorted by ${config.dataType} (${config.sortOrder === 'asc' ? 'ascending' : 'descending'}).`,
-      // Ide jöhet még több infó a config alapján
-    });
-  }, [config, displayedData]); // Frissüljön, ha a config vagy a kiszámolt adat változik
+      console.log(`>>> DEBUG: useEffect for message running. config.totalItems: ${config.totalItems}, displayedData.length: ${displayedData.length}`); // DEBUG
+      if (config.totalItems > 0) {
+        setMessage({
+          description: `Viewing ${config.graphType} chart. Displaying ${displayedData.length} out of ${config.totalItems} items, sorted by ${config.dataType} (${
+            config.sortOrder === "asc" ? "ascending" : "descending"
+          }).`,
+        });
+      } else {
+        setMessage({ description: "Loading data..." });
+      }
+  }, [config, displayedData.length]); // Figyeljük a config és a displayedData hosszának változását
 
-  // 6. Kezdeti állapot beállítása (opcionális, ha nem az initialConfig a cél)
-  // Eltávolítjuk a régi handleClick hívásokat, mert az initialConfig beállítja a kezdőállapotot.
-  // Ha mégis kellene egy specifikus kezdőállapot, itt hívhatnád az updateConfig-ot.
-  // useEffect(() => {
-  //   updateConfig("graph", { title: "bar" }); // Példa: Kezdés Bar charttal
-  // }, []); // Csak mount-kor fusson le
-
-
-  console.log("Current Config:", config);
-  console.log("Displayed Data Count:", displayedData.length);
-  //console.log("Displayed Data Sample:", displayedData.slice(0, 5)); // Első 5 elem megtekintése
-
+  // JSX renderelés
   return (
     <div
-    className={`min-h-screen flex border-0  border-lime-400
-     z-50 relative ${toggle ? "opacity-70" : ""}`}
-  >
-    <video
-      src="https://sablonossablon.web.app/video/optimized_earth2.mp4"
-      className="background-video border-0 border-red-400  opacity-40"
-      autoPlay
-      loop
-      muted
-    ></video>
-
-    <div
-      className={`hidden xl:flex border-0 border-red-400 w-full   ${
-        toggle ? "opacity-0" : "opacity-100"
+      className={`min-h-screen flex border-0 border-lime-400 z-50 relative ${
+        toggle ? "opacity-70" : ""
       }`}
     >
-        {/* 7. Frissített propok átadása */}
+      <video
+        src="https://sablonossablon.web.app/video/optimized_earth2.mp4"
+        className="background-video border-0 border-red-400 opacity-40"
+        autoPlay
+        loop
+        muted
+      ></video>
+
+      <div
+        className={`hidden xl:flex border-0 border-red-400 w-full ${
+          toggle ? "opacity-0" : "opacity-100"
+        }`}
+      >
+        {/* Propok átadása a GraphDesktop komponensnek */}
         <GraphDesktop
-          config={config} // Az új state objektum
-          displayedData={displayedData} // A kiszámolt adatok
-          graphdatasource={graphControlConfiguration} // A letisztult konfiguráció
+          config={config}
+          displayedData={displayedData}
+          graphdatasource={graphControlConfiguration}
           message={message}
-          handleClick={updateConfig} // Az új handler, handleClick néven átadva
+          handleClick={updateConfig}
         />
       </div>
 
       <div
         className={`flex xl:hidden ${toggle ? "opacity-0" : "opacity-100"}`}
       >
-        {/* Mobil nézetnek is át kell adni a megfelelő propokat */}
+        {/* Mobil nézet - TODO: Megfelelő propok átadása */}
         <GraphMobile
-            graphdatasource={graphControlConfiguration}
-            // TODO: A mobil verziónak is szüksége lesz valószínűleg a config-ra és az updateConfig-ra
+          graphdatasource={graphControlConfiguration}
+          // Itt is valószínűleg szükség lesz a config, displayedData, message, handleClick propokra
         />
       </div>
     </div>

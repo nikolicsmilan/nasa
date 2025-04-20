@@ -10,34 +10,32 @@
 // src/locales/chartoptions.js
 
 // Fogadja a displayedData-t is!
+// src/locales/chartoptions.js
+
 export const areachartlineoptions = (colors, config, displayedData) => {
   const { dataType } = config || {};
-  if (!config || !dataType) { return {}; }
+  if (!config || !dataType) { return { responsive: true, maintainAspectRatio: false }; } // Minimal defaults on error
 
-  // Biztonsági ellenőrzés a displayedData-ra is
   const safeDisplayedData = Array.isArray(displayedData) ? displayedData : [];
+  const tooltipColor = colors?.tooltip || '#FFFFFF';
+  const legendColor = colors?.legend || '#FFFFFF';
 
   return {
-    // ... (responsive, maintainAspectRatio, parsing: false - ezt lehet, hogy ki kell venni, ha a data prop már nem objektumokat tartalmaz!) ...
-    // FONTOS: Ha visszatérünk ehhez a data access módhoz a tooltipben,
-    // akkor a useAreaChartData-nak NEM kell {y, fullname} objektumokat visszaadnia,
-    // elég csak a sima _parsedValue számokat! Ellenőrizzük ezt is.
-    // Ha a useAreaChartData csak számokat ad, akkor a parsing: false MARADJON!
     responsive: true,
     maintainAspectRatio: false,
-    // parsing: false, // Ezt lehet, hogy ki kell venni, ha useAreaChartData csak számokat ad vissza a data tömbben
+    parsing: false, // Maradjon false, ha useAreaChartData csak számokat ad
 
     plugins: {
+      // --- TOOLTIP RÉSZ (ELLENŐRIZD, HOGY AKTÍV!) ---
       tooltip: {
-        enabled: true,
+        enabled: true, // Legyen engedélyezve
         callbacks: {
           label: function (context) {
             let datasetLabel = context.dataset.label || "";
             const yValue = context.parsed?.y;
-            const dataIndex = context.dataIndex; // Index az adatsorban
+            const dataIndex = context.dataIndex;
 
-            // A fullname-et a külső displayedData tömbből vesszük az index alapján
-            const originalItem = safeDisplayedData[dataIndex]; // <<<--- VÁLTOZÁS ITT
+            const originalItem = safeDisplayedData[dataIndex];
             const fullname = originalItem?.fullname || 'Unknown Asteroid';
             const cleanedFullname = fullname.replace(/^\((.*)\)$/, "$1").trim();
 
@@ -50,20 +48,54 @@ export const areachartlineoptions = (colors, config, displayedData) => {
             return datasetLabel ? `${datasetLabel}: N/A` : 'N/A';
           },
         },
-        // ... (Tooltip stílusok maradnak) ...
+        // Tooltip stílusok
         backgroundColor: "rgba(0, 0, 0, 0.8)",
-        // ...
+        titleFont: { size: 14, weight: 'bold'},
+        bodyFont: { size: 12, lineHeight: 1.4 },
+        footerFont: { size: 10 },
+        padding: 8,
+        displayColors: false,
+        borderColor: tooltipColor,
+        borderWidth: 1,
+        caretSize: 6,
+        cornerRadius: 4,
+        xAlign: "center",
+        yAlign: "bottom", // Alul jelenjen meg a ponthoz képest
       },
-      // ... (legend, title maradnak az átírt formában) ...
-      legend: { /* ... */ },
-      title: { /* ... */ },
+      // -------------------------------------------
+      legend: {
+         display: true,
+         labels: { color: legendColor, boxWidth: 12, padding: 15, font: { size: 12 } },
+         position: 'top',
+         align: 'center'
+      },
+      title: {
+        display: true,
+        text: `${dataType.charAt(0).toUpperCase() + dataType.slice(1)}`,
+        color: legendColor,
+        font: { size: 16, weight: 'bold' },
+        position: 'top',
+        align: 'center',
+        padding: { top: 10, bottom: 20 },
+      },
     },
-    // ... (scales, interaction, animation maradnak az átírt formában) ...
-    scales: { /* ... */ },
-    interaction: { /* ... */ },
-    animation: { /* ... */ },
+    scales: {
+       x: { ticks: { color: legendColor, maxRotation: 45, minRotation: 0, autoSkip: true, maxTicksLimit: 15 }, grid: { color: 'rgba(128, 128, 128, 0.2)', borderColor: 'rgba(128, 128, 128, 0.4)'} },
+       y: { ticks: { color: legendColor, padding: 5 }, title: { display: true, text: `${dataType}`, color: legendColor, font: { size: 12 } }, grid: { color: 'rgba(128, 128, 128, 0.2)', borderColor: 'rgba(128, 128, 128, 0.4)'} },
+    },
+    interaction: {
+      mode: 'index',
+      intersect: false,
+      axis: 'x',
+    },
+    animation: {
+      duration: 400,
+      easing: 'easeInOutQuad'
+    },
   };
 };
+
+// Itt jönnének a többi options függvények (barchartOptions stb.)
 
 // TODO: A többi options függvényt is hasonlóan kell átírni, ha szükségük van az adatokra!
 

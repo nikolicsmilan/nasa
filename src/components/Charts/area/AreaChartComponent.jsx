@@ -41,7 +41,8 @@ console.log("AreaChartComponent displayedData: ",displayedData)
   const chartData = useAreaChartData(
     displayedData, // A már feldolgozott és leszűrt adatok
     // config.displayMode, // Valószínűleg nem kell már itt
-    colors
+    colors,
+    config
   );
 
   const breakpoints = {

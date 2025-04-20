@@ -1,44 +1,50 @@
 import { useState, useEffect } from 'react';
 
-// A hook most már csak a feldolgozott adatokat és a színeket kapja
-const useAreaChartData = (displayedData, colors) => {
+const useAreaChartData = (displayedData, colors,config) => {
   const [chartData, setChartData] = useState({
     labels: [],
     datasets: [],
   });
 
   useEffect(() => {
-    // Biztonságos hozzáférés a színekhez alapértelmezett értékkel
-    const currentColors = colors || {
-      area1: 'rgba(136, 132, 216, 0.5)', // Csak egy színre van szükségünk
-    };
-
+    // Most a tooltip színét használjuk alapértelmezettnek a vonalhoz is, ha nincs más
+    const primaryColor = colors?.tooltip || 'rgb(34, 211, 238)'; // Türkiz fallback
+    // A háttérhez vehetjük ugyanezt kicsit átlátszóbban
+    const backgroundColor = primaryColor.replace('rgb(', 'rgba(').replace(')', ', 0.3)'); // <<<--- ÚJ: Átlátszó verzió generálása
+    const dataType = config?.dataType;
+    const capitalizedLabel = dataType ? dataType.charAt(0).toUpperCase() + dataType.slice(1) : 'Value'; 
     // Ellenőrizzük, hogy a displayedData érvényes-e
     if (!displayedData || displayedData.length === 0) {
-      setChartData({ labels: [], datasets: [] }); // Üres chart, ha nincs adat
+      setChartData({ labels: [], datasets: [] });
       return;
     }
 
-    // ÚJ, EGYSZERŰSÍTETT LOGIKA:
-    // Létrehozunk EGYETLEN datasettet a displayedData alapján.
     setChartData({
-      // Label lehet a fullname (ha van) vagy az index
       labels: displayedData.map((d, index) => d.fullname || `Item ${index + 1}`),
       datasets: [
         {
-          label: "Value", // TODO: Ezt később a 'config.dataType'-ból kellene venni dinamikusan
-          data: displayedData.map((d) => d._parsedValue), // A parse-olt értékeket használjuk
-          borderColor: currentColors.area1, // Használunk egy színt a palettáról
-          backgroundColor: currentColors.area1,
+          label: capitalizedLabel,
+          data: displayedData.map((d) => d._parsedValue),
+          parsing: { // Maradjon, ha objektumokat adunk vissza a data-ban
+             yAxisKey: 'y' // VAGY töröld, ha a data csak számokat tartalmaz
+          },
+          // --- SZÍNEK MÓDOSÍTVA ---
+          borderColor: primaryColor,         // Használjuk a türkiz színt a vonalhoz
+          backgroundColor: backgroundColor,  // Használjuk az átlátszó türkizt a kitöltéshez
+          // ------------------------
+          borderWidth: 1.5, // Kicsit vastagabb vonal lehet szebb
           fill: true,
           tension: 0.4,
+          pointRadius: 1, // Nincsenek pontok a vonalon
+          pointHoverRadius: 5,
         },
-        // NINCS TÖBB max, avg, min dataset!
       ],
     });
 
-  }, [displayedData, colors]); // Függőségek: a bejövő adat és a színek
-  console.log("useAreaChartData - Returning:", JSON.stringify(chartData));
+    // console.log("useAreaChartData - Returning:", JSON.stringify(chartData));
+
+  }, [displayedData, colors]);
+
   return chartData;
 };
 
