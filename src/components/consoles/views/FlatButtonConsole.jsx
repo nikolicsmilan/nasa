@@ -1,4 +1,3 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 
 // Ez a komponens fogadja ugyanazokat a propokat, mint a Super3dConsole

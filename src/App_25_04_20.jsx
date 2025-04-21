@@ -13,7 +13,7 @@ import { sentry } from "./locales/nasadummy";
 const LayoutHome = lazy(() => import("./layouts/LayoutHome"));
 const LayoutAsteoride = lazy(() => import("./layouts/LayoutAsteoride"));
 const Home = lazy(() => import("./pages/Home/Home"));
-//const Asteroide = lazy(() => import("./pages/Asteroide/Asteroide"));
+const Asteroide = lazy(() => import("./pages/Asteroide/Asteroide"));
 const Graph = lazy(() => import("./pages/Graph/Graph"));
 const Test = lazy(() => import("./pages/Test/Test"));
 const Admin = lazy(() => import("./pages/Admin/Admin"));
@@ -28,8 +28,8 @@ function App() {
 
   // This will be the sumobject. sumObject now is dummy data
   const asteroidData = useAsteroidData();
-  //const [sumObject, setSumObject] = useState(sentry.data);
-  const [sumObject, setSumObject] = useState(sentry);
+  const [sumObject, setSumObject] = useState(sentry.data);
+
 
   const router = createBrowserRouter([
     {

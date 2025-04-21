@@ -2,6 +2,7 @@ import { useContext, createContext, useState, useEffect } from "react";
 import { useSave } from "../hooks/use-saveuser";
 import { useInfo } from "../hooks/use-info";
 import UAParser from "ua-parser-js";
+import clicksound from "../assets/sound/click.mp3";
 
 const DataContext = createContext();
 
@@ -27,8 +28,16 @@ export const DataContextProvider = ({ children }) => {
   const [ipAddress, setIPAddress] = useState("");
   const [latitude, setLatitude] = useState(null);
   const [longitude, setLongitude] = useState(null);
- 
-
+  const [sound, setSound] = useState({});
+  const playSoundClick = () => {
+    // Most már közvetlenül hozzáfér a 'sound' state-hez és a 'users' state-hez
+    if (sound && sound.click && users?.sound === "on") {
+      console.log("DataContext: hangot ad");
+      sound.click.currentTime = 0;
+      sound.click.volume = 0.2;
+      sound.click.play();
+    }
+  }
   useEffect(() => {
     // Parse the user agent string to get browser and device information
     /*   const parser = new UAParser();
@@ -40,6 +49,26 @@ export const DataContextProvider = ({ children }) => {
     updateIpAddress(setIPAddress);
     updateGPS(setLatitude, setLongitude);
   }, []);
+
+// AudioContext.jsx - EREDETI
+useEffect(() => {
+  const loadHangok = async () => {
+    try {
+      // Létrehozza az Audio objektumot
+      const click = new Audio(clicksound);
+      // Beállítja a 'sound' state-et az Audio objektummal
+      setSound({
+        click,
+      });
+    } catch (error) {
+      console.error("Hiba a hangfájlok betöltésekor", error);
+    }
+  };
+
+  loadHangok(); // Meghívja a betöltő függvényt
+
+  // ... (cleanup) ...
+}, []);
   return (
     <DataContext.Provider
       value={{
@@ -63,6 +92,7 @@ export const DataContextProvider = ({ children }) => {
         longitude,
         subscribeToggle,
         setSubscribeToggle,
+        playSoundClick
       }}
     >
       {children}

@@ -1,48 +1,6 @@
-/*import Super3dConsole from "../../../components/consoles/views/Super3dConsole";
 
-const GraphControls = ({ graphdatasource, handleClick,config  }) => {
-  return (
-    <div className="flex flex-col   border-lime-400  ">
-      {graphdatasource.map((item, index) => (
-        <div key={index} className="relative border-400  my-1 border-0 p-2 ">
-          <Super3dConsole
-            handleClick={handleClick}
-            nameconsole={item.name}
-            data={item.data}          
-            description="Ide funkciók kellenek gombok szűrők  adatbázis alapján"
-            config={config} 
-         />
-        </div>
-      ))}
-    </div>
-  );
-};
 
-export default GraphControls;*/
-/*import Super3dConsole from "../../../components/consoles/views/Super3dConsole"; // Ellenőrizd az elérési utat!
-
-// Fogadja a config propot is!
-const GraphControls = ({ graphdatasource, handleClick, config }) => {
-  return (
-    <div className="flex flex-col border-lime-400">
-      {graphdatasource.map((item, index) => (
-        <div key={index} className="relative border-400 my-1 border-0 p-2">
-          <Super3dConsole
-            handleClick={handleClick}
-            nameconsole={item.name} // Csoport neve (datatype, graph, filter)
-            data={item.data}       // A csoport gombjainak tömbje
-            description="Ide funkciók kellenek gombok szűrők adatbázis alapján" // Ez maradhat, ha kell
-            config={config}        // <<<--- Itt adjuk át a configot!
-          />
-        </div>
-      ))}
-    </div>
-  );
-};
-
-export default GraphControls;*/
-
-import React, { useState } from 'react'; // useState importálása
+import { useState } from 'react'; // useState importálása
 import Super3dConsole from "../../../components/consoles/views/Super3dConsole"; // Eredeti komponens
 // Majd importáljuk az újat is, ha kész:
  import FlatButtonConsole from "../../../components/consoles/views/FlatButtonConsole";

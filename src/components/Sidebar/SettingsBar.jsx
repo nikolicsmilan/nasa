@@ -1,10 +1,9 @@
 import { MyDataContext } from "../../context/DataContext";
-import { MyAudioContext } from "../../context/AudioContext";
+
 
 //SETTINGSBAR LOOK
 const SettingsBar = ({ menupoint }) => {
-  const { setSettings } = MyDataContext();
-  const { playSoundClick } = MyAudioContext();
+  const { setSettings,playSoundClick } = MyDataContext();
 
   return (
     <div

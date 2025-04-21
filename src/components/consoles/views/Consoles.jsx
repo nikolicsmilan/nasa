@@ -1,10 +1,7 @@
-import React from "react";
 import { NavLink } from "react-router-dom";
-import { MyAudioContext } from "../../../context/AudioContext";
 import { MyDataContext } from "../../../context/DataContext";
 const Consoles = ({ menupoint }) => {
-  const { playSoundClick } = MyAudioContext();
-  const { setSettingsOpen } = MyDataContext();
+  const { setSettingsOpen,playSoundClick } = MyDataContext();
   const handleClick = () => {
     playSoundClick();
     setSettingsOpen(false);
