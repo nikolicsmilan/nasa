@@ -1,6 +1,5 @@
-import React from "react";
 import { Bar } from "react-chartjs-2";
-import { barchartOptions } from "../../../locales/chartoptions";
+import { barchartOptions } from "./barchartOptions";
 
 const CustomBarChart = ({
   data,

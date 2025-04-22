@@ -9,7 +9,7 @@ import {
   CategoryScale,
   LinearScale,
 } from "chart.js";
-import { linechartoptions } from "../../../locales/chartoptions"; // Hasonlóan, mint az area chart options
+//import { linechartoptions } from "../../../locales/chartoptions"; // Hasonlóan, mint az area chart options
 
 ChartJS.register(Title, Tooltip, Legend, LineElement, CategoryScale, LinearScale);
 
@@ -22,9 +22,9 @@ const CustomLineChart = ({
   filterTable,
   filteredData,
 }) => {
-  const options = linechartoptions(colors, statusTable, filterTable, filteredData);
-
-  return <Line data={data} options={options} height={height} width={width} />;
+//const options = linechartoptions(colors, statusTable, filterTable, filteredData);
+//options={options} 
+  return <Line data={data} height={height} width={width} />;
 };
 
 export default CustomLineChart;

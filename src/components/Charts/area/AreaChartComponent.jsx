@@ -1,108 +1,92 @@
 import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip,
-  Legend,
-  Filler,
-} from "chart.js";
-import useWindowSize from "../../../hooks/use-windowsize";
-import { MyDataContext } from "../../../context/DataContext";
-import useAreaChartColors from "../../../hooks/use-areachartcolors";
-import useAreaChartData from "../../../hooks/use-areachartdata"; // Ezt a hookot is lehet, hogy módosítani kell!
-import CustomAreaChartLine from "./CustomAreaChartLine";
+  Chart as ChartJS, // Chart.js mag könyvtár importálása ChartJS néven
+  CategoryScale, // X tengelyhez (kategóriák, pl. nevek) szükséges skála importálása
+  LinearScale, // Y tengelyhez (numerikus értékek) szükséges skála importálása
+  TimeScale, // Y tengelyhez (dátum értékek) szükséges skála importálása
+  PointElement, // A diagramon lévő pontok megjelenítéséhez szükséges elem
+  LineElement, // A vonal megjelenítéséhez szükséges elem
+  Title, // A diagram címének megjelenítéséhez szükséges plugin
+  Tooltip, // Az egérmutatóra megjelenő tooltiphez szükséges plugin
+  Legend, // A jelmagyarázathoz szükséges plugin (bár most ki van kapcsolva)
+  Filler, // A vonal alatti terület kitöltéséhez szükséges plugin
+} from "chart.js"; // Chart.js könyvtárból
+import "chartjs-adapter-date-fns"; // Chart.js adapter importálása a date-fns könyvtárral való dátumkezeléshez
+import useWindowSize from "../../../hooks/use-windowsize"; // Custom hook az ablakméret figyeléséhez
+import { MyDataContext } from "../../../context/DataContext"; // Adat kontextus importálása (felhasználói beállításokhoz)
+import useAreaChartColors from "../../../hooks/use-areachartcolors"; // Custom hook a területdiagram színeinek lekéréséhez
+import useAreaChartData from "../../../hooks/use-areachartdata"; // Custom hook a Chart.js számára szükséges adatformátum generálásához
+import CustomAreaChartLine from "./CustomAreaChartLine"; // A tényleges <Line> komponenst tartalmazó wrapper importálása
 
+// A szükséges Chart.js modulok regisztrálása a könyvtárban
 ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip,
-  Legend,
-  Filler
+  CategoryScale, // Kategória skála regisztrálása
+  LinearScale, // Lineáris skála regisztrálása
+  TimeScale, // Időskála regisztrálása
+  PointElement, // Pont elem regisztrálása
+  LineElement, // Vonal elem regisztrálása
+  Title, // Cím plugin regisztrálása
+  Tooltip, // Tooltip plugin regisztrálása
+  Legend, // Legenda plugin regisztrálása
+  Filler // Kitöltő plugin regisztrálása
 );
 
-// Fogadja az ÚJ propokat
+// Az AreaChartComponent fő komponens definíciója
+// @param {object} config - Az aktuális grafikon konfigurációs objektum.
+// @param {Array<object>} displayedData - A feldolgozott, megjelenítendő adatok tömbje.
+// @returns {JSX.Element} A renderelt AreaChart komponens.
 const AreaChartComponent = ({ config, displayedData }) => {
-  const { users } = MyDataContext(); // Ez maradhat, ha a style kell
-  const { width, height } = useWindowSize();
-  const colors = useAreaChartColors(users?.style); // Biztonságosabb hozzáférés
-console.log("AreaChartComponent: colors",colors)
-console.log("AreaChartComponent displayedData: ",displayedData)
-  // A useAreaChartData hooknak most az ÚJ propokat adjuk át.
-  // A 'displayMode' már nem feltétlenül releváns az Area chartnál az új logikában.
-  // Lehet, hogy a useAreaChartData-nak csak a displayedData és a colors kell.
-  // Ellenőrizd a useAreaChartData hookot, hogy mire van szüksége!
-  // Itt most feltételezem, hogy csak az adatokra és a színekre van szüksége.
+  const { users } = MyDataContext(); // Felhasználói beállítások (pl. stílus) kiolvasása a DataContext-ből
+  const { width, height } = useWindowSize(); // Aktuális ablakméret kiolvasása a custom hookkal
+  const colors = useAreaChartColors(users?.style); // Diagram színeinek lekérése a felhasználó stílusa alapján
+  // Debug logok (fejlesztéshez hasznosak)
+  // console.log("AreaChartComponent: colors", colors);
+  // console.log("AreaChartComponent displayedData: ", displayedData);
+
+  // A Chart.js számára szükséges 'data' objektum generálása a useAreaChartData hook segítségével
   const chartData = useAreaChartData(
-    displayedData, // A már feldolgozott és leszűrt adatok
-    // config.displayMode, // Valószínűleg nem kell már itt
-    colors,
-    config
+    displayedData, // A már feldolgozott, rendezett és limitált adatok
+    colors, // A téma alapján generált szín
+    config // Az aktuális grafikon konfiguráció
   );
 
+  // Töréspontok definiálása a reszponzív méretezéshez
   const breakpoints = {
-    sm: 640, md: 768, lg: 1024, xl: 1200, "2xl": 1536,
+    sm: 640,
+    md: 768,
+    lg: 1024,
+    xl: 1200,
+    "2xl": 1536, // Különböző képernyőszélesség értékek pixelben
   };
 
-  const chartWidth = width >= breakpoints.xl ? width : width + 1700; // Ez a logika fura, de maradjon egyelőre
-  const chartHeight = width >= breakpoints.xl ? height : height + 2200; // Ez a logika fura, de maradjon egyelőre
+  // Diagram szélességének számítása az ablakméret alapján (a logika itt még finomítható)
+  const chartWidth = width >= breakpoints.xl ? width : width + 1700;
+  // Diagram magasságának számítása az ablakméret alapján (a logika itt még finomítható)
+  const chartHeight = width >= breakpoints.xl ? height : height + 2200;
 
+  // A komponens JSX struktúrájának visszaadása
   return (
+    // Külső div a chart pozicionálásához és alapvető stílusához
     <div
-      className=" flex flex-col items-center justify-center "
+      className=" flex flex-col items-center justify-center " // Flexbox központosítás
+      // Dinamikus stílus az ablakméret alapján (a konténer méretének beállítása)
       style={
         width >= breakpoints.xl
-          ? { width: width - 600, height: height - 100 }
-          : { width: width, height: height - 200 }
+          ? { width: width - 600, height: height - 150 } // Nagyobb képernyőn
+          : { width: width, height: height - 200 } // Kisebb képernyőn
       }
     >
-      {/* A CustomAreaChartLine-nak is az ÚJ propokat adjuk át */}
+      {/* A belső CustomAreaChartLine komponens renderelése, átadva neki a szükséges propokat */}
       <CustomAreaChartLine
-        config={config}              // ÚJ
-        displayedData={displayedData} // Valószínűleg a chartData (data prop) elég neki
-        data={chartData}             // A useAreaChartData által generált adatok
-        colors={colors}
-        height={chartHeight}
-        width={chartWidth}
-        // Régi propok eltávolítva: statusTable, filterTable, filteredData
+        config={config} // Aktuális konfiguráció átadása
+        displayedData={displayedData} // Eredeti (limitált) adatok átadása (tooltiphez)
+        data={chartData} // A Chart.js formátumú adatok átadása
+        colors={colors} // Színek átadása
+        height={chartHeight} // Kiszámított magasság átadása
+        width={chartWidth} // Kiszámított szélesség átadása
       />
     </div>
   );
 };
 
+// Az AreaChartComponent exportálása alapértelmezettként
 export default AreaChartComponent;
-/*
-
-
-const initialData = [
-  { name: "A", h: 4000, ip: 2400, diameter: 2400 },
-  { name: "B", h: 3000, ip: 1398, diameter: 2210 },
-  { name: "C", h: 2000, ip: 9800, diameter: 2290 },
-  { name: "D", h: 2780, ip: 3908, diameter: 2000 },
-  { name: "E", h: 1890, ip: 4800, diameter: 2181 },
-  { name: "F", h: 2390, ip: 3800, diameter: 2500 },
-  { name: "G", h: 3490, ip: 4300, diameter: 2100 },
-  { name: "H", h: 3490, ip: 4300, diameter: 2100 },
-  { name: "I", h: 3490, ip: 4300, diameter: 2100 },
-  { name: "J", h: 3490, ip: 4300, diameter: 2100 },
-];
-
-const initialData = [
-  { name: "1", max: 4000, avg: 2400, min: 2400 },
-  { name: "2", max: 3000, avg: 1398, min: 2210 },
-  { name: "3", max: 2000, avg: 9800, min: 2290 },
-  { name: "4", max: 2780, avg: 3908, min: 2000 },
-  { name: "5", max: 1890, avg: 4800, min: 2181 },
-  { name: "6", max: 2390, avg: 3800, min: 2500 },
-  { name: "7", max: 3490, avg: 4300, min: 2100 },
-  { name: "8", max: 3490, avg: 4300, min: 2100 },
-  { name: "9", max: 3490, avg: 4300, min: 2100 },
-  { name: "10", max: 3490, avg: 4300, min: 2100 },
-];
-
-*/

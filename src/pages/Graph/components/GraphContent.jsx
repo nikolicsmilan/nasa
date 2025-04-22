@@ -34,27 +34,49 @@ export const GraphContent = ({ config, displayedData }) => {
           className={`border-0 border-lime-400 w-full flex flex-col items-center justify-center`}
         >
           {/* A chart komponensnek is az ÚJ propokat adjuk át */}
-          <AreaChartComponent
-            config={config}
-            displayedData={displayedData}
-          />
+          <AreaChartComponent config={config} displayedData={displayedData} />
         </div>
       );
     case "bar":
-      // Hasonlóan átadjuk az új propokat
-      return <BarChartComponent config={config} displayedData={displayedData} />;
+      return (
+        <div
+          // className={`... ${mobiletoggle ? "opacity-50" : ""}`} // <<<--- ELTÁVOLÍTVA
+          className={`border-0 border-lime-400 w-full flex flex-col items-center justify-center`}
+        >
+          {/* A chart komponensnek is az ÚJ propokat adjuk át */}
+          <BarChartComponent config={config} displayedData={displayedData} />;
+        </div>
+      );
+
+    // Hasonlóan átadjuk az új propokat
+
     case "line":
-      return <LineChartComponent config={config} displayedData={displayedData} />;
+      return (
+        <LineChartComponent config={config} displayedData={displayedData} />
+      );
     case "pie":
-      return <PieChartComponent config={config} displayedData={displayedData} />;
+      return (
+        <PieChartComponent config={config} displayedData={displayedData} />
+      );
     case "radar":
-      return <RadarChartComponent config={config} displayedData={displayedData} />;
+      return (
+        <RadarChartComponent config={config} displayedData={displayedData} />
+      );
     case "radialBar":
-      return <RadialBarChartComponent config={config} displayedData={displayedData} />;
+      return (
+        <RadialBarChartComponent
+          config={config}
+          displayedData={displayedData}
+        />
+      );
     case "scatter":
-      return <ScatterChartComponent config={config} displayedData={displayedData} />;
+      return (
+        <ScatterChartComponent config={config} displayedData={displayedData} />
+      );
     case "funnel":
-      return <FunnelChartComponent config={config} displayedData={displayedData} />;
+      return (
+        <FunnelChartComponent config={config} displayedData={displayedData} />
+      );
     default:
       return (
         <div className="flex border-0 p-2 border-yellow-400 w-full justify-center">

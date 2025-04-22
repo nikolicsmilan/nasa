@@ -1,198 +1,77 @@
-/*import React, { useState, useEffect } from "react";
 import {
   Chart as ChartJS,
   CategoryScale,
   LinearScale,
+  TimeScale,      // <<< Hozzáadva a dátum tengelyhez
   BarElement,
   Title,
   Tooltip,
   Legend,
 } from "chart.js";
-import { Bar } from "react-chartjs-2";
+import 'chartjs-adapter-date-fns'; // <<< Hozzáadva az adapter
 import useWindowSize from "../../../hooks/use-windowsize";
 import { MyDataContext } from "../../../context/DataContext";
-import { MyConsoleContext } from "../../../context/ConsoleContext";
-import useBarhartColors from "../../../hooks/use-barchartcolors";
-import useBarChartData from "../../../hooks/use-barchartsdata";
+import useAreaChartColors from "../../../hooks/use-areachartcolors"; // Újrahasználhatjuk ezt, ha a színek jók
+// import useBarhartColors from "../../../hooks/use-barchartcolors"; // Vagy használhatunk külön BarChart színeket
+import useBarChartData from "../../../hooks/useBarChartData"; // <<< Az ÚJ adat hook
+import CustomBarChart from "./CustomBarChart"; // A belső chart komponens
 
+// Regisztráljuk a szükséges elemeket, beleértve a TimeScale-t is
 ChartJS.register(
   CategoryScale,
   LinearScale,
+  TimeScale,      // <<< Regisztrálva
   BarElement,
   Title,
   Tooltip,
   Legend
 );
 
-const BarChartComponent = () => {
-  const { users } = MyDataContext();
-  const {
-    filteredData,
-    actualMainConsole,
-    actualTypeData,
-    statusTable,
-    filterTable,
-  } = MyConsoleContext();
+// Fogadja a config és displayedData propokat!
+const BarChartComponent = ({ config, displayedData }) => {
+  const { users } = MyDataContext(); // Stílushoz továbbra is kellhet
   const { width, height } = useWindowSize();
-  const colors = useBarhartColors(users.style);
+
+  // Színek lekérése - Használhatjuk az AreaChart színeit, vagy létrehozhatunk egy useBarChartColors hookot
+  const colors = useAreaChartColors(users?.style); // Példa: AreaChart színek újrahasználata
+  console.log("BarChartComponent: colors", colors);
+  console.log("BarChartComponent: displayedData", displayedData);
+
+  // Az ÚJ useBarChartData hook hívása a megfelelő propokkal
   const chartData = useBarChartData(
-    filteredData,
-    filterTable.displayMode,
-    colors
+    displayedData, // A már feldolgozott és limitált adatok
+    colors,        // A színek
+    config         // Az aktuális config
   );
 
-  const options = {
-    plugins: {
-      tooltip: {
-        callbacks: {
-          label: function (context) {
-            let label = context.dataset.label || "";
-            if (label) {
-              label += " ";
-            }
-            if (context.parsed.y !== null) {
-              // Az értéket és a mértékegységet két sorba formázzuk
-              const { dataIndex } = context;
-              const fullname = filteredData[dataIndex]?.fullname || "Unknown";
-              const cleanedFullname = fullname
-                .replace(/^\((.*)\)$/, "$1")
-                .trim();
-              return [
-                `${cleanedFullname}`,
-                `${label}`,
-                `${statusTable.datatype}`, // A mértékegység
-                `${context.parsed.y}`, // Az érték
-              ];
-            }
-            return label;
-          },
-        },
-
-        bodyColor: colors.tooltip,
-        bodyFont: {
-          size: 16,
-          lineHeight: 1.5, // Növelhetjük a vonalak közötti távolságot
-        },
-        titleFont: {
-          size: 16, // Tooltip címének betűmérete
-          color: colors.tooltip, // Tooltip címének színe
-        },
-        footerFont: {
-          size: 20,
-        },
-        padding: 10,
-        displayColors: false, // Az adatpont színeinek elrejtése a tooltipben
-        caretSize: 16, // Tooltip "nyíl" méretének beállítása
-        backgroundColor: "#000", // Tooltip háttérszíne
-        //        borderColor: "#000", // Tooltip szegélyszíne
-        borderColor: ["rgba(255, 99, 132, 1)"],
-        borderWidth: 1, // Tooltip szegélyszélesség
-        xAlign: "center", // Tooltip középre igazítása vízszintesen
-        yAlign: "center",
-      },
-
-      legend: {
-        labels: {
-          color: colors.legend,
-        },
-      },
-    },
-
-    scales: {
-      x: {
-        ticks: {
-          color: colors.legend,
-        },
-      },
-      y: {
-        ticks: {
-          color: colors.legend,
-        },
-      },
-    },
-
-    interaction: {
-      mode: "nearest",
-      axis: "x",
-      intersect: false,
-    },
+  // Breakpointok (változatlan)
+  const breakpoints = {
+    sm: 640, md: 768, lg: 1024, xl: 1200, "2xl": 1536,
   };
 
+  // Méretezés (változatlan - bár lehet, hogy ezt is át kéne gondolni)
+  const chartWidth = width >= breakpoints.xl ? width : width + 1700;
+  const chartHeight = width >= breakpoints.xl ? height : height + 2200;
 
   return (
     <div
-      className="border-0 border-purple-400 flex justify-center"
-      style={{ width: width - 800, height: height - 200 }}
+      // A container stílusát lehet egyszerűsíteni, ha nem kell a fix méret
+      className="flex flex-col items-center justify-center"
+       style={
+        width >= breakpoints.xl
+          ? { width: width - 600, height: height - 100 }
+          : { width: width, height: height - 200 }
+      }
     >
-      <Bar
-        data={chartData}
-        options={options}
-        height={height - 200}
-        width={width - 800}
-      />
-    </div>
-  );
-};
-
-export default BarChartComponent;*/
-
-
-import React from "react";
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend,
-} from "chart.js";
-import useWindowSize from "../../../hooks/use-windowsize";
-import { MyDataContext } from "../../../context/DataContext";
-import { MyConsoleContext } from "../../../context/ConsoleContext";
-import useBarhartColors from "../../../hooks/use-barchartcolors";
-import useBarChartData from "../../../hooks/use-barchartsdata";
-import CustomBarChart from "./CustomBarChart";
-
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend
-);
-
-const BarChartComponent = () => {
-  const { users } = MyDataContext();
-  const {
-    filteredData,
-    actualMainConsole,
-    actualTypeData,
-    statusTable,
-    filterTable,
-  } = MyConsoleContext();
-  const { width, height } = useWindowSize();
-  const colors = useBarhartColors(users.style);
-  const chartData = useBarChartData(
-    filteredData,
-    filterTable.displayMode,
-    colors
-  );
-
-  return (
-    <div
-      className="border-0 border-purple-400 flex justify-center"
-      style={{ width: width - 800, height: height - 200 }}
-    >
+      {/* A CustomBarChart hívása a REFKTORÁLT propokkal */}
       <CustomBarChart
-        data={chartData}
-        colors={colors}
-        statusTable={statusTable}
-        height={height - 200}
-        width={width - 800}
-        filterTable={filterTable}
-        filteredData={filteredData}
+        config={config}              // <<< Átadjuk a configot
+        data={chartData}             // <<< Az új hook által generált adatok
+        colors={colors}              // <<< A színek
+        displayedData={displayedData} // <<< Az eredeti (limitált) adatok a tooltiphez
+        height={chartHeight}
+        width={chartWidth}
+        // Régi propok (statusTable, filterTable, filteredData) eltávolítva
       />
     </div>
   );
