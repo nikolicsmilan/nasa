@@ -142,9 +142,11 @@ function App() {
       ],
     },
   ]);
+  //theme-color-ref read by getComputedStyleColor.js in useAreaChartColors.js for example
+  //This ref need for Graphs custom color. Tailwind styles not apply directly to charts
   return (
     <div className={`${choosenStyle} font-mono text-base`}>
-      <div id="ezaz" className="text-primary hidden">
+      <div id="theme-color-ref" className="text-primary hidden">
         Sampling div tailwind for react charts for dynamic colors
       </div>
       <RouterProvider router={router} />

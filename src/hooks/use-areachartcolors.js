@@ -1,31 +1,27 @@
-// useAreaChartColors.js
+// src/hooks/use-areachartcolors.js (EGYSZERŰSÍTETT VERZIÓ)
+
 import { useState, useEffect } from 'react';
 import { getComputedStyleColor } from '../utils/getComputedStyleColor';
 
 const useAreaChartColors = (styleDependency) => {
+  // Kezdetben csak a dinamikusan meghatározandó színeket inicializáljuk
   const [colors, setColors] = useState({
-    tooltip: "#000",
-    legend: "#000",
-    area1: "rgba(136, 132, 216, 0.2)",
-    area2: "rgba(130, 202, 157, 0.2)",
-    area3: "rgba(251, 191, 36, 0.2)",
-    areaInc: "rgba(255, 99, 132, 0.2)",
-    areaDesc: "rgba(54, 162, 235, 0.2)",
+    tooltip: "#FFFFFF", // Alapértelmezett fehér (felülíródik)
+    legend: "#FFFFFF",  // Alapértelmezett fehér (felülíródik)
+    // A többi fix 'area' szín eltávolítva
   });
 
   useEffect(() => {
+    // Csak a szükséges tooltip és legend színeket állítjuk be dinamikusan
+    const primaryColor = getComputedStyleColor("theme-color-ref"); // Kiolvassuk a primary színt
     setColors({
-      tooltip: getComputedStyleColor("ezaz"),
-      legend: getComputedStyleColor("ezaz"),
-      area1: "rgba(136, 132, 216, 0.2)",
-      area2: "rgba(130, 202, 157, 0.2)",
-      area3: "rgba(251, 191, 36, 0.2)",
-      areaInc: "rgba(255, 99, 132, 0.2)",
-      areaDesc: "rgba(54, 162, 235, 0.2)",
+      tooltip: primaryColor, // Ez lesz az alap színünk a chartokhoz
+      legend: primaryColor,  // Ugyanaz a szín a szövegekhez, címkékhez
     });
+    // Nincs szükség a fix RGBA értékekre
   }, [styleDependency]);
 
-  return colors;
+  return colors; // Csak a tooltip és legend színt tartalmazó objektumot adjuk vissza
 };
 
 export default useAreaChartColors;
