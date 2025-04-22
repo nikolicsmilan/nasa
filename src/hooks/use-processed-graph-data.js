@@ -1,71 +1,62 @@
-import { useMemo } from 'react';
+import { useMemo } from "react";
+// Importáljuk az új utility függvényeket
+import {
+  parseGraphValue,
+  filterValidData,
+  sortDataByParsedValue,
+  limitData,
+} from "../utils/graphDataUtils"; // Ellenőrizd az útvonalat!
 
-// Ez a hook felelős a nyers adatok feldolgozásáért, szűréséért, rendezéséért és limitálásáért
-// a kapott konfiguráció alapján.
+/**
+ * Custom Hook a Graph adatok feldolgozására.
+ * Használja a useMemo-t és a graphDataUtils segédfüggvényeit.
+ * @param {object | null | undefined} sumObject A teljes API válasz objektum ({ data: [], count: "..." }).
+ * @param {object} config Az aktuális konfigurációs objektum.
+ * @returns {Array<Object>} A feldolgozott, szűrt, rendezett és limitált adatok tömbje.
+ */
 const useProcessedGraphData = (sumObject, config) => {
-
   const displayedData = useMemo(() => {
-    // A sumObject.data tömböt használjuk forrásként
     const sourceData = sumObject?.data;
+    const { dataKey, sortOrder, displayLimit } = config || {}; // Biztonságos default értékek
 
-    // DEBUG logolás (maradhat, vagy törölhető később)
-    console.log(`>>> DEBUG [useProcessedGraphData]: Hook running. config:`, config, `sourceData length: ${sourceData?.length ?? 0}`);
+    // DEBUG logolás
+    console.log(
+      `>>> DEBUG [useProcessedGraphData]: Hook running. config:`,
+      config,
+      `sourceData length: ${sourceData?.length ?? 0}`
+    );
 
-    // Ha nincs adat, üres tömböt adunk vissza
-    if (!sourceData || sourceData.length === 0) {
-        console.log(">>> DEBUG [useProcessedGraphData]: Exiting early - no sourceData.");
-        return [];
+    if (!sourceData || sourceData.length === 0 || !config) {
+      console.log(
+        ">>> DEBUG [useProcessedGraphData]: Exiting early - no sourceData or config."
+      );
+      return [];
     }
 
-    // Kiolvassuk a szükséges config értékeket.
-    // A totalItems itt nincs felhasználva a további számításokban, ezért kivettük.
-    const { dataKey, sortOrder, displayLimit } = config;
-    console.log(">>> DEBUG [useProcessedGraphData]: Using config values:", { dataKey, sortOrder, displayLimit }); // DEBUG
+    // 1. Map + Parse: Hozzáadjuk a _parsedValue-t minden elemhez
+    const mappedData = sourceData.map((item) => ({
+      ...item,
+      _parsedValue: parseGraphValue(item ? item[dataKey] : undefined, dataKey),
+    }));
 
-    // Adatok feldolgozása: map (érték parse-olása) -> filter (érvénytelenek kiszűrése)
-    const processedData = sourceData
-      .map((item) => {
-        const rawValue = item ? item[dataKey] : undefined;
-        let parsedValue;
-        if (dataKey === "last_obs") { // Dátum kezelése
-          parsedValue = rawValue ? new Date(rawValue) : null;
-          if (parsedValue instanceof Date && isNaN(parsedValue.getTime()))
-            parsedValue = null;
-        } else { // Számok kezelése
-          parsedValue =
-            rawValue !== null && rawValue !== undefined
-              ? parseFloat(rawValue)
-              : NaN;
-        }
-        if (rawValue === undefined) return null; // Ha a kulcs hiányzott
-        return { ...item, _parsedValue: parsedValue };
-      })
-      .filter( // Érvénytelen parse-olt értékek és null elemek kiszűrése
-        (item) => item !== null && item._parsedValue !== null && !isNaN(item._parsedValue)
-      );
+    // 2. Filter: Kiszűrjük az érvényteleneket
+    const filteredData = filterValidData(mappedData);
+    console.log(
+      `>>> DEBUG [useProcessedGraphData]: filteredData length: ${filteredData.length}`
+    );
 
-    console.log(`>>> DEBUG [useProcessedGraphData]: processedData length before sort: ${processedData.length}`);
+    // 3. Sort: Rendezés
+    const sortedData = sortDataByParsedValue(filteredData, sortOrder);
 
-    // Rendezés a config.sortOrder alapján
-    processedData.sort((a, b) => {
-      const valA = a._parsedValue;
-      const valB = b._parsedValue;
-      if (valA < valB) return sortOrder === "asc" ? -1 : 1;
-      if (valA > valB) return sortOrder === "asc" ? 1 : -1;
-      return 0;
-    });
+    // 4. Limit: Levágás
+    const limitedData = limitData(sortedData, displayLimit);
+    console.log(
+      `>>> DEBUG [useProcessedGraphData]: limitedData length after slice: ${limitedData.length}`
+    );
 
-    // Levágás a config.displayLimit alapján
-    console.log(`>>> DEBUG [useProcessedGraphData]: Slicing processed data (${processedData.length} items) to max ${displayLimit} items.`);
-    const result = processedData.slice(0, displayLimit);
-    console.log(`>>> DEBUG [useProcessedGraphData]: Final result length after slice: ${result.length}`);
+    return limitedData;
+  }, [sumObject, config]); // Függőségek: sumObject és config
 
-    return result; // A hook a feldolgozott és limitált adatokat adja vissza
-
-  // A useMemo függőségei továbbra is a bejövő sumObject és config
-  }, [sumObject, config]);
-
-  // A custom hook visszatérési értéke maga a memoizált, feldolgozott adat
   return displayedData;
 };
 
