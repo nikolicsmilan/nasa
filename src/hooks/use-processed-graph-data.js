@@ -17,6 +17,7 @@ import {
 const useProcessedGraphData = (sumObject, config) => {
   const displayedData = useMemo(() => {
     const sourceData = sumObject?.data;
+    console.log(">>> DEBUG [useProcessedGraphData] sourceData:", sourceData); // <<< IDE!
     const { dataKey, sortOrder, displayLimit } = config || {}; // Biztonságos default értékek
 
     // DEBUG logolás

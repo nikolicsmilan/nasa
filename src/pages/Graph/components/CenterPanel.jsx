@@ -40,4 +40,6 @@ const CenterPanel = ({ children }) => {
 
 export default CenterPanel;
 
-//CenterPanel
+// src/components/CenterPanel.jsx
+
+

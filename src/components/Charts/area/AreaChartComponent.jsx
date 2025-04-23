@@ -63,24 +63,27 @@ const AreaChartComponent = ({ config, displayedData }) => {
   // Diagram magasságának számítása az ablakméret alapján (a logika itt még finomítható)
   const chartHeight = width >= breakpoints.xl ? height : height + 2200;
 
+  
+
   // A komponens JSX struktúrájának visszaadása
   return (
     // Külső div a chart pozicionálásához és alapvető stílusához
     <div
       className=" flex flex-col items-center justify-center " // Flexbox központosítás
       // Dinamikus stílus az ablakméret alapján (a konténer méretének beállítása)
-      style={
+     style={
         width >= breakpoints.xl
           ? { width: width - 600, height: height - 150 } // Nagyobb képernyőn
           : { width: width, height: height - 200 } // Kisebb képernyőn
       }
+         // style={chartContainerStyle}
     >
       {/* A belső CustomAreaChartLine komponens renderelése, átadva neki a szükséges propokat */}
       <CustomAreaChartLine
         config={config} // Aktuális konfiguráció átadása
         displayedData={displayedData} // Eredeti (limitált) adatok átadása (tooltiphez)
-        data={chartData} // A Chart.js formátumú adatok átadása
-        colors={colors} // Színek átadása
+        data={chartData} //  labels [], datasets [] useAreaChartData ból
+        colors={colors} // Színek átadása {tooltip,legend} from useAreaChartColors
         height={chartHeight} // Kiszámított magasság átadása
         width={chartWidth} // Kiszámított szélesség átadása
       />

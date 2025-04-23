@@ -11,7 +11,7 @@ import {
 // import { MyConsoleContext } from "../../../context/ConsoleContext"; // <<<--- ELTÁVOLÍTVA
 
 // Fogadja az ÚJ propokat
-export const GraphContent = ({ config, displayedData }) => {
+export const GraphContent = ({ config, displayedData,sumObject }) => {
   // const { mobiletoggle } = MyConsoleContext(); // <<<--- ELTÁVOLÍTVA
 
   // Ellenőrizzük, hogy a config és a graphType létezik-e
@@ -33,7 +33,7 @@ export const GraphContent = ({ config, displayedData }) => {
           // className={`... ${mobiletoggle ? "opacity-50" : ""}`} // <<<--- ELTÁVOLÍTVA
           className={`border-0 border-lime-400 w-full flex flex-col items-center justify-center`}
         >
-          {/* A chart komponensnek is az ÚJ propokat adjuk át */}
+         
           <AreaChartComponent config={config} displayedData={displayedData} />
         </div>
       );
@@ -43,7 +43,7 @@ export const GraphContent = ({ config, displayedData }) => {
           // className={`... ${mobiletoggle ? "opacity-50" : ""}`} // <<<--- ELTÁVOLÍTVA
           className={`border-0 border-lime-400 w-full flex flex-col items-center justify-center`}
         >
-          {/* A chart komponensnek is az ÚJ propokat adjuk át */}
+       
           <BarChartComponent config={config} displayedData={displayedData} />;
         </div>
       );
@@ -56,7 +56,7 @@ export const GraphContent = ({ config, displayedData }) => {
       );
     case "pie":
       return (
-        <PieChartComponent config={config} displayedData={displayedData} />
+        <PieChartComponent config={config} displayedData={displayedData}  sumObject={sumObject} />
       );
     case "radar":
       return (
@@ -85,3 +85,5 @@ export const GraphContent = ({ config, displayedData }) => {
       );
   }
 };
+// src/pages/Graph/components/GraphContent.jsx
+

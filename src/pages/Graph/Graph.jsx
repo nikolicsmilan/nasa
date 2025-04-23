@@ -152,7 +152,7 @@ const Graph = ({ sumObject }) => {
     >
       <video
         src="https://sablonossablon.web.app/video/optimized_earth2.mp4"
-        className="background-video border-0 border-red-400 opacity-40"
+        className=" hidde background-video border-0 border-red-400 opacity-40"
         autoPlay
         loop
         muted
@@ -169,6 +169,7 @@ const Graph = ({ sumObject }) => {
           graphdatasource={graphControlConfiguration}
           message={message}
           handleClick={updateConfig}
+          sumObject={sumObject} 
         />
       </div>
 

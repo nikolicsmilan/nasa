@@ -1,128 +1,72 @@
-import React, { useState, useEffect } from "react";
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
-import { Pie } from "react-chartjs-2";
-import useWindowSize from "../../../hooks/use-windowsize";
-import { MyDataContext } from "../../../context/DataContext";
-import { MyConsoleContext } from "../../../context/ConsoleContext";
+// src/components/Charts/pie/PieChartComponent.jsx
 
-ChartJS.register(ArcElement, Tooltip, Legend);
+import { Chart as ChartJS, ArcElement, Tooltip, Legend, Title } from "chart.js"; // Alap elemek
+import ChartDataLabels from 'chartjs-plugin-datalabels'; // Plugin import
+import useWindowSize from "../../../hooks/use-windowsize"; // Ablakméret hook
+import { MyDataContext } from "../../../context/DataContext"; // Adat kontextus
+import useAreaChartColors from "../../../hooks/use-areachartcolors"; // Szín hook (újrahasználjuk)
+import usePieChartData from "../../../hooks/use-piechartdata"; // Az ÚJ Pie adat hook
+import useProcessedGraphData from "../../../hooks/use-processed-graph-data"; // <<< ÚJ: A teljes adat feldolgozásához
+import CustomPieChart from "./CustomPieChart"; // Belső chart komponens
 
-const initialData = [
-  { name: "A", value: 4000 },
-  { name: "B", value: 3000 },
-  { name: "C", value: 2000 },
-  { name: "D", value: 2780 },
-  { name: "E", value: 1890 },
-  { name: "F", value: 2390 },
-  { name: "G", value: 3490 },
-];
+// Regisztráció (főleg a plugin miatt fontos itt is, vagy globálisan)
+ChartJS.register(ArcElement, Tooltip, Legend, Title, ChartDataLabels);
 
-const PieChartComponent = () => {
-  const { width, height } = useWindowSize();
-  const [colors, setColors] = useState({ tooltip: "#000", legend: "#000" });
-  const [chartData, setChartData] = useState({
-    labels: initialData.map(d => d.name),
-    datasets: [
-      {
-        label: 'Pie Dataset',
-        data: initialData.map(d => d.value),
-        backgroundColor: [
-          'rgba(255, 99, 132, 0.2)',
-          'rgba(54, 162, 235, 0.2)',
-          'rgba(255, 206, 86, 0.2)',
-          'rgba(75, 192, 192, 0.2)',
-          'rgba(153, 102, 255, 0.2)',
-          'rgba(255, 159, 64, 0.2)',
-          'rgba(255, 99, 132, 0.2)'
-        ],
-        borderColor: [
-          'rgba(255, 99, 132, 1)',
-          'rgba(54, 162, 235, 1)',
-          'rgba(255, 206, 86, 1)',
-          'rgba(75, 192, 192, 1)',
-          'rgba(153, 102, 255, 1)',
-          'rgba(255, 159, 64, 1)',
-          'rgba(255, 99, 132, 1)'
-        ],
-        borderWidth: 1
-      }
-    ]
-  });
+/**
+ * Fő wrapper komponens a Pie Chart megjelenítéséhez.
+ * Felelős az adatok előkészítéséért (a TELJES adathalmazból) és a CustomPieChart rendereléséért.
+ * @param {object} props - Propok.
+ * @param {object} props.config - Aktuális config.
+ * @param {object} props.sumObject - A TELJES, nyers adat objektum ({data: [], count: ...}) a Graph.jsx-ből.
+ * @returns {JSX.Element} A renderelt PieChart komponens.
+ */
+const PieChartComponent = ({ config, sumObject }) => { // <<< sumObject-et kap propként
+  const { users } = MyDataContext(); // Felhasználói stílus
+  const { width } = useWindowSize(); // Csak a szélesség kell a méretezéshez
+  const colors = useAreaChartColors(users?.style); // Színek lekérése
 
-  const { users } = MyDataContext();
-  const { filteredData, actualMainConsole, actualTypeData } = MyConsoleContext();
+  // 1. Először feldolgozzuk a TELJES adatot a _parsedValue hozzáadásával, de limitálás NÉLKÜL
+  //    Ehhez módosítani kell a useProcessedGraphData hookot VAGY annak logikáját itt használni.
+  //    Egyszerűbb megoldás: használjuk a hookot, de a configból kivesszük a limitet neki.
+  const configForFullData = { ...config, displayLimit: sumObject?.data?.length || Infinity }; // Ideiglenes config limit nélkül
+  const allProcessedData = useProcessedGraphData(sumObject, configForFullData); // Lefuttatjuk a feldolgozást limit nélkül
+  console.log(">>> DEBUG [PieChartComponent] allProcessedData for Pie Hook:", allProcessedData);
+  // 2. Az ÚJ usePieChartData hook hívása a TELJES feldolgozott adattal
+  const chartData = usePieChartData(allProcessedData, config, colors);
+  const breakpoints = { xl: 1200 };
+  // Debug log
+  // console.log("PieChartComponent: chartData", chartData);
 
-  useEffect(() => {
-    const getComputedStyleColor = (elementId) => {
-      const tempDiv = document.getElementById(elementId);
-      const color = window.getComputedStyle(tempDiv).color;
-      return color;
-    };
+// === KÍSÉRLET A MÉRETEZÉSRE ===
+  // Próbáljuk meg a Chart komponensnek szánt méreteket használni,
+  // de lehet, hogy %-os érték jobb lenne a szélességre.
+  const chartContainerStyle =
+    width >= breakpoints.xl
+      ? { width: '80%', height: '80%', margin: 'auto' } // Nagy képernyőn %-os szélesség/magasság
+      : { width: '95%', height: 'auto', margin: 'auto' }; // Kisebb képernyőn, magasság auto
 
-    setColors({
-      tooltip: getComputedStyleColor("ezaz"),
-      legend: getComputedStyleColor("ezaz"),
-    });
-  }, [users.style]);
-
-  useEffect(() => {
-    if (actualMainConsole.title === "Pie" && actualTypeData === "value") {
-      const transformedData = filteredData.map((item) => ({
-        name: item.name,
-        value: parseFloat(item.value),
-      }));
-
-      setChartData({
-        labels: transformedData.map(d => d.name),
-        datasets: [
-          {
-            label: 'Pie Dataset',
-            data: transformedData.map(d => d.value),
-            backgroundColor: [
-              'rgba(255, 99, 132, 0.2)',
-              'rgba(54, 162, 235, 0.2)',
-              'rgba(255, 206, 86, 0.2)',
-              'rgba(75, 192, 192, 0.2)',
-              'rgba(153, 102, 255, 0.2)',
-              'rgba(255, 159, 64, 0.2)',
-              'rgba(255, 99, 132, 0.2)'
-            ],
-            borderColor: [
-              'rgba(255, 99, 132, 1)',
-              'rgba(54, 162, 235, 1)',
-              'rgba(255, 206, 86, 1)',
-              'rgba(75, 192, 192, 1)',
-              'rgba(153, 102, 255, 1)',
-              'rgba(255, 159, 64, 1)',
-              'rgba(255, 99, 132, 1)'
-            ],
-            borderWidth: 1
-          }
-        ]
-      });
-    }
-  }, [filteredData, actualMainConsole.title, actualTypeData]);
+  // Vagy próbálj fixebb méretet, ami közelít a CenterPanel-hez:
+  // const chartContainerStyle =
+  //   width >= breakpoints.xl
+  //     ? { width: width - 700, height: height - 250 } // Kisebb margókkal, mint a CenterPanel
+  //     : { width: width - 50, height: height - 300 };
+  // =============================
 
   return (
-    <div className="border-0 border-purple-400 flex justify-center"  style={{ width: width - 800, height: height - 200 }}>
-     
-      <Pie
-        data={chartData}
-        options={{
-          plugins: {
-            tooltip: {
-              bodyColor: colors.tooltip
-            },
-            legend: {
-              labels: {
-                color: colors.legend
-              }
-            }
-          }
-        }}
-        height={height - 200}
-        width={width - 800}
-      />
+    <div className="flex flex-col items-center justify-center w-full" style={chartContainerStyle}>
+      {/* Ellenőrizzük, hogy van-e adat a chartData-ban (főleg a dataset adatai) */}
+      {chartData && chartData.datasets && chartData.datasets[0]?.data.length > 0 ? (
+        <CustomPieChart
+          config={config}
+          data={chartData}
+          colors={colors}
+        />
+      ) : (
+        // Üzenet, ha az adott dataType-hoz nincs implementálva a kategorizálás, vagy nincs adat
+        <p className="text-neutral-500 p-4 text-center">
+          Pie chart categorization not implemented for '{config?.dataType}' or no data available.
+        </p>
+      )}
     </div>
   );
 };

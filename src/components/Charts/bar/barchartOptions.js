@@ -77,7 +77,11 @@ export const barchartOptions = (colors, config, displayedData) => {
           autoSkip: false,    // Minden név látszik
           // Forgatásra itt valószínűleg nincs szükség
         },
-        grid: { display: false }, // Vízszintes rácsvonalak elrejtése
+        grid: {
+          // Rácsvonalak ezen a tengelyen (ezek a vízszintes rácsok)
+          color: "rgba(128, 128, 128, 0.2)", // Rácsvonal színe
+          borderColor: "rgba(128, 128, 128, 0.4)", // Tengelyvonal színe
+        },
          title: {
             display: true,
             text: 'Asteroid',

@@ -2,7 +2,7 @@ import ControlPanel from "../components/ControlPanel";
 import CenterPanel from "../components/CenterPanel"; // Ez a keret maradt
 import InfoPanel from "../components/InfoPanel";
 import GraphControls from "../components/GraphControls";
-// import GraphCenterPanel from "../components/GraphCenterPanel"; // Ezt már elvileg eltávolítottuk/kommenteltük
+import GraphCenterPanel from "../components/GraphCenterPanel"; // Ezt már elvileg eltávolítottuk/kommenteltük
 import { GraphContent } from "../components/GraphContent"; // Named import helyes
 import GraphInfoContent from "../components/GraphInfoContent";
 
@@ -13,13 +13,14 @@ const GraphDesktop = ({
   graphdatasource, // Marad: A vezérlők konfigurációja
   message,         // Marad: Az üzenet objektum
   handleClick,     // Marad: Az updateConfig függvény (ezen a néven)
+  sumObject
 }) => {
   return (
     <div
-      className={`flex flex-row w-full relative z-50 border-0 border-sky-400`}
+      className={`flex flex-row w-full relative z-50 border-2 border-sky-400`}
     >
-      {/* GraphControls: csak a graphdatasource és a handleClick kell neki */}
-      <div className="border-0 border-red-400 w-80">
+    
+      <div className="border-2 border-red-400 w-80">
         <ControlPanel>
           <GraphControls
             graphdatasource={graphdatasource}
@@ -29,19 +30,20 @@ const GraphDesktop = ({
         </ControlPanel>
       </div>
 
-      {/* CenterPanel -> GraphContent: config és displayedData kell neki */}
-      <div className="border-0 lg:relative lg:top-5 flex-1">
+    
+      <div className="border-2 lg:relative lg:top-5 flex-1">
         <CenterPanel>
           <GraphContent
             config={config}             // <<<--- ÚJ prop átadása
             displayedData={displayedData} // <<<--- ÚJ prop átadása
             // Régi propok (statusTable, filterTable, filteredData) eltávolítva
+            sumObject={sumObject} 
           />
         </CenterPanel>
       </div>
 
-      {/* InfoPanel -> GraphInfoContent: message és config kell neki */}
-      <div className="w-64 border-0">
+     
+      <div className="w-64 border-2">
         <InfoPanel>
           <GraphInfoContent
              message={message}
@@ -54,3 +56,4 @@ const GraphDesktop = ({
 };
 
 export default GraphDesktop;
+

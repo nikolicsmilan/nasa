@@ -77,7 +77,7 @@ export const datatypeConsole = [
 export const graphConsole = [
   { title: "area", icon: FaChartArea, description: "Area Chart" }, // Leírás pontosítva
   { title: "bar", icon: TfiBarChart, description: "Bar Chart" },
-  { title: "line", icon: FaChartLine, description: "Line Chart" },
+ // { title: "line", icon: FaChartLine, description: "Line Chart" },
   { title: "pie", icon: MdPieChart, description: "Pie Chart" },
   { title: "radar", icon: AiOutlineRadarChart, description: "Radar Chart" },
   { title: "radialBar", icon: TbChartArcs3, description: "Radial Bar Chart" }, // Leírás pontosítva
