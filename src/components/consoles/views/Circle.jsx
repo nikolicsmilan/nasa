@@ -1,5 +1,3 @@
-import React from 'react';
-
 function Circle() {
   const width = 300;
   const height = 300;

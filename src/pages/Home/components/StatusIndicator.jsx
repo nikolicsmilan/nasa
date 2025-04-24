@@ -1,5 +1,3 @@
-import React from 'react';
-
 // Color palette for status information
 const colorPalette = {
   "#27ae60": { icon: "✓", message: "NINCS VESZÉLY", glowIntensity: "4px" },

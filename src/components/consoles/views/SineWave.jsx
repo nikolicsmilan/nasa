@@ -1,5 +1,3 @@
-import React from 'react';
-
 function SineWave() {
   const width = 300; // SVG szélessége
   const height = 300; // SVG magassága

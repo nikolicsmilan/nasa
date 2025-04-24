@@ -8,11 +8,14 @@
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "serve": "serve -s build",
-    "diff": "git diff > logs/diff.patch"
+    "diff": "git diff > logs/diff.patch",
+    "lint:report": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0 > logs/eslint-report.txt 2>&1"
   },
   "dependencies": {
     "chart.js": "^4.4.2",
+    "chartjs-adapter-date-fns": "^3.0.0",
+    "chartjs-plugin-datalabels": "^2.2.0",
+    "date-fns": "^4.1.0",
     "firebase": "^10.8.0",
     "framer-motion": "^11.0.5",
     "mathjs": "^14.2.1",
@@ -33,11 +36,11 @@
     "autoprefixer": "^10.4.17",
     "axios": "^1.6.7",
     "eslint": "^8.56.0",
+    "eslint-config-prettier": "^10.1.1",
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.5",
     "postcss": "^8.4.35",
-    "serve": "^14.2.4",
     "tailwindcss": "^3.4.1",
     "vite": "^5.1.0"
   }

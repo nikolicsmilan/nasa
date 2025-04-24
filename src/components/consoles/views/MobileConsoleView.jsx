@@ -16,11 +16,11 @@ const MobileConsoleView = ({ stopClozer }) => {
       initial="exit"
       animate={settingsOpen ? "animate" : "exit"}
       exit="exit"
-      className="glowy-button-6 w-full mx-2
+      className="glowy-button-6 w-full
             border-2   border-primary h-2/4  
-            relative top-[60px]  z-50 flex lg:hidden flex-col my-2  "
+            relative top-[60px]  z-50 flex lg:hidden flex-col   "
     >
-      {settings === "Navigation" && <NavigationConsole />}
+      {settings === "Menu" && <NavigationConsole />}
       {settings === "Style" && <StyleConsole users={users} />}
       {settings === "Sound" && <SoundConsole />}
       {settings === "Language" && <LanguageConsole />}

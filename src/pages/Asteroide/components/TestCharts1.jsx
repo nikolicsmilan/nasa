@@ -1,4 +1,3 @@
-import React from 'react'
 import RechartsExample from "../components/RechartsExample";
 import RechartsExample2 from "../components/RechartExample2";
 const TestCharts1 = () => {

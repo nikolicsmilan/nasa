@@ -1,5 +1,3 @@
-import React from 'react';
-
 const SineWave2 = ({ 
   gridSize = 30,
   amplitude = 1,

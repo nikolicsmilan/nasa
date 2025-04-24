@@ -1,4 +1,4 @@
-/*import React from 'react';
+/*
 
 function DrawingCanvas({ width = 300, height = 300 }) {
   const gridLines = [];
@@ -16,7 +16,7 @@ function DrawingCanvas({ width = 300, height = 300 }) {
 }
 
 export default DrawingCanvas;*/
-/*import React from 'react';
+/*
 
 function DrawingCanvas({ width = 300, height = 300 }) {
   const gridLines = [];
@@ -69,7 +69,7 @@ function DrawingCanvas({ width = 300, height = 300 }) {
 
 export default DrawingCanvas;*/
 /*
-import React from 'react';
+
 
 function DrawingCanvas({ width = 300, height = 300 }) {
   const gridLines = [];
@@ -97,7 +97,7 @@ function DrawingCanvas({ width = 300, height = 300 }) {
 
 export default DrawingCanvas;*/
 
-import React from 'react';
+
 
 function DrawingCanvas({ width = 300, height = 300 }) {
   const gridLines = [];

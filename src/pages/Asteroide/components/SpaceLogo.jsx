@@ -1,4 +1,3 @@
-import React from 'react'
 import earth from "../../../assets/images/earthbg.png";
 const SpaceLogo = () => {
   return (

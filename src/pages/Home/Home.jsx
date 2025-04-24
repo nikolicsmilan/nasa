@@ -19,7 +19,7 @@ const Home = () => {
   const [videoLoaded, setVideoLoaded] = useState(false);
 
   useEffect(() => {
-    setSettings("Navigation");
+    setSettings("Menu");
     const timeoutId = setTimeout(() => {
       setVideoLoaded(true);
     }, 500);

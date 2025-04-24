@@ -1,4 +1,3 @@
-import React from 'react';
 import CircularProgress from 'react-svg-circular-progress';
 
 const ProgressCircleChart = ({ percentage }) => {

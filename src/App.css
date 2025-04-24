@@ -605,6 +605,52 @@ because of the overwrite the base class
   border-color: #fff;
 }
 
+.glowy-button-10 {
+  position: relative;
+  padding: 3px;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.2); /* Áttetsző fekete háttér */
+  border: 1px solid rgba(255, 255, 255, 0.1); /* Vékony, áttetsző fehér keret */
+  border-radius: 5px;
+  cursor: pointer;
+  overflow: hidden;
+  backdrop-filter: blur(5px); /* Üvegszerű elmosás */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Enyhe árnyék */
+}
+
+.glowy-button-10::before {
+  content: "";
+  position: absolute;
+  top: var(--y);
+  left: var(--x);
+  transform: translate(-50%, -50%); /* Középre igazítás */
+  width: 50px;
+  height: 50px;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.2) 0%, /* Halványabb fény */
+    rgba(255, 255, 255, 0) 70%
+  );
+  opacity: 0; /* Alapértelmezetten nem látható */
+  transition: opacity 0.3s ease; /* Finom áttűnés */
+}
+
+.glowy-button-10:hover::before {
+  opacity: 1; /* Hover-re megjelenik a fény */
+}
+
+/* További finomhangolások (opcionális) */
+.glowy-button-10 {
+  transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Finom áttűnések */
+}
+
+.glowy-button-10:hover {
+  border-color: rgba(255, 255, 255, 0.3); /* Hover-re erősebb keret */
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.8); /* Hover-re erőteljesebb árnyék */
+}
+
+
+
 
 .hexagon {
   position: relative;

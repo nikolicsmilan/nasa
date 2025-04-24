@@ -1,97 +1,56 @@
-/*import { useEffect, useState } from "react";
-import { MyConsoleContext } from "../context/ConsoleContext";
+// src/hooks/use-color.js
+// Nincs többé szükség a MyConsoleContext importra
 
-export const useColor = (nameconsole) => {
-  const { statusTable, filterTable, graphConfigurations } = MyConsoleContext();
-  const [config, setConfig] = useState(() => graphConfigurations.find(config => config.name === statusTable.graph));
+// A hook most argumentumként kapja a config-ot és a nameconsole-t
+export const useColor = (config, nameconsole) => {
+  // A graphConfigurations-t már nem itt kezeljük, a config releváns részeit használjuk
+  // A régi belső config state és useEffect eltávolítva
 
-  useEffect(() => {
-    setConfig(graphConfigurations.find(config => config.name === statusTable.graph));
-  }, [statusTable.graph, graphConfigurations]);
+  const disabled = "bg-stone-500 cursor-not-allowed"; // Letiltott stílus
+  const chosen = "bg-primary text-white";            // Kiemelt/választott stílus (pl. aktív gomb)
+  const defaultColor = "bg-tertiary text-info";      // Alapértelmezett gomb stílus
 
-  const disabled = "bg-stone-500 cursor-not-allowed";
-  const chosen = "bg-600";
-  const defaultColor = "bg-950";
-
+  // A colorIze függvény egy adott gomb item-et kap paraméterként
   const colorIze = (item) => {
-    if (
-      statusTable.dashboard !== "graph" &&
-      (nameconsole === "graph" || nameconsole === "filter" || nameconsole === "datatype")
-    ) {
-      return disabled;
-    } else if (nameconsole === "filter" && (item.title === "plusone" || item.title === "minusone")) {
-      if (config) {
-        if (item.title === "plusone" && filterTable.piece >= config.max) {
-          return disabled;
-        } else if (item.title === "minusone" && filterTable.piece <= config.min) {
-          return disabled;
+    // 1. Ellenőrzés: Van-e érvényes config objektum? Ha nincs, alapértelmezett színt adunk.
+    if (!config) {
+      console.warn("useColor: Config object is missing!");
+      return defaultColor;
+    }
+
+    // 2. Letiltási logika (Opcionális - eredeti logika alapján)
+    // Tiltsuk le az 'inc'/'desc' gombokat, ha a graphType 'bar'?
+    // Ezt át lehet gondolni, lehet, hogy felesleges.
+    if (config.graphType === "bar" && nameconsole === "filter" && ["inc", "desc"].includes(item.title)) {
+      // return disabled; // Ha szükséges a tiltás
+    }
+
+    // 3. Kiválasztott állapot ellenőrzése
+    switch (nameconsole) {
+      case 'datatype':
+        if (config.dataType === item.title) return chosen;
+        break;
+      case 'graph':
+        if (config.graphType === item.title) return chosen;
+        break;
+      case 'filter': // Itt már csak 'inc' és 'desc' van
+        // Ellenőrizzük, hogy a gomb címe megegyezik-e a configban lévő rendezési iránnyal
+        // (Figyelem: item.title 'inc'/'desc', config.sortOrder 'asc'/'desc')
+        if ((item.title === 'inc' && config.sortOrder === 'asc') || (item.title === 'desc' && config.sortOrder === 'desc')) {
+          return chosen;
         }
-      }
-      return defaultColor;
-    } else if (nameconsole === "filter" && filterTable.displayMode === item.title) {
-      return chosen;
-    } else if (statusTable[nameconsole] === item.title) {
-      return chosen;
-    } else {
-      return defaultColor;
-    }
-  };
-
-  return { colorIze };
-};*/
-
-import { useEffect, useState } from "react";
-import { MyConsoleContext } from "../context/ConsoleContext";
-
-export const useColor = (nameconsole) => {
-  const { statusTable, filterTable, graphConfigurations } = MyConsoleContext();
-  const [config, setConfig] = useState(() => graphConfigurations.find(config => config.name === statusTable.graph));
-
-  useEffect(() => {
-    setConfig(graphConfigurations.find(config => config.name === statusTable.graph));
-  }, [statusTable.graph, graphConfigurations]);
-
-  const disabled = "bg-stone-500 cursor-not-allowed";
-  const chosen = "bg-600";
-  const defaultColor = "bg-950";
-
-  const colorIze = (item) => {
-    // Ellenőrizzük, hogy a statusTable.dashboard értéke "graph" és a statusTable.graph értéke "bar"
-    if (
-      statusTable.dashboard === "graph" &&
-      statusTable.graph === "bar" &&
-      nameconsole === "filter" &&
-      ["all", "inc", "desc"].includes(item.title)
-    ) {
-      return disabled;
+        break;
+      default:
+        // Ismeretlen csoport esetén alapértelmezett
+        break;
     }
 
-    if (
-      statusTable.dashboard !== "graph" &&
-      (nameconsole === "graph" || nameconsole === "filter" || nameconsole === "datatype")
-    ) {
-      return disabled;
-    } else if (nameconsole === "filter" && (item.title === "plusone" || item.title === "minusone")) {
-      if (config) {
-        if (item.title === "plusone" && filterTable.piece >= config.max) {
-          return disabled;
-        } else if (item.title === "minusone" && filterTable.piece <= config.min) {
-          return disabled;
-        }
-      }
-      return defaultColor;
-    } else if (nameconsole === "filter" && filterTable.displayMode === item.title) {
-      return chosen;
-    } else if (statusTable[nameconsole] === item.title) {
-      return chosen;
-    } else {
-      return defaultColor;
-    }
+    // 4. Ha egyik fenti feltétel sem teljesült, alapértelmezett színt adunk
+    return defaultColor;
   };
 
   return { colorIze };
 };
-
 
 
 

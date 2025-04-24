@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import  { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { MyConsoleContext } from "../../../context/ConsoleContext";
 import { useDataVisualization } from "../../../hooks/use-datavisualization";
@@ -19,8 +19,8 @@ const MainConsole = () => {
     sm: 640,
     md: 768,
     lg: 1024,
-    xl: 1200, // defined in Tailwind
-    "2xl": 1536,
+    xl: 1200,
+    "2xl": 1700,
   };
 
   const menuHandler = (item) => {
@@ -37,30 +37,25 @@ const MainConsole = () => {
     <motion.div
       animate={animationVariants}
       className=" flex flex-col items-center justify-center relative z-10 rounded inset-0
-        border-0 border-lime-400
-  
- 
-    text-dark w-screen md:w-full h-full  shadow-2xl 
-    transform perspective-1000 p-2 "
+        border-0 border-lime-400  text-dark w-screen md:w-full h-full  shadow-2xl  p-2 "
     >
-
-      
-      <div
+    <div
         className={`${
           statusTable.dashboard === "graph" ? fullglass : ""
-        }    glowy-button-9  border-b-8 border-t-0 border-r-8 border-l-0 rounded-2xl border-black 
+        }    glowy-button-10  rounded-2xl
       z-50 relative p-0 overflow-y-scroll overflow-x-scroll 
          text-white flex flex-col   items-center justify-center w-screen 
-         xl:w-full md:h-full  `}
+         xl:w-full md:h-full`}
         // style={{ width: width - 800, height: height - 120 }}
         style={
-          width >= breakpoints.xl
-            ? { width: width - 600, height: height - 150 }
-            : { width: width - 20, height: height-250 }
+          width >= breakpoints["2xl"]
+            ? { width: width - 600, height: height - 150 } // 2XL gets a 150 adjustment
+            : width >= breakpoints.xl
+            ? { width: width - 600, height: height - 150 } // XL gets a 50 adjustment
+            : { width: width - 20, height: height - 250 } // Other sizes
         }
       >
         {consoleContent}
-      
       </div>
 
       <div className="absolut  xl:hidden z-50  border-0 border-orange-400 w-full flex justify-center items-center my-5">
@@ -88,22 +83,3 @@ const MainConsole = () => {
 };
 
 export default MainConsole;
-//glowy-button-6  border-b-4 border-t-0 border-r-4 border-l-0 rounded-2xl border-black
-/*
-POSSIBILTY OTHER DESIGN
- {mobilmenu.map((item, index) => (
-              <div
-                key={index}
-                onClick={() => menuHandler(item)}
-                className="glowy-button-3 group relative z-50 border-0 hover:border-red-400 p-2 rounded m-2 bg-950 text-primary cursor-pointer text-3xl hover:bg-600"
-              >
-                {<item.icon />}
-                <div className="hidden text-center absolute top-0 left-0 mt-[80px] ml-2 w-32  group-hover:block bg-gray-700 text-white text-sm rounded p-1 z-50">
-                  {item.description}
-                </div>
-              </div>
-            ))}
-
-*/
-
-//  style={{ width: width - 800, height: height - 120 }}

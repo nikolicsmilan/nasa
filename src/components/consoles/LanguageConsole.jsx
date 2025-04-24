@@ -1,4 +1,3 @@
-import React from 'react';
 import { languages } from "../../locales/localdata";
 import { useSave } from "../../hooks/use-saveuser";
 import GenericConsole from './GenericConsole';
