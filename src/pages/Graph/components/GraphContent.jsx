@@ -1,4 +1,4 @@
-import {
+/*import {
   AreaChartComponent,
   BarChartComponent,
   LineChartComponent,
@@ -31,7 +31,7 @@ export const GraphContent = ({ config, displayedData,sumObject }) => {
       return (
         <div
           // className={`... ${mobiletoggle ? "opacity-50" : ""}`} // <<<--- ELTÁVOLÍTVA
-          className={`border-0 border-lime-400 w-full flex flex-col items-center justify-center`}
+          className={`border-2 border-lime-400 w-full flex flex-col items-center justify-center`}
         >
          
           <AreaChartComponent config={config} displayedData={displayedData} />
@@ -85,5 +85,30 @@ export const GraphContent = ({ config, displayedData,sumObject }) => {
       );
   }
 };
+// src/pages/Graph/components/GraphContent.jsx*/
 // src/pages/Graph/components/GraphContent.jsx
+import {
+  AreaChartComponent, BarChartComponent, PieChartComponent, //... többi import
+} from "../../../components/Charts/index";
+
+export const GraphContent = ({ config, displayedData, sumObject }) => {
+  const graphType = config?.graphType;
+  if (!graphType) {
+    return <div className="p-4"><h1>Graph type not specified.</h1></div>;
+  }
+
+  // A komponenseknek most már maguknak kell h-full-nak lenniük
+  switch (graphType) {
+    case "area":
+      return <AreaChartComponent config={config} displayedData={displayedData} />;
+    case "bar":
+      return <BarChartComponent config={config} displayedData={displayedData} />;
+    case "pie":
+      // A PieChartComponent-nek is h-full-nak kell lennie a belső divjében
+      return <PieChartComponent config={config} sumObject={sumObject} />;
+    // ... többi case ...
+    default:
+      return <div className="p-4"><h1>Chart type '{graphType}' unknown.</h1></div>;
+  }
+};
 

@@ -11,7 +11,7 @@ const GraphControls = ({ graphdatasource, handleClick, config }) => {
   const [viewMode, setViewMode] = useState('square'); // Alapértelmezett a négyzet
 
   return (
-    <div className="flex flex-col p-2 space-y-2"> {/* Kisebb térköz a csoportok között */}
+    <div className="flex flex-col p-2 space-y-2 w-80"> {/* Kisebb térköz a csoportok között */}
 
       {/* 2. Layout Switcher Gombok */}
       <div className="flex items-center justify-end space-x-2 mb-2 px-2">
