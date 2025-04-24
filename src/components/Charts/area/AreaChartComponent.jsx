@@ -1,4 +1,4 @@
-import {
+/*import {
   Chart as ChartJS, // Chart.js mag könyvtár importálása ChartJS néven
   CategoryScale, // X tengelyhez (kategóriák, pl. nevek) szükséges skála importálása
   LinearScale, // Y tengelyhez (numerikus értékek) szükséges skála importálása
@@ -78,7 +78,7 @@ const AreaChartComponent = ({ config, displayedData }) => {
       }
          // style={chartContainerStyle}
     >
-      {/* A belső CustomAreaChartLine komponens renderelése, átadva neki a szükséges propokat */}
+    
       <CustomAreaChartLine
         config={config} // Aktuális konfiguráció átadása
         displayedData={displayedData} // Eredeti (limitált) adatok átadása (tooltiphez)
@@ -92,4 +92,68 @@ const AreaChartComponent = ({ config, displayedData }) => {
 };
 
 // Az AreaChartComponent exportálása alapértelmezettként
+export default AreaChartComponent;*/
+
+// src/components/Charts/area/AreaChartComponent.jsx
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  TimeScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+  Filler,
+} from "chart.js";
+import "chartjs-adapter-date-fns";
+import { MyDataContext } from "../../../context/DataContext"; // Adat kontextus importálása (felhasználói beállításokhoz)
+import useAreaChartColors from "../../../hooks/use-areachartcolors"; // Custom hook a területdiagram színeinek lekéréséhez
+import useAreaChartData from "../../../hooks/use-areachartdata"; // Custom hook a Chart.js számára szükséges adatformátum generálásához
+import CustomAreaChartLine from "./CustomAreaChartLine"; // A tényleges <Line> komponenst tartalmazó wrapper importálása
+// import useWindowSize from "../../../hooks/use-windowsize"; // <<< ELTÁVOLÍTVA
+
+// A szükséges Chart.js modulok regisztrálása a könyvtárban
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  TimeScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+  Filler
+);
+
+/**
+ * Fő wrapper komponens az Area Chart megjelenítéséhez.
+ * Egyszerűsített verzió: Nem használ useWindowSize-ot, kitölti a szülő konténert.
+ * @param {object} props - Propok.
+ * @param {object} props.config - Aktuális config.
+ * @param {Array<object>} props.displayedData - A feldolgozott, megjelenítendő (limitált) adatok.
+ * @returns {JSX.Element} A renderelt AreaChart komponens.
+ */
+const AreaChartComponent = ({ config, displayedData }) => {
+  const { users } = MyDataContext();
+  const colors = useAreaChartColors(users?.style);
+  const chartData = useAreaChartData(displayedData, colors, config);
+
+  return (
+    // Külső div: Kitölti a szülőjét (pl. GraphContent -> CenterPanel belső div)
+    <div className="w-full h-full flex flex-col items-center justify-center">
+      {/* A belső komponens megkapja a props-okat, de width/height nélkül,
+          mivel a Chart.js responsive módja kezeli a méretet a szülő div alapján */}
+      <CustomAreaChartLine
+        config={config}
+        displayedData={displayedData}
+        data={chartData}
+        colors={colors}
+        // height és width propok eltávolítva
+      />
+    </div>
+  );
+};
+
 export default AreaChartComponent;

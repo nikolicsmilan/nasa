@@ -1,4 +1,4 @@
-import {
+/*import {
   Chart as ChartJS,
   CategoryScale,
   LinearScale,
@@ -63,7 +63,7 @@ const BarChartComponent = ({ config, displayedData }) => {
           : { width: width, height: height - 200 }
       }
     >
-      {/* A CustomBarChart hívása a REFKTORÁLT propokkal */}
+     
       <CustomBarChart
         config={config}              // <<< Átadjuk a configot
         data={chartData}             // <<< Az új hook által generált adatok
@@ -72,6 +72,67 @@ const BarChartComponent = ({ config, displayedData }) => {
         height={chartHeight}
         width={chartWidth}
         // Régi propok (statusTable, filterTable, filteredData) eltávolítva
+      />
+    </div>
+  );
+};
+
+export default BarChartComponent;*/
+
+// src/components/Charts/bar/BarChartComponent.jsx
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  TimeScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend,
+} from "chart.js";
+import 'chartjs-adapter-date-fns';
+import { MyDataContext } from "../../../context/DataContext";
+import useAreaChartColors from "../../../hooks/use-areachartcolors"; // Vagy használhatsz useBarChartColors-t
+import useBarChartData from "../../../hooks/useBarChartData";
+import CustomBarChart from "./CustomBarChart";
+// import useWindowSize from "../../../hooks/use-windowsize"; // <<< ELTÁVOLÍTVA
+
+// Regisztráljuk a szükséges elemeket
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  TimeScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend
+);
+
+/**
+ * Fő wrapper komponens a Bar Chart megjelenítéséhez.
+ * Egyszerűsített verzió: Nem használ useWindowSize-ot, kitölti a szülő konténert.
+ * @param {object} props - Propok.
+ * @param {object} props.config - Aktuális config.
+ * @param {Array<object>} props.displayedData - A feldolgozott, megjelenítendő (limitált) adatok.
+ * @returns {JSX.Element} A renderelt BarChart komponens.
+ */
+const BarChartComponent = ({ config, displayedData }) => {
+  const { users } = MyDataContext();
+  // Használhatod az AreaChart színeit, vagy egy dedikált useBarChartColors hookot
+  const colors = useAreaChartColors(users?.style);
+  const chartData = useBarChartData(displayedData, colors, config);
+
+  return (
+    // Külső div: Kitölti a szülőjét (pl. GraphContent -> CenterPanel belső div)
+    <div className="w-full h-full flex flex-col items-center justify-center">
+      {/* A belső komponens megkapja a props-okat, de width/height nélkül,
+          mivel a Chart.js responsive módja kezeli a méretet a szülő div alapján */}
+      <CustomBarChart
+        config={config}
+        displayedData={displayedData}
+        data={chartData}
+        colors={colors}
+        // height és width propok eltávolítva
       />
     </div>
   );
