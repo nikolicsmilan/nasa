@@ -150,13 +150,7 @@ const Graph = ({ sumObject }) => {
         toggle ? "opacity-70" : ""
       }`}
     >
-      <video
-        src="https://sablonossablon.web.app/video/optimized_earth2.mp4"
-        className=" hidde background-video border-0 border-red-400 opacity-40"
-        autoPlay
-        loop
-        muted
-      ></video>
+    
 
       <div
         className={`hidden xl:flex border-0 border-red-400 w-full ${
