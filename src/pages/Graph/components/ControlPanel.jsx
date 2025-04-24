@@ -1,4 +1,4 @@
-import useWindowSize from "../../../hooks/use-windowsize";
+/*import useWindowSize from "../../../hooks/use-windowsize";
 const ControlPanel = ({ children }) => {
   const { width, height } = useWindowSize();
 
@@ -27,4 +27,25 @@ const ControlPanel = ({ children }) => {
   );
 };
 
+export default ControlPanel;*/
+
+// src/pages/Graph/components/ControlPanel.jsx
+// import useWindowSize from "../../../hooks/use-windowsize"; // <<< ELTÁVOLÍTVA
+
+const ControlPanel = ({ children }) => {
+  // const { width, height } = useWindowSize(); // <<< ELTÁVOLÍTVA
+  // const breakpoints = { ... }; // <<< ELTÁVOLÍTVA
+  // const style = ...; // <<< ELTÁVOLÍTVA
+
+  return (
+    // Kitölti a szülőjét (GraphDesktop bal oldali div), görgethető
+    <aside
+      className="text-primary flex flex-col border-0 border-primary w-full h-4/5
+                 bg-gradient2 overflow-y-auto opacity-100 z-20 rounded " // Egyszerűsített osztályok, z-index lehet alacsonyabb
+      // style={ ... } // <<< ELTÁVOLÍTVA
+    >
+      {children}
+    </aside>
+  );
+};
 export default ControlPanel;

@@ -21,15 +21,17 @@ const InfoPanel = () => {
 export default InfoPanel;*/
 
 
+// src/pages/Graph/components/InfoPanel.jsx
+
 const InfoPanel = ({ children }) => {
   return (
-    <div className="border-0 p-1 border-red-400 top-20 relative">
-      {/* Megjeleníti a gyermekként kapott tartalmat */}
+    // Kitölti a szülőjét (GraphDesktop jobb oldali div)
+    // Eltávolítva: top-20 relative
+    <div className="border-0 p-1 w-full h-full flex flex-col"> {/* w-full h-full flex flex-col hozzáadva */}
       {children}
     </div>
   );
 };
-
 export default InfoPanel;
 
 
