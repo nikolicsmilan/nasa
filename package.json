@@ -9,7 +9,8 @@
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "diff": "git diff > logs/diff.patch",
-    "lint:report": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0 > logs/eslint-report.txt 2>&1"
+    "lint:report": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0 > logs/eslint-report.txt 2>&1",
+    "collect-src": "node scripts/collectSourceFiles.cjs"
   },
   "dependencies": {
     "chart.js": "^4.4.2",
@@ -19,6 +20,7 @@
     "firebase": "^10.8.0",
     "framer-motion": "^11.0.5",
     "mathjs": "^14.2.1",
+    "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-chartjs-2": "^5.2.0",
     "react-circular-progressbar": "^2.1.0",
