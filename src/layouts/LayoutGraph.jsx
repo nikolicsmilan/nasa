@@ -14,6 +14,7 @@ import DesktopMenuAsteroide from "../pages/Asteroide/components/DesktopMenuAster
 import { navigationData } from "../locales/navigationData";
 import { settingshome } from "../locales/localdata"; // Ez hiányzott az eredetiből, de kellhet
 import HoverNavbar from "../components/navbar/HoverNavbar";
+import HeadlessHoverMenu from "../components/headless-menu/HeadlessHoverMenu"
 
 const LayoutGraph = () => {
   const { setToggle, settingsOpen, setSettingsOpen, toggle } = MyDataContext();
@@ -69,11 +70,11 @@ const LayoutGraph = () => {
           />
           {/* Desktop Menü */}
           <div
-            className="lg:flex flex-1 flex-row justify-center items-center hidden border-0 border-sky-400"
+            className="lg:flex flex-1 flex-row justify-center items-center hidden border-2 border-sky-400"
           >
            
            {/* <DesktopMenuAsteroide navigationData={navigationData}/> */} {/* <<< RÉGI KOMPONENS KIKOMMENTELVE/TÖRÖLVE */}
-           <HoverNavbar /> {/* <<< ÚJ KOMPONENS BEILLESZTVE */}
+           <HeadlessHoverMenu /> {/* <<< ÚJ KOMPONENS BEILLESZTVE */}
           </div>
           {/* Settings Ikon */}
           <FaCog

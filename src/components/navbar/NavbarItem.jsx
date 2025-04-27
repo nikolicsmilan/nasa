@@ -1,51 +1,55 @@
 // src/components/navbar/NavbarItem.jsx
-import React, { forwardRef } from 'react';
-import PropTypes from 'prop-types'; // PropTypes importálása
-import { NavLink } from 'react-router-dom';
-import { FaChevronDown } from 'react-icons/fa';
+import React, { forwardRef } from 'react';        // React és forwardRef importálása a ref továbbításhoz.
+import PropTypes from 'prop-types';             // PropTypes importálása a propok típusellenőrzéséhez.
+import { NavLink } from 'react-router-dom';     // NavLink a navigációhoz és az aktív állapot jelzéséhez.
+import { FaChevronDown } from 'react-icons/fa'; // Lenyíló nyíl ikon importálása.
 
 /**
- * Egyetlen menüpont megjelenítése a navigációs sávban.
+ * Egyetlen menüpontot megjelenítő komponens a navigációs sávban.
+ * Továbbítja a ref-et és kezeli az egér belépési eseményt.
  * @param {object} props - Komponens propok.
  * @param {object} props.item - A menüpont adatait tartalmazó objektum.
  * @param {string} props.item.title - Menüpont címe.
  * @param {string} props.item.route - Menüpont útvonala.
- * @param {Array<{title: string, route: string}>} [props.item.submenus] - Opcionális almenük.
- * @param {number} props.index - A menüpont indexe a listában.
- * @param {function(number, string): void} props.onMouseEnter - Callback egér belépésre.
- * @param {number|null} props.hoveredIndex - Az aktuálisan hoverelt elem indexe.
- * @param {React.Ref<HTMLDivElement>} ref - A továbbított ref.
+ * @param {Array<{title: string, route: string}>} [props.item.submenus] - Opcionális almenük tömbje.
+ * @param {number} props.index - A menüpont sorszáma (indexe) a listában.
+ * @param {function(number, string, HTMLElement): void} props.onMouseEnter - Callback függvény, ami meghívódik, ha az egér a komponens fölé ér. Átadja az indexet, a címet és a DOM elemet.
+ * @param {number|null} props.hoveredIndex - Az aktuálisan hoverelt menüpont indexe (null, ha nincs).
+ * @param {React.Ref<HTMLDivElement>} ref - A szülőtől kapott ref, amit a fő div elemre kell helyezni.
  */
+// forwardRef használata: lehetővé teszi, hogy a szülő komponens (HoverNavbar) ref-et adjon ennek a komponensnek.
 const NavbarItem = forwardRef(({ item, index, onMouseEnter, hoveredIndex }, ref) => {
-  // Ellenőrizzük, vannak-e almenük
+  // Konstansban tároljuk, hogy az aktuális menüpontnak vannak-e almenüi.
   const hasSubmenus = item.submenus && item.submenus.length > 0;
 
   return (
-    // A ref-et a külső div-re helyezzük a pozíciószámításhoz
-    // ref típusa itt: HTMLDivElement
+    // A legkülső div elem kapja meg a ref-et, hogy a szülő le tudja kérdezni a pozícióját.
     <div
-      ref={ref}
-      className="relative flex flex-col items-center"
-      onMouseEnter={() => onMouseEnter(index, item.title)}
-      // A mouseLeave-et a szülő nav elemen kezeljük
+      ref={ref} // A kapott ref hozzárendelése ehhez a DOM elemhez.
+      className="relative flex flex-col items-center border-0" // Alapvető stílusok: relatív pozíció, flexbox oszlop, középre igazítás.
+      // Egér belépési esemény figyelése: meghívja a szülőtől kapott onMouseEnter függvényt.
+      onMouseEnter={() => onMouseEnter(index, item.title, ref.current)} // Átadjuk az indexet, címet és a konkrét DOM elemet.
     >
+      {/* NavLink a React Router navigációhoz. Kezeli az aktív útvonal stílusozását is. */}
       <NavLink
-        to={item.route}
-        // className funkció az aktív állapot stílusozásához
+        to={item.route} // A link cél útvonala.
+        // A className egy függvény, amely megkapja az `isActive` állapotot.
         className={({ isActive }) =>
-          `p-1 flex items-center space-x-1 text-sm md:text-base lg:text-lg font-medium transition-colors duration-200 ${
+          // Template literal a class nevek dinamikus összefűzéséhez.
+          `p-1 flex items-center space-x-1 text-sm md:text-base lg:text-lg font-medium transition-colors duration-200 ${ // Alap stílusok: padding, flex, térköz, betűméret, betűvastagság, átmenet.
             isActive
-              ? 'text-white' // Aktív menüpont
-              : 'text-primary hover:text-white' // Inaktív és hover
+              ? 'text-white' // Ha az útvonal aktív, a szöveg fehér.
+              : 'text-primary hover:text-white' // Ha inaktív, a szöveg 'primary', hoverre fehér.
           }`
         }
       >
-        <span>{item.title}</span>
-        {/* Lenyíló ikon megjelenítése, ha vannak almenük */}
+        <span>{item.title}</span> {/* A menüpont szövegének megjelenítése. */}
+        {/* A lenyíló ikon feltételes megjelenítése: csak akkor, ha vannak almenük. */}
         {hasSubmenus && (
           <FaChevronDown
-            className={`w-2.5 h-2.5 ml-1 transform transition-transform duration-300 ${
-              hoveredIndex === index ? 'rotate-180' : 'rotate-0'
+            // Az ikon stílusai, beleértve a dinamikus forgatást hover esetén.
+            className={`w-2.5 h-2.5 ml-1 transform transition-transform duration-300 ${ // Méret, margó, alap transzformáció, átmenet.
+              hoveredIndex === index ? 'rotate-180' : 'rotate-0' // Ha ez a menüpont hoverelve van, forogjon 180 fokot.
             }`}
           />
         )}
@@ -54,25 +58,25 @@ const NavbarItem = forwardRef(({ item, index, onMouseEnter, hoveredIndex }, ref)
   );
 });
 
-// Prop típusok definiálása a komponenshez
+// Prop típusok definiálása a fejlesztést segítő ellenőrzésekhez és a dokumentációhoz.
 NavbarItem.propTypes = {
-  item: PropTypes.shape({ // Az 'item' egy objektum...
-    title: PropTypes.string.isRequired, // ...aminek van egy kötelező 'title' stringje...
-    route: PropTypes.string.isRequired, // ...egy kötelező 'route' stringje...
-    submenus: PropTypes.arrayOf( // ...és egy opcionális 'submenus' tömbje...
-      PropTypes.shape({           // ...ahol minden elem egy objektum...
-        title: PropTypes.string.isRequired, // ...kötelező 'title' stringgel...
-        route: PropTypes.string.isRequired  // ...és kötelező 'route' stringgel.
+  item: PropTypes.shape({                      // Az 'item' prop egy objektum kell, hogy legyen.
+    title: PropTypes.string.isRequired,        // Az objektumon belül a 'title' egy kötelező string.
+    route: PropTypes.string.isRequired,        // A 'route' egy kötelező string.
+    submenus: PropTypes.arrayOf(               // A 'submenus' egy opcionális tömb.
+      PropTypes.shape({                        // A tömb elemei objektumok.
+        title: PropTypes.string.isRequired,    // Amelyeknek van kötelező 'title' stringjük.
+        route: PropTypes.string.isRequired     // És kötelező 'route' stringjük.
       })
-    )
-  }).isRequired, // Az 'item' objektum maga kötelező.
-  index: PropTypes.number.isRequired, // Az 'index' egy kötelező szám.
-  onMouseEnter: PropTypes.func.isRequired, // Az 'onMouseEnter' egy kötelező függvény.
-  // A hoveredIndex lehet szám vagy null. A number itt általában elég az ESLintnek.
-  hoveredIndex: PropTypes.number
+    ) // A 'submenus' tömb nem kötelező.
+  }).isRequired,                                // Az 'item' objektum megadása kötelező.
+  index: PropTypes.number.isRequired,          // Az 'index' kötelező szám.
+  onMouseEnter: PropTypes.func.isRequired,     // Az 'onMouseEnter' kötelező függvény.
+  hoveredIndex: PropTypes.number               // A 'hoveredIndex' egy szám (vagy null, amit a .number implicit kezel).
 };
 
-// Opcionális: Adj hozzá egy displayName-t a jobb debuggolásért
+// Komponens nevének beállítása a React DevTools és hibaüzenetek számára.
 NavbarItem.displayName = 'NavbarItem';
 
+// Az alapértelmezett export a komponens.
 export default NavbarItem;
