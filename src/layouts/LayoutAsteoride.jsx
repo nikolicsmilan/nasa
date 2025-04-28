@@ -13,6 +13,7 @@ import logo from "../assets/images/sat4.png";
 import DesktopMenuAsteroide from "../pages/Asteroide/components/DesktopMenuAsteroide";
 import { navigationData } from "../locales/navigationData";
 import { settingshome } from "../locales/localdata"; // Ez hiányzott az eredetiből, de kellhet
+import NavBarSimple from "../components/navbarsimple/NavBarSimple";
 
 const LayoutAsteoride = () => {
   const { setToggle, settingsOpen, setSettingsOpen, toggle } = MyDataContext();
@@ -54,8 +55,12 @@ const LayoutAsteoride = () => {
         ></video>
 
         {/* === HEADER === */}
-        <header className="w-full flex justify-between border-0 border-lime-600
-         absolute z-40 top-0 left-0 right-0 h-20"> {/* left-0 hozzáadva a teljességhez */}
+        <header
+          className="w-full flex justify-between border-0 border-lime-600
+         absolute z-40 top-0 left-0 right-0 h-20"
+        >
+          {" "}
+          {/* left-0 hozzáadva a teljességhez */}
           {/* Logo */}
           <img
             src={logo}
@@ -67,10 +72,8 @@ const LayoutAsteoride = () => {
             alt="Logo" // Jó gyakorlat alt textet adni
           />
           {/* Desktop Menü */}
-          <div
-            className="lg:flex flex-1 flex-row justify-center items-center hidden border-0 border-orange-400"
-          >
-            <DesktopMenuAsteroide navigationData={navigationData}/>
+          <div className="lg:flex flex-1 flex-row justify-center items-center hidden border-0 border-orange-400">
+            <NavBarSimple />
           </div>
           {/* Settings Ikon */}
           <FaCog
@@ -87,38 +90,39 @@ const LayoutAsteoride = () => {
             z-30: a videó felett, de a header alatt/mellett
             pt-20: hely a fix 80px (h-20) magas headernek */}
         <main className="flex flex-grow z-30 w-full relative border-0 border-purple-400 justify-center pt-20">
-           {/* A régi isProblematicSize logika helyett most már csak az Outlet kell */}
-            {/* Az Outletet tartalmazó div: Kitölti a main-t (ami már pt-20-szal van ellátva) */}
-            <div className="w-full h-full border-0 border-red-600 relative">
-              <Outlet />
-            </div>
+          {/* A régi isProblematicSize logika helyett most már csak az Outlet kell */}
+          {/* Az Outletet tartalmazó div: Kitölti a main-t (ami már pt-20-szal van ellátva) */}
+          <div className="w-full h-full border-0 border-red-600 relative">
+            <Outlet />
+          </div>
         </main>
 
-         {/* === Settings Overlay (ha aktív) === */}
-         {/* Ennek a pozicionálása és z-indexe (z-50) valószínűleg jó */}
-         {toggle && (
-            <div
-              onClick={clozer}
-              className="mx-0 absolute z-50 inset-0 h-full w-full /* Változás: inset-0 a teljes fedéshez */
+        {/* === Settings Overlay (ha aktív) === */}
+        {/* Ennek a pozicionálása és z-indexe (z-50) valószínűleg jó */}
+        {toggle && (
+          <div
+            onClick={clozer}
+            className="mx-0 absolute z-50 inset-0 h-full w-full /* Változás: inset-0 a teljes fedéshez */
                  border-orange-300 border-0 flex flex-col items-center p-2 overflow-y-auto bg-black bg-opacity-70" /* Háttér és görgetés */
+          >
+            {/* A stopClozer-es divek itt lehetnek */}
+            <MobileConsoleView stopClozer={stopClozer} />
+
+            <div
+              className="flex flex-col items-center my-10 p-2 border-0 w-full max-w-md border-red-400" /* Max szélesség a tartalomnak? */
+              onClick={stopClozer}
             >
-              {/* A stopClozer-es divek itt lehetnek */}
-              <MobileConsoleView stopClozer={stopClozer} />
-
-              <div
-                className="flex flex-col items-center my-10 p-2 border-0 w-full max-w-md border-red-400" /* Max szélesség a tartalomnak? */
-                onClick={stopClozer}
-              >
-                <SettingsBarAnimation menupoint={settingshome} />
-              </div>
-
-              <DesktopConsoleView stopClozer={stopClozer} />
+              <SettingsBarAnimation menupoint={settingshome} />
             </div>
-          )}
 
+            <DesktopConsoleView stopClozer={stopClozer} />
+          </div>
+        )}
       </div>
     </AnimatePresence>
   );
 };
 
 export default LayoutAsteoride;
+
+// <DesktopMenuAsteroide navigationData={navigationData}/>

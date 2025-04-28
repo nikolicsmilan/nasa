@@ -1,5 +1,4 @@
 // src/components/headless-menu/HeadlessHoverMenu.jsx
-import React from "react"; // React import
 import { motion } from "framer-motion"; // Framer Motion az aláhúzáshoz
 import {
   HeadlessMenuContextProvider,
@@ -14,18 +13,27 @@ import HeadlessMenuItem from "./HeadlessMenuItem"; // Az új menüpont komponens
  */
 const MenuContent = () => {
   // Kontextusból kinyerjük a refeket és az aláhúzás adatait
-  const { navRef, itemRefs, underlineProps } = useHeadlessMenuContext();
+  const { navRef, underlineProps, activeItemTitle, closeTimeoutRef,setActiveItemTitle,setUnderlineProps } =
+    useHeadlessMenuContext();
 
+
+      const handleMouseLeave = () => {
+        // Késleltetett bezárás indítása
+        closeTimeoutRef.current = setTimeout(() => {
+          setActiveItemTitle(null); // Töröljük az aktív elemet
+          setUnderlineProps((prev) => ({ ...prev, opacity: 0, width: 0 })); // Aláhúzás eltüntetése
+        }, 1500); // 150ms késleltetés
+      };
   return (
     // A fő <nav> elem, ref-fel ellátva
     <nav
       ref={navRef}
       className="relative w-full flex items-center justify-center h-full border-4 border-red-400"
       // A mouseLeave-et most az egyes Popover komponensek kezelik
+      onMouseLeave={handleMouseLeave}
     >
       {/* Menüpontokat tartalmazó div */}
       <div className="flex gap-6 relative">
-        {" "}
         {/* Flexbox, gap a térközhöz, relative az aláhúzáshoz */}
         {navigationData.map(
           (
@@ -56,11 +64,14 @@ const MenuContent = () => {
         />
       </div>
       {/* A lenyíló panel (Popover.Panel) már a HeadlessMenuItem komponensen belül van */}
-      <div className="absolute top-[200px] border-0 border-lime-400">
+      <div className="absolute top-[200px] border-2 border-lime-400">
         <p> underlineProps.width: {underlineProps && underlineProps.width}</p>
         <p> underlineProps.x: {underlineProps && underlineProps.x}</p>
-        <p> underlineProps.opacity: {underlineProps && underlineProps.opacity}</p>
-        
+        <p>
+          {" "}
+          underlineProps.opacity: {underlineProps && underlineProps.opacity}
+        </p>
+        {activeItemTitle ? "active" : "passzív"}
       </div>
     </nav>
   );

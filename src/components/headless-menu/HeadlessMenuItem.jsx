@@ -1,10 +1,9 @@
 // src/components/headless-menu/HeadlessMenuItem.jsx
-import React, { useEffect } from "react"; // React import
+import { useEffect } from "react"; // React import
 import PropTypes from "prop-types"; // PropTypes a validációhoz
 import { Popover, Transition } from "@headlessui/react"; // Headless UI Popover és Transition importálása
-import { Link, NavLink } from "react-router-dom"; // Link és NavLink routinghoz
+import { NavLink } from "react-router-dom"; // Link és NavLink routinghoz
 import { FaChevronDown } from "react-icons/fa"; // Lenyíló ikon
-import { motion } from "framer-motion"; // Framer Motion animációhoz (opcionális a panelben)
 import { useHeadlessMenuContext } from "./HeadlessMenuContext"; // Saját kontextus
 
 /**
@@ -68,7 +67,7 @@ const HeadlessMenuItem = ({ item, index }) => {
     closeTimeoutRef.current = setTimeout(() => {
       setActiveItemTitle(null); // Töröljük az aktív elemet
       setUnderlineProps((prev) => ({ ...prev, opacity: 0, width: 0 })); // Aláhúzás eltüntetése
-    }, 150); // 150ms késleltetés
+    }, 1500); // 150ms késleltetés
   };
 
   // useEffect hook, hogy a ref tömböt inicializáljuk/méretezzük
@@ -114,13 +113,13 @@ const HeadlessMenuItem = ({ item, index }) => {
 
       {/* Transition komponens a panel animált megjelenítéséhez/eltűnéséhez */}
       <Transition
-        as={React.Fragment} // Ne adjon hozzá extra DOM elemet
+      /*  as={React.Fragment} // Ne adjon hozzá extra DOM elemet
         enter="transition ease-out duration-150" // Belépő animáció osztályai
         enterFrom="opacity-0 translate-y-1 scale-95" // Kezdő állapot
         enterTo="opacity-100 translate-y-0 scale-100" // Végállapot
         leave="transition ease-in duration-100" // Kilépő animáció osztályai
         leaveFrom="opacity-100 translate-y-0 scale-100" // Kezdő állapot
-        leaveTo="opacity-0 translate-y-1 scale-95" // Végállapot
+        leaveTo="opacity-0 translate-y-1 scale-95" // Végállapot*/
       >
         {/* Popover.Panel a lenyíló tartalom konténere. Headless UI pozicionálja. */}
         <Popover.Panel
