@@ -42,7 +42,7 @@ export const areachartlineoptions = (colors, config, displayedData) => {
            // let datasetLabel = context.dataset.label || ""; // Adatsor neve (pl. "Impacts")
             const yValue = context.parsed?.y; // A pont parse-olt Y értéke pl ip: (0.01)
             const dataIndex = context.dataIndex; // A pont indexe az adatsorban
-            console.log("dataIndex: ", dataIndex);
+           // console.log("dataIndex: ", dataIndex);
             const originalItem = safeDisplayedData[dataIndex]; // Az eredeti adatobjektum kinyerése az index alapján
             const fullname = originalItem?.fullname || "Unknown Asteroid"; // Aszteroida nevének kinyerése
             const cleanedFullname = fullname.replace(/^\((.*)\)$/, "$1").trim(); // Zárójelek eltávolítása a névből

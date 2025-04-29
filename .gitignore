@@ -41,4 +41,5 @@ build/
 /src/assets
 /src/assets/video
 /src/assets/images
+/scripts/collectSourceFiles.cjs
 

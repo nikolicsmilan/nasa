@@ -1,4 +1,4 @@
-// src/layouts/LayoutAsteoride.jsx
+// src/layouts/LayoutGraph.jsx
 
 import { useEffect } from "react";
 import { Outlet } from "react-router-dom";
@@ -13,9 +13,11 @@ import logo from "../assets/images/sat4.png";
 import DesktopMenuAsteroide from "../pages/Asteroide/components/DesktopMenuAsteroide";
 import { navigationData } from "../locales/navigationData";
 import { settingshome } from "../locales/localdata"; // Ez hiányzott az eredetiből, de kellhet
+import HoverNavbar from "../components/navbar/HoverNavbar";
+import HeadlessHoverMenu from "../components/headless-menu/HeadlessHoverMenu";
 import NavBarSimple from "../components/navbarsimple/NavBarSimple";
 
-const LayoutAsteoride = () => {
+const LayoutGraph = () => {
   const { setToggle, settingsOpen, setSettingsOpen, toggle } = MyDataContext();
 
   // const { width, height } = useWindowSize(); // Eltávolítva, ha a problematicSize logika nem kell
@@ -56,7 +58,7 @@ const LayoutAsteoride = () => {
 
         {/* === HEADER === */}
         <header
-          className="w-full flex justify-between border-0 border-lime-600
+          className="w-full flex justify-between border-0 border-red-600
          absolute z-40 top-0 left-0 right-0 h-20"
         >
           {" "}
@@ -72,8 +74,11 @@ const LayoutAsteoride = () => {
             alt="Logo" // Jó gyakorlat alt textet adni
           />
           {/* Desktop Menü */}
-          <div className="lg:flex flex-1 flex-row justify-center items-center hidden border-0 border-orange-400">
-            <NavBarSimple />
+          <div className="lg:flex flex-1 flex-row justify-center items-center hidden border-0 border-sky-400">
+            {/* <DesktopMenuAsteroide navigationData={navigationData}/> */}{" "}
+            {/* <<< RÉGI KOMPONENS KIKOMMENTELVE/TÖRÖLVE */}
+           {/* <HeadlessHoverMenu />  <<< ÚJ KOMPONENS BEILLESZTVE */}
+            <NavBarSimple/>
           </div>
           {/* Settings Ikon */}
           <FaCog
@@ -123,6 +128,6 @@ const LayoutAsteoride = () => {
   );
 };
 
-export default LayoutAsteoride;
+export default LayoutGraph;
 
 // <DesktopMenuAsteroide navigationData={navigationData}/>

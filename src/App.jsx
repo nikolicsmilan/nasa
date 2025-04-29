@@ -12,6 +12,8 @@ import { filterconsole } from "./locales/localdata";
 import { sentry } from "./locales/nasadummy";
 const LayoutHome = lazy(() => import("./layouts/LayoutHome"));
 const LayoutAsteoride = lazy(() => import("./layouts/LayoutAsteoride"));
+const LayoutGraph = lazy(() => import("./layouts/LayoutGraph"));
+const LayoutSimple = lazy(() => import("./layouts/LayoutSimple"));
 const Home = lazy(() => import("./pages/Home/Home"));
 //const Asteroide = lazy(() => import("./pages/Asteroide/Asteroide"));
 const Graph = lazy(() => import("./pages/Graph/Graph"));
@@ -74,7 +76,7 @@ function App() {
       path: "/graph",
       element: (
         <Suspense fallback={<div>Loading Graph Layout...</div>}>
-          <LayoutAsteoride />
+          <LayoutGraph />
         </Suspense>
       ),
       errorElement: <Error />,
@@ -140,6 +142,17 @@ function App() {
           ),
         },
       ],
+    },
+    {
+      path: "*",
+      element: (
+        // Használjuk a LayoutSimple-t az Error komponens köré
+        <Suspense fallback={<div>Loading Layout...</div>}>
+          <LayoutSimple>
+            <Error />
+          </LayoutSimple>
+        </Suspense>
+      ),
     },
   ]);
   //theme-color-ref read by getComputedStyleColor.js in useAreaChartColors.js for example
