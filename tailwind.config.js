@@ -3,8 +3,22 @@ module.exports = {
   theme: {
     extend: {
       screens: {
-        'xl': '1200px', 
-        '2xl': '1700px', 
+        'xl': '1200px',
+        '2xl': '1700px',
+      },
+      animation: { // Ide jönnek az animáció definíciók
+        'spin-slow': 'spin 20s linear infinite',
+        pulse: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite', // Ha még benne van
+      },
+      keyframes: { // Ide jönnek a keyframes definíciók
+        spin: {
+          '0%': { transform: 'rotate(0deg)' },
+          '100%': { transform: 'rotate(360deg)' },
+        },
+        pulse: { // Ha még benne van
+          '0%, 100%': { opacity: 1 },
+          '50%': { opacity: 0.5 },
+        },
       },
     },
   },
