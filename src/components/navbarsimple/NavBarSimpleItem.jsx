@@ -3,7 +3,7 @@ const NavBarSimpleItem = ({ item, index, itemRefs, handleMouseEnter }) => {
   return (
     <div
       onMouseEnter={() => {
-        handleMouseEnter(itemRefs.current[index]);
+        handleMouseEnter(itemRefs.current[index],item);
       }}
       className="border-0 p-2 m-0 cursor-pointer"
       ref={(el) => (itemRefs.current[index] = el)}

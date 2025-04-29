@@ -22,7 +22,7 @@ const menuItems = [
 ];
 
 export default function NavBarSimple() {
-  const [hoveredItem, setHoveredItem] = useState(menuItems[0]); // alapértelmezett
+  const [hoveredItemData, setHoveredItemData] = useState(null);
   const itemRefs = useRef([]);
   const closeTimeoutRef = useRef(null);
   const [underlineProps, setUnderlineProps] = useState({
@@ -31,7 +31,7 @@ export default function NavBarSimple() {
     opacity: 0,
   });
 
-  const handleMouseEnter = (element) => {
+  const handleMouseEnter = (element,item) => {
     console.log("handleMouseEnter start");
     if (closeTimeoutRef.current) {
       // Ha van bezárási időzítő...
@@ -47,7 +47,10 @@ export default function NavBarSimple() {
         x: element.offsetLeft, // X = gomb offsetLeft-je (a nav elemen belül)
         opacity: 1, // Láthatóvá tesszük
       });
-      setHoveredItem(true);
+      setHoveredItemData({ // Csak a panelhez szükséges adatokat mentjük
+        Component: item.panelComponent, // A renderelendő komponens
+        data: item.panelData         // Az adatok, amiket kapni fog
+    });
     }
   };
 
@@ -56,7 +59,7 @@ export default function NavBarSimple() {
     closeTimeoutRef.current = setTimeout(() => {
       //setActiveItemTitle(null); // Töröljük az aktív elemet
       setUnderlineProps((prev) => ({ ...prev, opacity: 0, width: 0 })); // Aláhúzás eltüntetése
-      setHoveredItem(null);
+      setHoveredItemData(null);
     }, 1000); // 150ms késleltetés
   };
 
@@ -96,8 +99,14 @@ export default function NavBarSimple() {
       {/* Dinamikus lenyíló panel */}
 
       <div onMouseEnter={handlePanelMouseEnter}>
-        {hoveredItem ? <NavBarSimplePanel /> : null}
-      </div>
+          {/* Renderelés a state alapján */}
+          {hoveredItemData ? (
+             <NavBarSimplePanel> {/* A keret komponens */}
+                {/* A kereten belül rendereljük a dinamikus tartalmat */}
+                <hoveredItemData.Component {...hoveredItemData.data} />
+             </NavBarSimplePanel>
+          ) : null}
+       </div>
     </div>
   );
 }
