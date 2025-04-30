@@ -1,5 +1,3 @@
-import React from "react";
-
 const GenericConsole = ({ data, handleClick, active }) => {
   return (
     <div className="flex border-0 border-purple-600 mx-0 w-full h-full">
