@@ -1,7 +1,7 @@
 
 const Admin = () => {
   return (
-    <div>Admin</div>
+    <div className="flex w-full h-full justify-center items-center"> Admin page under development...</div>
   )
 }
 

@@ -1,92 +1,86 @@
+// src/pages/Home/Home.jsx
+
 import { useEffect, useState, lazy, Suspense } from "react";
-import { MyDataContext } from "../../context/DataContext";
+import { MyDataContext } from "../../context/DataContext"; // Context import
 import { SiNasa } from "react-icons/si";
-import satelite from "../../../public/muhold_compress.mp4";
 import SubscribeConsole from "./components/SubscribeConsole";
 import { AnimatePresence } from "framer-motion";
 
-// Fluorescent Shield lazy loading
+// Lazy loading a komponensekhez
 const StatusIndicator = lazy(() => import("./components/StatusIndicator"));
-const NotificationButton = lazy(() =>
-  import("./components/NotificationButton")
+const NotificationButton = lazy(() => import("./components/NotificationButton"));
+const BrowserObjectButton = lazy(() => import("./components/BrowserObjectButton"));
+
+// Fallback a Suspense-hez (lehetne közös helyen is)
+const LoadingSpinner = ({ text = "Loading..." }) => (
+  <div className="text-primary p-4">{text}</div>
 );
-const BrowserObjectButton = lazy(() =>
-  import("./components/BrowserObjectButton")
-);
+
 const Home = () => {
-  const { setSettings, settingsOpen, subscribeToggle, setSubscribeToggle } =
-    MyDataContext();
-  const [videoLoaded, setVideoLoaded] = useState(false);
+  // Contextből csak azt vesszük ki, ami itt tényleg kell
+  const { settingsOpen, subscribeToggle, setSubscribeToggle, setSettings } = MyDataContext();
 
+  // Ez a useEffect csak a settings beállítására kellhet itt
   useEffect(() => {
-    setSettings("Menu");
-    const timeoutId = setTimeout(() => {
-      setVideoLoaded(true);
-    }, 500);
-    return () => clearTimeout(timeoutId);
-  }, [setSettings]);
+    // Beállítjuk, hogy a settings panel (ha nyitva volt) a "Menu"-t mutassa
+    // amikor erre az oldalra érünk. Opcionális, de hasznos lehet.
+    // Ha ez nem kell, ez az useEffect törölhető.
+    // setSettings("Menu"); // Visszaállítja a settings-t, ha kell
+  }, [setSettings]); // Figyel: ha a setSettings referencia stabil, ez csak mountkor fut
 
+  // Subscribe gomb kezelője
   const handleSubscribe = () => {
     setSubscribeToggle((prevState) => !prevState);
-    console.log("hozéééééééééééééééééééééééééééééééééééé");
   };
 
   return (
-    <div
-      className={`border-0  border-red-500 w-full z-40    ${
-        settingsOpen ? "opacity-20 " : ""
-      } `}
-    >
-      <div
-        className={` flex flex-col md:flex-row border-0 border-red-400 w-full   
-          z-50  relative   ${settingsOpen ? "opacity-20 " : ""} `}
-      >
-        <div
-          className="flex flex-col lg:flex h-screen  w-full md:w-1/2
-              justify-center items-center  
-             z-50 border-0
-             border-orange-500  lg:bg-gradien opacity-70 relative"
-        >
-          <header className="lg:flex items-center justify-center px-6 relative  border-0 border-pink-400">
-            <div className="flex flex-col justify-start items-center  relative px-2 ">
-              <div className="border-0  m-0 p-0 ">
-                <SiNasa className="text-9xl lg:text-9xl px-0 text-red-500" />
-              </div>
-              {/*English name in future: Earth Impact Monitoring */}
-              <p className="-mt-[20px] text-xl text-center text-primary font-bold">
-                Aszteroida-vészjelző rendszer
-              </p>
+    // Fő konténer az oldalnak, h-full, hogy kitöltse a Layout main területét
+    // Az opacity-t a Layout kezeli, itt már nem kell (kivéve ha extra elhalványítást akarsz)
+    <div className={`w-full h-full flex flex-col lg:flex-row border-0 border-blue-500 ${settingsOpen ? "opacity-20" : ""}`}>
+
+      {/* Bal Oszlop (Tartalom) */}
+      {/* Mobilon felül, lg-től balra (w-1/2), flex oszlop, középre igazítva */}
+      <div className="w-full lg:w-1/2 h-full flex flex-col justify-center items-center p-4 lg:p-6 border-0 border-orange-500 relative z-10 order-2 lg:order-1">
+        {/* Header (NASA logó és cím) */}
+        <header className="flex flex-col items-center justify-center px-6 mb-6 text-center">
+           <div className="border-0 m-0 p-0 ">
+              {/* NASA Logó - Lehetne SVG vagy jobb minőségű kép */}
+              <SiNasa className="text-8xl md:text-9xl px-0 text-red-500/80 opacity-80" />
             </div>
-          </header>
-          <Suspense fallback={<div>Töltés...</div>}>
-            <StatusIndicator color="#27ae60" />
-          </Suspense>
-          <Suspense fallback={<div>Töltés...</div>}>
+            <p className="-mt-4 md:-mt-5 text-lg md:text-xl text-center text-primary font-bold uppercase tracking-wider">
+              Aszteroida-vészjelző rendszer
+            </p>
+        </header>
+
+        {/* Központi Státusz és Gombok */}
+        <Suspense fallback={<LoadingSpinner text="Loading Status..." />}>
+          <StatusIndicator color="#27ae60" />
+        </Suspense>
+
+        <div className="mt-6 flex flex-col items-center gap-4 w-full max-w-xs">
+          <Suspense fallback={<LoadingSpinner text="" />}>
             <NotificationButton handleSubscribe={handleSubscribe} />
           </Suspense>
-          <Suspense fallback={<div>Töltés...</div>}>
+          <Suspense fallback={<LoadingSpinner text="" />}>
             <BrowserObjectButton />
           </Suspense>
         </div>
-        <div className="border-0 border-sky-400  w-full md:w-1/2 ">
-          <AnimatePresence>
-            <SubscribeConsole
-            setSubscribeToggle={setSubscribeToggle}
-              subscribeToggle={subscribeToggle}
-            ></SubscribeConsole>
-          </AnimatePresence>
-        </div>
       </div>
-      {/*Delay video loading for improved initial paint performance */}
-      {videoLoaded && (
-        <video
-          src={satelite}
-          className="background-video border-0 border-red-400  opacity-100"
-          autoPlay
-          loop
-          muted
-        />
-      )}
+
+      {/* Jobb Oszlop (Subscribe Form) */}
+      {/* Mobilon alul (az order miatt), lg-től jobbra (w-1/2) */}
+      {/* Fontos: Kell relative pozíció, hogy az absolute SubscribeConsole működjön */}
+      <div className="w-full lg:w-1/2 h-full flex items-center justify-center border-0 border-sky-400 relative order-1 lg:order-2">
+        <AnimatePresence>
+          {/* A SubscribeConsole abszolút pozícióval jelenik meg ebben a div-ben */}
+          <SubscribeConsole
+            subscribeToggle={subscribeToggle}
+            setSubscribeToggle={setSubscribeToggle}
+          />
+        </AnimatePresence>
+        {/* Ha a SubscribeConsole nem lenne abszolút pozíciós, akkor itt kellene középre igazítani */}
+      </div>
+
     </div>
   );
 };

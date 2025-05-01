@@ -1,52 +1,59 @@
-import {  useState,lazy, Suspense } from "react";
+// App.jsx
+
+import { useState, lazy, Suspense } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./App.css";
 import "./tailwind.css";
+
+// Komponens importok
 import Error from "./pages/Error/Error";
-import { useSave } from "./hooks/use-saveuser";
-import { MyDataContext } from "./context/DataContext";
-//import { useDataVisualization } from "./hooks/use-datavisualization";
-//import { graphconsole } from "./locales/localdata";
-import useAsteroidData from "./hooks/useAsteroidData";
-import { filterconsole } from "./locales/localdata";
-import { sentry } from "./locales/nasadummy";
-const LayoutHome = lazy(() => import("./layouts/LayoutHome"));
-const LayoutAsteoride = lazy(() => import("./layouts/LayoutAsteoride"));
-const LayoutGraph = lazy(() => import("./layouts/LayoutGraph"));
-const LayoutSimple = lazy(() => import("./layouts/LayoutSimple"));
 const Home = lazy(() => import("./pages/Home/Home"));
-//const Asteroide = lazy(() => import("./pages/Asteroide/Asteroide"));
 const Graph = lazy(() => import("./pages/Graph/Graph"));
 const Test = lazy(() => import("./pages/Test/Test"));
 const Admin = lazy(() => import("./pages/Admin/Admin"));
+const AsteroidePage = lazy(() => import("./pages/Asteroide/Asteroide")); // Győződj meg a névről!
 
+// Layout importok
+const AppLayout = lazy(() => import("./layouts/AppLayout"));
+const LayoutSimple = lazy(() => import("./layouts/LayoutSimple"));
+
+// DataContext és Hook importok
+// A MyDataContext-et most már az AppLayout használja, itt nem feltétlenül kell.
+// import { MyDataContext } from "./context/DataContext";
+import { useSave } from "./hooks/use-saveuser";
+import useAsteroidData from "./hooks/useAsteroidData";
+import { sentry } from "./locales/nasadummy";
+
+// Fallback komponens
+const LoadingFallback = ({ message = "Loading..." }) => (
+  <div className="w-screen h-screen bg-black text-primary flex items-center justify-center text-xl font-mono">
+    {message}
+  </div>
+);
 
 function App() {
-  //This needs to run immediately!
-  const { saveUser } = useSave();
+  useSave(); // Hook futtatása
 
-  const { choosenStyle } = MyDataContext();
-
-
-  // This will be the sumobject. sumObject now is dummy data
+  // Dummy adatok
   const asteroidData = useAsteroidData();
-  //const [sumObject, setSumObject] = useState(sentry.data);
   const [sumObject, setSumObject] = useState(sentry);
+  const defaultVideoSrc = "https://sablonossablon.web.app/video/optimized_earth2.mp4";
 
   const router = createBrowserRouter([
+    // --- Minden fő útvonal külön objektum ---
     {
       path: "/",
       element: (
-        <Suspense fallback={<div>Loading Layout...</div>}>
-          <LayoutHome />
+        <Suspense fallback={<LoadingFallback message="Loading Layout..." />}>
+           <AppLayout showNavbar={false} backgroundConfig={{ type: 'video', src: defaultVideoSrc }} />
         </Suspense>
       ),
-      errorElement: <Error />,
-      children: [
+      errorElement: <LayoutSimple><Error /></LayoutSimple>,
+      children: [ // Csak a Home oldal tartozik ide
         {
           index: true,
           element: (
-            <Suspense fallback={<div>Loading Home...</div>}>
+            <Suspense fallback={<LoadingFallback message="Loading Home..." />}>
               <Home />
             </Suspense>
           ),
@@ -54,116 +61,110 @@ function App() {
       ],
     },
     {
-      path: "/asteroide",
-      element: (
-        <Suspense fallback={<div>Loading Asteroide Layout...</div>}>
-          <LayoutAsteoride />
+      path: "asteroide",
+       element: (
+         <Suspense fallback={<LoadingFallback message="Loading Layout..." />}>
+           {/* Navbar látszik, videó van */}
+           <AppLayout showNavbar={true} backgroundConfig={{ type: 'video', src: defaultVideoSrc }} />
         </Suspense>
       ),
-      errorElement: <Error />,
-      children: [
+      errorElement: <LayoutSimple><Error /></LayoutSimple>,
+      children: [ // Csak az Asteroide oldal tartozik ide
         {
           index: true,
           element: (
-            <Suspense fallback={<div>Loading Asteroide...</div>}>
-             
+            <Suspense fallback={<LoadingFallback message="Loading Asteroide Page..." />}>
+              <AsteroidePage />
             </Suspense>
           ),
-        },
-      ],
+        }
+      ]
     },
     {
-      path: "/graph",
+      path: "graph",
       element: (
-        <Suspense fallback={<div>Loading Graph Layout...</div>}>
-          <LayoutGraph />
+         <Suspense fallback={<LoadingFallback message="Loading Layout..." />}>
+           {/* Navbar látszik, videó van */}
+           <AppLayout showNavbar={true} backgroundConfig={{ type: 'video', src: defaultVideoSrc }} />
         </Suspense>
       ),
-      errorElement: <Error />,
-      children: [
+      errorElement: <LayoutSimple><Error /></LayoutSimple>,
+      children: [ // Csak a Graph oldal tartozik ide
         {
           index: true,
           element: (
-            <Suspense fallback={<div>Loading Graph...</div>}>
-              <Graph
-             sumObject={sumObject}
-              />
+            <Suspense fallback={<LoadingFallback message="Loading Graph Page..." />}>
+              <Graph sumObject={sumObject} />
             </Suspense>
           ),
-        },
-      ],
+        }
+      ]
     },
     {
-      path: "/test",
+      path: "test",
       element: (
-        <Suspense fallback={<div>Loading Graph Layout...</div>}>
-          <LayoutAsteoride />
+         <Suspense fallback={<LoadingFallback message="Loading Layout..." />}>
+           {/* Navbar látszik, statikus kép van */}
+           <AppLayout showNavbar={true} backgroundConfig={{ type: 'image', src: '/images/starfield.png' }} />
         </Suspense>
       ),
-      errorElement: <Error />,
-      children: [
+      errorElement: <LayoutSimple><Error /></LayoutSimple>,
+      children: [ // Csak a Test oldal tartozik ide
         {
           index: true,
           element: (
-            <Suspense fallback={<div>Loading Graph...</div>}>
-              <Test
-                mainConsole={asteroidData}
-                settingsConsole={filterconsole} 
-                informationConsole={filterconsole.map(
-                  (item) => item.description
-                )} 
-              />
+            <Suspense fallback={<LoadingFallback message="Loading Test Page..." />}>
+              <Test />
+               {/* Placeholder propok: <Test mainConsole={asteroidData} settingsConsole={filterconsole} informationConsole={...}/> */}
             </Suspense>
-          ),
-        },
-      ],
+          )
+        }
+      ]
     },
     {
-      path: "/admin",
+      path: "admin",
       element: (
-        <Suspense fallback={<div>Loading Graph Layout...</div>}>
-          <LayoutAsteoride />
+         <Suspense fallback={<LoadingFallback message="Loading Layout..." />}>
+           {/* Navbar látszik, nincs extra háttér */}
+           <AppLayout showNavbar={true} backgroundConfig={{ type: 'none' }} />
         </Suspense>
       ),
-      errorElement: <Error />,
-      children: [
+      errorElement: <LayoutSimple><Error /></LayoutSimple>,
+      children: [ // Csak az Admin oldal tartozik ide
         {
           index: true,
           element: (
-            <Suspense fallback={<div>Loading Graph...</div>}>
-              <Admin
-                mainConsole={asteroidData}
-                settingsConsole={filterconsole} 
-                informationConsole={filterconsole.map(
-                  (item) => item.description
-                )} 
-              />
+            <Suspense fallback={<LoadingFallback message="Loading Admin Page..." />}>
+              <Admin />
+              {/* Placeholder propok: <Admin mainConsole={asteroidData} settingsConsole={filterconsole} informationConsole={...}/> */}
             </Suspense>
-          ),
-        },
-      ],
+          )
+        }
+      ]
     },
+    // Catch-all 404 útvonal
     {
       path: "*",
       element: (
-        // Használjuk a LayoutSimple-t az Error komponens köré
-        <Suspense fallback={<div>Loading Layout...</div>}>
+        <Suspense fallback={<LoadingFallback message="Loading Error Page..." />}>
           <LayoutSimple>
             <Error />
           </LayoutSimple>
         </Suspense>
       ),
+      // Ennek nincs children-je
     },
   ]);
-  //theme-color-ref read by getComputedStyleColor.js in useAreaChartColors.js for example
-  //This ref need for Graphs custom color. Tailwind styles not apply directly to charts
+
+  // Már nincs szükség a külső div-re a témához, mert az AppLayout kezeli
   return (
-    <div className={`${choosenStyle} font-mono text-base`}>
+    <>
+      {/* A rejtett div a szín kiolvasásához továbbra is kellhet */}
       <div id="theme-color-ref" className="text-primary hidden">
         Sampling div tailwind for react charts for dynamic colors
       </div>
       <RouterProvider router={router} />
-    </div>
+    </>
   );
 }
 
