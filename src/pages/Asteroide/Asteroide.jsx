@@ -7,31 +7,23 @@ const Asteroide = () => {
 
   return (
     <div
-      className={`min-h-screen flex border-2  border-lime-400
+      className={`min-h-screen flex border-0 items-center justify-center  border-lime-400
        z-50 relative ${toggle ? "opacity-70" : ""}`}
     >
-      <video
-        src="https://sablonossablon.web.app/video/optimized_earth2.mp4"
-        className="background-video border-0 border-red-400  opacity-40"
-        autoPlay
-        loop
-        muted
-      ></video>
-      {/*Ha elrejtem a consoleconetnt eta DesktopAsteroide ba be van ágyazva akkor 
-hiába csatlom a MobilAstreodi ába bele */}
- Under Development...
+    
+    
       <div
-        className={`hidden xl:flex border-0 border-red-400 w-full   ${
+        className={`hidden xl:flex border-0 border-red-400    ${
           toggle ? "opacity-0" : "opacity-100"
         }`}
       >
-     Under Development...
+     Asteroid page under development Desktop view
       </div>
 
       <div
         className={`flex  xl:hidden  text-primary ${toggle ? "opacity-0" : "opacity-100"}`}
       >
-      Under Development...
+    Asteroid page under development Mobile view
       </div>
     </div>
   );

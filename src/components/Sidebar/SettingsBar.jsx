@@ -3,29 +3,25 @@ import { MyDataContext } from "../../context/DataContext";
 
 //SETTINGSBAR LOOK
 const SettingsBar = ({ menupoint }) => {
-  const { setSettings,playSoundClick } = MyDataContext();
+  const { setSettings, playSoundClick } = MyDataContext();
 
   return (
-    <div
-      className="p-0 lg:p-3 w-full flex items-center justify-start
-    flex-wrap  overflow-y-auto  lg:h-96 border-0 border-primary  "
-    >
+    <div className="p-0 lg:p-3 w-full flex items-center justify-start flex-wrap overflow-y-auto lg:h-96 border-0 border-primary">
       {menupoint?.map((item) => (
         <div
-        key={item?.title}
+          key={item?.title}
           onClick={() => {
             setSettings(item?.title);
             playSoundClick();
           }}
-          className={`flex flex-col  items-center justify-center text-2xl glowy-button-5
-               group relative border-0   rounded m-2 hover:bg-600 
-            text-primary cursor-pointer  h-16 w-16 lg:w-20`}
+          // --- OSZTÁLY MÓDOSÍTVA ---
+          className={`flex flex-col items-center justify-center text-2xl
+                     group relative border border-transparent rounded-lg m-2 hover:bg-primary/20 hover:shadow-md // Alap + hover stílus
+                     text-primary cursor-pointer h-16 w-16 lg:w-20 transition-colors`}
+          // A glowy-button-5 eltávolítva, helyette egyszerűbb hover
         >
-          <div className="pt-2">{<item.icon />}</div>
-          <div
-            className="  
-            group-hover:block  text-white text-sm rounded p-1 z-50"
-          >
+          <div className="pt-2">{item.icon && <item.icon />}</div>
+          <div className="group-hover:block text-white text-sm rounded p-1 z-50">
             {item.title}
           </div>
         </div>

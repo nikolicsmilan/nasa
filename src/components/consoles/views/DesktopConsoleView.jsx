@@ -1,4 +1,3 @@
-import React from "react";
 import { MyDataContext } from "../../../context/DataContext";
 import NavigationConsole from "../NavigationConsole";
 import StyleConsole from "../StyleConsole";
@@ -18,13 +17,13 @@ const DesktopConsoleView = ({ stopClozer }) => {
       initial="exit"
       animate={settingsOpen ? "animate" : "exit"}
       exit="exit"
-      className={`hidden absolute inset-0
+      className={`hidden absolute inset-0 
      lg:flex items-start lg:items-center lg:justify-center 
   `}
     >
       <div
         onClick={stopClozer}
-        className="glowy-button-6 h-[300px] w-[500px] hidde lg:flex flex-wrap lg:max-w-2xl  border-2 border-primary  relative z-50  "
+        className="glowy-button-10 h-[300px] w-[500px] hidde lg:flex flex-wrap lg:max-w-2xl  border-0 border-primary  relative z-50  "
       >
         {settings === "Menu" && (
           <p className=" border-0 w-full pt-5 text-white text-center uppercase font-bold">
