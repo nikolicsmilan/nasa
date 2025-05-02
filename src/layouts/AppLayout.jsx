@@ -111,12 +111,16 @@ const AppLayout = ({
         </header>
 
         {/* === FŐ TARTALOM (MAIN) === */}
-        <main className="flex flex-grow z-30 w-full relative justify-center pt-20">
+        <main className="flex flex-grow z-30 w-full h-full relative justify-center pt-20">
             {/* Az Outlet a Page komponenst tölti be */}
             <div className="w-full h-full border-0 relative">
               <Outlet />
             </div>
         </main>
+
+
+
+
 
          {/* === Settings Overlay (ha aktív) === */}
          {toggle && (
@@ -137,6 +141,9 @@ const AppLayout = ({
               </Suspense>
             </div>
           )}
+        {/* Itt van a legkülső div vége */}
+
+
       </div>
     </AnimatePresence>
   );
