@@ -3,6 +3,87 @@
 @tailwind components;
 @tailwind utilities;
 
+
+
+/* === CSS VÁLTOZÓK DEFINÍCIÓJA === */
+/* Ezt beteheted egy @layer base blokkba is, ha akarod */
+/* @layer base { */
+
+  /* --- Plasma Téma --- */
+  /* Itt az osztálynév az, amit a themer plugin generál VAGY amit te használsz a body/html tagen */
+  /* Ellenőrizd a generált HTML-t, valószínűleg .theme-plasma lesz */
+  .theme-plasma {
+    /* Itt hivatkozunk a tailwind.config.js-ben definiált színekre a theme() függvénnyel */
+    --gradient-from: theme('colors.sky.950/95');
+    --gradient-to: theme('colors.sky.800/95');
+    --border-color-theme: theme('colors.sky.400/40'); /* Vagy theme('colors.primary/40') ha a primary sky-400 */
+    --hover-shadow-color: theme('colors.sky.400');    /* Vagy theme('colors.primary') */
+  }
+
+  /* --- Ion Téma --- */
+  .theme-ion {
+    --gradient-from: theme('colors.lime.950/95');
+    --gradient-to: theme('colors.lime.700/95');     /* Figyelj a helyes árnyalatra! */
+    --border-color-theme: theme('colors.lime.400/40'); /* Vagy primary/40 */
+    --hover-shadow-color: theme('colors.lime.400');    /* Vagy primary */
+  }
+
+  /* --- Fusion Téma --- */
+  .theme-fusion {
+    --gradient-from: theme('colors.green.950/95');  /* Ellenőrizd a 950-es green-t! */
+    --gradient-to: theme('colors.green.700/95');    /* Figyelj a helyes árnyalatra! */
+    --border-color-theme: theme('colors.green.400/40'); /* Vagy primary/40 */
+    --hover-shadow-color: theme('colors.green.400');    /* Vagy primary */
+  }
+
+  /* --- Quantum Téma --- */
+  .theme-quantum {
+    --gradient-from: theme('colors.blue.950/95');
+    --gradient-to: theme('colors.blue.800/95');     /* Figyelj a helyes árnyalatra! */
+    --border-color-theme: theme('colors.blue.400/40'); /* Vagy primary/40 */
+    --hover-shadow-color: theme('colors.blue.400');    /* Vagy primary */
+  }
+
+/* } */ /* @layer base vége, ha használtad */
+
+/* Ide jöhetnek az App.css-ből áthozott egyéb, nem Tailwind alapú stílusok, ha akarod */
+/* Vagy maradhatnak az App.css-ben, ahogy most van. */
+
+
+/* src/index.css */
+/* ... (meglévő @import, @tailwind direktívák, CSS változó definíciók) ... */
+
+/* Statikus osztályok a Test oldal GradientBackgrounds komponenséhez */
+.gradient-bg-plasma {
+  /* Közvetlenül az OKLCH értékeket használjuk, amiket megadtál */
+  background-image: linear-gradient(to bottom,
+     oklch(29.3% 0.066 243.157 / 0.95), /* sky-950, 95% opacitás */
+     oklch(44.3% 0.11 240.79 / 0.95)     /* sky-800, 95% opacitás */
+  );
+}
+
+  .gradient-bg-ion {
+    background-image: linear-gradient(to bottom,
+      oklch(27.4% 0.072 132.109 / 0.95), /* lime-950, 95% opacitás */
+      oklch(53.2% 0.157 131.589 / 0.95)    /* lime-700, 95% opacitás */
+    );
+  }
+  
+  .gradient-bg-fusion {
+     /* Figyelem: Ellenőrizd a green-950 értékét a configodban! */
+    background-image: linear-gradient(to bottom,
+      oklch(27.4% 0.072 158.8 / 0.95),   /* green-950?, 95% opacitás */
+      oklch(51.4% 0.163 158.4 / 0.95)     /* green-700, 95% opacitás */
+    );
+  }
+  
+  .gradient-bg-quantum {
+    background-image: linear-gradient(to bottom,
+      oklch(28.2% 0.091 267.935 / 0.95), /* blue-950, 95% opacitás */
+      oklch(42.4% 0.199 265.638 / 0.95)    /* blue-800, 95% opacitás */
+    );
+  }
+
 body {
   background: black;
  /* padding-top: 60px;*/
