@@ -1,6 +1,6 @@
 // src/pages/Home/Home.jsx
 
-import { useEffect, useState, lazy, Suspense } from "react";
+import { useEffect, lazy, Suspense } from "react";
 import { MyDataContext } from "../../context/DataContext"; // Context import
 import { SiNasa } from "react-icons/si";
 import SubscribeConsole from "./components/SubscribeConsole";
