@@ -37,8 +37,8 @@ function App() {
   // Dummy adatok
   const asteroidData = useAsteroidData();
   const [sumObject, setSumObject] = useState(sentry);
-  const defaultVideoSrc = "https://sablonossablon.web.app/video/optimized_earth2.mp4";
-
+  //const defaultVideoSrc = "https://sablonossablon.web.app/video/optimized_earth2.mp4";
+const defaultVideoSrc = "/muhold_compress.mp4"
   const router = createBrowserRouter([
     // --- Minden fő útvonal külön objektum ---
     {

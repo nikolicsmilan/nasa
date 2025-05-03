@@ -1,5 +1,5 @@
 // src/layouts/AppLayout.jsx
-import React, { useState, useEffect, lazy, Suspense } from "react";
+import  { useEffect, lazy, Suspense } from "react";
 import { Outlet } from "react-router-dom";
 import PropTypes from 'prop-types'; // Prop validációhoz
 import { FaCog } from "react-icons/fa";
@@ -7,6 +7,7 @@ import { AnimatePresence } from "framer-motion";
 import { MyDataContext } from "../context/DataContext";
 import logo from "../assets/images/sat4.png";
 import { settingshome } from "../locales/localdata";
+
 
 // Dinamikus importok a Settings részekhez és a Navbarhoz
 const SettingsBarAnimation = lazy(() => import("../components/Sidebar/SettingsBarAnimation"));
