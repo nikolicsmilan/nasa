@@ -9,7 +9,7 @@ const NavBarSimplePanel = ({children }) => {
       focus:outline-none  overflow-hidden
        rounded-xl shadow-2xl border 
        border-primary/40 bg-gradient-to-b
-        from-neutral-800/95 to-neutral-900/95 backdrop-blur-md">
+        from-neutral-800/95 to-neutral-900/95 backdrop-blur-md bg-oksa">
     {children }
     </div>
   );
