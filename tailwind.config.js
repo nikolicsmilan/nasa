@@ -16,7 +16,7 @@ module.exports = {
         pulse: { /* ... */ },
       },
       colors: { // <--- Itt definiáljuk az ALAP színpalettákat
-        sky: { // A már meglévő sky paletta
+        sky: {
           50: 'oklch(97.7% 0.013 236.62)',
           100: 'oklch(95.1% 0.026 236.824)',
           200: 'oklch(90.1% 0.058 230.902)',
@@ -29,47 +29,60 @@ module.exports = {
           900: 'oklch(39.1% 0.09 240.876)',
           950: 'oklch(29.3% 0.066 243.157)',
         },
-        lime: { // Az ÚJ lime paletta (általad megadott értékekkel)
+        lime: {
           50: 'oklch(98.6% 0.031 120.757)',
           100: 'oklch(96.7% 0.067 122.328)',
           200: 'oklch(93.8% 0.127 124.321)',
           300: 'oklch(89.7% 0.196 126.665)',
-          400: 'oklch(84.1% 0.238 128.85)', // Ezt használja az 'ion' téma primary-ként
+          400: 'oklch(84.1% 0.238 128.85)',
           500: 'oklch(76.8% 0.233 130.85)',
           600: 'oklch(64.8% 0.2 131.684)',
-          700: 'oklch(53.2% 0.157 131.589)', // Ezt használhatnád a gradient 'to' színéhez az 'ion'-nál
+          700: 'oklch(53.2% 0.157 131.589)',
           800: 'oklch(45.3% 0.124 130.933)',
           900: 'oklch(40.5% 0.101 131.063)',
-          950: 'oklch(27.4% 0.072 132.109)', // Ezt használhatnád a gradient 'from' színéhez az 'ion'-nál
+          950: 'oklch(27.4% 0.072 132.109)',
         },
-        green: { // Az ÚJ green paletta
-           50: 'oklch(98.1% 0.022 157.428)', // Feltételezett 50-es érték, a lista 100-assal kezdődött
+        green: {
+           50: 'oklch(98.1% 0.022 157.428)',
            100: 'oklch(96.2% 0.044 156.743)',
            200: 'oklch(92.5% 0.084 155.995)',
-           300: 'oklch(86.4% 0.139 155.488)', // Feltételezett 300-as, a lista itt ugrott
-           400: 'oklch(76.2% 0.196 154.8)',  // Ezt használja a 'fusion' téma primary-ként (Ez lehet, hogy a te eredeti #4ade80-adnak az OKLCH megfelelője)
+           300: 'oklch(86.4% 0.139 155.488)',
+           400: 'oklch(76.2% 0.196 154.8)',
            500: 'oklch(67.2% 0.213 156.48)',
            600: 'oklch(58.6% 0.195 157.8)',
-           700: 'oklch(51.4% 0.163 158.4)',  // Ezt használhatnád a gradient 'to' színéhez a 'fusion'-nál
+           700: 'oklch(51.4% 0.163 158.4)',
            800: 'oklch(44.8% 0.133 158.0)',
            900: 'oklch(39.9% 0.107 158.5)',
-           950: 'oklch(27.4% 0.072 158.8)',  // Ezt használhatnád a gradient 'from' színéhez a 'fusion'-nál (Figyelem: ez ugyanaz, mint a lime-950, ellenőrizd!)
-           // Megjegyzés: A bemásolt 'green' listában volt egy ismétlődés és hiányzott pár árnyalat,
-           // megpróbáltam logikusan kiegészíteni/korrigálni a v3 alapján, de ellenőrizd a forrásodat!
+           950: 'oklch(27.4% 0.072 158.8)', // Ellenőrizd ezt!
         },
-        blue: { // Az ÚJ blue paletta
+        blue: {
           50: 'oklch(97% 0.014 254.604)',
           100: 'oklch(93.2% 0.032 255.585)',
           200: 'oklch(88.2% 0.059 254.128)',
           300: 'oklch(80.9% 0.105 251.813)',
-          400: 'oklch(70.7% 0.165 254.624)', // Ezt használja a 'quantum' téma primary-ként
+          400: 'oklch(70.7% 0.165 254.624)',
           500: 'oklch(62.3% 0.214 259.815)',
           600: 'oklch(54.6% 0.245 262.881)',
           700: 'oklch(48.8% 0.243 264.376)',
-          800: 'oklch(42.4% 0.199 265.638)', // Ezt használhatnád a gradient 'to' színéhez a 'quantum'-nál
+          800: 'oklch(42.4% 0.199 265.638)',
           900: 'oklch(37.9% 0.146 265.522)',
-          950: 'oklch(28.2% 0.091 267.935)', // Ezt használhatnád a gradient 'from' színéhez a 'quantum'-nál
+          950: 'oklch(28.2% 0.091 267.935)',
         },
+        // === NEUTRAL PALETTA HOZZÁADVA ===
+        neutral: {
+          50:  'oklch(98.5% 0 0)',    // Korábban megadott értékek
+          100: 'oklch(97% 0 0)',
+          200: 'oklch(92.2% 0 0)',
+          300: 'oklch(87% 0 0)',
+          400: 'oklch(70.8% 0 0)',
+          500: 'oklch(55.6% 0 0)',
+          600: 'oklch(43.9% 0 0)',
+          700: 'oklch(37.1% 0 0)',
+          800: 'oklch(26.9% 0 0)',    // Ez kell a from-neutral-800-hoz
+          900: 'oklch(20.5% 0 0)',    // Ez kell a to-neutral-900-hoz
+          950: 'oklch(14.5% 0 0)',    // A 950-es árnyalat
+        },
+        // ================================
       }, // colors vége
     }, // extend vége
   }, // theme vége
@@ -78,11 +91,9 @@ module.exports = {
       defaultTheme: {
         extend: {
           colors: {
-            // Az alapértelmezett primary most már a globálisan definiált sky-400 OKLCH kódja
-            primary: 'oklch(74.6% 0.16 232.661)',
+            primary: 'oklch(74.6% 0.16 232.661)', // sky-400
           },
-          fontFamily: { /* ... */ },
-          fontSize: { /* ... */ },
+          // ... (fontFamily, fontSize marad)
         },
       },
       themes: [
@@ -90,18 +101,14 @@ module.exports = {
           name: "plasma",
           extend: {
             colors: {
-              // A primary ugyanaz, mint a default, nem kellene felülírni, de maradhat
-              primary: 'oklch(74.6% 0.16 232.661)', // sky-400
-              // A többi specifikus szín marad
-              success: "rgb(63, 178, 121)",
-              info: "rgb(191, 191, 191)",
-              dark: "rgb(0, 0, 0)",
-              asidebg: "rgb(129, 171, 178)",
+              primary: 'oklch(74.6% 0.16 232.661)',
+              success: "rgb(63, 178, 121)", info: "rgb(191, 191, 191)", dark: "rgb(0, 0, 0)", asidebg: "rgb(129, 171, 178)",
             },
-            // A backgroundImage használhat `theme()`-et, ha akarod:
             backgroundImage: {
                gradient: "linear-gradient(45deg, theme('colors.sky.950') 1%, theme('colors.sky.800') 40%, theme('colors.sky.200') 90%)",
                gradientreverse: "linear-gradient(225deg, theme('colors.sky.950') 1%, theme('colors.sky.800') 40%, theme('colors.sky.200') 90%)",
+              // oksa:'linear-gradient(to bottom, #262626, oklch(28.2% 0.091 267.935)',
+              oksa: 'linear-gradient(to bottom, #262626, oklch(28.2% 0.091 267.935))',
             },
           },
         },
@@ -110,19 +117,13 @@ module.exports = {
           extend: {
             colors: {
               primary: 'oklch(84.1% 0.238 128.85)', // lime-400
-              // A többi specifikus szín
-              success: "rgb(63, 178, 121)",
-              info: "rgb(191, 191, 191)",
-              dark: "rgb(0, 0, 0)",
-              asidebg: "rgb(129, 171, 178)",
+              success: "rgb(63, 178, 121)", info: "rgb(191, 191, 191)", dark: "rgb(0, 0, 0)", asidebg: "rgb(129, 171, 178)",
             },
-            backgroundImage: { // Használja a lime árnyalatokat
+            backgroundImage: {
                gradient: "linear-gradient(45deg, theme('colors.lime.950') 1%, theme('colors.lime.700') 40%, theme('colors.lime.200') 90%)",
                gradientreverse: "linear-gradient(225deg, theme('colors.lime.950') 1%, theme('colors.lime.700') 40%, theme('colors.lime.200') 90%)",
             },
-             boxShadow: { // Ez maradhat, ha kell
-               green: "10px 0px 10px 3px rgba(144, 78, 82, 0.75)",
-             },
+             boxShadow: { /* ... */ },
           },
         },
         {
@@ -130,12 +131,9 @@ module.exports = {
           extend: {
             colors: {
               primary: 'oklch(76.2% 0.196 154.8)', // green-400
-               success: "rgb(63, 178, 121)",
-               info: "rgb(191, 191, 191)",
-               dark: "rgb(0, 0, 0)",
-               asidebg: "rgb(129, 171, 178)",
+               success: "rgb(63, 178, 121)", info: "rgb(191, 191, 191)", dark: "rgb(0, 0, 0)", asidebg: "rgb(129, 171, 178)",
             },
-             backgroundImage: { // Használja a green árnyalatokat
+             backgroundImage: {
                gradient: "linear-gradient(45deg, theme('colors.green.950') 1%, theme('colors.green.700') 40%, theme('colors.green.200') 90%)",
                gradientreverse: "linear-gradient(225deg, theme('colors.green.950') 1%, theme('colors.green.700') 40%, theme('colors.green.200') 90%)",
             },
@@ -146,13 +144,9 @@ module.exports = {
           extend: {
             colors: {
               primary: 'oklch(70.7% 0.165 254.624)', // blue-400
-              // A quantum specifikus színei
-              success: "rgb(237, 237, 237)",
-              info: "rgb(40, 164, 241, 0.938)",
-              dark: "rgb(0, 0, 0)",
-              asidebg: "rgb(237, 237, 237)",
+              success: "rgb(237, 237, 237)", info: "rgb(40, 164, 241, 0.938)", dark: "rgb(0, 0, 0)", asidebg: "rgb(237, 237, 237)",
             },
-            backgroundImage: { // Használja a blue árnyalatokat
+            backgroundImage: {
                gradient: "linear-gradient(45deg, theme('colors.blue.950') 1%, theme('colors.blue.800') 40%, theme('colors.blue.200') 90%)",
                gradientreverse: "linear-gradient(225deg, theme('colors.blue.950') 1%, theme('colors.blue.800') 40%, theme('colors.blue.200') 90%)",
             },
