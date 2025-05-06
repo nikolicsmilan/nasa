@@ -36,18 +36,18 @@ const Home = () => {
   return (
     // Fő konténer az oldalnak, h-full, hogy kitöltse a Layout main területét
     // Az opacity-t a Layout kezeli, itt már nem kell (kivéve ha extra elhalványítást akarsz)
-    <div className={`w-full h-full flex flex-col lg:flex-row border-0 border-blue-500 ${settingsOpen ? "opacity-20" : ""}`}>
+    <div className={`w-full h-full flex flex-col lg:flex-row border-0 p-0 m-0 border-blue-500 ${settingsOpen ? "opacity-20" : ""}`}>
 
       {/* Bal Oszlop (Tartalom) */}
       {/* Mobilon felül, lg-től balra (w-1/2), flex oszlop, középre igazítva */}
-      <div className="w-full lg:w-1/2 h-full flex flex-col justify-center items-center p-4 lg:p-6 border-0 border-orange-500 relative z-10 order-2 lg:order-1">
+      <div className="w-full lg:w-1/2 h-full flex flex-col justify-center items-center p-0 lg:p-0 border-0 border-orange-500 relative z-10  ">
         {/* Header (NASA logó és cím) */}
-        <header className="flex flex-col items-center justify-center px-6 mb-6 text-center">
-           <div className="border-0 m-0 p-0 ">
+        <header className="flex flex-col items-center justify-center px-6 mb-2 text-center">
+           <div className="border-0 m-0 p-0 h-20">
               {/* NASA Logó - Lehetne SVG vagy jobb minőségű kép */}
-              <SiNasa className="text-8xl md:text-9xl px-0 text-red-500/80 opacity-80" />
+              <SiNasa className="text-7xl md:text-8xl px-0 text-red-500/80 opacity-80" />
             </div>
-            <p className="-mt-4 md:-mt-5 text-lg md:text-xl text-center text-primary font-bold uppercase tracking-wider">
+            <p className=" md:-mt-2 text-lg md:text-xl text-center text-primary font-bold uppercase tracking-wider">
               Aszteroida-vészjelző rendszer
             </p>
         </header>
@@ -57,7 +57,7 @@ const Home = () => {
           <StatusIndicator color="#27ae60" />
         </Suspense>
 
-        <div className="mt-6 flex flex-col items-center gap-4 w-full max-w-xs">
+        <div className="mt-2 flex flex-col items-center gap-2 w-full max-w-xs">
           <Suspense fallback={<LoadingSpinner text="" />}>
             <NotificationButton handleSubscribe={handleSubscribe} />
           </Suspense>
