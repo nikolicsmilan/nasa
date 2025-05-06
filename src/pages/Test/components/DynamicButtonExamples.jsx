@@ -1,10 +1,10 @@
 // src/pages/Test/components/DynamicButtonExamples.jsx
-// VERZIÓ 9: Változatlan az előzőhöz képest, de most a javított configgal kell működnie
+// VERZIÓ 10: HELYESEN a NÉGY statikus példának megfelelő dinamikus gomb
 
 import React from 'react';
 
 const DynamicButtonExamples = () => {
-  // Alap osztályok
+  // Alap osztályok (Témázott keret/hover)
   const baseClasses = `
     w-40 h-32 md:w-48 md:h-32 rounded-xl shadow-xl backdrop-blur-md
     flex flex-col items-center justify-center p-3 md:p-4 cursor-default
@@ -12,7 +12,7 @@ const DynamicButtonExamples = () => {
     border border-button-theme hover:border-button-theme-hover hover:shadow-button-theme-hover
   `;
 
-  // A szöveg glow osztálya a configból
+  // A szöveg glow osztály a configból
   const textGlowClass = 'drop-shadow-text-theme';
 
   return (
@@ -28,7 +28,8 @@ const DynamicButtonExamples = () => {
       {/* A NÉGY stílustípusú gomb egymás mellett */}
       <div className="flex flex-wrap justify-center gap-4 md:gap-6">
 
-        {/* 1. Panel Style (NEM világít) */}
+        {/* 1. Panel Style (GradientBackgrounds megfelelője) */}
+        {/* Háttér: téma -> téma sötétebb; Szöveg: téma (NEM világít) */}
         <div className={`${baseClasses} bg-panel-gradient`}>
           <div className="relative z-10 flex flex-col items-center text-center">
             <span className="font-bold text-base md:text-lg text-primary">
@@ -38,7 +39,8 @@ const DynamicButtonExamples = () => {
           </div>
         </div>
 
-        {/* 2. Accent Stílus (NEM világít) */}
+        {/* 2. Accent Stílus (ThemeButtons megfelelője) */}
+        {/* Háttér: neutral -> téma; Szöveg: téma (NEM világít) */}
         <div className={`${baseClasses} bg-button-accent-gradient`}>
           <div className="relative z-10 flex flex-col items-center text-center">
             <span className="font-bold text-base md:text-lg text-primary">
@@ -48,9 +50,11 @@ const DynamicButtonExamples = () => {
           </div>
         </div>
 
-        {/* 3. Glowing Accent Stílus (VILÁGÍT) */}
+        {/* 3. Glowing Accent Stílus (GlowingButtons megfelelője) */}
+        {/* Háttér: neutral -> téma; Szöveg: téma (VILÁGÍT) */}
         <div className={`${baseClasses} bg-button-accent-gradient`}>
           <div className="relative z-10 flex flex-col items-center text-center">
+            {/* Alkalmazzuk a drop-shadow utility-t */}
             <span className={`font-bold text-base md:text-lg text-primary ${textGlowClass}`}>
               Glowing
             </span>
@@ -58,11 +62,13 @@ const DynamicButtonExamples = () => {
           </div>
         </div>
 
-        {/* 4. Bordered Stílus (VILÁGÍT) */}
+        {/* 4. Neutral Stílus (NeutralGradientThemeButtons megfelelője, átnevezve) */}
+        {/* Háttér: neutral -> neutral; Szöveg: téma (VILÁGÍT) */}
         <div className={`${baseClasses} bg-button-neutral-gradient`}>
           <div className="relative z-10 flex flex-col items-center text-center">
+             {/* Alkalmazzuk a drop-shadow utility-t */}
             <span className={`font-bold text-base md:text-lg text-primary ${textGlowClass}`}>
-              Bordered
+              Neutral
             </span>
             <span className="text-neutral-300 text-xs md:text-sm mt-1">Text Glow</span>
           </div>
