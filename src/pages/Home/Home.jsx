@@ -36,28 +36,40 @@ const Home = () => {
   return (
     // Fő konténer az oldalnak, h-full, hogy kitöltse a Layout main területét
     // Az opacity-t a Layout kezeli, itt már nem kell (kivéve ha extra elhalványítást akarsz)
-    <div className={`w-full h-full flex flex-col lg:flex-row border-0 p-0 m-0 border-blue-500 ${settingsOpen ? "opacity-20" : ""}`}>
+    <div className={`w-full h-full flex border-0 p-0 m-0 ${settingsOpen ? "opacity-20" : ""}`}>
 
-      {/* Bal Oszlop (Tartalom) */}
-      {/* Mobilon felül, lg-től balra (w-1/2), flex oszlop, középre igazítva */}
-      <div className="w-full lg:w-1/2 h-full flex flex-col justify-center items-center p-0 lg:p-0 border-0 border-orange-500 relative z-10  ">
-        {/* Header (NASA logó és cím) */}
-        <header className="flex flex-col items-center justify-center px-6 mb-2 text-center">
-           <div className="border-0 m-0 p-0 h-20">
-              {/* NASA Logó - Lehetne SVG vagy jobb minőségű kép */}
-              <SiNasa className="text-7xl md:text-8xl px-0 text-red-500/80 opacity-80" />
-            </div>
-            <p className=" md:-mt-2 text-lg md:text-xl text-center text-primary font-bold uppercase tracking-wider">
-              Aszteroida-vészjelző rendszer
-            </p>
-        </header>
+    {/* Bal Oszlop (Tartalom) - lg-től kb. 2/3 vagy 3/5 szélesség */}
+    <div className="w-full lg:w-2/5 h-full flex flex-col justify-center items-center p-4 lg:p-6 border-0 relative z-10 overflow-y-auto">
+      {/* Header */}
+      <header className="flex flex-col items-center justify-center px-6 mb-2 text-center">
+         <div className="border-0 m-0 p-0 h-20">
+            <SiNasa className="text-7xl md:text-8xl px-0 text-red-500/80 opacity-80" />
+          </div>
+          <p className=" md:-mt-2 text-lg md:text-xl text-center text-primary font-bold uppercase tracking-wider">
+            Aszteroida-vészjelző rendszer
+          </p>
+      </header>
 
-        {/* Központi Státusz és Gombok */}
-        <Suspense fallback={<LoadingSpinner text="Loading Status..." />}>
-          <StatusIndicator color="#27ae60" />
+      {/* Státuszjelző */}
+      <Suspense fallback={<LoadingSpinner text="Loading Status..." />}>
+        <StatusIndicator color="#27ae60" />
+      </Suspense>
+
+      {/* Gombok CSAK mobilon (lg alatt) jelennek meg itt */}
+      <div className="mt-6 flex flex-col items-center gap-2 w-full max-w-xs lg:hidden border-0">
+        <Suspense fallback={<LoadingSpinner text="" />}>
+          <NotificationButton handleSubscribe={handleSubscribe} />
         </Suspense>
+        <Suspense fallback={<LoadingSpinner text="" />}>
+          <BrowserObjectButton />
+        </Suspense>
+      </div>
+    </div>
 
-        <div className="mt-2 flex flex-col items-center gap-2 w-full max-w-xs">
+    {/* Jobb Oszlop (Gombok - CSAK lg felett) */}
+    {/* Csak lg felett jelenik meg, kb 1/3 vagy 2/5 szélesség, középre igazítva */}
+    <div className="hidden lg:flex lg:w-3/5 h-full flex-col items-center justify-center p-4 lg:p-6 border-0 relative z-10">
+       <div className="flex flex-col items-center gap-4 w-full max-w-xs">
           <Suspense fallback={<LoadingSpinner text="" />}>
             <NotificationButton handleSubscribe={handleSubscribe} />
           </Suspense>
@@ -65,23 +77,19 @@ const Home = () => {
             <BrowserObjectButton />
           </Suspense>
         </div>
-      </div>
-
-      {/* Jobb Oszlop (Subscribe Form) */}
-      {/* Mobilon alul (az order miatt), lg-től jobbra (w-1/2) */}
-      {/* Fontos: Kell relative pozíció, hogy az absolute SubscribeConsole működjön */}
-      <div className="w-full lg:w-1/2 h-full flex items-center justify-center border-0 border-sky-400 relative order-1 lg:order-2">
-        <AnimatePresence>
-          {/* A SubscribeConsole abszolút pozícióval jelenik meg ebben a div-ben */}
-          <SubscribeConsole
-            subscribeToggle={subscribeToggle}
-            setSubscribeToggle={setSubscribeToggle}
-          />
-        </AnimatePresence>
-        {/* Ha a SubscribeConsole nem lenne abszolút pozíciós, akkor itt kellene középre igazítani */}
-      </div>
-
     </div>
+
+    {/* Feliratkozó Panel (Overlay) - Ez kívül van a flex elrendezésen */}
+    <AnimatePresence>
+      {subscribeToggle && ( // Csak akkor rendereljük, ha a toggle igaz
+         <SubscribeConsole
+           subscribeToggle={subscribeToggle} // Ez technikailag nem is kell neki propként
+           setSubscribeToggle={setSubscribeToggle}
+         />
+      )}
+    </AnimatePresence>
+
+  </div>
   );
 };
 

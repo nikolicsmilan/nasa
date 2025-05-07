@@ -10,7 +10,7 @@ const NotificationButton = ({ handleSubscribe }) => {
       <StyledButton
         onClick={handleSubscribe}
         variant="glowing" // <<< Itt adjuk meg a stílustípust
-        className="w-full my-3 py-3 px-6 uppercase text-sm" // Méret, margó, szöveg stílusok
+        className="w-full my-3 py-3 px-6 uppercase lg:text-xl" // Méret, margó, szöveg stílusok
         aria-label="Subscribe to asteroid alerts"
       >
         Ingyenes értesítést kérek! {/* A label helyett children-ként adjuk át */}

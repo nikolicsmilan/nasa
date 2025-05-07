@@ -14,7 +14,7 @@ const BrowserObjectButton = () => {
       <StyledButton
         onClick={handleClick}
         variant="neutral" // <<< Itt adjuk meg a stílustípust ('bordered' helyett 'neutral')
-        className="w-full my-3 py-3 px-6 uppercase text-sm" // Méret, margó, szöveg stílusok
+        className="w-full my-3 py-3 px-6 uppercase lg:text-xl" // Méret, margó, szöveg stílusok
       >
         Aszteroida info {/* A label helyett children-ként adjuk át */}
       </StyledButton>
