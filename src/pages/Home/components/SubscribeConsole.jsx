@@ -3,8 +3,7 @@ import  { useState } from "react";
 import axios from "axios";
 import { motion } from "framer-motion";
 import { subcribeAnimation } from "../../../utils/motion";
-import StyledButton from "../../Test/components/buttons/StyledButton"; // <<< Ellenőrizd az útvonalat!
-
+import StyledButton from '../../../components/buttons/StyledButton';
 const SubscribeConsole = ({ subscribeToggle, setSubscribeToggle }) => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");

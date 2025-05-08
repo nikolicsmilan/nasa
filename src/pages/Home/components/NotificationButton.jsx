@@ -1,5 +1,5 @@
 // src/pages/Home/components/NotificationButton.jsx
-import StyledButton from '../../Test/components/buttons/StyledButton'; // <<< Ellenőrizd az import útvonalat!
+import StyledButton from '../../../components/buttons/StyledButton'; // <<< Ellenőrizd az import útvonalat!
 
 const NotificationButton = ({ handleSubscribe }) => {
   return (
@@ -10,7 +10,7 @@ const NotificationButton = ({ handleSubscribe }) => {
       <StyledButton
         onClick={handleSubscribe}
         variant="glowing" // <<< Itt adjuk meg a stílustípust
-        className="w-full my-3 py-3 px-6 uppercase lg:text-xl" // Méret, margó, szöveg stílusok
+        className="w-full my-3 py-3 px-6 uppercase lg:text-lg" // Méret, margó, szöveg stílusok
         aria-label="Subscribe to asteroid alerts"
       >
         Ingyenes értesítést kérek! {/* A label helyett children-ként adjuk át */}
