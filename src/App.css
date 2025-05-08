@@ -3,6 +3,167 @@
 @tailwind components;
 @tailwind utilities;
 
+
+
+/* === CSS VÁLTOZÓK DEFINÍCIÓJA === */
+/* Ezt beteheted egy @layer base blokkba is, ha akarod */
+/* @layer base { */
+
+  /* --- Plasma Téma --- */
+  /* Itt az osztálynév az, amit a themer plugin generál VAGY amit te használsz a body/html tagen */
+  /* Ellenőrizd a generált HTML-t, valószínűleg .theme-plasma lesz */
+  .theme-plasma {
+    /* Itt hivatkozunk a tailwind.config.js-ben definiált színekre a theme() függvénnyel */
+    --gradient-from: theme('colors.sky.950/95');
+    --gradient-to: theme('colors.sky.800/95');
+    --border-color-theme: theme('colors.sky.400/40'); /* Vagy theme('colors.primary/40') ha a primary sky-400 */
+    --hover-shadow-color: theme('colors.sky.400');    /* Vagy theme('colors.primary') */
+  }
+
+  /* --- Ion Téma --- */
+  .theme-ion {
+    --gradient-from: theme('colors.lime.950/95');
+    --gradient-to: theme('colors.lime.700/95');     /* Figyelj a helyes árnyalatra! */
+    --border-color-theme: theme('colors.lime.400/40'); /* Vagy primary/40 */
+    --hover-shadow-color: theme('colors.lime.400');    /* Vagy primary */
+  }
+
+  /* --- Fusion Téma --- */
+  .theme-fusion {
+    --gradient-from: theme('colors.green.950/95');  /* Ellenőrizd a 950-es green-t! */
+    --gradient-to: theme('colors.green.700/95');    /* Figyelj a helyes árnyalatra! */
+    --border-color-theme: theme('colors.green.400/40'); /* Vagy primary/40 */
+    --hover-shadow-color: theme('colors.green.400');    /* Vagy primary */
+  }
+
+  /* --- Quantum Téma --- */
+  .theme-quantum {
+    --gradient-from: theme('colors.blue.950/95');
+    --gradient-to: theme('colors.blue.800/95');     /* Figyelj a helyes árnyalatra! */
+    --border-color-theme: theme('colors.blue.400/40'); /* Vagy primary/40 */
+    --hover-shadow-color: theme('colors.blue.400');    /* Vagy primary */
+  }
+
+/* } */ /* @layer base vége, ha használtad */
+
+/* Ide jöhetnek az App.css-ből áthozott egyéb, nem Tailwind alapú stílusok, ha akarod */
+/* Vagy maradhatnak az App.css-ben, ahogy most van. */
+
+
+/* src/index.css */
+/* ... (meglévő @import, @tailwind direktívák, CSS változó definíciók) ... */
+
+/* Statikus osztályok a Test oldal GradientBackgrounds komponenséhez */
+.gradient-bg-plasma {
+  /* Közvetlenül az OKLCH értékeket használjuk, amiket megadtál */
+  background-image: linear-gradient(to bottom,
+     oklch(29.3% 0.066 243.157 / 0.95), /* sky-950, 95% opacitás */
+     oklch(44.3% 0.11 240.79 / 0.95)     /* sky-800, 95% opacitás */
+  );
+}
+
+  .gradient-bg-ion {
+    background-image: linear-gradient(to bottom,
+      oklch(27.4% 0.072 132.109 / 0.95), /* lime-950, 95% opacitás */
+      oklch(53.2% 0.157 131.589 / 0.95)    /* lime-700, 95% opacitás */
+    );
+  }
+  
+  .gradient-bg-fusion {
+     /* Figyelem: Ellenőrizd a green-950 értékét a configodban! */
+    background-image: linear-gradient(to bottom,
+      oklch(27.4% 0.072 158.8 / 0.95),   /* green-950?, 95% opacitás */
+      oklch(51.4% 0.163 158.4 / 0.95)     /* green-700, 95% opacitás */
+    );
+  }
+  
+  
+  .gradient-bg-quantum {
+    background-image: linear-gradient(to bottom,
+      oklch(28.2% 0.091 267.935 / 0.95), /* blue-950, 95% opacitás */
+      oklch(42.4% 0.199 265.638 / 0.95)    /* blue-800, 95% opacitás */
+    );
+  }
+
+
+  .gradient-neutral-to-plasma {
+    background-image: linear-gradient(to bottom,
+    #262626,                         /* neutral-800 sima HEX-ként */
+    oklch(29.3% 0.066 243.157)     /* sky-950 OKLCH-ként, OPACITÁS NÉLKÜL */
+  );
+  }
+  
+  .gradient-neutral-to-ion {
+    background-image: linear-gradient(to bottom,
+      #262626,                         /* neutral-800 (HEX) */
+      oklch(27.4% 0.072 132.109)     /* lime-950 (OKLCH, opacitás nélkül) */
+    );
+  }
+  
+   .gradient-neutral-to-fusion {
+    background-image: linear-gradient(to bottom,
+      #262626,                         /* neutral-800 (HEX) */
+      oklch(27.4% 0.072 158.8)       /* green-950? (OKLCH, opacitás nélkül) - Ellenőrizd ezt! */
+    );
+  }  
+  
+   .gradient-neutral-to-quantum {
+    background-image: linear-gradient(to bottom,
+      #262626,                         /* neutral-800 (HEX) */
+      oklch(28.2% 0.091 267.935)     /* blue-950 (OKLCH, opacitás nélkül) */
+    );
+  }
+
+
+  /* App.css */
+/* ... (meglévő szabályok) ... */
+
+/* Statikus osztályok a ThemeButtons / GlowingButtons komponensekhez */
+
+/* Keretek (40% opacitással) */
+.border-theme-plasma { border: 1px solid oklch(74.6% 0.16 232.661 / 0.4); }
+.border-theme-ion    { border: 1px solid oklch(84.1% 0.238 128.85 / 0.4); }
+.border-theme-fusion { border: 1px solid oklch(76.2% 0.196 154.8 / 0.4); }
+.border-theme-quantum{ border: 1px solid oklch(70.7% 0.165 254.624 / 0.4); }
+
+/* Hover effektek (erősebb keret + árnyék) */
+.hover-theme-plasma:hover {
+  border-color: oklch(74.6% 0.16 232.661 / 0.7); /* 70%-os opacitás hoverre */
+  box-shadow: 0 0 15px oklch(74.6% 0.16 232.661);
+}
+.hover-theme-ion:hover {
+  border-color: oklch(84.1% 0.238 128.85 / 0.7);
+  box-shadow: 0 0 15px oklch(84.1% 0.238 128.85);
+}
+ .hover-theme-fusion:hover {
+  border-color: oklch(76.2% 0.196 154.8 / 0.7);
+  box-shadow: 0 0 15px oklch(76.2% 0.196 154.8);
+}
+ .hover-theme-quantum:hover {
+  border-color: oklch(70.7% 0.165 254.624 / 0.7);
+  box-shadow: 0 0 15px oklch(70.7% 0.165 254.624);
+}
+
+/* Szövegszínek (ha nem inline style-t akarsz) */
+.text-theme-plasma { color: oklch(74.6% 0.16 232.661); }
+.text-theme-ion    { color: oklch(84.1% 0.238 128.85); }
+.text-theme-fusion { color: oklch(76.2% 0.196 154.8); }
+.text-theme-quantum{ color: oklch(70.7% 0.165 254.624); }
+
+/* Szöveg Glow (ha nem inline style-t akarsz) */
+.text-glow-plasma { filter: drop-shadow(0 0 5px oklch(74.6% 0.16 232.661)); }
+.text-glow-ion    { filter: drop-shadow(0 0 5px oklch(84.1% 0.238 128.85)); }
+.text-glow-fusion { filter: drop-shadow(0 0 5px oklch(76.2% 0.196 154.8)); }
+.text-glow-quantum{ filter: drop-shadow(0 0 5px oklch(70.7% 0.165 254.624)); }
+
+
+.gradient-neutral-static {
+  background-image: linear-gradient(to bottom,
+    oklch(26.9% 0 0 / 0.95),  /* neutral-800 OKLCH, 95% opacitás */
+    oklch(20.5% 0 0 / 0.95)   /* neutral-900 OKLCH, 95% opacitás */
+  );
+}
+
 body {
   background: black;
  /* padding-top: 60px;*/
@@ -747,5 +908,6 @@ because of the overwrite the base class
 .glowy-table:hover::after {
   opacity: 1; /* Show the glowing effect */
 }
+
 
 

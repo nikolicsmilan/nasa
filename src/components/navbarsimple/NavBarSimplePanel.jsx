@@ -7,9 +7,8 @@ const NavBarSimplePanel = ({children }) => {
      max-h-[80vh]
      max-w-[95vw]
       focus:outline-none  overflow-hidden
-       rounded-xl shadow-2xl border 
-       border-primary/40 bg-gradient-to-b
-        from-neutral-800/95 to-neutral-900/95 backdrop-blur-md">
+       rounded-xl shadow-2xl  border 
+       border-button-theme backdrop-blur-md bg-button-neutral-gradient">
     {children }
     </div>
   );

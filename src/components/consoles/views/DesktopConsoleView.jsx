@@ -23,7 +23,8 @@ const DesktopConsoleView = ({ stopClozer }) => {
     >
       <div
         onClick={stopClozer}
-        className="glowy-button-10 h-[300px] w-[500px] hidde lg:flex flex-wrap lg:max-w-2xl  border-0 border-primary  relative z-50  "
+        className="glowy-button-10 h-[300px] w-[500px] hidde lg:flex flex-wrap lg:max-w-2xl
+         border-button-theme  bg-button-accent-gradient  relative z-50  "
       >
         {settings === "Menu" && (
           <p className=" border-0 w-full pt-5 text-white text-center uppercase font-bold">
