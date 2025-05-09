@@ -35,10 +35,10 @@ export default function NavBarSimple() {
     console.log("handleMouseEnter start");
     if (closeTimeoutRef.current) {
       // Ha van bezárási időzítő...
-      console.log("handleMouseEnter   if (closeTimeoutRef.current)");
+     // console.log("handleMouseEnter   if (closeTimeoutRef.current)");
       clearTimeout(closeTimeoutRef.current); // ...töröljük.
     }
-    console.log("ellement: ", element);
+   // console.log("ellement: ", element);
 
     if (element) {
       // const navPaddingLeft = parseFloat(window.getComputedStyle(navElement).paddingLeft) || 0;

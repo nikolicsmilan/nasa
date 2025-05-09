@@ -7,6 +7,7 @@ import GlowingButtons from "./components/GlowingButtons";
 import NeutralGradientThemeButtons from "./components/NeutralGradientThemeButtons";
 import SpeedGauges from "./components/SpeedGauges";
 import DynamicButtonExamples from "./components/DynamicButtonExamples";
+import ThemeColorPaletteShowcase from "./components/ThemeColorPaletteShowcase";
 const Test = () => {
   // Opcionális: Hozzáadhatunk state-et, hogy teszteljük a változó sebességet
 
@@ -18,10 +19,9 @@ const Test = () => {
       <ThemeButtons />
       <GlowingButtons />
       <NeutralGradientThemeButtons />
-      
+      <ThemeColorPaletteShowcase/>
       <SpeedGauges />
-      <SpeedGauges />
-    
+      <SpeedGauges />    
     </div>
   );
 };

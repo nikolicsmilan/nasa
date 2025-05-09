@@ -82,7 +82,8 @@ const AppLayout = ({
         // A témát itt is alkalmazzuk, ahogy App.jsx-ben
         className={`${choosenStyle} overflow-hidden mystyle border-0
          bg-black text-primary h-screen w-screen flex flex-col relative font-mono`}
-      >
+      >{choosenStyle}
+     
         {/* Háttér Renderelése */}
         {renderBackground()}
 

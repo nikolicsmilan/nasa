@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { getComputedStyleColor } from '../utils/getComputedStyleColor';
 
 const useAreaChartColors = (styleDependency) => {
+  console.log("useAreaChartColors styleDependency: ",styleDependency)
   // Kezdetben csak a dinamikusan meghatározandó színeket inicializáljuk
   const [colors, setColors] = useState({
     tooltip: "#FFFFFF", // Alapértelmezett fehér (felülíródik)
@@ -14,6 +15,7 @@ const useAreaChartColors = (styleDependency) => {
   useEffect(() => {
     // Csak a szükséges tooltip és legend színeket állítjuk be dinamikusan
     const primaryColor = getComputedStyleColor("theme-color-ref"); // Kiolvassuk a primary színt
+    console.log("useAreaChartColors primaryColor: ",primaryColor)
     setColors({
       tooltip: primaryColor, // Ez lesz az alap színünk a chartokhoz
       legend: primaryColor,  // Ugyanaz a szín a szövegekhez, címkékhez

@@ -18,7 +18,8 @@ const StyledButton = ({
     px-5 py-2.5 text-sm font-bold rounded-md shadow-lg
     border border-button-theme overflow-hidden
     transition-all duration-200 ease-in-out
-    focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-neutral-900 focus:ring-primary
+    focus:outline-none focus:ring-2 focus:ring-offset-2 
+    focus:ring-offset-neutral-900 focus:ring-primary
     disabled:opacity-50 disabled:cursor-not-allowed
   `;
 
