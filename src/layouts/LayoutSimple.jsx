@@ -12,7 +12,7 @@ const LayoutSimple = ({ children }) => {
 
   return (
     // Alap konténer: teljes képernyő magasság, sötét háttér, alap szövegszín és font
-    <div className={`${choosenStyle} min-h-screen w-screen flex flex-col bg-black text-primary font-mono`}>
+    <div className={`${choosenStyle} min-h-screen w-screen flex flex-col bg-black font-mono`}>
       {/* Nincs header vagy komplex menü */}
 
       {/* Fő tartalom terület: kitölti a rendelkezésre álló helyet */}

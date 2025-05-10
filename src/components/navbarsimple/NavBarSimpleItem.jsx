@@ -17,7 +17,7 @@ const NavBarSimpleItem = ({ item, index, itemRefs, handleMouseEnter }) => {
             // Alap stílusok: padding, flex, térköz, betűméret, betűvastagság, átmenet.
             isActive
               ? "text-white" // Ha az útvonal aktív, a szöveg fehér.
-              : "text-primary hover:text-white" // Ha inaktív, a szöveg 'primary', hoverre fehér.
+              : "text-primar hover:text-white" // Ha inaktív, a szöveg 'primary', hoverre fehér.
           }`
         }
       >

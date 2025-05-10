@@ -81,7 +81,7 @@ const AppLayout = ({
       <div
         // A témát itt is alkalmazzuk, ahogy App.jsx-ben
         className={`${choosenStyle} overflow-hidden mystyle border-0
-         bg-black text-primary h-screen w-screen flex flex-col relative font-mono`}
+         bg-black text-primarys h-screen w-screen flex flex-col relative font-mono`}
       >{choosenStyle}
      
         {/* Háttér Renderelése */}
@@ -107,7 +107,7 @@ const AppLayout = ({
             )}
           </div>
           <FaCog
-            className="relative z-40 text-4xl m-1 p-2 cursor-pointer border-0"
+            className="relative z-40 text-4xl m-1 p-2 cursor-pointer border-0 text-primary"
             onClick={() => { setToggle(true); setSettingsOpen((prev) => !prev); }}
           />
         </header>

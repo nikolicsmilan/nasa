@@ -69,7 +69,7 @@ export default function NavBarSimple() {
     }
   };
   return (
-    <div onMouseLeave={handleMouseLeave} className="relative flex border-0">
+    <div onMouseLeave={handleMouseLeave} className="relative flex border-0 text-primary">
       {/* Fő menüpontok */}
       <nav className="relative w-full flex items-center  h-full border-0 border-red-400">
         <div className="flex gap-6 relative border-0">
