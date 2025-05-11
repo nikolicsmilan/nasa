@@ -1,56 +1,35 @@
 // src/pages/Test/Test.jsx
 import { useState, useEffect } from 'react';
-import { testCategoriesData } from '../../locales/testCategoriesData'; // HELYES IMPORT NÉV
-import TestComponentCard from './components/TestComponentCard';
+import { testCategoriesData } from '../../locales/testCategoriesData';
+import TestComponentCard from './components/TestComponentCard'; // Ezt továbbra is használjuk a többi kategóriához
 
 const Test = () => {
-  useEffect(() => {
-    console.log("[Test.jsx] Initial testCategoriesData upon mount:", testCategoriesData);
-    if (!testCategoriesData || !Array.isArray(testCategoriesData) || testCategoriesData.length === 0) {
-      console.error("[Test.jsx] ERROR: testCategoriesData is empty, not an array, or not loaded! Check 'src/locales/testCategoriesData.js'.");
-    }
-  }, []);
-
+  // ... (useState és useEffect hookok változatlanok) ...
   const [activeCategoryKey, setActiveCategoryKey] = useState(
     () => (testCategoriesData && testCategoriesData.length > 0 ? testCategoriesData[0].key : null)
   );
 
-  useEffect(() => {
-    console.log(`[Test.jsx] activeCategoryKey is now: "${activeCategoryKey}"`);
-    if (testCategoriesData && Array.isArray(testCategoriesData)) { // HELYES VÁLTOZÓNÉV
-        const currentActiveCategory = testCategoriesData.find(cat => cat.key === activeCategoryKey); // HELYES VÁLTOZÓNÉV
-        console.log("[Test.jsx] Current activeCategory object corresponding to key:", currentActiveCategory);
-        if (currentActiveCategory) {
-            if (!currentActiveCategory.components || !Array.isArray(currentActiveCategory.components)) {
-                console.error(`[Test.jsx] ERROR: The category "${currentActiveCategory.name}" (key: "${activeCategoryKey}") is MISSING or has an INVALID 'components' array! Value:`, currentActiveCategory.components);
-            } else {
-                console.log(`[Test.jsx] Components array for category "${currentActiveCategory.name}":`, currentActiveCategory.components);
-            }
-        } else if (activeCategoryKey) {
-          console.warn(`[Test.jsx] No category found for key: "${activeCategoryKey}" in testCategoriesData.`); // HELYES VÁLTOZÓNÉV
-        }
-    }
-  }, [activeCategoryKey]);
-
-  // JAVÍTOTT DEFINÍCIÓ:
   const activeCategory = testCategoriesData && Array.isArray(testCategoriesData)
     ? testCategoriesData.find(cat => cat.key === activeCategoryKey)
     : null;
 
   const handleCategoryClick = (key) => {
-    console.log(`[Test.jsx] Category button clicked. Setting activeCategoryKey to: "${key}"`);
     setActiveCategoryKey(key);
   };
 
   return (
-    <div className="flex flex-col h-full w-full bg-black/90  items-center overflow-y-scroll">
-      {/* Felső Navigációs Sáv a Kategória Gombokkal */}
-
-     
-      {(testCategoriesData && Array.isArray(testCategoriesData) && testCategoriesData.length > 0) ? ( // HELYES VÁLTOZÓNÉV MINDENHOL
-        <div className="w-full sticky top-0 z-30 bg-neutral-900/80 backdrop-blur-md shadow-lg p-3 mb-6 print:hidden shrink-0">
-          <div className="max-w-7xl mx-auto flex flex-wrap justify-center gap-x-3 gap-y-2">
-            {testCategoriesData.map(({ key, name, Icon }) => ( // HELYES VÁLTOZÓNÉV
+    <div className="flex flex-col h-full w-full bg-black/90 items-center overflow-y-auto">
+    {/* Felső Navigációs Sáv a Kategória Gombokkal */}
+    {(testCategoriesData && testCategoriesData.length > 0) && (
+      <div className="w-full sticky top-0 z-30 bg-neutral-900/80 backdrop-blur-md shadow-lg print:hidden shrink-0">
+        {/* Konténer a gomboknak, ami görgethető lesz mobilon */}
+        <div className="
+          max-w-7xl mx-auto px-2 py-3 
+          flex flex-nowrap gap-x-3 overflow-x-auto  /* VÍZSZINTES GÖRGETÉS, NINCS TÖRDELÉS */
+          scrollbar-thin scrollbar-thumb-neutral-700 scrollbar-track-neutral-800/50 /* Opcionális: egyedi görgetősáv stílus */
+          md:flex-wrap md:justify-center md:overflow-x-visible /* MD breakpointtól visszaáll a többsoros, nem görgethető */
+        ">
+            {testCategoriesData.map(({ key, name, Icon }) => (
               <button
                 key={key}
                 onClick={() => handleCategoryClick(key)}
@@ -72,42 +51,70 @@ const Test = () => {
             ))}
           </div>
         </div>
-      ) : (
-        <div className="text-center text-error py-10">Error: 'testCategoriesData' is not a valid array or is empty. Please check its definition in `locales/testCategoriesData.js`.</div>
       )}
 
-      {/* Aktív Kategória Komponenseinek Megjelenítése Kártyákban */}
-      <main className="w-full flex-grow px-4 pb-8 overflow-y-auto">
+      {/* Aktív Kategória Tartalmának Megjelenítése */}
+      <main className="w-full flex-grow px-4 pb-8"> {/* Itt már nem kell overflow-y-auto, mert a szülő kezeli */}
         {activeCategory ? (
-          <div className="max-w-7xl mx-auto">
-            <h2 className="text-2xl font-bold text-primar mb-6 text-center">
+          <div className="max-w-7xl mx-auto"> {/* Ez a konténer adja a maximális szélességet */}
+            <h2 className="text-2xl font-bold text-primary mb-6 text-center">
               {activeCategory.name}
             </h2>
-            {activeCategory.components && Array.isArray(activeCategory.components) && activeCategory.components.length > 0 ? (
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                {activeCategory.components.map(comp => (
-                  <TestComponentCard
-                    key={comp.key}
-                    name={comp.name}
-                    status={comp.status}
-                    Component={comp.Component}
-                    props={comp.props}
-                    description={comp.description}
-                  />
-                ))}
-              </div>
+
+            {/* FELTÉTELES RENDERELÉS */}
+            {(activeCategory.key === 'buttons' || activeCategory.key === 'colorPalette') ? (
+              // Teljes szélességű megjelenítés a "Buttons" és "Color Palette" kategóriáknak
+              activeCategory.components && activeCategory.components.length > 0 ? (
+                // Minden komponenst külön div-be rakunk a teljes szélességű megjelenítéshez
+                activeCategory.components.map(comp => {
+                  const ComponentToRender = comp.Component;
+                  const propsToPass = comp.status === "coming_soon" ? { name: comp.name, description: comp.description, ...comp.props } : comp.props;
+                  return (
+                    // Ennek a div-nek kellene a témázott háttér és keret, ha akarod
+                    <div
+                      key={comp.key}
+                      className={`
+                        mb-8 p-4 md:p-6 rounded-xl shadow-xl 
+                        bg-base-100/90 /* Sötét háttér a tartalomnak */
+                        border-0 border-primary/20 /* Finom, témázott keret */
+                        transition-all duration-300 ease-in-out
+                        /* Hover effektek, ha kellenek a teljes szélességű blokkra */
+                        /* hover:border-primary/40 hover:shadow-primary/20 */
+                      `}
+                    >
+                      {/* Itt nem feltétlenül kell a komponens neve újra, ha a komponens maga kiírja */}
+                      {/* <h3 className="text-xl font-semibold text-primary mb-4 text-center">{comp.name}</h3> */}
+                      <ComponentToRender {...propsToPass} />
+                    </div>
+                  );
+                })
+              ) : (
+                <div className="text-center text-neutral-500 py-6">No components in this category.</div>
+              )
             ) : (
-              <div className="col-span-full text-center text-neutral-500 py-6">
-                No components are defined for the category: "{activeCategory.name}".
-                <br />
-                Please ensure the 'components' array is populated in 'testCategoriesData.js' for the category with key '{activeCategory.key}'.
+              // Kártyás megjelenítés az összes többi kategóriához
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {activeCategory.components && activeCategory.components.length > 0 ? (
+                  activeCategory.components.map(comp => (
+                    <TestComponentCard
+                      key={comp.key}
+                      name={comp.name}
+                      status={comp.status}
+                      Component={comp.Component}
+                      props={comp.props}
+                      description={comp.description}
+                    />
+                  ))
+                ) : (
+                  <div className="col-span-full text-center text-neutral-500 py-6">No components in this category.</div>
+                )}
               </div>
             )}
           </div>
         ) : (
-          activeCategoryKey && <div className="text-center text-error py-10">Error: Category with key "{activeCategoryKey}" was not found in 'testCategoriesData'.</div> // HELYES VÁLTOZÓNÉV
+          activeCategoryKey && <div className="text-center text-error py-10">Error: Category with key "{activeCategoryKey}" not found.</div>
         )}
-        {!activeCategoryKey && testCategoriesData && testCategoriesData.length > 0 && ( // HELYES VÁLTOZÓNÉV
+        {!activeCategoryKey && testCategoriesData && testCategoriesData.length > 0 && (
           <div className="text-center text-neutral-500 py-10">Please select a category from above.</div>
         )}
       </main>
