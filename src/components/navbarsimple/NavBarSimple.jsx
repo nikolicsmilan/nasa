@@ -35,10 +35,10 @@ export default function NavBarSimple() {
     console.log("handleMouseEnter start");
     if (closeTimeoutRef.current) {
       // Ha van bezárási időzítő...
-      console.log("handleMouseEnter   if (closeTimeoutRef.current)");
+     // console.log("handleMouseEnter   if (closeTimeoutRef.current)");
       clearTimeout(closeTimeoutRef.current); // ...töröljük.
     }
-    console.log("ellement: ", element);
+   // console.log("ellement: ", element);
 
     if (element) {
       // const navPaddingLeft = parseFloat(window.getComputedStyle(navElement).paddingLeft) || 0;
@@ -60,7 +60,7 @@ export default function NavBarSimple() {
       //setActiveItemTitle(null); // Töröljük az aktív elemet
       setUnderlineProps((prev) => ({ ...prev, opacity: 0, width: 0 })); // Aláhúzás eltüntetése
       setHoveredItemData(null);
-    }, 1000); // 150ms késleltetés
+    }, 500); // 150ms késleltetés
   };
 
   const handlePanelMouseEnter = () => {
@@ -69,7 +69,7 @@ export default function NavBarSimple() {
     }
   };
   return (
-    <div onMouseLeave={handleMouseLeave} className="relative flex border-0">
+    <div onMouseLeave={handleMouseLeave} className="relative flex border-0 text-primary">
       {/* Fő menüpontok */}
       <nav className="relative w-full flex items-center  h-full border-0 border-red-400">
         <div className="flex gap-6 relative border-0">

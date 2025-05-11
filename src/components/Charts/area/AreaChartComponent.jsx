@@ -140,6 +140,8 @@ const AreaChartComponent = ({ config, displayedData }) => {
   const colors = useAreaChartColors(users?.style);
   const chartData = useAreaChartData(displayedData, colors, config);
 
+  console.log("AreaChartComponent colors: ",colors)
+
   return (
     // Külső div: Kitölti a szülőjét (pl. GraphContent -> CenterPanel belső div)
     <div className="w-full h-full flex flex-col items-center justify-center">

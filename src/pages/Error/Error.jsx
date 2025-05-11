@@ -11,7 +11,7 @@ const Error = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen w-screen bg-black text-primary p-6 font-mono relative overflow-hidden z-10">
+    <div className="flex flex-col items-center justify-center min-h-screen w-screen bg-black text-primary p-6 font-mono relative overflow-hidden z-10 ">
       <RotatingSatellite />
       <div className=" rounded-2xl p-8 md:p-12 z-10 text-center max-w-2xl w-full border-0 border-primary/30 relative bg-black/50 backdrop-blur-sm">
         <h1
@@ -23,13 +23,13 @@ const Error = () => {
 
         {/* A forgó műhold beillesztése */}
 
-        <h2 className="text-3xl md:text-2xl font-semibold text-primary uppercase tracking-wider">
+        <h2 className="text-3xl md:text-2xl font-semibold text-primary uppercase lg:tracking-wider text-center">
           Ön illetéktelenül próbált meg adatokat szerezni a Nasatól!
         </h2>
 
         <p className="text-md text-neutral-300 mt-4 max-w-lg mx-auto">
-          Ne menjen sehová, értesítjük a Nasa-t... Vagy térjen vissza a bázisra,
-          ellenkező esetben keresse fel kezelőorvosát, gyóygszerészét.
+          Ne menjen sehová, értesítjük a Nasa-t... Vagy inkább mégis térjen vissza a bázisra,
+          ellenkező esetben keresse fel kezelőorvosát, gyóygszerészét. Akárhogy is klafán van megoldva a sérült műhold animációja. Nemde? :)
         </p>
         <div className="text-center w-full max-w-xs mx-auto my-0">
           <StyledButton
