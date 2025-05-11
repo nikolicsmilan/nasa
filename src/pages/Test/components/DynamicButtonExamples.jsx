@@ -1,18 +1,19 @@
 // src/pages/Test/components/DynamicButtonExamples.jsx
-// VERZIÓ 10: HELYESEN a NÉGY statikus példának megfelelő dinamikus gomb
-
-import React from 'react';
+// React import nem feltétlenül kell, ha nincs state vagy lifecycle
 
 const DynamicButtonExamples = () => {
   // Alap osztályok (Témázott keret/hover)
+  // Kicsit csökkentettem a mobil méretet és a paddingot, hogy jobban elférjenek
   const baseClasses = `
-    w-40 h-32 md:w-48 md:h-32 rounded-xl shadow-xl backdrop-blur-md
-    flex flex-col items-center justify-center p-3 md:p-4 cursor-default
+    rounded-xl shadow-xl backdrop-blur-md
+    flex flex-col items-center justify-center p-2 sm:p-3 md:p-4 cursor-default
     transition-colors duration-300 ease-in-out relative overflow-hidden
     border border-button-theme hover:border-button-theme-hover hover:shadow-button-theme-hover
+    w-full h-32  /* Mobilon teljes szélesség a grid cellán belül, fix magasság */
+    sm:w-40 sm:h-32 /* Kisebb képernyőtől (sm) már a w-40 érvényesül */
+    md:w-48 md:h-32 /* md breakpointtól a nagyobb méret */
   `;
 
-  // A szöveg glow osztály a configból
   const textGlowClass = 'drop-shadow-text-theme';
 
   return (
@@ -25,49 +26,43 @@ const DynamicButtonExamples = () => {
         Their appearance should change when you switch the global theme.
       </p>
 
-      {/* A NÉGY stílustípusú gomb egymás mellett */}
-      <div className="flex flex-wrap justify-center gap-4 md:gap-6">
+      {/* GRID ELRENDEZÉS HASZNÁLATA */}
+      <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 md:gap-6">
 
-        {/* 1. Panel Style (GradientBackgrounds megfelelője) */}
-        {/* Háttér: téma -> téma sötétebb; Szöveg: téma (NEM világít) */}
+        {/* 1. Panel Style */}
         <div className={`${baseClasses} bg-panel-gradient`}>
           <div className="relative z-10 flex flex-col items-center text-center">
-            <span className="font-bold text-base md:text-lg text-primary">
+            <span className="font-bold text-sm sm:text-base md:text-lg text-primary">
               Panel Style
             </span>
             <span className="text-neutral-300 text-xs md:text-sm mt-1">Theme BG</span>
           </div>
         </div>
 
-        {/* 2. Accent Stílus (ThemeButtons megfelelője) */}
-        {/* Háttér: neutral -> téma; Szöveg: téma (NEM világít) */}
+        {/* 2. Accent Stílus */}
         <div className={`${baseClasses} bg-button-accent-gradient`}>
           <div className="relative z-10 flex flex-col items-center text-center">
-            <span className="font-bold text-base md:text-lg text-primary">
+            <span className="font-bold text-sm sm:text-base md:text-lg text-primary">
               Accent
             </span>
             <span className="text-neutral-300 text-xs md:text-sm mt-1">No Text Glow</span>
           </div>
         </div>
 
-        {/* 3. Glowing Accent Stílus (GlowingButtons megfelelője) */}
-        {/* Háttér: neutral -> téma; Szöveg: téma (VILÁGÍT) */}
+        {/* 3. Glowing Accent Stílus */}
         <div className={`${baseClasses} bg-button-accent-gradient`}>
           <div className="relative z-10 flex flex-col items-center text-center">
-            {/* Alkalmazzuk a drop-shadow utility-t */}
-            <span className={`font-bold text-base md:text-lg text-primary ${textGlowClass}`}>
+            <span className={`font-bold text-sm sm:text-base md:text-lg text-primary ${textGlowClass}`}>
               Glowing
             </span>
             <span className="text-neutral-300 text-xs md:text-sm mt-1">Text Glow</span>
           </div>
         </div>
 
-        {/* 4. Neutral Stílus (NeutralGradientThemeButtons megfelelője, átnevezve) */}
-        {/* Háttér: neutral -> neutral; Szöveg: téma (VILÁGÍT) */}
+        {/* 4. Neutral Stílus */}
         <div className={`${baseClasses} bg-button-neutral-gradient`}>
           <div className="relative z-10 flex flex-col items-center text-center">
-             {/* Alkalmazzuk a drop-shadow utility-t */}
-            <span className={`font-bold text-base md:text-lg text-primary ${textGlowClass}`}>
+            <span className={`font-bold text-sm sm:text-base md:text-lg text-primary ${textGlowClass}`}>
               Neutral
             </span>
             <span className="text-neutral-300 text-xs md:text-sm mt-1">Text Glow</span>

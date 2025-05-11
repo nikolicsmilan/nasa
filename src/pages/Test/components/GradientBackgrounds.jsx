@@ -1,47 +1,46 @@
 // src/pages/Test/components/GradientBackgrounds.jsx
-import React from 'react';
-import { oklchToRgba } from '../../../utils/colorUtils'; // Feltételezve, hogy van ilyen konvertered
-import { parse, formatHex } from 'culori'; // <<< ITT IMPORTÁLD A PARSE-T IS!
+// React import nem szükséges
+import { oklchToRgba } from '../../../utils/colorUtils';
+import { parse, formatHex } from 'culori';
 
 const gradientData = [
+  // ... (gradientData változatlan)
   {
     name: "Plasma",
     className: "gradient-bg-plasma",
-    oklchFrom: "oklch(29.3% 0.066 243.157 / 0.95)", // sky-950
-    oklchTo: "oklch(44.3% 0.11 240.79 / 0.95)"      // sky-800
+    oklchFrom: "oklch(29.3% 0.066 243.157 / 0.95)",
+    oklchTo: "oklch(44.3% 0.11 240.79 / 0.95)"
   },
   {
     name: "Ion",
     className: "gradient-bg-ion",
-    oklchFrom: "oklch(27.4% 0.072 132.109 / 0.95)", // lime-950
-    oklchTo: "oklch(53.2% 0.157 131.589 / 0.95)"    // lime-700
+    oklchFrom: "oklch(27.4% 0.072 132.109 / 0.95)",
+    oklchTo: "oklch(53.2% 0.157 131.589 / 0.95)"
   },
   {
     name: "Fusion",
     className: "gradient-bg-fusion",
-    oklchFrom: "oklch(27.4% 0.072 158.8 / 0.95)",   // green-950?
-    oklchTo: "oklch(51.4% 0.163 158.4 / 0.95)"     // green-700
+    oklchFrom: "oklch(27.4% 0.072 158.8 / 0.95)",
+    oklchTo: "oklch(51.4% 0.163 158.4 / 0.95)"
   },
   {
     name: "Quantum",
     className: "gradient-bg-quantum",
-    oklchFrom: "oklch(28.2% 0.091 267.935 / 0.95)", // blue-950
-    oklchTo: "oklch(42.4% 0.199 265.638 / 0.95)"    // blue-800
+    oklchFrom: "oklch(28.2% 0.091 267.935 / 0.95)",
+    oklchTo: "oklch(42.4% 0.199 265.638 / 0.95)"
   }
 ];
 
-// Segédfüggvény a Culori-val történő HEX konverzióhoz
 const convertToAllFormats = (oklchString) => {
+  // ... (convertToAllFormats változatlan) ...
   if (!oklchString) return { oklch: 'N/A', rgba: 'N/A', hex: 'N/A' };
-  const rgba = oklchToRgba(oklchString); // A te meglévő konvertered
+  const rgba = oklchToRgba(oklchString);
   let hex = 'N/A';
   try {
-    // Az alpha részt el kell távolítani a parse előtt, ha van, mert a formatHex nem kezeli
     const oklchWithoutAlpha = oklchString.includes('/')
       ? oklchString.substring(0, oklchString.lastIndexOf('/')).trim() + ')'
       : oklchString;
-
-    const culoriObj = parse(oklchWithoutAlpha); // Most már a parse is definiálva van
+    const culoriObj = parse(oklchWithoutAlpha);
     if (culoriObj) {
       hex = formatHex(culoriObj);
     }
@@ -55,29 +54,38 @@ const convertToAllFormats = (oklchString) => {
   };
 };
 
-
 const GradientBackgrounds = () => {
   return (
     <div className="p-4">
       <h1 className="text-primary text-xl mb-6 text-center">
         Gradient Backgrounds (Static Test)
       </h1>
-      <div className="flex flex-wrap justify-center gap-6">
+      {/* Grid elrendezés itt is */}
+      <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
         {gradientData.map((grad) => {
           const fromColors = convertToAllFormats(grad.oklchFrom);
           const toColors = convertToAllFormats(grad.oklchTo);
 
           return (
+            // Egy grid cella tartalma
             <div key={grad.name} className="flex flex-col items-center gap-2 text-xs text-neutral-400">
-              <div className={`w-40 h-40 sm:w-48 sm:h-48 rounded-xl backdrop-blur-md ${grad.className}`}>
+              {/* A színminta négyzet */}
+              <div className={`
+                w-full h-32 /* Mobilon teljes cellaszélesség, fix magasság */
+                sm:w-40 sm:h-40 /* sm breakpointtól */
+                md:w-48 md:h-48 /* md breakpointtól */
+                rounded-xl backdrop-blur-md 
+                ${grad.className}`}
+              >
               </div>
-              <div className="text-center w-48 break-words">
-                <p className="font-semibold text-lg text-primary">{grad.name}</p>
-                <p className="mt-1 text-sm">From:</p>
+              {/* A szöveges információk */}
+              <div className="text-center w-full sm:w-48 break-words mt-1">
+                <p className="font-semibold text-base sm:text-lg text-primary">{grad.name}</p>
+                <p className="mt-1 text-xs sm:text-sm">From:</p>
                 <p>OKLCH: <span className="text-neutral-200">{fromColors.oklch}</span></p>
                 <p>RGBA: <span className="text-neutral-200">{fromColors.rgba}</span></p>
                 <p>HEX: <span className="text-neutral-200">{fromColors.hex.toUpperCase()}</span></p>
-                <p className="mt-1">To:</p>
+                <p className="mt-1 text-xs sm:text-sm">To:</p>
                 <p>OKLCH: <span className="text-neutral-200">{toColors.oklch}</span></p>
                 <p>RGBA: <span className="text-neutral-200">{toColors.rgba}</span></p>
                 <p>HEX: <span className="text-neutral-200">{toColors.hex.toUpperCase()}</span></p>
