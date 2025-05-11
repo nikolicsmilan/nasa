@@ -60,7 +60,7 @@ export default function NavBarSimple() {
       //setActiveItemTitle(null); // Töröljük az aktív elemet
       setUnderlineProps((prev) => ({ ...prev, opacity: 0, width: 0 })); // Aláhúzás eltüntetése
       setHoveredItemData(null);
-    }, 1000); // 150ms késleltetés
+    }, 500); // 150ms késleltetés
   };
 
   const handlePanelMouseEnter = () => {
