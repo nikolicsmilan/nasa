@@ -1,77 +1,77 @@
-const mongoose = require("mongoose"); // Behúzza a Mongoose könyvtárat, ami egy ODM (Object Data Modeling) könyvtár MongoDB-hez Node.js-ben.
-const bcrypt = require('bcrypt'); // Behúzza a bcrypt könyvtárat jelszavak biztonságos hash-eléséhez.
+const mongoose = require("mongoose"); // Imports the Mongoose library, an ODM (Object Data Modeling) library for MongoDB in Node.js.
+const bcrypt = require('bcrypt'); // Imports the bcrypt library for securely hashing passwords.
 
-const userSchema = new mongoose.Schema({ // Létrehoz egy új Mongoose sémát a felhasználói adatok struktúrájának definiálásához.
-  username: { // Felhasználónév mező definíciója.
-    type: String, // A mező típusa string (szöveg).
-    required: [true, 'Username is required'], // Kötelező mező; ha hiányzik, a megadott hibaüzenetet adja.
-    unique: true, // Biztosítja, hogy minden felhasználónév egyedi legyen az adatbázisban.
-    trim: true, // Eltávolítja a felesleges szóközöket a string elejéről és végéről.
+const userSchema = new mongoose.Schema({ // Creates a new Mongoose schema to define the structure of user documents.
+  username: { // Definition of the username field.
+    type: String, // The field type is String (text).
+    required: [true, 'Username is required'], // Marks the field as mandatory; provides an error message if missing.
+    unique: true, // Ensures that each username is unique in the database.
+    trim: true, // Automatically removes any leading or trailing whitespace from the string.
   },
-  email: { // Email cím mező definíciója.
-    type: String, // A mező típusa string.
-    required: [true, 'Email is required'], // Kötelező mező.
-    unique: true, // Biztosítja, hogy minden email cím egyedi legyen.
-    trim: true, // Eltávolítja a felesleges szóközöket.
-    lowercase: true, // Az email címet automatikusan kisbetűssé alakítja mentés előtt.
-    match: [/.+\@.+\..+/, 'Please fill a valid email address'], // Reguláris kifejezés az email formátumának alapvető ellenőrzésére.
+  email: { // Definition of the email address field.
+    type: String, // The field type is String.
+    required: [true, 'Email is required'], // Marks the field as mandatory.
+    unique: true, // Ensures that each email address is unique.
+    trim: true, // Removes leading/trailing whitespace.
+    lowercase: true, // Automatically converts the email address to lowercase before saving.
+    match: [/.+\@.+\..+/, 'Please fill a valid email address'], // Regular expression for basic email format validation.
   },
-  password: { // Jelszó mező definíciója.
-    type: String, // A mező típusa string (a hash-elt jelszót tárolja majd).
-    // A 'required' itt egy függvény, ami dinamikusan dönti el a kötelezőséget a 'role' alapján.
-    required: function() { // Ez egy Mongoose séma validációs függvény.
-        // A `this` kulcsszó ebben a kontextusban arra a DOKUMENTUMRA (user objektumra) vonatkozik,
-        // amelyet éppen validálnak vagy mentenek. Tehát `this.role` az adott user dokumentum 'role' mezőjének értékét adja.
-        return !['subscriber', 'visitor_hr'].includes(this.role); // Akkor kötelező a jelszó, ha a user szerepköre NEM 'subscriber' ÉS NEM 'visitor_hr'.
+  password: { // Definition of the password field.
+    type: String, // The field type is String (will store the hashed password).
+    // The 'required' field here is a function to dynamically determine if the password is required based on the 'role'.
+    required: function() { // This is a Mongoose schema validation function.
+        // The `this` keyword in this context refers to the DOCUMENT (user object)
+        // that is currently being validated or saved. Thus, `this.role` gives the value of the 'role' field of that user document.
+        return !['subscriber', 'visitor_hr'].includes(this.role); // Password is required if the user's role is NOT 'subscriber' AND NOT 'visitor_hr'.
       },
-    minlength: 6, // Meghatározza, hogy a jelszónak legalább 6 karakter hosszúnak kell lennie (ez a plain text jelszóra vonatkozik a hash-elés előtt).
+    minlength: 6, // Specifies that the password must be at least 6 characters long (this applies to the plain text password before hashing).
   },
-  role: { // Felhasználói szerepkör mező definíciója.
-    type: String, // A mező típusa string.
-    enum: ['subscriber', 'commenter', 'visitor_hr', 'moderator', 'admin'], // Meghatározza az elfogadható értékek listáját a szerepkörhöz.
-    required: true, // Kötelező mező.
-    default: 'subscriber', // Alapértelmezett érték, ha nincs megadva; új felhasználók 'subscriber'-ként jönnek létre.
+  role: { // Definition of the user role field.
+    type: String, // The field type is String.
+    enum: ['subscriber', 'commenter', 'visitor_hr', 'moderator', 'admin'], // Defines the list of acceptable values for the role.
+    required: true, // Marks the field as mandatory.
+    default: 'subscriber', // Default value if not provided; new users are created as 'subscriber'.
   },
-  registrationDate: { // Regisztráció dátuma mező.
-    type: Date, // A mező típusa dátum.
-    default: Date.now, // Alapértelmezett érték a jelenlegi dátum és idő, amikor a dokumentum létrejön.
+  registrationDate: { // Registration date field.
+    type: Date, // The field type is Date.
+    default: Date.now, // Default value is the current date and time when the document is created.
   },
-  // Egyéb potenciális mezők itt lehetnének, pl. lastLogin, profilePicture, stb.
+  // Other potential fields could be here, e.g., lastLogin, profilePicture, etc.
   // ...
-}, { timestamps: true }); // Mongoose opció: automatikusan hozzáad `createdAt` és `updatedAt` mezőket minden dokumentumhoz.
+}, { timestamps: true }); // Mongoose option: automatically adds `createdAt` and `updatedAt` fields to each document.
 
-// Mongoose middleware, ami a 'save' esemény ELŐTT (pre) fut le.
-// Jelszó hash-elése mentés előtt, de csak akkor, ha a jelszó mező módosult.
-userSchema.pre('save', async function (next) { // Az `async function` itt azért fontos, mert `await`-et használunk benne.
-                                            // A `function` kulcsszó használata (nem arrow function) biztosítja, hogy a `this` helyesen kötődjön.
-  // A `this` kulcsszó ebben a `pre('save')` hook-ban arra a Mongoose DOKUMENTUMRA mutat,
-  // amelyet éppen menteni készülünk az adatbázisba.
-  if (!this.isModified('password')) { // Ellenőrzi, hogy a 'password' mező módosult-e ezen mentési kísérlet során.
-                                      // Ha nem módosult (pl. csak az emailt frissítjük), akkor nem kell újra hash-elni.
-    return next(); // Továbbengedi a mentési folyamatot a következő middleware-re vagy a tényleges mentésre.
+// Mongoose middleware that runs BEFORE (pre) the 'save' event.
+// Hashes the password before saving, but only if the password field has been modified.
+userSchema.pre('save', async function (next) { // The `async function` is important here because we use `await` inside.
+                                            // Using the `function` keyword (not an arrow function) ensures `this` is correctly bound.
+  // The `this` keyword in this `pre('save')` hook refers to the Mongoose DOCUMENT
+  // that is about to be saved to the database.
+  if (!this.isModified('password')) { // Checks if the 'password' field has been modified during this save attempt.
+                                      // If not modified (e.g., only updating the email), no need to re-hash.
+    return next(); // Passes control to the next middleware or the actual save operation.
   }
-  try { // Hibakezelés a hash-elési folyamathoz.
-    const salt = await bcrypt.genSalt(10); // Generál egy "sót" a hash-eléshez (10 a költségfaktor, ami meghatározza a hash erősségét).
-    // A `this.password` itt az éppen menteni kívánt user dokumentum (még plain text) jelszavára utal.
-    // Ezt a plain text jelszót hash-eljük a generált sóval.
-    this.password = await bcrypt.hash(this.password, salt); // A dokumentum 'password' mezőjét felülírja a hash-elt jelszóval.
-    return next(); // Továbbengedi a mentési folyamatot.
-  } catch (error) { // Ha hiba történik a hash-elés közben.
-    return next(error); // Továbbadja a hibát a Mongoose hibakezelőjének.
+  try { // Error handling for the hashing process.
+    const salt = await bcrypt.genSalt(10); // Generates a "salt" for hashing (10 is the cost factor, determining hash strength).
+    // `this.password` here refers to the (plain text) password of the user document being saved.
+    // This plain text password is hashed with the generated salt.
+    this.password = await bcrypt.hash(this.password, salt); // Overwrites the document's 'password' field with the hashed password.
+    return next(); // Passes control to the next middleware/save operation.
+  } catch (error) { // If an error occurs during hashing.
+    return next(error); // Passes the error to Mongoose's error handler.
   }
 });
 
-// Egyedi metódus hozzáadása a userSchema-hoz a jelszó összehasonlítására.
-// Ezt a metódust majd a User modell példányain lehet meghívni.
-userSchema.methods.comparePassword = async function (candidatePassword) { // Az `async function` itt is az `await` miatt kell.
-                                                                      // A `function` kulcsszó itt is a `this` helyes kötődése miatt fontos.
-  // A `this` kulcsszó ebben az instance metódusban arra a konkrét User DOKUMENTUM PÉLDÁNYRA mutat,
-  // amelyen ezt a metódust meghívjuk (pl. `userFromTheDb.comparePassword('bevittJelszo')`).
-  // `candidatePassword`: a felhasználó által beírt, ellenőrizendő (plain text) jelszó.
-  // `this.password`: az adatbázisban tárolt, már hash-elt jelszó az adott user dokumentumban.
-  return bcrypt.compare(candidatePassword, this.password); // A bcrypt összehasonlítja a plain text kandidátus jelszót a tárolt hash-sel.
-                                                            // Visszaad egy Promise-t, ami `true`-ra vagy `false`-ra értékelődik ki.
+// Adds a custom instance method to the userSchema for comparing passwords.
+// This method will be available on instances of the User model.
+userSchema.methods.comparePassword = async function (candidatePassword) { // `async function` is needed here for `await`.
+                                                                      // The `function` keyword is also important here for correct `this` binding.
+  // The `this` keyword in this instance method refers to the specific User DOCUMENT INSTANCE
+  // on which this method is called (e.g., `userFromTheDb.comparePassword('enteredPassword')`).
+  // `candidatePassword`: the (plain text) password entered by the user, to be checked.
+  // `this.password`: the stored, already hashed password in the user document from the database.
+  return bcrypt.compare(candidatePassword, this.password); // bcrypt compares the plain text candidate password with the stored hash.
+                                                            // Returns a Promise that resolves to `true` or `false`.
 };
 
-module.exports = mongoose.model("User", userSchema); // Létrehoz egy Mongoose modellt 'User' néven a `userSchema` alapján, és exportálja azt.
-                                                     // A Mongoose ezt fogja használni a 'users' (többes szám, kisbetűs) kollekció kezelésére az adatbázisban.
+module.exports = mongoose.model("User", userSchema); // Creates a Mongoose model named 'User' based on `userSchema` and exports it.
+                                                     // Mongoose will use this to manage the 'users' (plural, lowercase) collection in the database.
