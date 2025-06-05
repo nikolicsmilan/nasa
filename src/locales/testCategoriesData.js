@@ -12,12 +12,12 @@ import ComingSoonCard from "../pages/Test/components/ComingSoonCard"; // Test ol
 import {
   FaMousePointer, FaPalette, FaTachometerAlt, FaChartBar, FaClone, FaTable,
   FaRegSun, FaTasks, FaSlidersH, FaBell, FaWindowMaximize, FaAlignLeft, FaProjectDiagram,
-  FaMapMarkedAlt, FaListUl, FaCommentDots, FaTags, FaBars, FaHourglassHalf, FaSpinner
+  FaMapMarkedAlt, FaListUl, FaCommentDots, FaTags, FaBars, FaHourglassHalf, FaSpinner,FaNetworkWired 
 } from 'react-icons/fa';
 import { BsCircleHalf, BsCardText, BsKanban, BsLayoutTextWindowReverse, BsCalendarEvent } from "react-icons/bs";
 import { IoToggle, IoChatbubblesOutline } from "react-icons/io5";
 import { MdInput, MdOutlineViewDay, MdTimeline } from "react-icons/md";
-
+import ApiTestComponent from '../pages/Test/components/ApiTestComponent';
 
 // Segédfüggvény a "Coming Soon" komponensek gyors létrehozásához
 const cs = (name, description = "This component is under development.") => ({
@@ -29,6 +29,23 @@ const cs = (name, description = "This component is under development.") => ({
 });
 
 export const testCategoriesData = [ // <<< FIGYELEM: Az exportált név itt HELYES!
+  {
+    key: "apiTests", // Egyedi kulcs
+    name: "Backend API Tests", // Megjelenő név a navigációban
+    Icon: FaNetworkWired, // Ikon a kategóriához
+    components: [ // A kategórián belüli tesztkomponensek
+      {
+        key: "nasaApiSentry", // Egyedi kulcs a komponenshez
+        name: "NASA Sentry System API", // Komponens neve/címe
+        Component: ApiTestComponent, // A komponens, amit létrehozol a teszteléshez
+        status: "wip", // "work in progress" vagy "ready", ha már elkezdted
+        description: "Test fetching and displaying data from the NASA Sentry System API via the custom backend."
+        // props: {} // Ha a komponensednek speciális propokra van szüksége
+      },
+      // Ide jöhetnek majd további API végpontokhoz/funkciókhoz tartozó tesztkomponensek
+      // pl. cs("Another API Endpoint", "Testing another backend service.")
+    ]
+  },
   {
     key: "buttons",
     name: "Buttons",

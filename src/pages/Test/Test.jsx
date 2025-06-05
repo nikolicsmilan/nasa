@@ -62,7 +62,7 @@ const Test = () => {
             </h2>
 
             {/* FELTÉTELES RENDERELÉS */}
-            {(activeCategory.key === 'buttons' || activeCategory.key === 'colorPalette') ? (
+            {(activeCategory.key === 'buttons' || activeCategory.key === 'colorPalette'|| activeCategory.key === 'apiTests') ? (
               // Teljes szélességű megjelenítés a "Buttons" és "Color Palette" kategóriáknak
               activeCategory.components && activeCategory.components.length > 0 ? (
                 // Minden komponenst külön div-be rakunk a teljes szélességű megjelenítéshez
