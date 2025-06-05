@@ -1,8 +1,8 @@
-const User = require('../models/users.mongo'); // Importáljuk a User Mongoose modellt
-// const jwt = require('jsonwebtoken'); // Ezt majd importálni kell a token generáláshoz és validáláshoz
-// const { logEvents } = require('../middlewares/logEvents'); // Ha használni akarod a logolást itt is
+const User = require('../models/users.mongo'); // Imports the User Mongoose model.
+// const jwt = require('jsonwebtoken'); // To be imported later for JWT generation and validation.
+// const { logEvents } = require('../middlewares/logEvents'); // If you intend to use logging here.
 
-// Segédfüggvény a válaszok egységesítéséhez (opcionális, de hasznos lehet)
+// Helper function for standardized responses (optional, but can be useful)
 // function sendSuccess(res, statusCode, data, message) {
 //   res.status(statusCode).json({ success: true, message, data });
 // }
@@ -11,46 +11,45 @@ const User = require('../models/users.mongo'); // Importáljuk a User Mongoose m
 //   res.status(statusCode).json({ success: false, message, error: errorDetails });
 // }
 
-// === Publikus Végpontok Kezelői ===
+// === Public Endpoint Handlers ===
 
-// Új felhasználó regisztrációja (lehet 'subscriber' vagy 'commenter' is alapértelmezésben)
+// Handles new user registration (can be 'subscriber', 'commenter', etc. by default via schema).
 async function httpRegisterNewUser(req, res) {
-  const { username, email, password, role } = req.body; // A 'role' opcionális, alapértelmezetten 'subscriber' lesz a sémában
+  const { username, email, password, role } = req.body; // 'role' is optional; defaults to 'subscriber' in the schema.
 
-  // Alapvető validáció (ezt érdemes egy validációs middleware-be vagy library-be szervezni később)
-  if (!username || !email) { // Jelszó csak akkor kötelező, ha nem subscriber
+  // Basic validation (consider a validation middleware or library for more complex scenarios).
+  if (!username || !email) { // Password is only required if not a 'subscriber'.
     return res.status(400).json({ error: 'Username and email are required.' });
   }
-  if (role && !['subscriber', 'commenter', 'visitor_hr', 'moderator', 'admin'].includes(role)) {
+  if (role && !['subscriber', 'commenter', 'visitor_hr', 'moderator', 'admin'].includes(role)) { // Validates the provided role.
     return res.status(400).json({ error: 'Invalid role specified.' });
   }
-  // Jelszó ellenőrzése, ha a szerepkör megköveteli (a séma required function-je ezt már kezeli, de itt is lehet plusz ellenőrzés)
+  // Password check if the role requires it (schema's required function handles this, but extra check here is fine).
   if (!['subscriber', 'visitor_hr'].includes(role || 'subscriber') && !password) {
     return res.status(400).json({ error: 'Password is required for this role.' });
   }
 
-
   try {
-    // Ellenőrizzük, létezik-e már felhasználó ezzel az emaillel vagy felhasználónévvel
+    // Check if a user with this email or username already exists.
     const existingUserByEmail = await User.findOne({ email: email.toLowerCase() });
     if (existingUserByEmail) {
-      return res.status(409).json({ error: 'Email address already in use.' }); // 409 Conflict
+      return res.status(409).json({ error: 'Email address already in use.' }); // 409 Conflict.
     }
     const existingUserByUsername = await User.findOne({ username });
     if (existingUserByUsername) {
       return res.status(409).json({ error: 'Username already taken.' });
     }
 
-    const newUser = new User({
+    const newUser = new User({ // Creates a new User instance.
       username,
       email: email.toLowerCase(),
-      password, // A jelszó hash-elése a 'pre.save' hook-ban történik a modellen
-      role: role || 'subscriber', // Ha nincs role megadva, alapértelmezetten subscriber
+      password, // Password hashing occurs in the 'pre.save' hook within the User model.
+      role: role || 'subscriber', // Defaults to 'subscriber' if no role is provided.
     });
 
-    const savedUser = await newUser.save();
+    const savedUser = await newUser.save(); // Saves the new user to the database.
 
-    // Sikeres regisztráció után nem küldjük vissza a jelszót!
+    // Do not send the password back in the response after successful registration!
     const userResponse = {
       _id: savedUser._id,
       username: savedUser.username,
@@ -59,51 +58,50 @@ async function httpRegisterNewUser(req, res) {
       createdAt: savedUser.createdAt,
     };
 
-    // TODO: Opcionálisan JWT token generálása és visszaküldése itt
+    // TODO: Optionally generate and return a JWT token here.
     // const token = jwt.sign({ id: savedUser._id, role: savedUser.role }, process.env.JWT_SECRET, { expiresIn: '1h' });
-    // res.status(201).json({ user: userResponse, token });
+    // return res.status(201).json({ message: 'User registered successfully.', user: userResponse, token });
 
     return res.status(201).json({ message: 'User registered successfully.', user: userResponse });
   } catch (error) {
-    console.error('Registration error:', error);
-    //logEvents(`Registration Error: ${error.message}`, 'errorLog.txt');
-    if (error.name === 'ValidationError') {
+    console.error('Registration error:', error); // Logs the error to the console.
+    //logEvents(`Registration Error: ${error.message}`, 'errorLog.txt'); // Example of custom logging.
+    if (error.name === 'ValidationError') { // Handles Mongoose validation errors.
         return res.status(400).json({ error: error.message });
     }
-    return res.status(500).json({ error: 'Server error during registration.' });
+    return res.status(500).json({ error: 'Server error during registration.' }); // Generic server error.
   }
 }
 
-// Felhasználó bejelentkezése
+// Handles user login.
 async function httpLoginUser(req, res) {
-  const { email, password } = req.body;
+  const { email, password } = req.body; // Extracts email and password from the request body.
 
-  if (!email || !password) {
+  if (!email || !password) { // Validates that both email and password are provided.
     return res.status(400).json({ error: 'Email and password are required.' });
   }
 
   try {
-    const user = await User.findOne({ email: email.toLowerCase() });
-    if (!user) {
-      return res.status(401).json({ error: 'Invalid credentials. User not found.' }); // 401 Unauthorized
+    const user = await User.findOne({ email: email.toLowerCase() }); // Finds the user by email.
+    if (!user) { // If user is not found.
+      return res.status(401).json({ error: 'Invalid credentials. User not found.' }); // 401 Unauthorized.
     }
 
-    // Ellenőrizzük, hogy a felhasználó szerepköre engedélyezi-e a jelszavas bejelentkezést
+    // Check if the user's role allows password-based login.
     if (['subscriber', 'visitor_hr'].includes(user.role) && !user.password) {
-        return res.status(403).json({ error: 'Login not applicable for this user type without a password.' }); // 403 Forbidden
+        return res.status(403).json({ error: 'Login not applicable for this user type without a password.' }); // 403 Forbidden.
     }
 
-
-    const isMatch = await user.comparePassword(password); // A User modellen definiált metódus
-    if (!isMatch) {
+    const isMatch = await user.comparePassword(password); // Compares the provided password with the stored hashed password using the method defined on the User model.
+    if (!isMatch) { // If passwords do not match.
       return res.status(401).json({ error: 'Invalid credentials. Password incorrect.' });
     }
 
-    // Sikeres bejelentkezés
-    // TODO: JWT token generálása és visszaküldése itt
+    // Successful login.
+    // TODO: Generate and return a JWT token here.
     // const token = jwt.sign({ id: user._id, role: user.role }, process.env.JWT_SECRET, { expiresIn: '1h' });
 
-    const userResponse = { // Ne küldjük vissza a jelszót!
+    const userResponse = { // Prepare user data for the response, excluding the password.
         _id: user._id,
         username: user.username,
         email: user.email,
@@ -120,19 +118,19 @@ async function httpLoginUser(req, res) {
   }
 }
 
-// Egyszerű feliratkozás (lényegében egy minimális regisztráció 'subscriber' szerepkörrel)
+// Handles simple user subscription (essentially a minimal registration with 'subscriber' role).
 async function httpSubscribeUser(req, res) {
-  const { email, username } = req.body; // Username opcionális lehet itt
+  const { email, username } = req.body; // Username can be optional here.
 
-  if (!email) {
+  if (!email) { // Email is mandatory for subscription.
     return res.status(400).json({ error: 'Email is required for subscription.' });
   }
 
   try {
-    const existingUser = await User.findOne({ email: email.toLowerCase() });
+    const existingUser = await User.findOne({ email: email.toLowerCase() }); // Check if the email is already in use.
     if (existingUser) {
-      // Ha már létezik, és subscriber, akkor csak egy üzenet
-      // Ha más role-ja van, akkor is lehet, hogy csak egy "már regisztráltál" üzenet kell
+      // If exists and is a subscriber, just confirm.
+      // If has a different role, it might be an attempt to re-subscribe an already registered user.
       if (existingUser.role === 'subscriber') {
         return res.status(200).json({ message: 'You are already subscribed.', user: { email: existingUser.email } });
       } else {
@@ -140,26 +138,25 @@ async function httpSubscribeUser(req, res) {
       }
     }
 
-    // A username lehet egyedi generált, vagy a megadott, vagy akár az email egy része, ha nincs megadva
-    const finalUsername = username || `user_${Date.now()}`; // Biztosítani kell az egyediséget, ha a séma megköveteli
+    // Username can be uniquely generated, or the provided one, or part of the email if not given.
+    const finalUsername = username || `user_${Date.now()}`; // Ensure uniqueness if schema requires it.
 
-    // Ellenőrizzük, hogy a generált/megadott username nem foglalt-e már
-    if (username) { // Csak akkor ellenőrizzük, ha megadtak username-et
+    // Check if the generated/provided username is already taken.
+    if (username) { // Only check if a username was provided.
         const existingUserByUsername = await User.findOne({ username: finalUsername });
         if (existingUserByUsername) {
             return res.status(409).json({ error: 'Username already taken. Please choose another or leave blank for auto-generation.' });
         }
     }
 
-
-    const newSubscriber = new User({
-      username: finalUsername, // Vagy más stratégia az egyedi felhasználónévre, ha a séma unique-nak jelöli
+    const newSubscriber = new User({ // Creates a new user document with 'subscriber' role.
+      username: finalUsername, // Or other strategy for unique username if schema marks it as unique.
       email: email.toLowerCase(),
       role: 'subscriber',
-      // Jelszó nem szükséges 'subscriber' role-hoz a séma alapján
+      // Password is not required for 'subscriber' role based on the schema.
     });
 
-    const savedSubscriber = await newSubscriber.save();
+    const savedSubscriber = await newSubscriber.save(); // Saves the new subscriber.
 
     return res.status(201).json({
       message: 'Successfully subscribed!',
@@ -168,26 +165,26 @@ async function httpSubscribeUser(req, res) {
   } catch (error) {
     console.error('Subscription error:', error);
     //logEvents(`Subscription Error: ${error.message}`, 'errorLog.txt');
-    if (error.code === 11000 || (error.message && error.message.includes('duplicate key'))) { // MongoDB duplicate key error
+    if (error.code === 11000 || (error.message && error.message.includes('duplicate key'))) { // Handles MongoDB duplicate key error.
         return res.status(409).json({ error: 'This email or username is already in use.' });
     }
-    if (error.name === 'ValidationError') {
+    if (error.name === 'ValidationError') { // Handles Mongoose validation errors.
         return res.status(400).json({ error: error.message });
     }
     return res.status(500).json({ error: 'Server error during subscription.' });
   }
 }
 
-// === Authentikációt Igénylő Végpontok Kezelői ===
+// === Authenticated Endpoint Handlers ===
 
-// Bejelentkezett felhasználó profiljának lekérése
+// Gets the profile of the logged-in user.
 async function httpGetUserProfile(req, res) {
-  // Feltételezzük, hogy az `authenticateToken` middleware a `req.user`-be teszi a felhasználó adatait (pl. ID)
+  // Assumes an `authenticateToken` middleware places user data (e.g., ID) into `req.user`.
   if (!req.user || !req.user.id) {
     return res.status(401).json({ error: 'Unauthorized. No user information in request.' });
   }
   try {
-    const user = await User.findById(req.user.id).select('-password'); // A jelszót nem küldjük vissza
+    const user = await User.findById(req.user.id).select('-password'); // Fetches user by ID, excludes password.
     if (!user) {
       return res.status(404).json({ error: 'User not found.' });
     }
@@ -199,25 +196,25 @@ async function httpGetUserProfile(req, res) {
   }
 }
 
-// Bejelentkezett felhasználó profiljának frissítése
+// Updates the profile of the logged-in user.
 async function httpUpdateUserProfile(req, res) {
-  if (!req.user || !req.user.id) {
+  if (!req.user || !req.user.id) { // Ensures user is authenticated.
     return res.status(401).json({ error: 'Unauthorized.' });
   }
-  const { username, email, /* other updatable fields */ } = req.body;
-  const updates = {};
+  const { username, email /* other updatable fields */ } = req.body; // Gets updatable fields from request body.
+  const updates = {}; // Object to hold fields to be updated.
   if (username) updates.username = username;
   if (email) updates.email = email.toLowerCase();
-  // Jelszófrissítést külön végponton vagy speciális logikával érdemes kezelni
+  // Password updates should be handled via a separate endpoint or with special logic (e.g., current password confirmation).
 
-  if (Object.keys(updates).length === 0) {
+  if (Object.keys(updates).length === 0) { // If no data to update is provided.
     return res.status(400).json({ error: 'No update data provided.' });
   }
 
   try {
-    // Ellenőrizzük, hogy az új email/username nem foglalt-e már MÁS felhasználó által
+    // Check if the new email/username is already in use by ANOTHER user.
     if (updates.email) {
-        const existingUser = await User.findOne({ email: updates.email, _id: { $ne: req.user.id } });
+        const existingUser = await User.findOne({ email: updates.email, _id: { $ne: req.user.id } }); // $ne: not equal to current user's ID.
         if (existingUser) return res.status(409).json({ error: 'New email address is already in use by another account.' });
     }
     if (updates.username) {
@@ -225,7 +222,7 @@ async function httpUpdateUserProfile(req, res) {
         if (existingUser) return res.status(409).json({ error: 'New username is already taken by another account.' });
     }
 
-
+    // Finds user by ID, updates it, returns the new version, and runs validators. Excludes password.
     const updatedUser = await User.findByIdAndUpdate(req.user.id, updates, { new: true, runValidators: true }).select('-password');
     if (!updatedUser) {
       return res.status(404).json({ error: 'User not found for update.' });
@@ -234,33 +231,33 @@ async function httpUpdateUserProfile(req, res) {
   } catch (error) {
     console.error('Update profile error:', error);
     //logEvents(`Update Profile Error: ${error.message}`, 'errorLog.txt');
-    if (error.code === 11000 || (error.message && error.message.includes('duplicate key'))) {
+    if (error.code === 11000 || (error.message && error.message.includes('duplicate key'))) { // Handles duplicate key errors for unique fields.
         return res.status(409).json({ error: 'The new email or username is already in use.' });
     }
-    if (error.name === 'ValidationError') {
+    if (error.name === 'ValidationError') { // Handles Mongoose validation errors.
         return res.status(400).json({ error: error.message });
     }
     return res.status(500).json({ error: 'Server error updating profile.' });
   }
 }
 
-// Kijelentkezés (placeholder - a tényleges logika a kliensoldali token törlés és/vagy szerveroldali token feketelista)
+// Handles user logout (placeholder - actual logic is client-side token deletion and/or server-side token blacklisting).
 async function httpLogoutUser(req, res) {
-    // Ha szerveroldali session-t vagy token feketelistát használsz, itt lenne a logika.
-    // Egyébként a kliens törli a tokent.
+    // If using server-side sessions or a token blacklist, logic would go here.
+    // Otherwise, the client is responsible for clearing the token.
     // logEvents(`User logged out: ${req.user?.id || 'Unknown user'}`, 'authLog.txt');
     return res.status(200).json({ message: 'Logout successful. Please clear your token on the client side.' });
 }
 
 
-// === Adminisztrátori Végpontok Kezelői ===
-// Ezekhez majd kelleni fog `authorizeRoles` middleware
+// === Administrator Endpoint Handlers ===
+// These will require an `authorizeRoles` middleware in the future.
 
-// Összes felhasználó listázása
+// Lists all users (admin only).
 async function httpGetAllUsers(req, res) {
-  // TODO: Pagináció hozzáadása itt is hasznos lehet
+  // TODO: Pagination could be useful here for large numbers of users.
   try {
-    const users = await User.find({}).select('-password'); // Jelszavak nélkül
+    const users = await User.find({}).select('-password'); // Fetches all users, excluding their passwords.
     return res.status(200).json(users);
   } catch (error) {
     console.error('Get all users error:', error);
@@ -269,49 +266,49 @@ async function httpGetAllUsers(req, res) {
   }
 }
 
-// Egy konkrét felhasználó lekérése ID alapján
+// Gets a specific user by ID (admin only).
 async function httpGetUserById(req, res) {
-  const { id } = req.params;
+  const { id } = req.params; // Extracts user ID from route parameters.
   try {
-    const user = await User.findById(id).select('-password');
-    if (!user) {
+    const user = await User.findById(id).select('-password'); // Finds user by ID, excludes password.
+    if (!user) { // If user not found.
       return res.status(404).json({ error: 'User not found.' });
     }
     return res.status(200).json(user);
   } catch (error) {
     console.error(`Get user by ID (${id}) error:`, error);
     //logEvents(`Get User By ID Error: ${error.message}`, 'errorLog.txt');
-    if (error.name === 'CastError') { // Érvénytelen ObjectId formátum
+    if (error.name === 'CastError') { // Handles invalid ObjectId format for ID.
         return res.status(400).json({ error: 'Invalid user ID format.' });
     }
     return res.status(500).json({ error: 'Server error fetching user.' });
   }
 }
 
-// Felhasználó adatainak (pl. role) frissítése admin által
+// Updates user details (e.g., role) by an admin.
 async function httpUpdateUserById(req, res) {
-  const { id } = req.params;
-  const { username, email, role, /* other fields admin can update */ } = req.body;
+  const { id } = req.params; // User ID to update.
+  const { username, email, role /* other fields admin can update */ } = req.body; // Data for update.
 
-  const updates = {};
+  const updates = {}; // Object to hold fields to be updated.
   if (username) updates.username = username;
   if (email) updates.email = email.toLowerCase();
-  if (role) {
-    if (!['subscriber', 'commenter', 'visitor_hr', 'moderator', 'admin'].includes(role)) {
+  if (role) { // If role is being updated.
+    if (!['subscriber', 'commenter', 'visitor_hr', 'moderator', 'admin'].includes(role)) { // Validates role.
       return res.status(400).json({ error: 'Invalid role specified.' });
     }
     updates.role = role;
   }
-  // Jelszó frissítését admin által külön, nagyon biztonságos módon kell kezelni, vagy nem engedni közvetlenül.
+  // Admin password updates should be handled with extreme care, possibly a separate, more secure process, or not allowed directly.
 
-  if (Object.keys(updates).length === 0) {
+  if (Object.keys(updates).length === 0) { // If no data provided for update.
     return res.status(400).json({ error: 'No update data provided.' });
   }
 
   try {
-    // Ellenőrizzük, hogy az új email/username nem foglalt-e már MÁS felhasználó által
+    // Check if the new email/username is already in use by ANOTHER user.
     if (updates.email) {
-        const existingUser = await User.findOne({ email: updates.email, _id: { $ne: id } });
+        const existingUser = await User.findOne({ email: updates.email, _id: { $ne: id } }); // $ne: not equal to the ID being updated.
         if (existingUser) return res.status(409).json({ error: 'New email address is already in use by another account.' });
     }
     if (updates.username) {
@@ -319,6 +316,7 @@ async function httpUpdateUserById(req, res) {
         if (existingUser) return res.status(409).json({ error: 'New username is already taken by another account.' });
     }
 
+    // Finds user by ID, updates, returns new version, runs validators, excludes password.
     const updatedUser = await User.findByIdAndUpdate(id, updates, { new: true, runValidators: true }).select('-password');
     if (!updatedUser) {
       return res.status(404).json({ error: 'User not found for update by admin.' });
@@ -327,24 +325,24 @@ async function httpUpdateUserById(req, res) {
   } catch (error) {
     console.error(`Admin update user (${id}) error:`, error);
     //logEvents(`Admin Update User Error: ${error.message}`, 'errorLog.txt');
-    if (error.code === 11000 || (error.message && error.message.includes('duplicate key'))) {
+    if (error.code === 11000 || (error.message && error.message.includes('duplicate key'))) { // Handles duplicate key errors.
         return res.status(409).json({ error: 'The new email or username is already in use.' });
     }
-    if (error.name === 'ValidationError' || error.name === 'CastError') {
+    if (error.name === 'ValidationError' || error.name === 'CastError') { // Handles validation or invalid ID format errors.
         return res.status(400).json({ error: error.message });
     }
     return res.status(500).json({ error: 'Server error updating user by admin.' });
   }
 }
 
-// Felhasználó törlése admin által
+// Deletes a user by an admin.
 async function httpDeleteUserById(req, res) {
-  const { id } = req.params;
+  const { id } = req.params; // User ID to delete.
   try {
-    // Fontos: Gondold át, mi történjen a felhasználóhoz kapcsolódó adatokkal (pl. kommentek, feliratkozások)
-    // Lehet, hogy "soft delete"-et (pl. isActive: false) érdemesebb használni, mint tényleges törlést.
-    const deletedUser = await User.findByIdAndDelete(id);
-    if (!deletedUser) {
+    // Important: Consider what happens to data associated with the user (e.g., comments, subscriptions).
+    // A "soft delete" (e.g., setting an `isActive: false` flag) might be preferable to actual deletion.
+    const deletedUser = await User.findByIdAndDelete(id); // Deletes the user by ID.
+    if (!deletedUser) { // If user not found.
       return res.status(404).json({ error: 'User not found for deletion.' });
     }
     // logEvents(`User deleted by admin: ${id}, Admin: ${req.user?.id || 'Unknown'}`, 'adminActionsLog.txt');
@@ -352,15 +350,14 @@ async function httpDeleteUserById(req, res) {
   } catch (error) {
     console.error(`Admin delete user (${id}) error:`, error);
     //logEvents(`Admin Delete User Error: ${error.message}`, 'errorLog.txt');
-    if (error.name === 'CastError') {
+    if (error.name === 'CastError') { // Handles invalid ID format.
         return res.status(400).json({ error: 'Invalid user ID format.' });
     }
     return res.status(500).json({ error: 'Server error deleting user by admin.' });
   }
 }
 
-
-module.exports = {
+module.exports = { // Exports all handler functions to be used by the router.
   httpRegisterNewUser,
   httpLoginUser,
   httpSubscribeUser,
