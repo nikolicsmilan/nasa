@@ -121,6 +121,31 @@ async function httpLoginUser(req, res) {
 
 // Handles simple user subscription (essentially a minimal registration with 'subscriber' role).
 async function httpSubscribeUser(req, res) {
+
+  const { email, username } = req.body;
+
+  // --- IDEIGLENES, HARDCODE-OLT VÁLASZ ---
+  // A Postman és a Frontend teszteléséhez, amíg nincs adatbázis.
+  
+  // Ellenőrizzük, hogy a kérésből megkaptuk-e az adatokat.
+  if (!email || !username) {
+    return res.status(400).json({ error: 'Username and email are required for the test.' });
+  }
+
+  console.log(`[MOCK] Received subscription for user: ${username}, email: ${email}`);
+
+  // Küldünk egy sikeres, de ál-választ.
+  return res.status(201).json({
+    message: '[MOCK] Successfully subscribed!',
+    user: {
+      email: email,
+      username: username,
+    },
+  });
+
+
+
+/*
   const { email, username } = req.body; // Username can be optional here.
 
   if (!email) { // Email is mandatory for subscription.
@@ -174,6 +199,13 @@ async function httpSubscribeUser(req, res) {
     }
     return res.status(500).json({ error: 'Server error during subscription.' });
   }
+
+
+
+
+
+
+  */
 }
 
 // === Authenticated Endpoint Handlers ===
