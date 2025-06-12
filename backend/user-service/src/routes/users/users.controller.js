@@ -1,4 +1,5 @@
-const User = require('../models/users.mongo'); // Imports the User Mongoose model.
+// src/routes/users/users.controller.js
+const User = require('../../models/users.mongo'); // Imports the User Mongoose model.
 // const jwt = require('jsonwebtoken'); // To be imported later for JWT generation and validation.
 // const { logEvents } = require('../middlewares/logEvents'); // If you intend to use logging here.
 

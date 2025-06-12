@@ -1,5 +1,6 @@
+// src/routes/users/users.router.js
 const express = require('express');
-// const usersController = require('../controllers/users.controller'); // To be imported when the controller is ready
+ const usersController = require('./users.controller'); // To be imported when the controller is ready
 // const { authenticateToken, authorizeRoles } = require('../middlewares/authMiddleware'); // Placeholder for future authentication and authorization middlewares
 
 // Creates a new Express router instance for user-related routes.
@@ -26,12 +27,7 @@ usersRouter.post('/login', (req, res) => {
 });
 
 // POST /api/users/subscribe - Simple subscription (creates a 'subscriber' role user)
-usersRouter.post('/subscribe', (req, res) => {
-  // Placeholder: Call usersController.httpSubscribeUser will be here (essentially a minimal registration)
-  console.log('POST /api/users/subscribe - User subscription endpoint hit');
-  res.status(501).json({ message: 'User subscription not yet implemented.' });
-});
-
+usersRouter.post('/subscribe', usersController.httpSubscribeUser);
 
 // === Authenticated Endpoints ===
 // These endpoints will require an `authenticateToken` middleware in the future.
@@ -65,11 +61,7 @@ usersRouter.post('/logout', (req, res) => {
 // Example: usersRouter.get('/', authenticateToken, authorizeRoles('admin'), usersController.httpGetAllUsers);
 
 // GET /api/users - List all users (admin only)
-usersRouter.get('/', (req, res) => {
-  // Placeholder: Call usersController.httpGetAllUsers will be here
-  console.log('GET /api/users - Get all users endpoint hit (admin only)');
-  res.status(501).json({ message: 'Get all users not yet implemented (admin only).' });
-});
+usersRouter.get('/', usersController.httpGetAllUsers);
 
 // GET /api/users/:id - Get a specific user by ID (admin only)
 usersRouter.get('/:id', (req, res) => {
