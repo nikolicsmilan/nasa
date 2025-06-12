@@ -288,6 +288,34 @@ async function httpLogoutUser(req, res) {
 
 // Lists all users (admin only).
 async function httpGetAllUsers(req, res) {
+ // --- IDEIGLENES, HARDCODE-OLT VÁLASZ ---
+  // A Postman és a Frontend teszteléséhez, amíg nincs adatbázis.
+
+  console.log('[MOCK] Returning a hardcoded list of all users.');
+
+  // Létrehozunk egy ál-felhasználói listát, ami hasonlít a valódi adatra.
+  const mockUsers = [
+    {
+      _id: 'mock_id_1',
+      username: 'mock_subscriber',
+      email: 'subscriber@mock.com',
+      role: 'subscriber',
+      createdAt: new Date().toISOString(),
+    },
+    {
+      _id: 'mock_id_2',
+      username: 'mock_admin',
+      email: 'admin@mock.com',
+      role: 'admin',
+      createdAt: new Date().toISOString(),
+    },
+  ];
+
+  // Visszaküldjük az ál-listát egy 200 OK státusszal.
+  return res.status(200).json(mockUsers);
+  // --- AZ IDEIGLENES KÓD VÉGE ---
+
+/*
   // TODO: Pagination could be useful here for large numbers of users.
   try {
     const users = await User.find({}).select('-password'); // Fetches all users, excluding their passwords.
@@ -297,6 +325,8 @@ async function httpGetAllUsers(req, res) {
     //logEvents(`Get All Users Error: ${error.message}`, 'errorLog.txt');
     return res.status(500).json({ error: 'Server error fetching all users.' });
   }
+*/
+
 }
 
 // Gets a specific user by ID (admin only).
