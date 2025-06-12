@@ -1,3 +1,4 @@
+// src/models/users.model.js
 const user = {
     _id: "...",
     username: "HufnagelL",

@@ -1,3 +1,4 @@
+// src/models/users.mongo.js
 const mongoose = require("mongoose"); // Imports the Mongoose library, an ODM (Object Data Modeling) library for MongoDB in Node.js.
 const bcrypt = require('bcrypt'); // Imports the bcrypt library for securely hashing passwords.
 
