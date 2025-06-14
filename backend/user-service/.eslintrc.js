@@ -1,17 +1,41 @@
 // backend/user-service/.eslintrc.js
+
 module.exports = {
-    root: true, // Fontos: ez a legfelső szintű konfiguráció
-    env: {
-      node: true, // Engedélyezi a Node.js globális változókat és szabályokat
-      es2020: true, // Engedélyezi az ES2020 szintaxist
+  root: true,
+  env: {
+    node: true,
+    es2020: true,
+  },
+  extends: ['eslint:recommended'],
+  parserOptions: {
+    ecmaVersion: 2020,
+    sourceType: 'script',
+  },
+  rules: {
+    // Alapértelmezett szabályok a .js fájlokra
+    'no-console': 'warn',
+  },
+  // --- EZ AZ ÚJ, KULCSFONTOSSÁGÚ RÉSZ ---
+  overrides: [
+    {
+      // A következő szabályok csak azokra a fájlokra érvényesek,
+      // amiknek a neve .test.js vagy .spec.js végződésű.
+      files: ['**/*.test.js', '**/*.spec.js'],
+      env: {
+        // Itt adjuk meg a Jest környezetet
+        jest: true,
+      },
+      // Itt mondjuk meg, hogy használja a plugin ajánlott szabályait
+      extends: ['plugin:jest/recommended'],
+      // Itt regisztráljuk magát a plugint
+      plugins: ['jest'],
+      // Itt felülírhatsz vagy hozzáadhatsz Jest-specifikus szabályokat
+      rules: {
+        // Példa: Figyelmeztet, ha a tesztben .skip-et használsz
+        'jest/no-disabled-tests': 'warn', 
+        // Példa: Hibát dob, ha a tesztben .only-t használsz (hogy véletlenül se maradjon benne)
+        'jest/no-focused-tests': 'error', 
+      },
     },
-    extends: ['eslint:recommended'], // Használja az ajánlott ESLint szabályokat
-    parserOptions: {
-      ecmaVersion: 2020, // Megadja az ECMAScript verziót
-      sourceType: 'script', // Fontos: Node.js-ben általában script a modulrendszer
-    },
-    rules: {
-      // Ide jöhetnek a backend-specifikus szabályok
-      'no-console': 'warn', // Figyelmeztet a console.log használatára
-    },
-  };
+  ],
+};
