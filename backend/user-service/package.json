@@ -39,7 +39,7 @@
     "eslint-plugin-jest": "^28.13.5",
     "jest": "^29.7.0",
     "nodemon": "^3.1.4",
-    "supertest": "^7.0.0"
+    "supertest": "^7.1.1"
   },
   "bugs": {
     "url": "https://github.com/nikolicsmilan/nasa/issues"
