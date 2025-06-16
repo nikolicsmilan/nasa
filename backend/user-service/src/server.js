@@ -1,59 +1,99 @@
 // src/server.js
+
+// --- Core Node.js Modules ---
+// Import the 'http' module to create an HTTP server.
 const http = require("http");
+// Import the 'cluster' module to enable multi-process scaling.
+const cluster = require('cluster');
+// Import the 'os' module to get information about the operating system, like CPU cores.
+const os = require('os');
+
+// --- Environment Configuration ---
+// Load environment variables from a .env file into process.env.
 require("dotenv").config();
+
+// --- Custom Application Modules ---
+// Import the configured Express application instance from app.js.
 const app = require("./app");
+// Import the MongoDB connection function from the services layer.
 const { mongoConnect } = require("./services/mongo");
+// Import the custom event logging utility.
 const { logEvents } = require("./middlewares/logEvents");
 
+// --- Constants ---
+// Define the port for the server, using an environment variable or a default value.
 const PORT = process.env.PORT || 8000;
+// Define a boolean flag to control whether to connect to the database on startup.
 const CONNECT_TO_DB = process.env.CONNECT_TO_DB === "true";
-// This is where the Express app (defined in app.js) is integrated
-//  into the HTTP server.
-// Run all middleware
-const server = http.createServer(app);
 
-// File: src/server.js
+// --- Cluster Setup ---
+// Conditionally start the application in cluster mode.
+// This block runs only if the environment is 'production' AND this is the primary process.
+if (process.env.NODE_ENV === 'production' && cluster.isPrimary) {
+  // Get the number of available CPU cores.
+  const numCPUs = os.cpus().length;
+  // Log that the primary process is starting up in production mode.
+  console.log(`Primary process ${process.pid} is running in production mode.`);
+  // Log the number of workers that will be created.
+  console.log(`Forking server for ${numCPUs} CPU cores...`);
 
-// Benefits of using a separate startServer() function with async/await:
-// - More modular: The code is better organized and easier
-//  to break down into parts.  Database connection and server startup
-// are in separate functions,  improving readability and maintainability.
-// - Easier to test: It's easier to test individual components
-// (e.g., database connection) separately using mocks or stubs.
-// - Flexibility: It's easier to manage other dependencies
-// before starting the server.
-// For example, if you need to load configuration files
-// or connect to external APIs, you can do so asynchronously in
-// the startServer() function.
-// - Retry capability: It's easier to implement retries for database
-// connection in case of failure.
-async function startServer() {
-  try {
-    if (CONNECT_TO_DB) {
-      await mongoConnect();
-      logEvents("Connected to MongoDB", "mongoLog.txt");
-      console.log("Connected to MongoDB");
-    } else {
-      logEvents("Not connecting to MongoDB", "mongoLog.txt");
-      console.log(`Start without mongo db `);
-    }
-    //The await keyword is only valid inside
-    //  async functions or within the top-level bodies of modules
-    server.listen(PORT, async () => {
-      // Async callback
-      //  server.listen(PORT, () => {
-      await logEvents(`Listening on port ${PORT}...`, "serverLog.txt");
-      console.log(`Listening on port ${PORT}...`);
-    });
-  } catch (error) {
-    // Awaiting here to ensure the error is logged
-    //  to errorLog.txt before exiting the process.
-    // This is the best compromise, as it guarantees error
-    //  logging in a critical situation, even though it blocks the thread briefly.
-    await logEvents(error, "errorLog.txt");
-    console.error(error);
-      process.exit(1);
+  // Create a new worker process for each available CPU core.
+  for (let i = 0; i < numCPUs; i++) {
+    // The fork() method creates a new worker process.
+    cluster.fork();
   }
+
+  // Set up an event listener for when a worker process exits.
+  // This provides a "self-healing" mechanism.
+  cluster.on('exit', (worker, code, signal) => {
+    // Log an error message indicating which worker died and why.
+    console.error(`Worker ${worker.process.pid} died with code: ${code}, and signal: ${signal}`);
+    // Record the event to a dedicated cluster log file.
+    logEvents(`Worker ${worker.process.pid} died`, 'clusterLog.txt');
+    // Log the action of restarting the worker.
+    console.log('Starting a new worker...');
+    // Create a new worker to replace the one that died.
+    cluster.fork();
+  });
+
+} else {
+  // This block is executed by:
+  // 1. All worker processes in 'production' mode.
+  // 2. A single process in 'development' or 'test' mode.
+  startServer();
 }
 
-startServer();
+/**
+ * Initializes the database connection (if configured) and starts the HTTP server.
+ */
+async function startServer() {
+  // Create an HTTP server using the Express app as the request handler.
+  const server = http.createServer(app);
+
+  try {
+    // Check the flag to determine if a database connection is needed.
+    if (CONNECT_TO_DB) {
+      // Asynchronously connect to the MongoDB database.
+      await mongoConnect();
+      // Log that the current process has successfully connected.
+      console.log(`Process ${process.pid}: Connected to MongoDB.`);
+    }
+
+    // Start the server and have it listen for incoming connections on the specified port.
+    server.listen(PORT, () => {
+      // Log a confirmation message once the server is successfully listening.
+      console.log(`Process ${process.pid} is listening on port ${PORT}...`);
+      // Add a helpful message to indicate when the server is not in production mode.
+      if (process.env.NODE_ENV !== 'production') {
+          console.log('Running in development mode.');
+      }
+    });
+
+  } catch (error) {
+    // Catch and log any errors that occur during the server startup process.
+    console.error(`Process ${process.pid} failed to start:`, error);
+    // Exit the process with an error code to indicate failure.
+    // If this is a worker, the primary process will handle restarting it.
+    process.exit(1);
+  }
+}

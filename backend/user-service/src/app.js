@@ -1,4 +1,4 @@
-// src/app.js
+/*// src/app.js
 const express = require("express");
 const cors = require("cors");
 const morgan = require("morgan");
@@ -40,4 +40,63 @@ app.use(
   api
 );
 
+module.exports = app;*/
+
+// src/app.js
+
+// --- Imports ---
+// Import the Express framework to create and manage the server.
+const express = require("express");
+// Import CORS middleware to handle Cross-Origin Resource Sharing.
+const cors = require("cors");
+// Import Morgan middleware for HTTP request logging.
+const morgan = require("morgan");
+// Import Rotating File Stream to manage log files, preventing them from growing too large.
+const rfs = require("rotating-file-stream");
+// Import the built-in 'path' module to handle and transform file paths.
+const path = require("path");
+
+// --- Custom Modules ---
+// Import custom CORS configuration options.
+const corsOptions = require("./config/corsOptions");
+// Import the main API router that combines all other routes.
+const api = require("./routes/api");
+
+// --- App Initialization ---
+// Create an instance of the Express application.
+const app = express();
+
+// --- Middleware Configuration ---
+
+// Setup file-based logging, but only if the environment is not 'test'.
+if (process.env.NODE_ENV !== "test") {
+  // Define a stream for writing logs to a file that rotates daily.
+  const accessLogStream = rfs.createStream("access.log", {
+    interval: "1d", // Rotate the log file once a day.
+    path: path.join(__dirname, "..", "logs", "morgan"), // Set the directory for log files.
+  });
+  
+  // Use morgan to log all requests in 'combined' format to the file stream.
+  app.use(morgan("combined", { stream: accessLogStream }));
+}
+
+// Setup console-based logging specifically for the 'development' environment.
+if (process.env.NODE_ENV === 'development') {
+    // Use morgan's 'dev' format for concise, color-coded logs in the console.
+    app.use(morgan('dev'));
+}
+
+// Apply CORS middleware with the specified options to control cross-origin requests.
+app.use(cors(corsOptions));
+// Parse incoming requests with JSON payloads.
+app.use(express.json());
+// Parse incoming requests with URL-encoded payloads.
+app.use(express.urlencoded({ extended: false }));
+
+// --- API Routes ---
+// Mount the main API router under the '/api' base path.
+app.use("/api", api);
+
+// --- Module Export ---
+// Export the configured Express app instance to be used by the server.
 module.exports = app;
