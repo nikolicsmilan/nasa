@@ -1,6 +1,6 @@
 // src/pages/Home/components/SubscribeConsole.jsx - ESZTÉTIKUSABB
 import  { useState } from "react";
-import axios from "axios";
+import axiosInstance from '../../../api/axios';
 import { motion } from "framer-motion";
 import { subcribeAnimation } from "../../../utils/motion";
 import StyledButton from '../../../components/buttons/StyledButton';
@@ -17,33 +17,36 @@ const SubscribeConsole = ({ subscribeToggle, setSubscribeToggle }) => {
     setTimeout(() => setMessage(""), 300);
   };
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    if (isLoading) return;
-    setIsLoading(true);
-    setMessage('Sending...');
-    try {
-      // --- FONTOS: Cseréld le a localhostot a VALÓDI backend URL-edre! ---
-      const apiUrl = import.meta.env.VITE_API_SUBSCRIBE_URL || "http://localhost:3500/api/subscribers"; // VITE környezeti változó használata
-      // --------------------------------------------------------------------
-      const response = await axios.post(apiUrl, { username, email });
+// A handleSubmit függvény a SubscribeConsole.jsx-ben
 
-      if (response.status === 201) {
-        setMessage(response.data.message || "Subscription successful!");
-        setUsername("");
-        setEmail("");
-        // Opcionális: Automatikus bezárás siker után
-        // setTimeout(handleClose, 2000);
-      } else {
-        setMessage(response.data.message || "An unexpected response occurred.");
-      }
-    } catch (error) {
-      console.error("Error during subscription:", error);
-      setMessage(error.response?.data?.message || "An error occurred. Please try again later.");
-    } finally {
-      setIsLoading(false); // Betöltés vége
+const handleSubmit = async (event) => {
+  event.preventDefault();
+  if (isLoading) return;
+  setIsLoading(true);
+  setMessage('Sending...');
+
+  try {
+    const response = await axiosInstance.post('/users/subscribe', { username, email });
+
+    // A backend a 201-es kódot küldi sikeres létrehozáskor ('Created').
+    if (response.status === 201) {
+      setMessage(response.data.message || "Subscription successful!");
+      setUsername("");
+      setEmail("");
+      // setTimeout(handleClose, 2000); // Opcionális automatikus bezárás
+    } else {
+      // Ez az ág valószínűleg ritkán fut le, ha a backend helyesen van megírva.
+      setMessage(response.data.message || "An unexpected response occurred.");
     }
-  };
+  } catch (error) {
+    console.error("Error during subscription:", error);
+    // Az axios hibakezelése: a hibaüzenet az error.response.data.error-ban van,
+    // a te backend logikád szerint.
+    setMessage(error.response?.data?.error || "An error occurred. Please try again later.");
+  } finally {
+    setIsLoading(false); // A betöltés állapotot mindenképp állítsuk vissza.
+  }
+};
 
   return (
     <motion.div
