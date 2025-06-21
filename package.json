@@ -5,11 +5,13 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
-    "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
+    "build": "npm run lint && npm run type-check && vite build",
+    "lint": "eslint src/ --ext .js,.jsx,.ts,.tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
+    "type-check": "tsc --noEmit",
+    "lint:fix": "eslint src/ --ext .js,.jsx,.ts,.tsx --fix",
+    "lint:report": "eslint src/ --ext .js,.jsx,.ts,.tsx --report-unused-disable-directives --max-warnings 0 > logs/eslint-report.txt 2>&1",
     "diff": "git diff > logs/diff.patch",
-    "lint:report": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0 > logs/eslint-report.txt 2>&1",
     "collect-src": "node scripts/collectSourceFiles.cjs"
   },
   "dependencies": {
@@ -34,8 +36,9 @@
     "ua-parser-js": "^1.0.37"
   },
   "devDependencies": {
-    "@types/react": "^18.2.55",
-    "@types/react-dom": "^18.2.19",
+    "@types/node": "^24.0.3",
+    "@types/react": "^18.3.23",
+    "@types/react-dom": "^18.3.7",
     "@vitejs/plugin-react-swc": "^3.5.0",
     "autoprefixer": "^10.4.17",
     "axios": "^1.6.7",
@@ -46,6 +49,7 @@
     "eslint-plugin-react-refresh": "^0.4.5",
     "postcss": "^8.4.35",
     "tailwindcss": "^3.4.1",
+    "typescript": "^5.8.3",
     "vite": "^5.1.0"
   }
 }
