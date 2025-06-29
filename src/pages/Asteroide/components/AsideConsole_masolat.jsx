@@ -1,9 +1,9 @@
-import React from "react";
+
 import Super3dConsole from "../../../components/consoles/views/Super3dConsole";
 //ez csak formát ad neki ledarálja a kapot adatokat
 import { MyConsoleContext } from "../../../context/ConsoleContext";
 import useWindowSize from "../../../hooks/use-windowsize";
-const AsideConsole = ({ source, description,origin }) => {
+const AsideConsole = ({ source, /*description*/ origin }) => {
   const { width, height } = useWindowSize();
   const breakpoints = {
     sm: 640,

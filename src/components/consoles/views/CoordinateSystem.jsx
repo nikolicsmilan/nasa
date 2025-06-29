@@ -1,12 +1,12 @@
-import React from "react";
-import SineWave2 from "./SineWave2";
+
+//import SineWave2 from "./SineWave2";
 import NeonShape2 from "./NeonShape2";
 import * as math from "mathjs";
 const CoordinateSystem = ({
   width = 500,
   height = 500,
   gridSize = 30,
-  children,
+  //children,
 }) => {
   const sugar = 2;
   const angle = math.unit(30, "deg");

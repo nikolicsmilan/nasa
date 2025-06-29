@@ -1,4 +1,4 @@
-import React from "react";
+
 import tocard from "../../../assets/images/tocard.JPG";
 import logo from "../../../assets/images/earthbg7.png";
 import qrcode from "../../../assets/images/qrcode.png";

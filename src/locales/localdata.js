@@ -2,14 +2,14 @@ import {
   FaProjectDiagram,
   FaPalette,
   FaVolumeUp,
-  FaRocket,
+ // FaRocket,
   FaChartArea,
 } from "react-icons/fa";
 import {
   FaHome,
   FaShieldAlt,
-  FaSpaceShuttle,
-  FaImages,
+ // FaSpaceShuttle,
+ // FaImages,
   FaSignInAlt,
   FaToggleOff,
   FaToggleOn,
@@ -18,24 +18,24 @@ import {
   FaExclamationTriangle,
   FaTachometerAlt,
   FaChartLine,
-  FaRuler,
-  FaStar,
-  FaArrowCircleUp,
-  FaArrowCircleDown,
-  FaFlag,
+  //FaRuler,
+ // FaStar,
+  //FaArrowCircleUp,
+  //FaArrowCircleDown,
+ // FaFlag,
   FaInfoCircle,
   FaPlus,
   FaMinus,
-  FaExpandArrowsAlt,
+ // FaExpandArrowsAlt,
 } from "react-icons/fa";
 import {
-  FaSatelliteDish,
+ // FaSatelliteDish,
   FaSatellite,
   FaArrowUpWideShort,
   FaArrowDownShortWide,
   FaDatabase,
 } from "react-icons/fa6";
-import { BsJoystick } from "react-icons/bs";
+//import { BsJoystick } from "react-icons/bs";
 
 import {
   MdDashboardCustomize,
@@ -54,7 +54,7 @@ import {
   MdSignalCellularAlt,
   MdAnalytics,
 } from "react-icons/md";
-import { GiLevelEndFlag, GiHorizontalFlip } from "react-icons/gi";
+import { GiLevelEndFlag, /*GiHorizontalFlip */} from "react-icons/gi";
 import { TfiRulerAlt2, TfiBarChart } from "react-icons/tfi";
 import { AiOutlineRadarChart } from "react-icons/ai";
 import {

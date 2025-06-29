@@ -1,4 +1,3 @@
-import React from "react";
 
 const BottomConsole = ({ buttons, handleClick, nameconsole }) => {
   return (

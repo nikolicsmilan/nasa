@@ -1,8 +1,8 @@
-import React from "react";
+
 //import { useNavigate } from "react-router-dom";
 import BiggerConsoles from "./BiggerConsoles";
 import { start } from "../../../locales/localdata";
-const HexagonalIconList = ({ items, centerItem }) => {
+const HexagonalIconList = ({ items, /*centerItem */}) => {
   const iconCount = items.length;
 
   // Responsive sugár a képernyő szélessége alapján

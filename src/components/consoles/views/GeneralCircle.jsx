@@ -1,4 +1,4 @@
-import React from "react";
+
 
 const GeneralCircle = ({ r, width, height, x, y,fill }) => {
   return (

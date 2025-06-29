@@ -1,6 +1,6 @@
-import React from "react";
+
 import RechartsExample from "../components/RechartsExample";
-import RechartsExample2 from "../components/RechartExample2";
+//import RechartsExample2 from "../components/RechartExample2";
 import SquareminConsole from "../../../components/consoles/views/SquareminConsole"
 const TestCharts2 = () => {
   return (

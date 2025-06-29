@@ -1,4 +1,4 @@
-import React from "react";
+
 import GeneralCircle from "./GeneralCircle";
 
 const NeonShape2 = ({ width, height, gridSize = 30,sugar }) => {

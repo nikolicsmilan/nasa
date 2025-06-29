@@ -1,6 +1,6 @@
-import React from "react";
-import { FaBoltLightning } from "react-icons/fa6";
-import { FaReact } from "react-icons/fa";
+
+//import { FaBoltLightning } from "react-icons/fa6";
+//import { FaReact } from "react-icons/fa";
 import { GiReactor } from "react-icons/gi";
 const CircuitLines = () => {
   return (

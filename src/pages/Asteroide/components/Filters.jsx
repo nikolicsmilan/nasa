@@ -1,4 +1,4 @@
-import React from "react";
+
 import tocard from "../../../assets/images/tocard.JPG";
 const Filters = () => {
   return (
