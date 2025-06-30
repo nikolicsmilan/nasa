@@ -1,5 +1,5 @@
 // src/components/navbar/HoverDropdownPanel.jsx
-import React, { useRef } from 'react';         // React és useRef importálása.
+import  { useRef } from 'react';         // React és useRef importálása.
 import { motion } from 'framer-motion';         // Framer Motion importálása animációkhoz.
 import { Link } from 'react-router-dom';        // Link komponens importálása navigációhoz.
 import { useHoverMenuContext } from '../../context/HoverMenuContext'; // Saját kontextus hook importálása.

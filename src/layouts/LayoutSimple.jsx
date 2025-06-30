@@ -1,6 +1,6 @@
 // src/layouts/LayoutSimple.jsx
-import React from 'react';
-import { Outlet } from 'react-router-dom'; // Vagy közvetlenül a children-t rendereljük
+
+//import { Outlet } from 'react-router-dom'; // Vagy közvetlenül a children-t rendereljük
 import { MyDataContext } from '../context/DataContext';
 // Egy egyszerűsített layout, ami csak az alap stílust és a gyermek komponenst tartalmazza.
 const LayoutSimple = ({ children }) => {

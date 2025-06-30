@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 const GlowButton2 = () => {
   const [pos, setPos] = useState({ x: 0, y: 0 });

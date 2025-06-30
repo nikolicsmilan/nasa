@@ -1,12 +1,12 @@
-import { format } from 'date-fns';
+//import { format } from 'date-fns';
 
-export const barchartOptions = (colors, config, displayedData) => {
+export const barchartOptions = (colors, config, /*displayedData*/) => {
   const { dataType, dataKey, displayLimit } = config || {};
   if (!config || !dataType || !dataKey) {
     return { responsive: true, maintainAspectRatio: false };
   }
 
-  const safeDisplayedData = Array.isArray(displayedData) ? displayedData : [];
+  //const safeDisplayedData = Array.isArray(displayedData) ? displayedData : [];
   const tooltipColor = colors?.tooltip || '#FFFFFF';
   const legendColor = colors?.legend || '#FFFFFF'; // Ezt használjuk a tengelyekhez is
 
@@ -22,7 +22,7 @@ export const barchartOptions = (colors, config, displayedData) => {
     plugins: {
       tooltip: { /* ... (tooltip változatlan) ... */
          enabled: true,
-         callbacks: { label: function (context) { /*...*/ } },
+        // callbacks: { label: function (context) { /*...*/ } },
          backgroundColor: "rgba(0, 0, 0, 0.8)",
          titleFont: { size: 14, weight: 'bold'},
          bodyFont: { size: 12, lineHeight: 1.4 },

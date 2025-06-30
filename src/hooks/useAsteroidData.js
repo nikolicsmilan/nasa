@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react';
 
 function useAsteroidData() {
-  const [data, setData] = useState([
+  const [data] = useState([
     { id: 1, name: 'Asteroid A', diameter: 100 },
     { id: 2, name: 'Asteroid B', diameter: 200 },
     { id: 3, name: 'Asteroid C', diameter: 300 },

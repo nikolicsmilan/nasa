@@ -18,7 +18,7 @@ const CoordinateSystem = ({
   // Grid vonalak generálása
   const gridLines = [];
   const numLinesX = Math.floor(width / gridSize);
-  const numLinesY = Math.floor(height / gridSize);
+  //const numLinesY = Math.floor(height / gridSize);
 
   for (
     let i = -Math.floor(numLinesX / 2);

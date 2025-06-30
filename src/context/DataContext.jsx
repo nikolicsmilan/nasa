@@ -1,7 +1,7 @@
 import { useContext, createContext, useState, useEffect } from "react";
-import { useSave } from "../hooks/use-saveuser";
+//import { useSave } from "../hooks/use-saveuser";
 import { useInfo } from "../hooks/use-info";
-import UAParser from "ua-parser-js";
+//import UAParser from "ua-parser-js";
 import clicksound from "../assets/sound/click.mp3";
 
 const DataContext = createContext();

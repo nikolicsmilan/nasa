@@ -9,7 +9,7 @@ import { slideAnimation } from "../../../utils/motion";
 /*This component responsible only the consoles view
 and animation*/
 const DesktopConsoleView = ({ stopClozer }) => {
-  const { settingsOpen, settings, users, choosenStyle } = MyDataContext();
+  const { settingsOpen, settings, /* users, */ choosenStyle } = MyDataContext();
 
   return (
     <motion.div

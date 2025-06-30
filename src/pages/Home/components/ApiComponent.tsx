@@ -1,4 +1,4 @@
-import React, { useState, useEffect, ReactElement } from 'react';
+import { useState, useEffect, ReactElement } from 'react';
 
 // 1. Define the interface for the component's props.
 // The `<TData>` is a generic type parameter representing the structure of the expected API data.
@@ -8,11 +8,11 @@ interface ApiComponentProps<TData> {
 
 // Example data structure that the API might return.
 // You should replace this with your actual data type.
-interface User {
+/*interface User {
   id: number;
   name: string;
   email: string;
-}
+}*/
 
 // 2. The component is made generic with `<TData>`.
 // This allows it to work with any data structure, like `User` or `Product`.

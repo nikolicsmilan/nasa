@@ -13,7 +13,7 @@ import {
 import { useMenuLogic } from "../../../hooks/useMenuLogic";
 const MobileAsteroide = () => {
   const { width, height } = useWindowSize();
-  const [united, setUnited] = useState([
+  const [united] = useState([
     ...dashboradsourceforMobile,
     ...leftasideconsolesource,
   ]);

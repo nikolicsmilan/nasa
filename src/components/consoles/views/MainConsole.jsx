@@ -1,4 +1,4 @@
-import  { useEffect, useState } from "react";
+import  { useState } from "react";
 import { motion } from "framer-motion";
 import { MyConsoleContext } from "../../../context/ConsoleContext";
 import { useDataVisualization } from "../../../hooks/use-datavisualization";
@@ -6,11 +6,11 @@ import useWindowSize from "../../../hooks/use-windowsize";
 import { mobilmenu } from "../../../locales/localdata";
 const MainConsole = () => {
   const {
-    animationVariants,
-    mobiletoggle,
+    animationVariants,   
     setMobileToggle,
     statusTable,
-    message,
+  //  message,
+   // mobiletoggle,
   } = MyConsoleContext();
   const { consoleContent } = useDataVisualization();
   const { width, height } = useWindowSize();

@@ -14,13 +14,13 @@ import {
 ChartJS.register(Title, Tooltip, Legend, LineElement, CategoryScale, LinearScale);
 
 const CustomLineChart = ({
-  data,
-  colors,
-  statusTable,
+  data, 
   width,
   height,
-  filterTable,
-  filteredData,
+ // filterTable,
+  //filteredData,
+  //colors,
+ // statusTable,
 }) => {
 //const options = linechartoptions(colors, statusTable, filterTable, filteredData);
 //options={options} 

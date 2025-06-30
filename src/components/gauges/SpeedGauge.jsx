@@ -1,5 +1,5 @@
 // src/components/misc/SpeedGauge.jsx
-import React, { useState, useEffect } from 'react'; // useEffect és useState kell
+import { useState, useEffect } from 'react'; // useEffect és useState kell
 import PropTypes from 'prop-types';
 import { getComputedStyleColor } from '../../utils/getComputedStyleColor'; // Importáljuk a segédfüggvényt
 import { MyDataContext } from '../../context/DataContext'; // Szükség lesz a choosenStyle-ra a dependency miatt

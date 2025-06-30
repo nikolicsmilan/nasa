@@ -1,5 +1,5 @@
 // src/components/navbar/HoverNavbar.jsx
-import React, { useState, useRef, useEffect } from 'react';        // React és alap hookok importálása.
+import { useState, useRef, useEffect } from 'react';        // React és alap hookok importálása.
 import { motion, AnimatePresence } from 'framer-motion';         // Framer Motion importálása animációkhoz.
 import { useHoverMenuContext } from '../../context/HoverMenuContext'; // Saját kontextus hook importálása.
 import { navigationData } from '../../locales/navigationData';     // A menüpontok adatait tartalmazó fájl importálása.

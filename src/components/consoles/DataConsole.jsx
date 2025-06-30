@@ -24,7 +24,7 @@ const DataConsole = () => {
   const {
     browser: { name: browserName },
     os: { name: osName, version: osVersion },
-    device: { type: deviceType },
+ //   device: { type: deviceType },
   } = browserInfo;
 
   return (

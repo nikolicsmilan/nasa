@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
-import { MyDataContext } from '../../../context/DataContext';
+//import { MyDataContext } from '../../../context/DataContext';
 const BiggerConsoles = ({menupoint}) => {
-  const {choosenStyle } = MyDataContext();
+ // const {choosenStyle } = MyDataContext();
   return (
     <div className=" flex flex-wrap max-w-2xl  border-0 relative z-50">
       

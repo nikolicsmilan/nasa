@@ -3,7 +3,7 @@ import { MyDataContext } from "../context/DataContext";
 
 const useWindowSize = () => {
   const { windowSize, setWindowSize } =MyDataContext();
-  const [isLandscape, setIsLandscape] = useState(false);
+  const [setIsLandscape] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {

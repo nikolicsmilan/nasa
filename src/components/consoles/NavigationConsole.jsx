@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
-import { homemenu, returnMenu, asteroidemenu } from "../../locales/localdata";
-import { useLocation } from "react-router-dom";
-import Consoles from "./views/Consoles";
+//import React, { useEffect, useState } from "react";
+//import { homemenu, returnMenu, asteroidemenu } from "../../locales/localdata";
+//import { useLocation } from "react-router-dom";
+//import Consoles from "./views/Consoles";
 import { navigationData } from "../../locales/navigationData";
 import { NavLink } from "react-router-dom";
 

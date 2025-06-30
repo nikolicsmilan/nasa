@@ -5,6 +5,7 @@ import { parse, formatRgb } from 'culori'; // Szükséges a színkonverzióhoz
  * Egyszerű segédfüggvény egy RGB szín világosítására/sötétítésére.
  * (Ez a függvény változatlan marad, mivel jelenleg nincs aktívan használva a fő problémakörben)
  */
+/*
 function lightenDarkenColor(color, percent) {
     let R, G, B;
     if (color.startsWith('#')) {
@@ -28,7 +29,7 @@ function lightenDarkenColor(color, percent) {
     R = (R < 255) ? R : 255; G = (G < 255) ? G : 255; B = (B < 255) ? B : 255;
     R = (R > 0) ? R : 0; G = (G > 0) ? G : 0; B = (B > 0) ? B : 0;
     return `rgb(${R}, ${G}, ${B})`;
-}
+}*/
 
 /**
  * Generál egy színskála tömböt egy alapszínből (vagy fix palettából).

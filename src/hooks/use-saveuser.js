@@ -1,8 +1,8 @@
-import React, { useEffect, useContext } from "react";
+import { useEffect} from "react";
 import { MyDataContext } from "../context/DataContext";
 
 export const useSave = () => {
-  const { users, setUsers, setChoosenStyle, choosenStyle } = MyDataContext();
+  const { users, setUsers, setChoosenStyle, /*choosenStyle*/ } = MyDataContext();
 
   useEffect(() => {
     const storedData = JSON.parse(localStorage.getItem("userData"));

@@ -1,5 +1,5 @@
 // src/components/Charts/pie/chartOptions.js
-import ChartDataLabels from 'chartjs-plugin-datalabels'; // Importáljuk a datalabels plugint
+//import ChartDataLabels from 'chartjs-plugin-datalabels'; // Importáljuk a datalabels plugint
 
 /**
  * Generálja a Chart.js opciókat a Pie és Doughnut diagramokhoz.
@@ -9,7 +9,7 @@ import ChartDataLabels from 'chartjs-plugin-datalabels'; // Importáljuk a datal
  * @param {object} chartData - A usePieChartData által visszaadott { labels, datasets } objektum.
  * @returns {object} A Chart.js options objektuma.
  */
-export const piechartOptions = (colors, config, chartData) => {
+export const piechartOptions = (colors, config,/* chartData*/) => {
   const { dataType } = config || {}; // Adattípus a címhez
   const legendColor = colors?.legend || '#FFFFFF'; // Szín a legendához és címkékhez
   const tooltipColor = colors?.tooltip || '#FFFFFF'; // Szín a tooltip keretéhez

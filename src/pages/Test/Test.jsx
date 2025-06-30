@@ -1,5 +1,5 @@
 // src/pages/Test/Test.jsx
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { testCategoriesData } from '../../locales/testCategoriesData';
 import TestComponentCard from './components/TestComponentCard'; // Ezt továbbra is használjuk a többi kategóriához
 
@@ -112,7 +112,7 @@ const Test = () => {
             )}
           </div>
         ) : (
-          activeCategoryKey && <div className="text-center text-error py-10">Error: Category with key "{activeCategoryKey}" not found.</div>
+          activeCategoryKey && <div className="text-center text-error py-10">Error: Category with key {activeCategoryKey} not found.</div>
         )}
         {!activeCategoryKey && testCategoriesData && testCategoriesData.length > 0 && (
           <div className="text-center text-neutral-500 py-10">Please select a category from above.</div>

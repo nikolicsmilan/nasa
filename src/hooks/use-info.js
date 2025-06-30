@@ -1,9 +1,9 @@
-import React, { useEffect, useContext,useState } from "react";
-import { MyDataContext } from "../context/DataContext";
+import {useState } from "react";
+//import { MyDataContext } from "../context/DataContext";
 import UAParser from "ua-parser-js";
 export const useInfo = () => {
   //const { setBrowserInfo} = MyDataContext();
-  const [error, setError] = useState(null);
+  const [setError] = useState(null);
   const updateBrowserInfo =(setBrowserInfo)=>{
     //console.log("useInfo lefut?")
     

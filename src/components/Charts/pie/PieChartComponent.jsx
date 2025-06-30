@@ -64,7 +64,7 @@ const PieChartComponent = ({ config, sumObject }) => { // <<< sumObject-et kap p
       ) : (
         // Üzenet, ha az adott dataType-hoz nincs implementálva a kategorizálás, vagy nincs adat
         <p className="text-neutral-500 p-4 text-center">
-          Pie chart categorization not implemented for '{config?.dataType}' or no data available.
+          Pie chart categorization not implemented for {config?.dataType} or no data available.
         </p>
       )}
     </div>
