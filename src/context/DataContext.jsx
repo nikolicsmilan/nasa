@@ -48,7 +48,7 @@ export const DataContextProvider = ({ children }) => {
     updateBrowserInfo(setBrowserInfo);
     updateIpAddress(setIPAddress);
     updateGPS(setLatitude, setLongitude);
-  }, []);
+  }, [updateIpAddress, updateGPS, updateBrowserInfo]);
 
 // AudioContext.jsx - EREDETI
 useEffect(() => {

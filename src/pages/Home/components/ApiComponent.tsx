@@ -1,8 +1,7 @@
 import { useState, useEffect, ReactElement } from 'react';
 
 // 1. Define the interface for the component's props.
-// The `<TData>` is a generic type parameter representing the structure of the expected API data.
-interface ApiComponentProps<TData> {
+interface ApiComponentProps {
   apiUrl: string;
 }
 
@@ -15,8 +14,7 @@ interface ApiComponentProps<TData> {
 }*/
 
 // 2. The component is made generic with `<TData>`.
-// This allows it to work with any data structure, like `User` or `Product`.
-const ApiComponent = <TData,>({ apiUrl }: ApiComponentProps<TData>): ReactElement => {
+const ApiComponent = <TData extends object>({ apiUrl }: ApiComponentProps): ReactElement => {
   
   // 3. Type the state variables for full type safety.
   const [data, setData] = useState<TData | null>(null);
