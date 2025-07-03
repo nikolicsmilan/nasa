@@ -10,7 +10,7 @@ export const useSave = () => {
       setUsers(storedData);
       setChoosenStyle(storedData.style || "sky");
     }
-  }, []); // üres dependency array, hogy csak a komponens mountolásakor fusson le ez az useEffect
+  }, [setUsers, setChoosenStyle]); 
 
   const saveUser = (key, value) => {
     setUsers((prevObject) => {

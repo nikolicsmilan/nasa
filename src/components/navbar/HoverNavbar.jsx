@@ -37,7 +37,6 @@ const HoverNavbar = () => {
     menuRefs.current = menuRefs.current.slice(0, navigationData.length); // Adjusts the size of the ref array.
     // We disable the lint rule here because navigationData is a static import from outside the component's scope.
     // It will not change during the component's lifecycle, so we only need this effect to run once on mount.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   /**
