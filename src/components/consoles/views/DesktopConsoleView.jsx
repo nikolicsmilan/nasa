@@ -1,3 +1,4 @@
+
 import { MyDataContext } from "../../../context/DataContext";
 import NavigationConsole from "../NavigationConsole";
 import StyleConsole from "../StyleConsole";
@@ -13,6 +14,7 @@ const DesktopConsoleView = ({ stopClozer }) => {
 
   return (
     <motion.div
+   // layout
       variants={slideAnimation("left")}
       initial="exit"
       animate={settingsOpen ? "animate" : "exit"}
