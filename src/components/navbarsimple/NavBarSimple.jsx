@@ -3,7 +3,7 @@ import { navigationData } from "../../locales/navigationData";
 import NavBarSimpleItem from "./NavBarSimpleItem";
 import { motion } from "framer-motion"; // Framer Motion az aláhúzáshoz
 import NavBarSimplePanel from "./NavBarSimplePanel";
-const menuItems = [
+/*const menuItems = [
   {
     id: 1,
     label: "Laptopok",
@@ -19,7 +19,7 @@ const menuItems = [
     label: "TV-k",
     submenu: ["Samsung", "LG", "Sony"],
   },
-];
+];*/
 
 export default function NavBarSimple() {
   const [hoveredItemData, setHoveredItemData] = useState(null);

@@ -1,4 +1,4 @@
-import React from "react";
+
 import { slideAnimation } from "../../../utils/motion";
 import { MyDataContext } from "../../../context/DataContext";
 import { motion } from "framer-motion";

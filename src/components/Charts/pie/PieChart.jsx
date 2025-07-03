@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Pie } from 'react-chartjs-2';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import useWindowSize from '../../../hooks/use-windowsize';
-import { MyDataContext } from '../../../context/DataContext';
+//import { MyDataContext } from '../../../context/DataContext';
 import { MyConsoleContext } from '../../../context/ConsoleContext';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
@@ -14,7 +14,7 @@ const PieChart = () => {
     datasets: [],
   });
 
-  const { users } = MyDataContext();
+  //const { users } = MyDataContext();
   const { filteredData, actualMainConsole, actualTypeData } = MyConsoleContext();
 
   useEffect(() => {

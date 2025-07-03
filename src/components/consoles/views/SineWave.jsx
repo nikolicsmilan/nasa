@@ -6,7 +6,7 @@ function SineWave() {
 
   const generatePathData = () => {
     const xScale = width / (2 * Math.PI * frequency); // Skálázás a frekvenciához
-    const yScale = height / 2; // Skálázás a magassághoz és középre igazítás
+   // const yScale = height / 2; // Skálázás a magassághoz és középre igazítás
     const yOffset = height / 2; // Y tengely középre igazítása
 
     let pathData = `M 0 ${yOffset - Math.sin(0) * amplitude}`; // Kezdőpont

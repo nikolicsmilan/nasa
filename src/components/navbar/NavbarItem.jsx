@@ -1,5 +1,5 @@
 // src/components/navbar/NavbarItem.jsx
-import React, { forwardRef } from 'react';        // React és forwardRef importálása a ref továbbításhoz.
+import  { forwardRef } from 'react';        // React és forwardRef importálása a ref továbbításhoz.
 import PropTypes from 'prop-types';             // PropTypes importálása a propok típusellenőrzéséhez.
 import { NavLink } from 'react-router-dom';     // NavLink a navigációhoz és az aktív állapot jelzéséhez.
 import { FaChevronDown } from 'react-icons/fa'; // Lenyíló nyíl ikon importálása.

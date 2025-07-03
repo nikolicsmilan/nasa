@@ -1,9 +1,9 @@
-import React from "react";
+
 //import { useNavigate } from "react-router-dom";
-import BiggerConsoles from "./BiggerConsoles";
-import { start } from "../../../locales/localdata";
+//import BiggerConsoles from "./BiggerConsoles";
+//import { start } from "../../../locales/localdata";
 import InvertedYNeon from "./InvertedYNeon";
-const HexagonalIconList2 = ({ items, centerItem }) => {
+const HexagonalIconList2 = ({ items, /*centerItem */}) => {
   const iconCount = items.length;
 
   // Responsive sugár a képernyő szélessége alapján

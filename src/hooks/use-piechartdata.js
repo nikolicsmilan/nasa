@@ -15,7 +15,7 @@ const usePieChartData = (allProcessedData, config, colors) => {
 
   const chartData = useMemo(() => {
     // === FONTOS: A dataType-ot használjuk a switch-hez ===
-    const { dataType, dataKey } = config || {}; // Kiolvassuk mindkettőt, de a dataType alapján döntünk
+    const { dataType, /*dataKey */} = config || {}; // Kiolvassuk mindkettőt, de a dataType alapján döntünk
     // ===================================================
     const baseColor = colors?.tooltip || 'rgb(34, 211, 238)';
 

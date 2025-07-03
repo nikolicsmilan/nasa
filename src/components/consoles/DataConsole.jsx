@@ -1,14 +1,14 @@
-import React from "react";
+
 import useWindowSize from "../../hooks/use-windowsize";
 import { MyDataContext } from "../../context/DataContext";
-import { useInfo } from "../../hooks/use-info";
+//import { useInfo } from "../../hooks/use-info";
 const DataConsole = () => {
   const { width, height } = useWindowSize();
   const {
-    toggle,
-    settings,
-    setSettings,
-    settingsOpen,
+    //toggle,
+    //settings,
+   // setSettings,
+  //  settingsOpen,
     users,
     browserInfo,
     ipAddress,
@@ -24,7 +24,7 @@ const DataConsole = () => {
   const {
     browser: { name: browserName },
     os: { name: osName, version: osVersion },
-    device: { type: deviceType },
+ //   device: { type: deviceType },
   } = browserInfo;
 
   return (

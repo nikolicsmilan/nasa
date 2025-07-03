@@ -1,11 +1,11 @@
 // src/misc/PulseRadar.jsx
-import React, { useState, useEffect } from 'react';
+import  { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { getComputedStyleColor } from '../utils/getComputedStyleColor'; // Feltételezve, hogy ez a utils mappában van
 import { MyDataContext } from '../context/DataContext'; // Szükség lehet a témaváltás figyelésére
 
 // Segédfüggvény (ugyanaz, mint a SpeedGauge-ban, vagy importálható közös helyről)
-function hexToRgb(hex) {
+/*function hexToRgb(hex) {
     if (!hex || typeof hex !== 'string') return '34, 211, 238';
     const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
     if (result) {
@@ -16,7 +16,7 @@ function hexToRgb(hex) {
         return `${rgbMatch[1]}, ${rgbMatch[2]}, ${rgbMatch[3]}`;
     }
     return '34, 211, 238'; // Fallback
-}
+}*/
 
 
 const PulseRadar = ({
@@ -50,8 +50,8 @@ const PulseRadar = ({
     const radius = maxRadius * (1 - i / numRings);
     // Az átlátszóság a legkülsőtől (baseOpacity) nő a legbelső felé (1)
     // A stroke vastagsága is nőhet
-    const targetOpacity = baseOpacity + (1 - baseOpacity) * normalizedValue;
-    const targetStrokeWidth = 1 + (maxStrokeWidth - 1) * normalizedValue;
+   // const targetOpacity = baseOpacity + (1 - baseOpacity) * normalizedValue;
+    //const targetStrokeWidth = 1 + (maxStrokeWidth - 1) * normalizedValue;
 
     // Az adott kör akkor "aktívabb", ha az i/numRings kisebb, mint a normalizált érték
     // vagy használhatunk egyenletesebb eloszlást is

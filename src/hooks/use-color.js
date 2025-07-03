@@ -6,7 +6,7 @@ export const useColor = (config, nameconsole) => {
   // A graphConfigurations-t már nem itt kezeljük, a config releváns részeit használjuk
   // A régi belső config state és useEffect eltávolítva
 
-  const disabled = "bg-stone-500 cursor-not-allowed"; // Letiltott stílus
+ // const disabled = "bg-stone-500 cursor-not-allowed"; // Letiltott stílus
   const chosen = "bg-primary text-white";            // Kiemelt/választott stílus (pl. aktív gomb)
   const defaultColor = "bg-tertiary text-info";      // Alapértelmezett gomb stílus
 

@@ -1,8 +1,8 @@
-import React, { useEffect, useContext } from "react";
+import { useEffect} from "react";
 import { MyDataContext } from "../context/DataContext";
 
 export const useSave = () => {
-  const { users, setUsers, setChoosenStyle, choosenStyle } = MyDataContext();
+  const { users, setUsers, setChoosenStyle, /*choosenStyle*/ } = MyDataContext();
 
   useEffect(() => {
     const storedData = JSON.parse(localStorage.getItem("userData"));
@@ -10,7 +10,7 @@ export const useSave = () => {
       setUsers(storedData);
       setChoosenStyle(storedData.style || "sky");
     }
-  }, []); // üres dependency array, hogy csak a komponens mountolásakor fusson le ez az useEffect
+  }, [setUsers, setChoosenStyle]); 
 
   const saveUser = (key, value) => {
     setUsers((prevObject) => {

@@ -1,5 +1,5 @@
 // src/pages/Test/components/TestCategoryNavigator.jsx
-import React, { useState } from 'react';
+import  { useState } from 'react';
 import { testPageComponentsData } from '../../locales/testPageComponentsData';
 import TestComponentCard from './TestComponentCard';
 

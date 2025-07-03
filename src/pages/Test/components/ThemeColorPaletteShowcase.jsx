@@ -103,7 +103,8 @@ const convertToAllFormats = (colorString) => {
     if (culoriObj) {
       hex = formatHex(culoriObj);
     }
-  } catch (e) {
+  } catch (error) {
+    console.log(error)
     // console.warn("Error converting to HEX for display:", e, "Original:", colorString);
   }
   return {

@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
+//import { motion } from "framer-motion";
 
 const TypingAnimation = ({ customcontent }) => {
   const [text, setText] = useState("");
   const [newContent, setNewContent] = useState(customcontent); // Új állapot a változó szövegnek
-
 
   useEffect(() => {
     let timer;
@@ -31,13 +30,7 @@ const TypingAnimation = ({ customcontent }) => {
   useEffect(() => {
     setNewContent(customcontent);
   }, [customcontent]);
-  return (
-    <>
-     
-        {text}
-      
-    </>
-  );
+  return <>{text}</>;
 };
 
 export default TypingAnimation;

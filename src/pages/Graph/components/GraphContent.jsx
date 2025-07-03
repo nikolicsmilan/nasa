@@ -19,7 +19,7 @@ export const GraphContent = ({ config, displayedData, sumObject }) => {
       return <PieChartComponent config={config} sumObject={sumObject} />;
     // ... többi case ...
     default:
-      return <div className="p-4 flex justify-center items-center w-full h-full"><h1>Chart type '{graphType}' is under development.</h1></div>;
+      return <div className="p-4 flex justify-center items-center w-full h-full"><h1>Chart type {graphType} is under development.</h1></div>;
   }
 };
 

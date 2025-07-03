@@ -1,5 +1,5 @@
 // src/context/HoverMenuContext.jsx
-import React, { createContext, useState, useContext } from 'react'; // React és szükséges hookok importálása
+import { createContext, useState, useContext } from 'react'; // React és szükséges hookok importálása
 
 // Létrehozzuk a Kontextust. Kezdeti értéke undefined, a Provider fogja feltölteni.
 const HoverMenuContext = createContext(undefined);

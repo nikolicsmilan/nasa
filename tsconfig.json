@@ -1,0 +1,40 @@
+{
+  "compilerOptions": {
+    // --- Core Environment Settings ---
+    "target": "ESNext",
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "jsx": "react-jsx",
+
+    // --- Module Configuration for Vite ---
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+
+    // --- Essential for Vite/esbuild Integration ---
+    "isolatedModules": true, // Ensures files can be transpiled independently.
+    "noEmit": true,          // CRITICAL: TypeScript only does type-checking. Vite handles the build.
+    
+    // --- Gradual Migration Support ---
+    "allowJs": true, // Allow JavaScript files to be compiled. Essential for gradual migration.
+    
+    // --- Strictness & Code Quality ---
+    "strict": true,                     // Enable all strict type-checking options. This is the primary benefit of TS.
+    "forceConsistentCasingInFileNames": true,
+    "noUnusedLocals": true,             // Report errors on unused local variables.
+    "noUnusedParameters": true,         // Report errors on unused parameters.
+    "noFallthroughCasesInSwitch": true, // Report errors for fallthrough cases in switch statement.
+
+    // --- Interoperability ---
+    "esModuleInterop": true, // Enables compatibility with CommonJS modules.
+    "skipLibCheck": true,    // Skip type checking of all declaration files (*.d.ts).
+
+    // --- Optional: Path Aliases for Cleaner Imports ---
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"] // Example: 'import Component from "@/components/MyComponent"'
+    }
+  },
+  // --- Project Structure ---
+  "include": ["src"], // Tells TypeScript which files to check.
+  "references": [{ "path": "./tsconfig.node.json" }] // Links to the config for Node.js-specific files (like vite.config.ts).
+}

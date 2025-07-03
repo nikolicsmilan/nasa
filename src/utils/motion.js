@@ -45,7 +45,7 @@ export const subcribeAnimation = (direction) => {
   };
 };
 
-export const myAnimation = (direction, width, height) => {
+export const myAnimation = (direction, width, /*height*/) => {
   return {
     initial: {
       x: direction === "left" ? 320 : direction === "right" ? width + 80 : 0,

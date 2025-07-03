@@ -5,7 +5,7 @@ const LanguageConsole = () => {
   const { saveUser } = useSave();
   const handleClick = (item) => {
     saveUser("language", item?.title);
-    playSoundClick();
+   // playSoundClick();
   };
   return (
     <GenericConsole

@@ -1,5 +1,5 @@
 // src/pages/Error/RotatingSatellite.jsx
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
 // Konstansok a műhold méretéhez
