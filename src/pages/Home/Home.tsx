@@ -30,7 +30,8 @@ const Home = () => {
 
   // Subscribe gomb kezelője
   const handleSubscribe = () => {
-    setSubscribeToggle((prevState) => !prevState);
+    //setSubscribeToggle((prevState) => !prevState);
+    setSubscribeToggle((prevState: boolean) => !prevState);
   };
 
   return (
