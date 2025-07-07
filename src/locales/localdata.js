@@ -135,6 +135,7 @@ export const settingshome = [
 //to navigation Button in Home page
 export const start = [
   {
+    id:1,
     title: "Start",
     icon: FaSatellite,
     link: "/asteroide",
