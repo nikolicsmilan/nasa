@@ -1,7 +1,7 @@
-import  { useState } from 'react';
+import { useState, memo } from 'react';
 
 
-const GlowyButton = () => {
+const GlowyButton = memo(() => {
   const [pos, setPos] = useState({ x: 0, y: 0 });
 
   const handleMouseMove = (e) => {
@@ -17,6 +17,7 @@ const GlowyButton = () => {
       Glowing Button
     </div>
   );
-};
+});
 
+GlowyButton.displayName = 'GlowyButton';
 export default GlowyButton;

@@ -1,6 +1,13 @@
 // --- Importok ---
 // Alapvető React funkciók importálása: Context létrehozása, állapotkezelés, mellékhatások és optimalizálás.
-import { useContext, createContext, useState, useEffect, useMemo, useCallback } from "react";
+import {
+  useContext,
+  createContext,
+  useState,
+  useEffect,
+  useMemo,
+  useCallback,
+} from "react";
 // Egyedi 'useInfo' hook importálása, ami specifikus adatlekérési logikát tartalmaz.
 import { useInfo } from "../hooks/use-info";
 // Statikus hangfájl importálása, amit az alkalmazás használni fog.
@@ -16,8 +23,6 @@ const DataContext = createContext();
 export const DataContextProvider = ({ children }) => {
   // --- Állapotok (State-ek) definiálása Hook-okkal ---
   // Fix értékek, a settert üresen hagyva, hogy a kód ne törjön el, ha egy komponens megpróbálná hívni.
-  const windowSize = { width: 1024, height: 768 };
-  const setWindowSize = () => {};
   // A 'useState' egy Hook. Létrehoz egy 'toggle' nevű állapotváltozót 'true' kezdőértékkel, és egy 'setToggle' függvényt a módosítására.
   const [toggle, setToggle] = useState(true);
   // Hasonlóan az előzőhöz, egy másik logikai (boolean) állapot.
@@ -65,7 +70,7 @@ export const DataContextProvider = ({ children }) => {
   // Ez a hook lefut a komponens első renderelése után, és minden alkalommal, amikor a függőségi listában lévő függvényreferencia megváltozik.
   useEffect(() => {
     updateBrowserInfo(setBrowserInfo); // Elindítja a böngészőadatok lekérését.
-    updateIpAddress(setIPAddress);     // Elindítja az IP-cím lekérését.
+    updateIpAddress(setIPAddress); // Elindítja az IP-cím lekérését.
     updateGPS(setLatitude, setLongitude); // Elindítja a GPS adatok lekérését.
   }, [updateIpAddress, updateGPS, updateBrowserInfo]); // Függőségi lista.
 
@@ -91,45 +96,60 @@ export const DataContextProvider = ({ children }) => {
   // A 'useMemo' Hook a Provider-nek átadott 'value' objektumot memoizálja (gyorsítótárazza).
   // Ez egy kritikus optimalizációs lépés: az objektum csak akkor jön létre újra, ha valamelyik függősége megváltozik.
   // Enélkül minden rendereléskor új objektum jönne létre, ami az összes Context-et használó komponenst feleslegesen újrarenderelné.
-  const contextValue = useMemo(() => ({
-    // Itt gyűjtjük össze az összes állapotot és függvényt, amit meg akarunk osztani.
-    windowSize,
-    setWindowSize,
-    toggle,
-    setToggle,
-    settingsOpen,
-    setSettingsOpen,
-    settings,
-    setSettings,
-    users,
-    setUsers,
-    choosenStyle,
-    setChoosenStyle,
-    browserInfo,
-    setBrowserInfo,
-    ipAddress,
-    setIPAddress,
-    latitude,
-    longitude,
-    subscribeToggle,
-    setSubscribeToggle,
-    playSoundClick // Az optimalizált, 'useCallback'-be csomagolt függvény.
-  }), [
-    // Függőségi lista a 'useMemo'-nak. Ha ezen értékek bármelyike változik, a 'contextValue' újraszámolódik.
-    windowSize, toggle, settingsOpen, settings, users, choosenStyle,
-    browserInfo, ipAddress, latitude, longitude, subscribeToggle, setWindowSize,
-    setToggle, setSettingsOpen, setSettings, setUsers, setChoosenStyle,
-    setBrowserInfo, setIPAddress, setSubscribeToggle, playSoundClick
-  ]);
+  const contextValue = useMemo(
+    () => ({
+      // Itt gyűjtjük össze az összes állapotot és függvényt, amit meg akarunk osztani.
+
+      toggle,
+      setToggle,
+      settingsOpen,
+      setSettingsOpen,
+      settings,
+      setSettings,
+      users,
+      setUsers,
+      choosenStyle,
+      setChoosenStyle,
+      browserInfo,
+      setBrowserInfo,
+      ipAddress,
+      setIPAddress,
+      latitude,
+      longitude,
+      subscribeToggle,
+      setSubscribeToggle,
+      playSoundClick, // Az optimalizált, 'useCallback'-be csomagolt függvény.
+    }),
+    [
+      // Függőségi lista a 'useMemo'-nak. Ha ezen értékek bármelyike változik, a 'contextValue' újraszámolódik.
+      toggle,
+      settingsOpen,
+      settings,
+      users,
+      choosenStyle,
+      browserInfo,
+      ipAddress,
+      latitude,
+      longitude,
+      subscribeToggle,
+      setToggle,
+      setSettingsOpen,
+      setSettings,
+      setUsers,
+      setChoosenStyle,
+      setBrowserInfo,
+      setIPAddress,
+      setSubscribeToggle,
+      playSoundClick,
+    ]
+  );
 
   // --- Visszatérési érték (JSX) ---
   // Visszaadja a 'DataContext.Provider' komponenst.
   // A 'value' prop-nak átadja a memoizált 'contextValue' objektumot.
   // A '{children}' biztosítja, hogy a Provider-en belül lévő összes komponens megkapja ezt az értéket.
   return (
-    <DataContext.Provider value={contextValue}>
-      {children}
-    </DataContext.Provider>
+    <DataContext.Provider value={contextValue}>{children}</DataContext.Provider>
   );
 };
 

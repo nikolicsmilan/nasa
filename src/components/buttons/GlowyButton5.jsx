@@ -1,7 +1,7 @@
-import  { useState, useEffect, useRef } from 'react';
+// src/components/buttons/GlowyButton5.jsx
+import { useState, useEffect, useRef, memo } from "react";
 
-
-const GlowyButton5 = ({ children }) => {
+const GlowyButton5 = memo(({ children }) => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const buttonRef = useRef(null);
 
@@ -11,27 +11,37 @@ const GlowyButton5 = ({ children }) => {
       const rect = buttonRef.current.getBoundingClientRect();
       setMousePosition({
         x: e.clientX - rect.left,
-        y: e.clientY - rect.top
+        y: e.clientY - rect.top,
       });
     };
 
-    window.addEventListener('mousemove', updateMousePosition);
+    const buttonElement = buttonRef.current;
+    if (buttonElement) {
+      buttonElement.addEventListener("mousemove", updateMousePosition);
+    }
 
     return () => {
-      window.removeEventListener('mousemove', updateMousePosition);
+      if (buttonElement) {
+        buttonElement.removeEventListener("mousemove", updateMousePosition);
+      }
     };
-  }, []);
+  }, []); // Az üres függőségi tömb marad
 
   const glowStyle = {
-    '--x': `${mousePosition.x}px`,
-    '--y': `${mousePosition.y}px`,
+    "--x": `${mousePosition.x}px`,
+    "--y": `${mousePosition.y}px`,
   };
 
   return (
-    <button ref={buttonRef} className="glowy-button-5 w-60 h-20" style={glowStyle}>
+    <button
+      ref={buttonRef}
+      className="glowy-button-5 w-60 h-20"
+      style={glowStyle}
+    >
       {children}
     </button>
   );
-};
+});
 
+GlowyButton5.displayName = "GlowyButton5";
 export default GlowyButton5;

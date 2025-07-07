@@ -1,40 +1,49 @@
 {
   "compilerOptions": {
     // --- Core Environment Settings ---
-    "target": "ESNext",
-    "lib": ["DOM", "DOM.Iterable", "ESNext"],
-    "jsx": "react-jsx",
+    "target": "ESNext", // Compile to the latest ECMAScript version. Vite will handle browser compatibility.
+    "lib": ["DOM", "DOM.Iterable", "ESNext"], // Standard library type definitions to include.
+    "jsx": "react-jsx", // Use the modern JSX transform (no need for `import React`).
 
     // --- Module Configuration for Vite ---
-    "module": "ESNext",
-    "moduleResolution": "bundler",
-    "resolveJsonModule": true,
+    "module": "ESNext", // Use modern ES modules.
+    "moduleResolution": "bundler", // The recommended module resolution strategy for modern bundlers.
+    "resolveJsonModule": true, // Allows importing .json files.
 
     // --- Essential for Vite/esbuild Integration ---
-    "isolatedModules": true, // Ensures files can be transpiled independently.
-    "noEmit": true,          // CRITICAL: TypeScript only does type-checking. Vite handles the build.
+    "isolatedModules": true, // Ensures each file can be transpiled independently.
+    "noEmit": true,          // CRITICAL: TypeScript only performs type-checking. Vite handles the build.
     
     // --- Gradual Migration Support ---
-    "allowJs": true, // Allow JavaScript files to be compiled. Essential for gradual migration.
+    "allowJs": true, // Allows JavaScript files to co-exist with TypeScript files.
     
     // --- Strictness & Code Quality ---
-    "strict": true,                     // Enable all strict type-checking options. This is the primary benefit of TS.
+    "strict": true, // Enables all of the strict mode family options listed below.
+    /* This single flag enables:
+       - noImplicitAny: Throws an error on expressions and declarations with an implicitly `any` type.
+       - noImplicitThis: Throws an error on `this` expressions with an implicitly `any` type.
+       - alwaysStrict: Parses files in strict mode and emits "use strict" for each source file.
+       - strictBindCallApply: Enables stricter checking of the `bind`, `call`, and `apply` methods on functions.
+       - strictNullChecks: `null` and `undefined` are not assignable to every type and have their own distinct types.
+       - strictFunctionTypes: Enables stricter checking of function types.
+       - strictPropertyInitialization: Ensures all properties of a class are initialized in the constructor.
+    */
+    
     "forceConsistentCasingInFileNames": true,
-    "noUnusedLocals": true,             // Report errors on unused local variables.
-    "noUnusedParameters": true,         // Report errors on unused parameters.
-    "noFallthroughCasesInSwitch": true, // Report errors for fallthrough cases in switch statement.
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
 
     // --- Interoperability ---
-    "esModuleInterop": true, // Enables compatibility with CommonJS modules.
-    "skipLibCheck": true,    // Skip type checking of all declaration files (*.d.ts).
+    "esModuleInterop": true,
+    "skipLibCheck": true,
 
-    // --- Optional: Path Aliases for Cleaner Imports ---
+    // --- Path Aliases for Cleaner Imports ---
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"] // Example: 'import Component from "@/components/MyComponent"'
+      "@/*": ["./src/*"]
     }
   },
-  // --- Project Structure ---
-  "include": ["src"], // Tells TypeScript which files to check.
-  "references": [{ "path": "./tsconfig.node.json" }] // Links to the config for Node.js-specific files (like vite.config.ts).
+  "include": ["src"],
+  "references": [{ "path": "./tsconfig.node.json" }]
 }

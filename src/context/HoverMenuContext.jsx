@@ -1,5 +1,5 @@
 // src/context/HoverMenuContext.jsx
-import { createContext, useState, useContext } from 'react'; // React és szükséges hookok importálása
+import { createContext, useState,/*seContext*/} from'react'; // React és szükséges hookok importálása
 
 // Létrehozzuk a Kontextust. Kezdeti értéke undefined, a Provider fogja feltölteni.
 const HoverMenuContext = createContext(undefined);
@@ -35,6 +35,7 @@ export const HoverMenuContextProvider = ({ children }) => {
   );
 };
 
+/*
 // Custom hook a kontextus értékének egyszerűbb eléréséhez.
 export const useHoverMenuContext = () => {
   const context = useContext(HoverMenuContext); // useContext hook a kontextus értékének kiolvasásához.
@@ -43,4 +44,4 @@ export const useHoverMenuContext = () => {
     throw new Error('useHoverMenuContext must be used within a HoverMenuContextProvider');
   }
   return context; // Visszaadjuk a kontextusban tárolt értékeket és függvényeket.
-};
+};*/
