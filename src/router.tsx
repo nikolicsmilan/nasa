@@ -1,22 +1,26 @@
-// src/router.jsx
-
+// Imports the function to create a browser-based router instance.
 import { createBrowserRouter } from "react-router-dom";
+// Imports React's 'lazy' for code-splitting and 'Suspense' for handling loading states.
 import { lazy, Suspense } from "react";
+// Imports a data object, likely for a specific component's initial state or props.
 import { sentry } from "./locales/nasadummy";
 
 // --- Component Imports ---
-// The Fallback component is now imported from its own dedicated file.
-import LoadingFallback from "./components/common/LoadingFallback";
 
-// Page Components (Lazy Loaded)
+// Imports the fallback component to show while lazy-loaded components are loading.
+import LoadingFallback from "./components/common/LoadingFallback";
+// Imports the Error page component directly, as it's used in errorElement.
 import Error from "./pages/Error/Error";
+
+// --- Lazy-Loaded Page Components ---
+// These components will be loaded only when the user navigates to their respective routes.
 const Home = lazy(() => import("./pages/Home/Home"));
 const Graph = lazy(() => import("./pages/Graph/Graph"));
 const Test = lazy(() => import("./pages/Test/Test"));
 const Admin = lazy(() => import("./pages/Admin/Admin"));
 const AsteroidePage = lazy(() => import("./pages/Asteroide/Asteroide"));
 
-// Layout Components (Lazy Loaded)
+// --- Lazy-Loaded Layout Components ---
 const AppLayout = lazy(() => import("./layouts/AppLayout"));
 const LayoutSimple = lazy(() => import("./layouts/LayoutSimple"));
 
@@ -24,14 +28,17 @@ const LayoutSimple = lazy(() => import("./layouts/LayoutSimple"));
 // --- Constants used in routes ---
 // This data will be passed as a prop to the Graph component.
 const sumObject = sentry;
-// This video source is used for multiple backgrounds.
+// This video source is used as a default background for multiple layouts.
 const defaultVideoSrc = "/muhold_compress.mp4";
 
 // --- The Router Configuration ---
 // This object defines all the application's routes and is the only export from this file.
 export const router = createBrowserRouter([
+  // Defines the root path group.
   {
+    // The path for this route group.
     path: "/",
+    // The element to render. It uses Suspense to handle the lazy loading of AppLayout.
     element: (
       <Suspense fallback={<LoadingFallback message="Loading Layout..." />}>
         <AppLayout
@@ -40,13 +47,16 @@ export const router = createBrowserRouter([
         />
       </Suspense>
     ),
+    // The element to render if a routing error occurs.
     errorElement: (
       <LayoutSimple>
         <Error />
       </LayoutSimple>
     ),
+    // Defines the nested child routes.
     children: [
       {
+        // 'index: true' makes this the default child route for the "/" path.
         index: true,
         element: (
           <Suspense fallback={<LoadingFallback message="Loading Home..." />}>
@@ -56,6 +66,7 @@ export const router = createBrowserRouter([
       },
     ],
   },
+  // Defines the "asteroide" path group.
   {
     path: "asteroide",
     element: (
@@ -82,6 +93,7 @@ export const router = createBrowserRouter([
       },
     ],
   },
+  // Defines the "graph" path group.
   {
     path: "graph",
     element: (
@@ -102,12 +114,14 @@ export const router = createBrowserRouter([
         index: true,
         element: (
           <Suspense fallback={<LoadingFallback message="Loading Graph Page..." />}>
+            {/* The Graph component receives the 'sumObject' as a prop. */}
             <Graph sumObject={sumObject} />
           </Suspense>
         ),
       },
     ],
   },
+  // Defines the "test" path group.
   {
     path: "test",
     element: (
@@ -134,6 +148,7 @@ export const router = createBrowserRouter([
       },
     ],
   },
+  // Defines the "admin" path group.
   {
     path: "admin",
     element: (
@@ -157,7 +172,7 @@ export const router = createBrowserRouter([
       },
     ],
   },
-  // Catch-all 404 route for any path that doesn't match the ones above.
+  // A catch-all route for any path that doesn't match the ones defined above.
   {
     path: "*",
     element: (
