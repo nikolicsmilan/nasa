@@ -1,3 +1,4 @@
+// src/components/Charts/bar/BarCharts.jsx
 import { useState, useEffect } from "react";
 import {
   BarChart,
@@ -43,9 +44,9 @@ const BarCharts = () => {
     };
 
     setColors({
-      xAxis: getComputedStyleColor("ezaz"),
-      yAxis: getComputedStyleColor("ezaz"),
-      tooltip: getComputedStyleColor("ezaz"),
+      xAxis: getComputedStyleColor("theme-color-ref"),
+      yAxis: getComputedStyleColor("theme-color-ref"),
+      tooltip: getComputedStyleColor("theme-color-ref"),
     });
   }, [users.style]);
 

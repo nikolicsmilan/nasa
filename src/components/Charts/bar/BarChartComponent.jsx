@@ -90,7 +90,7 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
-import 'chartjs-adapter-date-fns';
+import "chartjs-adapter-date-fns";
 import { MyDataContext } from "../../../context/DataContext";
 import useAreaChartColors from "../../../hooks/use-areachartcolors"; // Vagy használhatsz useBarChartColors-t
 import useBarChartData from "../../../hooks/useBarChartData";
@@ -121,7 +121,7 @@ const BarChartComponent = ({ config, displayedData }) => {
   // Használhatod az AreaChart színeit, vagy egy dedikált useBarChartColors hookot
   const colors = useAreaChartColors(users?.style);
   const chartData = useBarChartData(displayedData, colors, config);
-
+//  console.log("BarChartComponent c-o-l-o-r-s: ", colors);
   return (
     // Külső div: Kitölti a szülőjét (pl. GraphContent -> CenterPanel belső div)
     <div className="w-full h-full flex flex-col items-center justify-center">
@@ -139,4 +139,3 @@ const BarChartComponent = ({ config, displayedData }) => {
 };
 
 export default BarChartComponent;
-

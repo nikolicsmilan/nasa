@@ -1,5 +1,5 @@
 //import { format } from 'date-fns';
-
+// src/components/Charts/bar/barchartOptions.jsx
 export const barchartOptions = (colors, config, /*displayedData*/) => {
   const { dataType, dataKey, displayLimit } = config || {};
   if (!config || !dataType || !dataKey) {

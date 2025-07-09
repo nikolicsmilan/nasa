@@ -1,29 +1,42 @@
-// src/hooks/use-areachartcolors.js (EGYSZERŰSÍTETT VERZIÓ)
+import { useMemo } from 'react';
+import { MyDataContext } from '../context/DataContext';
+// A szín-átalakító függvényt továbbra is használjuk
+import { formatColorToRgba } from '../utils/colorFormatter';
 
-import { useState, useEffect } from 'react';
-import { getComputedStyleColor } from '../utils/getComputedStyleColor';
+// A Tailwind színkódokat közvetlenül itt definiáljuk.
+// Ezek statikus értékek, nem kell őket a tailwind.config.js-ből olvasni.
+const themeHexColors = {
+  default: '#38bdf8', // colors.sky['400']
+  plasma:  '#38bdf8', // A te configodban a plasma is sky-400-at használt
+  ion:     '#a3e635', // colors.lime['400']
+  fusion:  '#4ade80', // colors.green['400']
+  quantum: '#60a5fa', // colors.blue['400']
+};
 
-const useAreaChartColors = (styleDependency) => {
-  console.log("useAreaChartColors styleDependency: ",styleDependency)
-  // Kezdetben csak a dinamikusan meghatározandó színeket inicializáljuk
-  const [colors, setColors] = useState({
-    tooltip: "#FFFFFF", // Alapértelmezett fehér (felülíródik)
-    legend: "#FFFFFF",  // Alapértelmezett fehér (felülíródik)
-    // A többi fix 'area' szín eltávolítva
-  });
+/**
+ * Egyéni hook, amely egy belső objektumból adja vissza az aktuális
+ * téma alapján a színeket. NEM OLVAS A DOM-BÓL.
+ * @returns {object} Egy objektum, ami a `tooltip` és `legend` színét tartalmazza.
+ */
+const useAreaChartColors = () => {
+  const { users } = MyDataContext();
+  const currentTheme = users?.style || 'default';
 
-  useEffect(() => {
-    // Csak a szükséges tooltip és legend színeket állítjuk be dinamikusan
-    const primaryColor = getComputedStyleColor("theme-color-ref"); // Kiolvassuk a primary színt
-    console.log("useAreaChartColors primaryColor: ",primaryColor)
-    setColors({
-      tooltip: primaryColor, // Ez lesz az alap színünk a chartokhoz
-      legend: primaryColor,  // Ugyanaz a szín a szövegekhez, címkékhez
-    });
-    // Nincs szükség a fix RGBA értékekre
-  }, [styleDependency]);
+  // useMemo-t használunk, hogy a szín-objektum csak akkor jöjjön létre újra, ha a téma változik.
+  const colors = useMemo(() => {
+    // 1. Kikeresi a HEX színt a belső JS objektumból a téma neve alapján
+    const primaryHexColor = themeHexColors[currentTheme] || themeHexColors.default;
 
-  return colors; // Csak a tooltip és legend színt tartalmazó objektumot adjuk vissza
+    // 2. Átalakítja RGBA formátumra a segédfüggvénnyel
+    const primaryRgbaColor = formatColorToRgba(primaryHexColor);
+    
+    return {
+      tooltip: primaryRgbaColor,
+      legend: primaryRgbaColor,
+    };
+  }, [currentTheme]);
+
+  return colors;
 };
 
 export default useAreaChartColors;
