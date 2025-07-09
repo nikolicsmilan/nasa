@@ -1,3 +1,4 @@
+// src/hooks/useBarChartData.js
 import { useState, useEffect } from 'react';
 
 const useBarChartData = (displayedData, colors, config) => {

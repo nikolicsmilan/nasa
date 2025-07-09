@@ -20,6 +20,7 @@ const CustomBarChart = ({
   height,
   displayedData   // <<< Ezt kapja
 }) => {
+  console.log("CustomBarChart c-o-l-o-r-s: ", colors.tooltip);
 
   // === JAVÍTÁS ITT: Helyes propok átadása az options függvénynek ===
   const options = barchartOptions(
