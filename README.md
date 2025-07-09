@@ -170,7 +170,7 @@
     ├── createSampledData.js         // Régi adat mintavételező
     ├── createTopBottomAverageData.js// Régi top/bottom/avg adat formázó
     ├── getComputedStyleColor.js     // CSS szín kiolvasó DOM-ból
-    ├── graphDataUtils.js            // Graph adatfeldolgozó segédfüggvények
+    ├── graphDataUtils.ts            // Graph adatfeldolgozó segédfüggvények
     ├── handleFilterClick.js         // Régi filter gomb logika
     ├── handleGraphClick.js          // Régi graph gomb logika
     ├── mainFilteredData.js          // Régi központi adatszűrő/formázó
