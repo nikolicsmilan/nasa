@@ -1,5 +1,5 @@
 // All imports are now actively used within this file.
-import { IconType } from "react-icons/fa";
+import { type IconType } from "react-icons";
 import {
   FaProjectDiagram, FaPalette, FaVolumeUp, FaChartArea, FaHome, FaShieldAlt, FaSignInAlt,
   FaToggleOff, FaToggleOn, FaLanguage, FaCalendarAlt, FaExclamationTriangle, FaTachometerAlt,
