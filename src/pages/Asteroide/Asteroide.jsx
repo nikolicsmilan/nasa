@@ -1,6 +1,7 @@
 import { MyDataContext } from "../../context/DataContext";
 //import DesktopAsteroide from "./desktop/DesktopAsteroide";
 //import MobileAsteroide from "./mobile/MobileAsteroide";
+import GlowyButton from "../../components/buttons/GlowyButton";
 import StyledButton from "../../components/buttons/StyledButton";
 import { useNavigate } from "react-router-dom";
 const Asteroide = () => {
@@ -43,6 +44,7 @@ const Asteroide = () => {
           {/* A label helyett children-ként adjuk át */}
         </StyledButton>
       </div>
+      <GlowyButton/>
     </div>
   );
 };
